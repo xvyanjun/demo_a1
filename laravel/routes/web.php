@@ -23,8 +23,11 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
+<<<<<<< HEAD
 //前台
 
+=======
+>>>>>>> f67acf487fd5bc799607d4c6ee2760331a761e4c
 Route::any('/','a_1\demo_a1_contr@index');
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
@@ -56,5 +59,10 @@ Route::any('/search','a_1\demo_a1_contr@search');
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
 
+<<<<<<< HEAD
 //后台
 Route::any('/index', 'admin\IndexController@index');//首页
+=======
+// ------------------------------------后台-------------------------------
+Route::any('/index', 'admin\IndexController@index');//列表页
+>>>>>>> f67acf487fd5bc799607d4c6ee2760331a761e4c

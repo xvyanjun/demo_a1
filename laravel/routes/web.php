@@ -54,6 +54,3 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
-
-Route::any('/index', 'admin\IndexController@index');//首页
-

@@ -9,13 +9,13 @@ class GoodsController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * 后台首页
+     * 商品展示
      */
     public function index(){
-        return view('admin.goods');
+        return view('admin.goods.goods');
     }
 
     public function addshow(){
-        return view('admin.goodsadd');
+        return view('admin.goods.goodsadd');
     }
 }

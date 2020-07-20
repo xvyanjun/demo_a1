@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
+
 //前台
 
 Route::any('/','a_1\demo_a1_contr@index');
@@ -60,3 +61,4 @@ Route::any('/item','a_1\demo_a1_contr@item');
 Route::any('/index', 'admin\IndexController@index');//首页
 Route::any('/index/goods', 'admin\GoodsController@index');//展示
 Route::any('/index/goodsadd', 'admin\GoodsController@addshow');//添加
+

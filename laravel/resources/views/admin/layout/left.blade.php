@@ -48,14 +48,13 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-
                     <li id="admin-login">
-                        <a href="goods_edit.html" target="iframe">
+                        <a href="/index/goodsadd" target="iframe">
                             <i class="fa fa-circle-o"></i> 新增商品
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="goods.html" target="iframe">
+                        <a href="/index/goods" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品管理
                         </a>
                     </li>

@@ -28,7 +28,7 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="seller.html" target="iframe">
+                        <a href="{{url('/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 修改资料
                         </a>
                     </li>

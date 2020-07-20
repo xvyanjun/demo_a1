@@ -59,6 +59,7 @@ Route::any('/item','a_1\demo_a1_contr@item');
 
 //后台
 Route::any('/index', 'admin\IndexController@index');//首页
+
 //商品
 Route::prefix('/admin')->group(function(){
     Route::any('/goods', 'admin\GoodsController@index');//展示

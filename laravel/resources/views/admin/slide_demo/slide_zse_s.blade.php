@@ -5,7 +5,7 @@
                     <td>{{$v['slide_url']}}</td>
                     <td>
                         <img src="{{$v['slide_img']}}" width="50" height="50">
-                    <!-- {{$v['slide_img']}} -->
+                    
                     </td>
                     <td>{{$v['slide_weight']}}</td>
                     <td>{{$v['slide_show']=='1'?'√':'×'}}</td>

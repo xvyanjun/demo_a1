@@ -89,7 +89,7 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>基本管理</span>
+                    <span>权限管理</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -97,13 +97,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="{{url('/create')}}" target="iframe">
-                            <i class="fa fa-circle-o"></i> 修改资料
+                        <a href="{{url('/admin/power/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 权限添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="password.html" target="iframe">
-                            <i class="fa fa-circle-o"></i> 修改密码
+                        <a href="{{url('/admin/power/list')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 权限展示
                         </a>
                     </li>
                 </ul>
@@ -112,13 +112,61 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>商品管理</span>
+                    <span>角色管理</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
+<<<<<<< HEAD
+                        <a href="{{url('/admin/role/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('/admin/role/list')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色展示
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>用户管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="{{url('/admin/user/list')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 用户列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>友情链接管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="{{url('/admin/friend/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 友情链接添加
+                        </a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="{{url('/admin/friend/list')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 友情链接展示
+=======
                         <a href="/admin/goodsadd" target="iframe">
                             <i class="fa fa-circle-o"></i> 新增商品
                         </a>
@@ -126,6 +174,7 @@
                     <li id="admin-login">
                         <a href="/admin/goods" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品管理
+>>>>>>> 598ba69adecbead37d0b264c196355009a6924c0
                         </a>
                     </li>
                 </ul>

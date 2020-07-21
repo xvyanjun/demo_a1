@@ -95,7 +95,6 @@
     </div>
     <script>
     $(function(){
-//-----------------------------------------------------------------
       $(document).on('click','#sc',function(){
         var nav_id=$(this).attr('nav_id');
         if(nav_id!=''){
@@ -114,7 +113,6 @@
         }
         console.log(nav_id);
       });
-//-----------------------------------------------------------------
       $(document).on('click','.pagination a',function(){
        var url=$(this).attr('href');
              $.ajax({
@@ -127,7 +125,6 @@
             });
        return false;
       });
-//-----------------------------------------------------------------
       $(document).on('click','#eva_jd',function(){
         var ts=$(this);
         var nav_id=$(this).attr('nav_id');

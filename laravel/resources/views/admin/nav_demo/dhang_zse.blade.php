@@ -173,16 +173,32 @@
 //-----------------------------------------------------------------
       // $(document).on('blur','#js_s',function(){
       //         var ts=$(this);
-      //         var nav_id=$(this).attr('nav_id');
-      //         var nav_name=$(this).text();
-      //         var sf=$(this).children("#js_s").val();
-      //         if(sf==undefined){
-      //           $(this).empty();
-      //           var input="<input type='text' id='js_s' n_id='"+nav_id+"' n_yvl='"+nav_name+"' value='      "+nav_name+"'/>";
-      //           $(this).html(input);
-      //           $("#js_s").focus(); 
+      //         var nav_id=$(this).attr('n_id');
+      //         var nav_yname=$(this).attr('n_yvl');
+      //         var nav_name=$(this).val();
+      //         var zz=/^[a-z A-Z 0-9 \u4e00-\u9fa5]{1,}$/;
+      //         if(!zz.test(nav_name)){
+      //           $(this).after(nav_yname);
+      //           $(this).remove();
+      //           console.log('名称中文数字字母下划线至少一位');
       //         }
-      //         console.log(sf);
+      //         $.ajax({
+      //            url:'/nav/nav_jd_s',
+      //            type:'post',
+      //            dataType:'json',
+      //            data:{'nav_id':nav_id,'nav_name':nav_name},
+      //            success:function(go){
+      //                  if(go.a1==0){
+      //                    ts.after(nav_name);
+      //                    ts.remove();
+      //                  }else{
+      //                    ts.after(nav_yname);
+      //                    ts.remove();
+      //                  }
+      //                  console.log(go.a2);
+      //            }
+      //         });
+      //         console.log(nav_id,nav_yname,nav_name);
       //       return false;
       //  }); 
 //-----------------------------------------------------------------

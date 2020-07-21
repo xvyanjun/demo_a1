@@ -2,7 +2,7 @@
                 <tr>
                     <td><input  type="checkbox"></td>
                     <td>{{$v['nav_id']}}</td>
-                    <td>{{$v['nav_name']}}</td>
+                    <td id='eva_jd_s' nav_id="{{$v['nav_id']}}">{{$v['nav_name']}}</td>
                     <td>{{$v['nav_url']}}</td>
                     <td id='eva_jd' nav_id="{{$v['nav_id']}}">{{$v['nav_show']=='1'?'√':'×'}}</td>
                     <td>{{date('Y-m-d H:i',$v['nav_time'])}}</td>

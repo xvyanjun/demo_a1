@@ -73,6 +73,16 @@ Route::prefix('/admin')->group(function(){
     Route::any('/update', 'admin\CateController@update');//修改
     Route::any('/updateshow', 'admin\CateController@updateshow');//即点即改
 });
+//品牌
+Route::prefix('/admin')->group(function(){
+    Route::any('/brand', 'admin\BrandController@index');//展示
+    Route::any('/brandadd', 'admin\BrandController@addshow');//添加页
+    Route::any('/brandadds', 'admin\BrandController@add');//添加
+    Route::any('/branddel', 'admin\BrandController@del');//删除
+    Route::any('/brandupd/{id}', 'admin\BrandController@cateupd');//修改页
+    Route::any('/brandupdate', 'admin\BrandController@update');//修改
+    Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
+});
 
 //---------------------------------------------------------导航
 Route::prefix('/nav')->group(function(){

@@ -6,7 +6,7 @@
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 <div class="box-header with-border">
-    <h3 class="box-title">分类管理</h3>
+    <h3 class="box-title">品牌管理</h3>
 </div>
 <div class="box-body">
 
@@ -17,65 +17,47 @@
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default" title="新建" ><a href="/admin/cateadd" class="fa fa-file-o">新建</a></button>
+                    <button type="button" class="btn btn-default" title="新建" ><a href="/admin/brandadd" class="fa fa-file-o">新建</a></button>
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                 </div>
             </div>
         </div>
-        <div class="box-tools pull-right">
-            <div class="has-feedback">
-                <form>
-                分类名称<input name="cate_name" value="{{$cate_name}}" type="text">
-                <input type="submit" class="btn btn-default" value="查询">
-                </form>
-            </div>
-        </div>
         <!--工具栏/-->
-
         <!--数据列表-->
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
             <thead>
             <tr>
-                <th class="sorting_asc">分类ID</th>
-                <th class="sorting">分类名称</th>
-                <th class="sorting">上级分类</th>
+                <th class="sorting_asc">品牌ID</th>
+                <th class="sorting">品牌名称</th>
+                <th class="sorting">品牌logo</th>
+                <th class="sorting">品牌url</th>
                 <th class="sorting">添加时间</th>
-                <th class="sorting">是否显示</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($info as $k=>$v)
-            <tr cate_id="{{$v['cate_id']}}">
-                <td>{{$v['cate_id']}}</td>
+            @foreach($res as $k=>$v)
+            <tr brand_id="{{$v['brand_id']}}">
+                <td>{{$v['brand_id']}}</td>
                 <td>
-                    {{ str_repeat("|--",$v['level']) }}
-                    {{$v['cate_name']}}
+                    {{$v['brand_name']}}
                 </td>
                 <td>
-                    @foreach($cate as $key=>$value)
-                        @if($v['p_id']==0)
-                            顶级分类
-                        @elseif($v['p_id']==$value['cate_id'])
-                            {{$value['cate_name']}}
-                        @endif
-                    @endforeach
+                    <img src="../{{$v['brand_img']}}" width="80" height="40">
                 </td>
-                <td>{{date('Y-m-d H:i:s',$v['cate_time'])}}</td>
-                <td class="cate_show">
-                    @if($v['cate_show']==1)
-                        显示
-                    @elseif($v['cate_show']==2)
-                        不显示
-                    @endif
-
-                </td>
+                <td>{{$v['brand_url']}}</td>
+                <td>{{date('Y-m-d H:i:s',$v['brand_time'])}}</td>
                 <td class="text-center">
                     <button type="button" class="del btn btn-danger">删除</button>
-                    <button type="button" class="btn btn-success"><a href="/admin/cateupd/{{$v['cate_id']}}">修改</a></button>
+                    <button type="button" class="btn btn-success"><a href="/admin/brandupd/{{$v['brand_id']}}">修改</a></button>
                 </td>
             </tr>
             @endforeach
+
+            <div class="pull-right paginate">
+                {{ $res->links() }}
+            </div>
+
             </tbody>
         </table>
         <!--数据列表/-->
@@ -84,16 +66,16 @@
 </div>
 <script>
     $(document).on('click','.del',function(){
-        var cate_id=$(this).parents('tr').attr('cate_id');
+        var brand_id=$(this).parents('tr').attr('brand_id');
         $.ajax({
-            url: "{{'/admin/del'}}",
+            url: "{{'/admin/branddel'}}",
             type: 'post',
-            data: {cate_id:cate_id},
+            data: {brand_id:brand_id},
             dataType: 'json',
             success: function (res) {
                 if(res.code=='200'){
                     alert('删除完毕');
-                    window.location.href="{{'/admin/cate'}}"
+                    window.location.href="{{'/admin/brand'}}"
                 }else{
                     alert(res.msg);
                 }

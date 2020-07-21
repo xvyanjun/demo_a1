@@ -119,7 +119,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-<<<<<<< HEAD
                         <a href="{{url('/admin/role/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 角色添加
                         </a>
@@ -166,15 +165,6 @@
                     <li id="admin-login">
                         <a href="{{url('/admin/friend/list')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 友情链接展示
-=======
-                        <a href="/admin/goodsadd" target="iframe">
-                            <i class="fa fa-circle-o"></i> 新增商品
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admin/goods" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品管理
->>>>>>> 598ba69adecbead37d0b264c196355009a6924c0
                         </a>
                     </li>
                 </ul>

@@ -58,7 +58,6 @@ Route::any('/item','a_1\demo_a1_contr@item');
 //后台
 Route::any('/index', 'admin\IndexController@index');//首页
 
-<<<<<<< HEAD
 //rbac权限管理
 Route::prefix('/admin')->group(function(){
     Route::any('/power/create', 'admin\PowerController@create');//权限添加展示
@@ -97,7 +96,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/friend/upd/{id}', 'admin\FriendController@upd');//友情修改
     Route::any('/friend/updAdd', 'admin\FriendController@updAdd');//友情修改执行
 });
-=======
+
 //商品
 Route::prefix('/admin')->group(function(){
     Route::any('/goods', 'admin\GoodsController@index');//展示
@@ -154,4 +153,4 @@ Route::prefix('/slide')->group(function(){
   Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   
 });
 //---------------------------------------------------------
->>>>>>> 598ba69adecbead37d0b264c196355009a6924c0
+

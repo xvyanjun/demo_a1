@@ -72,7 +72,7 @@
                 </td>
                 <td class="text-center">
                     <button type="button" class="del btn btn-danger">删除</button>
-                    <button type="button" class="btn btn-success"><a href="/admin/cateupd/{{$v['cate_id']}}">修改</a></button>
+                    <button type="button" class="btn btn-success"><a href="/admin/cateupd/{{$v['cate_id']}}" style="color:white">修改</a></button>
                 </td>
             </tr>
             @endforeach

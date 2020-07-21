@@ -55,11 +55,10 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
-//后台
+
+//---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页
-
-
-//rbac权限管理
+//---------------------------------------------------------rbac权限管理
 Route::prefix('/admin')->group(function(){
     Route::any('/power/create', 'admin\PowerController@create');//权限添加展示
     Route::any('/power/add', 'admin\PowerController@add');//权限添加执行
@@ -68,7 +67,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/power/upd/{id}', 'admin\PowerController@upd');//权限修改展示
     Route::any('/power/updAdd', 'admin\PowerController@updAdd');//权限修改执行
 });
-//rbac角色管理
+//---------------------------------------------------------rbac角色管理
 Route::prefix('/admin')->group(function(){
     Route::any('/role/create', 'admin\RoleController@create');//角色添加展示
     Route::any('/role/add', 'admin\RoleController@add');//角色添加执行
@@ -79,16 +78,14 @@ Route::prefix('/admin')->group(function(){
     Route::any('/role/content/{id}', 'admin\RoleController@content');//角色赋予权限
     Route::any('/role/contentAdd', 'admin\RoleController@contentAdd');//角色赋予执行
 });
-//rbac用户管理
+//---------------------------------------------------------rbac用户管理
 Route::prefix('/admin')->group(function(){
     Route::any('/user/list', 'admin\UserController@list');//用户列表展示
     Route::any('/user/del', 'admin\UserController@del');//用户软删除
     Route::any('/user/content/{id}', 'admin\UserController@content');//给用户赋予角色
     Route::any('/user/contentAdd', 'admin\UserController@contentAdd');//给用户赋予角色执行
 });
-
-
-//友情链接
+//---------------------------------------------------------友情链接
 Route::prefix('/admin')->group(function(){
     Route::any('/friend/create', 'admin\FriendController@create');//友情添加展示
     Route::any('/friend/add', 'admin\FriendController@add');//友情添加执行
@@ -98,12 +95,12 @@ Route::prefix('/admin')->group(function(){
     Route::any('/friend/updAdd', 'admin\FriendController@updAdd');//友情修改执行
 });
 
-//商品
+//---------------------------------------------------------商品
 Route::prefix('/admin')->group(function(){
     Route::any('/goods', 'admin\GoodsController@index');//展示
     Route::any('/goodsadd', 'admin\GoodsController@addshow');//添加
 });
-//分类
+//---------------------------------------------------------分类
 Route::prefix('/admin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
     Route::any('/cateadd', 'admin\CateController@addshow');//添加页
@@ -113,7 +110,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/update', 'admin\CateController@update');//修改
     Route::any('/updateshow', 'admin\CateController@updateshow');//即点即改
 });
-//品牌
+//---------------------------------------------------------品牌
 Route::prefix('/admin')->group(function(){
     Route::any('/brand', 'admin\BrandController@index');//展示
     Route::any('/brandadd', 'admin\BrandController@addshow');//添加页
@@ -123,7 +120,6 @@ Route::prefix('/admin')->group(function(){
     Route::any('/brandupdate', 'admin\BrandController@update');//修改
     Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
 });
-
 //---------------------------------------------------------导航
 Route::prefix('/nav')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
@@ -140,6 +136,8 @@ Route::prefix('/service')->group(function(){
   Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
   Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
   Route::any('service_zse','a_1\demo_a2_contr@service_zse');
+  Route::any('service_jd','a_1\demo_a2_contr@service_jd');
+  Route::any('service_jd_s','a_1\demo_a2_contr@service_jd_s');  
   Route::any('service_sce','a_1\demo_a2_contr@service_sce');
   Route::any('service_xgq','a_1\demo_a2_contr@service_xgq'); 
   Route::any('service_xge','a_1\demo_a2_contr@service_xge');   
@@ -150,6 +148,8 @@ Route::prefix('/slide')->group(function(){
   Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
   Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
   Route::any('slide_zse','a_1\demo_a2_contr@slide_zse');
+  Route::any('slide_jd','a_1\demo_a2_contr@slide_jd');
+  Route::any('slide_jd_s','a_1\demo_a2_contr@slide_jd_s');   
   Route::any('slide_sce','a_1\demo_a2_contr@slide_sce');
   Route::any('slide_xgq','a_1\demo_a2_contr@slide_xgq'); 
   Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   

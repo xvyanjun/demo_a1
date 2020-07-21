@@ -71,13 +71,24 @@ public function nav_jd(){
 //-------------------------------------------------------------
 public function nav_jd_s(){
   $xx=request()->all();
-  // $a1=array_key_exists('nav_id',$xx);
-  // $a2=array_key_exists('nav_name',$xx);
-  // if($a1==false||$a2==false){
-  //   $fh=['a1'=>'1','a2'=>'参数缺失'];
-  //   return json_encode($fh);exit; 
-  // }
-  dd($xx);
+  $a1=array_key_exists('nav_id',$xx);
+  $a2=array_key_exists('nav_name',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_nav::where([['nav_name',$xx['nav_name']],['nav_id','<>',$xx['nav_id']],['nav_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_nav::where([['nav_id',$xx['nav_id']],['nav_del','1']])->update(['nav_name'=>$xx['nav_name']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function nav_sce(){
@@ -184,6 +195,45 @@ public function service_zse(){
 	  return view('admin.service_demo.service_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
 	}
 	return view('admin.service_demo.service_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function service_jd(){
+  $xx=request()->all();
+  $a1=array_key_exists('service_id',$xx);
+  $a2=array_key_exists('service_show',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $xg=shop_service::where([['service_id',$xx['service_id']],['service_del','1']])->update(['service_show'=>$xx['service_show']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function service_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('service_id',$xx);
+  $a2=array_key_exists('service_title',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_service::where([['service_title',$xx['service_title']],['service_id','<>',$xx['service_id']],['service_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_service::where([['service_id',$xx['service_id']],['service_del','1']])->update(['service_title'=>$xx['service_title']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function service_sce(){
@@ -327,6 +377,45 @@ public function slide_zse(){
 	  return view('admin.slide_demo.slide_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
 	}
 	return view('admin.slide_demo.slide_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function slide_jd(){
+  $xx=request()->all();
+  $a1=array_key_exists('slide_id',$xx);
+  $a2=array_key_exists('slide_show',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $xg=shop_slide::where([['slide_id',$xx['slide_id']],['slide_del','1']])->update(['slide_show'=>$xx['slide_show']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function slide_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('slide_id',$xx);
+  $a2=array_key_exists('slide_url',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_slide::where([['slide_url',$xx['slide_url']],['slide_id','<>',$xx['slide_id']],['slide_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_slide::where([['slide_id',$xx['slide_id']],['slide_del','1']])->update(['slide_url'=>$xx['slide_url']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function slide_sce(){

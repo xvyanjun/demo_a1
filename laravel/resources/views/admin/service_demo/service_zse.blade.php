@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box-tools pull-right">
+<!--             <div class="box-tools pull-right">
                 <div class="has-feedback">
                     状态：<select>
                         <option value="">id</option>
@@ -35,7 +35,7 @@
                     商品名称：<input >
                     <button class="btn btn-default" >查询</button>
                 </div>
-            </div>
+            </div> -->
             <!--工具栏/-->
 
             <!--数据列表-->
@@ -60,12 +60,12 @@
                 <tr>
                     <td><input  type="checkbox"></td>
                     <td>{{$v['service_id']}}</td>
-                    <td>{{$v['service_title']}}</td>
+                    <td id='eva_jd_s' service_id="{{$v['service_id']}}">{{$v['service_title']}}</td>
                     <td>{{$v['service_titles']}}</td>
                     @php $text=mb_substr($v['service_text'],0,20).'....'; @endphp
                     <td title="{{$v['service_text']}}">{{$text}}</td>
                     <td>{{$v['service_sort']}}</td>
-                    <td>{{$v['service_show']=='1'?'√':'×'}}</td>
+                    <td id='eva_jd' service_id="{{$v['service_id']}}">{{$v['service_show']=='1'?'√':'×'}}</td>
                     <td>{{date('Y-m-d H:i',$v['service_time'])}}</td>
                     <td class="text-center">
                         <button type="button" id='sc' service_id="{{$v['service_id']}}" class="btn bg-olive btn-xs">删除</button>
@@ -94,7 +94,7 @@
     </div>
     <script>
     $(function(){
-
+//-----------------------------------------------------------------
       $(document).on('click','#sc',function(){
         var service_id=$(this).attr('service_id');
         if(service_id!=''){
@@ -113,7 +113,7 @@
         }
         console.log(service_id);
       });
-
+//-----------------------------------------------------------------
       $(document).on('click','.pagination a',function(){
        var url=$(this).attr('href');
              $.ajax({
@@ -126,6 +126,83 @@
             });
        return false;
       });
+//-----------------------------------------------------------------      
+      $(document).on('click','#eva_jd',function(){
+        var ts=$(this);
+        var service_id=$(this).attr('service_id');
+        var service_show=$(this).text();
+        if(service_id!=''&&service_show!=''){
+            if(service_show=='√'){
+               service_show='2'; 
+            }else{
+               service_show='1';
+            }
+            $.ajax({
+              url:'/service/service_jd',
+              type:'post',
+              dataType:'json',
+              data:{'service_id':service_id,'service_show':service_show},
+              success:function(go){
+                    if(go.a1==0){
+                      var sf='';  
+                      if(service_show==1){sf='√';}else{sf='×';}  
+                      ts.text(sf);
+                    }
+                    console.log(go.a2);
+              }
+            });
+        }
+        console.log(service_id,service_show);
+      });
+//-----------------------------------------------------------------
+      $(document).on('click','#eva_jd_s',function(){
+        var ts=$(this);
+        var service_id=$(this).attr('service_id');
+        var service_name=$(this).text();
+        var sf=$(this).children("#js_s").val();
+        if(sf==undefined){
+          $(this).empty();
+          var input="<input type='text' id='js_s' s_id='"+service_id+"' s_yvl='"+service_name+"' value='"+service_name+"'/>";
+          $(this).html(input);
+          $("#js_s").focus(); 
+        }
+        console.log(sf);
+        return false;
+      });
+//-----------------------------------------------------------------
+      $(document).on('blur','#js_s',function(){
+              var ts=$(this);
+              var service_id=$(this).attr('s_id');
+              var service_ytitle=$(this).attr('s_yvl');
+              var service_title=$(this).val();
+              var zz=/^[a-z \w A-Z 0-9 \u4e00-\u9fa5]{1,}$/;
+              if(!zz.test(service_title)){
+                $(this).after(service_ytitle);
+                $(this).remove();
+                console.log('标题中文数字字母下划线至少一位');
+              }
+              $.ajax({
+                 url:'/service/service_jd_s',
+                 type:'post',
+                 dataType:'json',
+                 data:{'service_id':service_id,'service_title':service_title},
+                 success:function(go){
+                       if(go.a1==0){
+                         ts.after(service_title);
+                         ts.remove();
+                         console.log('eva1');
+                       }else{
+                         ts.after(service_ytitle);
+                         ts.remove();
+                         console.log('eva2');
+                       }
+                       console.log(go.a2);
+                 }
+              });
+              console.log(service_id,service_ytitle,service_title);
+            return false;
+       }); 
+//-----------------------------------------------------------------             
     });
 </script>
 

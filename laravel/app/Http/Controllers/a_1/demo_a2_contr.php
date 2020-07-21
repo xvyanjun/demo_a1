@@ -69,6 +69,17 @@ public function nav_jd(){
 	return json_encode($fh);
 }
 //-------------------------------------------------------------
+public function nav_jd_s(){
+  $xx=request()->all();
+  // $a1=array_key_exists('nav_id',$xx);
+  // $a2=array_key_exists('nav_name',$xx);
+  // if($a1==false||$a2==false){
+  //   $fh=['a1'=>'1','a2'=>'参数缺失'];
+  //   return json_encode($fh);exit; 
+  // }
+  dd($xx);
+}
+//-------------------------------------------------------------
 public function nav_sce(){
 	$xx=request()->all();
 	$a1=array_key_exists('nav_id',$xx);

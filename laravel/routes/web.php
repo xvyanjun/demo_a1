@@ -90,6 +90,7 @@ Route::prefix('/nav')->group(function(){
   Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
   Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
   Route::any('nav_jd','a_1\demo_a2_contr@nav_jd');
+  Route::any('nav_jd_s','a_1\demo_a2_contr@nav_jd_s');
   Route::any('nav_sce','a_1\demo_a2_contr@nav_sce');
   Route::any('nav_xgq','a_1\demo_a2_contr@nav_xgq'); 
   Route::any('nav_xge','a_1\demo_a2_contr@nav_xge');   

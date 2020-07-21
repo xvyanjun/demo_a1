@@ -57,8 +57,22 @@ Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
 //后台
 Route::any('/index', 'admin\IndexController@index');//首页
-Route::any('/index/goods', 'admin\GoodsController@index');//展示
-Route::any('/index/goodsadd', 'admin\GoodsController@addshow');//添加
+
+//商品
+Route::prefix('/admin')->group(function(){
+    Route::any('/goods', 'admin\GoodsController@index');//展示
+    Route::any('/goodsadd', 'admin\GoodsController@addshow');//添加
+});
+//分类
+Route::prefix('/admin')->group(function(){
+    Route::any('/cate', 'admin\CateController@index');//展示
+    Route::any('/cateadd', 'admin\CateController@addshow');//添加页
+    Route::any('/cateadds', 'admin\CateController@add');//添加
+    Route::any('/del', 'admin\CateController@del');//删除
+    Route::any('/cateupd/{id}', 'admin\CateController@cateupd');//修改页
+    Route::any('/update', 'admin\CateController@update');//修改
+    Route::any('/updateshow', 'admin\CateController@updateshow');//即点即改
+});
 
 //---------------------------------------------------------导航
 Route::prefix('/nav')->group(function(){

@@ -19,6 +19,7 @@
     <script src="/admin/plugins/jQueryUI/jquery-ui.min.js"></script>
     <script src="/admin/plugins/adminLTE/js/app.min.js"></script>
 
+
     <script type="text/javascript">
 
         function SetIFrameHeight(){
@@ -171,7 +172,7 @@
                         <li class="footer"><a href="#">View all</a></li>
                     </ul>
                 </li>
-                <!-- Tasks: style can be found in dropdown.less -->
+              
                 <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-flag-o"></i>

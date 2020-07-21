@@ -34,12 +34,12 @@
                             <input type="text" class="form-control"  ng-model="entity.name"  placeholder="商品名称" value="">
                         </div>
 
-                        <div class="col-md-2 title">营业执照号</div>
+                        <div class="col-md-2 title">商品图片</div>
                         <div class="col-md-10 data">
-                            <input type="text" class="form-control" ng-model="entity.licenseNumber"   placeholder="营业执照号" value="">
+                            <input type="file" class="form-control" ng-model="entity.licenseNumber"   placeholder="" value="">
                         </div>
 
-                        <div class="col-md-2 title">税务登记证号</div>
+                        <div class="col-md-2 title"></div>
                         <div class="col-md-10 data">
                             <input type="text" class="form-control" ng-model="entity.taxNumber"   placeholder="税务登记证号" value="">
                         </div>

@@ -59,6 +59,7 @@ Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页
 //---------------------------------------------------------rbac权限管理
+//rbac权限管理
 Route::prefix('/admin')->group(function(){
     Route::any('/power/create', 'admin\PowerController@create');//权限添加展示
     Route::any('/power/add', 'admin\PowerController@add');//权限添加执行
@@ -94,8 +95,8 @@ Route::prefix('/admin')->group(function(){
     Route::any('/friend/upd/{id}', 'admin\FriendController@upd');//友情修改
     Route::any('/friend/updAdd', 'admin\FriendController@updAdd');//友情修改执行
 });
-
 //---------------------------------------------------------商品
+//商品
 Route::prefix('/admin')->group(function(){
     Route::any('/goods', 'admin\GoodsController@index');//展示
     Route::any('/goodsadd', 'admin\GoodsController@addshow');//添加
@@ -171,4 +172,8 @@ Route::prefix('/sku_val')->group(function(){
   Route::any('sku_val_sce','a_1\demo_a2_contr@sku_val_sce');   
 });
 //---------------------------------------------------------
-
+//注册登录页面
+Route::any('/admin/login/reg','admin\LoginController@reg'); //注册展示
+Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
+Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
+Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //注册执行

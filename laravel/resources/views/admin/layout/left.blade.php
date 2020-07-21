@@ -152,7 +152,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-
                         <a href="{{url('/admin/role/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 角色添加
                         </a>
@@ -207,9 +206,9 @@
                     <li id="admin-login">
                         <a href="/admin/goods" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品管理
-
                         </a>
                     </li>
+
                 </ul>
             </li>
             <li class="treeview">

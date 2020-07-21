@@ -49,7 +49,7 @@
                 <td>{{date('Y-m-d H:i:s',$v['brand_time'])}}</td>
                 <td class="text-center">
                     <button type="button" class="del btn btn-danger">删除</button>
-                    <button type="button" class="btn btn-success"><a href="/admin/brandupd/{{$v['brand_id']}}">修改</a></button>
+                    <button type="button" class="btn btn-warning"><a href="/admin/brandupd/{{$v['brand_id']}}" style="color:white">修改</a></button>
                 </td>
             </tr>
             @endforeach

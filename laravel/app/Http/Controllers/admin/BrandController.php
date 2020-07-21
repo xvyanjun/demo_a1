@@ -137,7 +137,23 @@ class BrandController extends Controller
         $brand_name=$request->post('brand_name');
         $brand_url=$request->post('brand_url');
         if(empty($brand_name)){
-            echo '<a href="/admin/brandupd/">品牌地址未填写,点我重新修改</a>';
+            echo "
+                        <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                        </style>
+            <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+              <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+              <div class='listbut'>
+                    <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>品牌名称未填写,点我重新修改</button></a><br>
+                    <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
+               </div>
+            ";
             exit;
         }
         $brand_time=time();
@@ -165,12 +181,24 @@ class BrandController extends Controller
             if ($data->save()) {
                 return redirect('/admin/brand');
             } else {
-                $arr = [
-                    'code' => '300',
-                    'msg' => '修改失败,请重试',
-                    'sult' => []
-                ];
-                return json_encode($arr, JSON_UNESCAPED_UNICODE);
+                echo "
+                        <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                        </style>
+                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                        <div class='listbut'>
+                        <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
+                        <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
+                        </div>
+                ";
+                exit;
             }
         }else{
             $data->brand_name = $brand_name;
@@ -179,12 +207,24 @@ class BrandController extends Controller
             if ($data->save()) {
                 return redirect('/admin/brand');
             } else {
-                $arr = [
-                    'code' => '300',
-                    'msg' => '修改失败,请重试',
-                    'sult' => []
-                ];
-                return json_encode($arr, JSON_UNESCAPED_UNICODE);
+                echo "
+                      <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                       </style>
+                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                        <div class='listbut'>
+                        <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
+                        <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
+                        </div>
+                ";
+                exit;
             }
         }
     }

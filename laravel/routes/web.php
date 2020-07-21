@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 
 //前台
-
 Route::any('/','a_1\demo_a1_contr@index');
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
@@ -56,7 +55,6 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
-
 //后台
 Route::any('/index', 'admin\IndexController@index');//首页
 
@@ -86,3 +84,33 @@ Route::prefix('/admin')->group(function(){
     Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
 });
 
+//---------------------------------------------------------导航
+Route::prefix('/nav')->group(function(){
+  Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
+  Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
+  Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
+  Route::any('nav_jd','a_1\demo_a2_contr@nav_jd');
+  Route::any('nav_sce','a_1\demo_a2_contr@nav_sce');
+  Route::any('nav_xgq','a_1\demo_a2_contr@nav_xgq'); 
+  Route::any('nav_xge','a_1\demo_a2_contr@nav_xge');   
+});
+//---------------------------------------------------------资讯
+Route::prefix('/service')->group(function(){
+  Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
+  Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
+  Route::any('service_zse','a_1\demo_a2_contr@service_zse');
+  Route::any('service_sce','a_1\demo_a2_contr@service_sce');
+  Route::any('service_xgq','a_1\demo_a2_contr@service_xgq'); 
+  Route::any('service_xge','a_1\demo_a2_contr@service_xge');   
+});
+//---------------------------------------------------------轮播图
+Route::prefix('/slide')->group(function(){
+  Route::any('slide_tjq','a_1\demo_a2_contr@slide_tjq'); 
+  Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
+  Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
+  Route::any('slide_zse','a_1\demo_a2_contr@slide_zse');
+  Route::any('slide_sce','a_1\demo_a2_contr@slide_sce');
+  Route::any('slide_xgq','a_1\demo_a2_contr@slide_xgq'); 
+  Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   
+});
+//---------------------------------------------------------

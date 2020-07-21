@@ -17,6 +17,75 @@
             <li id="admin-index"><a href="javascript:;"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>导航管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/nav/nav_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 导航列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/nav/nav_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 导航添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>咨讯管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/service/service_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 咨询列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/service/service_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 咨询添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>轮播图管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/slide/slide_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 轮播图列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/slide/slide_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 轮播图添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -39,6 +108,7 @@
                     </li>
                 </ul>
             </li>
+           
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>

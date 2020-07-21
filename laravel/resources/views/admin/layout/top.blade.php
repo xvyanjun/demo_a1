@@ -270,10 +270,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">修改密码</a>
+                                <a href="{{url('/admin/login/login')}}" class="btn btn-default btn-flat">登录</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">注销</a>
+                                <a href="{{url('/admin/login/reg')}}" class="btn btn-default btn-flat">注册</a>
                             </div>
                         </li>
                     </ul>

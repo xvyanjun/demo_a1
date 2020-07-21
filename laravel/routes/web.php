@@ -154,5 +154,21 @@ Route::prefix('/slide')->group(function(){
   Route::any('slide_xgq','a_1\demo_a2_contr@slide_xgq'); 
   Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   
 });
+//---------------------------------------------------------sku属性
+Route::prefix('/sku_name')->group(function(){
+  Route::any('sku_name_tjq','a_1\demo_a2_contr@sku_name_tjq'); 
+  Route::any('sku_name_tje','a_1\demo_a2_contr@sku_name_tje'); 
+  Route::any('sku_name_zse','a_1\demo_a2_contr@sku_name_zse'); 
+  Route::any('sku_name_jd_s','a_1\demo_a2_contr@sku_name_jd_s');    
+  Route::any('sku_name_sce','a_1\demo_a2_contr@sku_name_sce');
+});
+//---------------------------------------------------------sku属性值
+Route::prefix('/sku_val')->group(function(){
+  Route::any('sku_val_tjq','a_1\demo_a2_contr@sku_val_tjq'); 
+  Route::any('sku_val_tje','a_1\demo_a2_contr@sku_val_tje'); 
+  Route::any('sku_val_zse','a_1\demo_a2_contr@sku_val_zse'); 
+  Route::any('sku_val_jd_s','a_1\demo_a2_contr@sku_val_jd_s');   
+  Route::any('sku_val_sce','a_1\demo_a2_contr@sku_val_sce');   
+});
 //---------------------------------------------------------
 

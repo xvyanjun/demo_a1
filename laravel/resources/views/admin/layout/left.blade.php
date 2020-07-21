@@ -89,6 +89,39 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
+                    <span>SKU</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/sku_name/sku_name_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_name/sku_name_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_val/sku_val_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性值列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_val/sku_val_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性值添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
                     <span>权限管理</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
@@ -119,7 +152,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-<<<<<<< HEAD
+
                         <a href="{{url('/admin/role/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 角色添加
                         </a>
@@ -166,7 +199,7 @@
                     <li id="admin-login">
                         <a href="{{url('/admin/friend/list')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 友情链接展示
-=======
+                        </a>
                         <a href="/admin/goodsadd" target="iframe">
                             <i class="fa fa-circle-o"></i> 新增商品
                         </a>
@@ -174,7 +207,7 @@
                     <li id="admin-login">
                         <a href="/admin/goods" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品管理
->>>>>>> 598ba69adecbead37d0b264c196355009a6924c0
+
                         </a>
                     </li>
                 </ul>

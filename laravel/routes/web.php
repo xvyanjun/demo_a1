@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 // Route::prefix('/demo')->group(function(){
 //   Route::any('demo','a_1\Demo_demo1contr@demo'); 
 // });
+Route::any('/eva_demo_a','a_1\demo_a2_contr@eva_demo_a');
+Route::any('/eva_demo_b','a_1\demo_a2_contr@eva_demo_b');
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------

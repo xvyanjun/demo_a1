@@ -12,6 +12,17 @@ use App\Models\shop_sku_val;
 
 class demo_a2_contr extends Controller
 {
+//-------------------------------------------------------------demo
+public function eva_demo_a(){
+  dd('eva');
+  return view('admin.nav_demo.eva_demo');
+}
+public function eva_demo_b(){
+  dd('eva');
+  $xx=request()->all();
+  $urls=file_s('imgs');
+  dd($urls);
+}
 //-------------------------------------------------------------
 public function nav_tjq(){
   return view('admin.nav_demo.dhang_tjq');

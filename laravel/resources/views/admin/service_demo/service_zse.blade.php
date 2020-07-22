@@ -23,17 +23,10 @@
                     </div>
                 </div>
             </div>
-<!--             <div class="box-tools pull-right">
+    <!--         <div class="box-tools pull-right">
                 <div class="has-feedback">
-                    状态：<select>
-                        <option value="">id</option>
-                        <option value="0">未申请</option>
-                        <option value="1">申请中</option>
-                        <option value="2">审核通过</option>
-                        <option value="3">已驳回</option>
-                    </select>
-                    商品名称：<input >
-                    <button class="btn btn-default" >查询</button>
+                    咨讯标题：<input id='title_cx' placeholder='标题'>
+                    <button class="btn btn-default" id='cx'>查询</button>
                 </div>
             </div> -->
             <!--工具栏/-->
@@ -202,6 +195,8 @@
               console.log(service_id,service_ytitle,service_title);
             return false;
        }); 
+//-----------------------------------------------------------------
+
 //-----------------------------------------------------------------             
     });
 </script>

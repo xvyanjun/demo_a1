@@ -116,6 +116,16 @@
                             <i class="fa fa-circle-o"></i> 属性值添加
                         </a>
                     </li>
+                    <li id="admin-login">
+                        <a href="/admin/skug/sku" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品属性添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/skug/list" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品属性列表
+                        </a>
+                    </li>
                 </ul>
             </li>
 

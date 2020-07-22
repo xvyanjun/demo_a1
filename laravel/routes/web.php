@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 // Route::prefix('/demo')->group(function(){
 //   Route::any('demo','a_1\Demo_demo1contr@demo'); 
 // });
-Route::any('/eva_demo_a','a_1\demo_a2_contr@eva_demo_a');
-Route::any('/eva_demo_b','a_1\demo_a2_contr@eva_demo_b');
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
@@ -205,4 +203,13 @@ Route::prefix('/admin')->group(function(){
     Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除
     Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
     Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
+});
+//sku关联字段
+Route::prefix('/admin')->group(function(){
+    Route::any('/skug/sku', 'admin\SkuController@sku');//商品属性展示
+    Route::any('/skug/skuAdd', 'admin\SkuController@skuAdd');//商品属性执行
+    Route::any('/skug/list', 'admin\SkuController@list');//商品属性展示
+    Route::any('/skug/del', 'admin\SkuController@del');//商品属性软删
+    Route::any('/skug/upd/{id}', 'admin\SkuController@upd');//商品属性修改展示
+    Route::any('/skug/updAdd', 'admin\SkuController@updAdd');//商品属性修改执行
 });

@@ -47,6 +47,7 @@
                     </th>
                     <th class="sorting_asc" >ID</th>
                     <th class="sorting">属性值名称</th>
+                    <th class="sorting">所属属性</th>
                     <th class="sorting">时间</th>
                     <th class="sorting">操作</th>
                 </tr>
@@ -57,6 +58,13 @@
                     <td><input  type="checkbox"></td>
                     <td>{{$v['val_id']}}</td>
                     <td id='eva_jd_s' val_id="{{$v['val_id']}}">{{$v['val_name']}}</td>
+                    <td >
+                      @foreach($sxing as $h=>$j)
+                       @if($j['attr_id']==$v['attr_id'])
+                        {{$j['attr_name']}}
+                       @endif
+                      @endforeach
+                    </td>
                     <td>{{date('Y-m-d H:i',$v['val_time'])}}</td>
                     <td class="text-center">
                         <button type="button" id='sc' val_id="{{$v['val_id']}}" class="btn bg-olive btn-xs">删除</button>

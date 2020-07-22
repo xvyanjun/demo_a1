@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 // Route::prefix('/demo')->group(function(){
 //   Route::any('demo','a_1\Demo_demo1contr@demo'); 
 // });
+Route::any('/eva_demo_a','a_1\demo_a2_contr@eva_demo_a');
+Route::any('/eva_demo_b','a_1\demo_a2_contr@eva_demo_b');
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
@@ -55,11 +57,10 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
-//后台
+
+//---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页
-
-
-
+//---------------------------------------------------------rbac权限管理
 //rbac权限管理
 Route::prefix('/admin')->group(function(){
     Route::any('/power/create', 'admin\PowerController@create');//权限添加展示
@@ -69,7 +70,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/power/upd/{id}', 'admin\PowerController@upd');//权限修改展示
     Route::any('/power/updAdd', 'admin\PowerController@updAdd');//权限修改执行
 });
-//rbac角色管理
+//---------------------------------------------------------rbac角色管理
 Route::prefix('/admin')->group(function(){
     Route::any('/role/create', 'admin\RoleController@create');//角色添加展示
     Route::any('/role/add', 'admin\RoleController@add');//角色添加执行
@@ -80,16 +81,14 @@ Route::prefix('/admin')->group(function(){
     Route::any('/role/content/{id}', 'admin\RoleController@content');//角色赋予权限
     Route::any('/role/contentAdd', 'admin\RoleController@contentAdd');//角色赋予执行
 });
-//rbac用户管理
+//---------------------------------------------------------rbac用户管理
 Route::prefix('/admin')->group(function(){
     Route::any('/user/list', 'admin\UserController@list');//用户列表展示
     Route::any('/user/del', 'admin\UserController@del');//用户软删除
     Route::any('/user/content/{id}', 'admin\UserController@content');//给用户赋予角色
     Route::any('/user/contentAdd', 'admin\UserController@contentAdd');//给用户赋予角色执行
 });
-
-
-//友情链接
+//---------------------------------------------------------友情链接
 Route::prefix('/admin')->group(function(){
     Route::any('/friend/create', 'admin\FriendController@create');//友情添加展示
     Route::any('/friend/add', 'admin\FriendController@add');//友情添加执行
@@ -98,14 +97,15 @@ Route::prefix('/admin')->group(function(){
     Route::any('/friend/upd/{id}', 'admin\FriendController@upd');//友情修改
     Route::any('/friend/updAdd', 'admin\FriendController@updAdd');//友情修改执行
 });
-
-//商品
+//---------------------------------------------------------商品
+//商品相册
 Route::prefix('/admin')->group(function(){
     Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传
     Route::any('/goods/uploadesadd', 'admin\GoodsController@uploadesadd');//商品相册上传
     Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
     Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
 });
+
 //分类
 Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
@@ -116,7 +116,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/update', 'admin\CateController@update');//修改
     Route::any('/updateshow', 'admin\CateController@updateshow');//即点即改
 });
-//品牌
+//---------------------------------------------------------品牌
 Route::prefix('/admin')->group(function(){
     Route::any('/brand', 'admin\BrandController@index');//展示
     Route::any('/brandadd', 'admin\BrandController@addshow');//添加页
@@ -126,13 +126,13 @@ Route::prefix('/admin')->group(function(){
     Route::any('/brandupdate', 'admin\BrandController@update');//修改
     Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
 });
-
 //---------------------------------------------------------导航
 Route::prefix('/nav')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
   Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
   Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
   Route::any('nav_jd','a_1\demo_a2_contr@nav_jd');
+  Route::any('nav_jd_s','a_1\demo_a2_contr@nav_jd_s');
   Route::any('nav_sce','a_1\demo_a2_contr@nav_sce');
   Route::any('nav_xgq','a_1\demo_a2_contr@nav_xgq'); 
   Route::any('nav_xge','a_1\demo_a2_contr@nav_xge');   
@@ -142,6 +142,8 @@ Route::prefix('/service')->group(function(){
   Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
   Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
   Route::any('service_zse','a_1\demo_a2_contr@service_zse');
+  Route::any('service_jd','a_1\demo_a2_contr@service_jd');
+  Route::any('service_jd_s','a_1\demo_a2_contr@service_jd_s');  
   Route::any('service_sce','a_1\demo_a2_contr@service_sce');
   Route::any('service_xgq','a_1\demo_a2_contr@service_xgq'); 
   Route::any('service_xge','a_1\demo_a2_contr@service_xge');   
@@ -152,15 +154,45 @@ Route::prefix('/slide')->group(function(){
   Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
   Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
   Route::any('slide_zse','a_1\demo_a2_contr@slide_zse');
+  Route::any('slide_jd','a_1\demo_a2_contr@slide_jd');
+  Route::any('slide_jd_s','a_1\demo_a2_contr@slide_jd_s');   
   Route::any('slide_sce','a_1\demo_a2_contr@slide_sce');
   Route::any('slide_xgq','a_1\demo_a2_contr@slide_xgq'); 
   Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   
 });
+//---------------------------------------------------------sku属性
+Route::prefix('/sku_name')->group(function(){
+  Route::any('sku_name_tjq','a_1\demo_a2_contr@sku_name_tjq'); 
+  Route::any('sku_name_tje','a_1\demo_a2_contr@sku_name_tje'); 
+  Route::any('sku_name_zse','a_1\demo_a2_contr@sku_name_zse'); 
+  Route::any('sku_name_jd_s','a_1\demo_a2_contr@sku_name_jd_s');    
+  Route::any('sku_name_sce','a_1\demo_a2_contr@sku_name_sce');
+});
+//---------------------------------------------------------sku属性值
+Route::prefix('/sku_val')->group(function(){
+  Route::any('sku_val_tjq','a_1\demo_a2_contr@sku_val_tjq'); 
+  Route::any('sku_val_tje','a_1\demo_a2_contr@sku_val_tje'); 
+  Route::any('sku_val_zse','a_1\demo_a2_contr@sku_val_zse'); 
+  Route::any('sku_val_jd_s','a_1\demo_a2_contr@sku_val_jd_s');   
+  Route::any('sku_val_sce','a_1\demo_a2_contr@sku_val_sce');   
+});
 //---------------------------------------------------------
-
 //注册登录页面
 Route::any('/admin/login/reg','admin\LoginController@reg'); //注册展示
 Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
 Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
-Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //登录执行
 
+Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //登录执行
+//---------------------------------------------------------
+Route::any('/admin/login/home/{id}','admin\LoginController@home'); //登录详情信息
+Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详情信息执行
+//---------------------------------------------------------
+//商品
+Route::prefix('/admin')->group(function(){
+    Route::any('/goods/create', 'admin\GoodsController@create');//商品展示
+    Route::any('/goods/add', 'admin\GoodsController@add');//商品执行
+    Route::any('/goods/list', 'admin\GoodsController@list');//商品展示
+    Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除
+    Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
+    Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
+});

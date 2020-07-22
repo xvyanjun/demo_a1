@@ -89,6 +89,39 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
+                    <span>SKU</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/sku_name/sku_name_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_name/sku_name_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_val/sku_val_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性值列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/sku_val/sku_val_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 属性值添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
                     <span>权限管理</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
@@ -167,7 +200,6 @@
                             <i class="fa fa-circle-o"></i> 友情链接展示
                         </a>
                     </li>
-
                 </ul>
             </li>
             <li class="treeview">
@@ -229,6 +261,17 @@
                     <li id="admin-login">
                         <a href="/admin/goods/uploadeslist" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品相册管理
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/create" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/list" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品展示
+
                         </a>
                     </li>
                 </ul>

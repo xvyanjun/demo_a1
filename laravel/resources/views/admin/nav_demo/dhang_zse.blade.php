@@ -12,7 +12,7 @@
 
         <!-- 数据表格 -->
         <div class="table-box">
-
+            
             <!--工具栏-->
             <div class="pull-left">
                 <div class="form-group form-inline">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box-tools pull-right">
+<!--             <div class="box-tools pull-right">
                 <div class="has-feedback">
                     状态：<select>
                         <option value="">id</option>
@@ -40,7 +40,7 @@
                     商品名称：<input >
                     <button class="btn btn-default" >查询</button>
                 </div>
-            </div>
+            </div> -->
             <!--工具栏/-->
 
             <!--数据列表-->
@@ -95,6 +95,7 @@
     </div>
     <script>
     $(function(){
+//-----------------------------------------------------------------      
       $(document).on('click','#sc',function(){
         var nav_id=$(this).attr('nav_id');
         if(nav_id!=''){
@@ -113,6 +114,7 @@
         }
         console.log(nav_id);
       });
+//-----------------------------------------------------------------      
       $(document).on('click','.pagination a',function(){
        var url=$(this).attr('href');
              $.ajax({
@@ -125,6 +127,7 @@
             });
        return false;
       });
+//-----------------------------------------------------------------      
       $(document).on('click','#eva_jd',function(){
         var ts=$(this);
         var nav_id=$(this).attr('nav_id');
@@ -152,6 +155,53 @@
         }
         console.log(nav_id,nav_show);
       });
+//-----------------------------------------------------------------
+      $(document).on('click','#eva_jd_s',function(){
+        var ts=$(this);
+        var nav_id=$(this).attr('nav_id');
+        var nav_name=$(this).text();
+        var sf=$(this).children("#js_s").val();
+        if(sf==undefined){
+          $(this).empty();
+          var input="<input type='text' id='js_s' n_id='"+nav_id+"' n_yvl='"+nav_name+"' value='"+nav_name+"'/>";
+          $(this).html(input);
+          $("#js_s").focus(); 
+        }
+        console.log(sf);
+        return false;
+      });
+//-----------------------------------------------------------------
+      $(document).on('blur','#js_s',function(){
+              var ts=$(this);
+              var nav_id=$(this).attr('n_id');
+              var nav_yname=$(this).attr('n_yvl');
+              var nav_name=$(this).val();
+              var zz=/^[a-z A-Z 0-9 \u4e00-\u9fa5]{1,}$/;
+              if(!zz.test(nav_name)){
+                $(this).after(nav_yname);
+                $(this).remove();
+                console.log('名称中文数字字母下划线至少一位');
+              }
+              $.ajax({
+                 url:'/nav/nav_jd_s',
+                 type:'post',
+                 dataType:'json',
+                 data:{'nav_id':nav_id,'nav_name':nav_name},
+                 success:function(go){
+                       if(go.a1==0){
+                         ts.after(nav_name);
+                         ts.remove();
+                       }else{
+                         ts.after(nav_yname);
+                         ts.remove();
+                       }
+                       console.log(go.a2);
+                 }
+              });
+              console.log(nav_id,nav_yname,nav_name);
+            return false;
+       }); 
+//-----------------------------------------------------------------
     });
 </script>
 

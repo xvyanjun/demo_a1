@@ -7,9 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\shop_nav;
 use App\Models\shop_service;
 use App\Models\shop_slide;
+use App\Models\shop_sku_name;
+use App\Models\shop_sku_val;
 
 class demo_a2_contr extends Controller
 {
+//-------------------------------------------------------------demo
+public function eva_demo_a(){
+  dd('eva');
+  return view('admin.nav_demo.eva_demo');
+}
+public function eva_demo_b(){
+  dd('eva');
+  $xx=request()->all();
+  $urls=file_s('imgs');
+  dd($urls);
+}
 //-------------------------------------------------------------
 public function nav_tjq(){
   return view('admin.nav_demo.dhang_tjq');
@@ -67,6 +80,28 @@ public function nav_jd(){
     	$fh=['a1'=>'1','a2'=>'修改失败'];
     }
 	return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function nav_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('nav_id',$xx);
+  $a2=array_key_exists('nav_name',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_nav::where([['nav_name',$xx['nav_name']],['nav_id','<>',$xx['nav_id']],['nav_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_nav::where([['nav_id',$xx['nav_id']],['nav_del','1']])->update(['nav_name'=>$xx['nav_name']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function nav_sce(){
@@ -173,6 +208,45 @@ public function service_zse(){
 	  return view('admin.service_demo.service_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
 	}
 	return view('admin.service_demo.service_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function service_jd(){
+  $xx=request()->all();
+  $a1=array_key_exists('service_id',$xx);
+  $a2=array_key_exists('service_show',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $xg=shop_service::where([['service_id',$xx['service_id']],['service_del','1']])->update(['service_show'=>$xx['service_show']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function service_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('service_id',$xx);
+  $a2=array_key_exists('service_title',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_service::where([['service_title',$xx['service_title']],['service_id','<>',$xx['service_id']],['service_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_service::where([['service_id',$xx['service_id']],['service_del','1']])->update(['service_title'=>$xx['service_title']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function service_sce(){
@@ -318,6 +392,45 @@ public function slide_zse(){
 	return view('admin.slide_demo.slide_zse',['xxi'=>$xxi,'xx'=>$xx]);
 }
 //-------------------------------------------------------------
+public function slide_jd(){
+  $xx=request()->all();
+  $a1=array_key_exists('slide_id',$xx);
+  $a2=array_key_exists('slide_show',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $xg=shop_slide::where([['slide_id',$xx['slide_id']],['slide_del','1']])->update(['slide_show'=>$xx['slide_show']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function slide_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('slide_id',$xx);
+  $a2=array_key_exists('slide_url',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_slide::where([['slide_url',$xx['slide_url']],['slide_id','<>',$xx['slide_id']],['slide_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_slide::where([['slide_id',$xx['slide_id']],['slide_del','1']])->update(['slide_url'=>$xx['slide_url']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
 public function slide_sce(){
 	$xx=request()->all();
 	$a1=array_key_exists('slide_id',$xx);
@@ -405,7 +518,159 @@ public function slide_xge(){
     	return redirect('/slide/slide_zse');
     	$fh=['a1'=>'1','a2'=>'修改失败'];
     }
-	// return json_encode($fh);
+}
+//-------------------------------------------------------------sku属性
+public function sku_name_tjq(){
+  return view('admin.sku_name_demo.sku_name_tjq');
+}
+//-------------------------------------------------------------
+public function sku_name_tje(){
+  $xx=request()->all();
+  $a1=array_key_exists('attr_name',$xx);
+  if($a1==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit;
+  }
+  $sf=shop_sku_name::where([['attr_name',$xx['attr_name']],['attr_del','1']])->first();
+  if($sf){
+    $fh=['a1'=>'1','a2'=>'名称重复'];
+    return json_encode($fh);exit;
+  }
+  $tj=shop_sku_name::insert([
+     'attr_name'=>$xx['attr_name'],
+     'attr_time'=>time(),
+     'attr_del'=>'1'
+    ]);
+    if($tj){
+      $fh=['a1'=>'0','a2'=>'添加成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'添加失败'];
+    }
+    return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function sku_name_zse(){
+  // dd(eva());
+  $xx=request()->all();
+  $xxi=shop_sku_name::where('attr_del','1')->paginate(2);
+  if(request()->ajax()){
+    return view('admin.sku_name_demo.sku_name_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
+  }
+  return view('admin.sku_name_demo.sku_name_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function sku_name_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('attr_id',$xx);
+  $a2=array_key_exists('attr_name',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_sku_name::where([['attr_name',$xx['attr_name']],['attr_id','<>',$xx['attr_id']],['attr_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_sku_name::where([['attr_id',$xx['attr_id']],['attr_del','1']])->update(['attr_name'=>$xx['attr_name']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function sku_name_sce(){
+  $xx=request()->all();
+  $a1=array_key_exists('attr_id',$xx);
+  if($a1==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit;
+  }
+  $sc=shop_sku_name::where([['attr_del','1'],['attr_id',$xx['attr_id']]])->update(['attr_del'=>'2']);
+  if($sc){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------sku属性值
+public function sku_val_tjq(){
+  return view('admin.sku_val_demo.sku_val_tjq');
+}
+//-------------------------------------------------------------
+public function sku_val_tje(){
+  $xx=request()->all();
+  $a1=array_key_exists('val_name',$xx);
+  if($a1==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit;
+  }
+  $sf=shop_sku_val::where([['val_name',$xx['val_name']],['val_del','1']])->first();
+  if($sf){
+    $fh=['a1'=>'1','a2'=>'名称重复'];
+    return json_encode($fh);exit;
+  }
+  $tj=shop_sku_val::insert([
+     'val_name'=>$xx['val_name'],
+     'val_time'=>time(),
+     'val_del'=>'1'
+    ]);
+    if($tj){
+      $fh=['a1'=>'0','a2'=>'添加成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'添加失败'];
+    }
+    return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function sku_val_zse(){
+  $xx=request()->all();
+  $xxi=shop_sku_val::where('val_del','1')->paginate(2);
+  if(request()->ajax()){
+    return view('admin.sku_val_demo.sku_val_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
+  }
+  return view('admin.sku_val_demo.sku_val_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function sku_val_jd_s(){
+  $xx=request()->all();
+  $a1=array_key_exists('val_id',$xx);
+  $a2=array_key_exists('val_name',$xx);
+  if($a1==false||$a2==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit; 
+  }
+  $sf=shop_sku_val::where([['val_name',$xx['val_name']],['val_id','<>',$xx['val_id']],['val_del','1']])->first();
+    if($sf){
+      $fh=['a1'=>'1','a2'=>'名称重复'];
+      return json_encode($fh);exit;
+    }
+  $xg=shop_sku_val::where([['val_id',$xx['val_id']],['val_del','1']])->update(['val_name'=>$xx['val_name']]);
+  if($xg){
+      $fh=['a1'=>'0','a2'=>'修改成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'修改失败'];
+    }
+  return json_encode($fh);
+}
+//-------------------------------------------------------------
+public function sku_val_sce(){
+  $xx=request()->all();
+  $a1=array_key_exists('val_id',$xx);
+  if($a1==false){
+    $fh=['a1'=>'1','a2'=>'参数缺失'];
+    return json_encode($fh);exit;
+  }
+  $sc=shop_sku_val::where([['val_del','1'],['val_id',$xx['val_id']]])->update(['val_del'=>'2']);
+  if($sc){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }
+  return json_encode($fh);
 }
 //-------------------------------------------------------------
 }

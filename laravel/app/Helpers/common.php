@@ -6,9 +6,30 @@ function EVA(){
 	dd('EVA');
 }
 //---------------------------------------------------------------
-
+function file_s($name){
+	$wjs='';
+      if(request()->hasFile($name)){
+      $wjs=scs($name);
+      // $wjs=implode(',',$wjs);
+    }
+    if($wjs==''){
+    	return false;
+    }else{
+    	return $wjs;
+    }
+}
 //---------------------------------------------------------------
-
+function scs($xc){
+  $arr=[];
+  $xc=request()->$xc;
+   foreach($xc as $c=>$v){
+     if($v->isValid()){
+        $lj=$v->store('uploads_s');
+        $arr[$c]='/'.$lj;
+     }
+   }  
+  return $arr;
+} 
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------

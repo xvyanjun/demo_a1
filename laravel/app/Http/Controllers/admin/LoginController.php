@@ -7,6 +7,7 @@ use App\Models\PowerRole;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserInfo;
 class LoginController extends Controller
 {
     //注册展示页面
@@ -35,9 +36,11 @@ class LoginController extends Controller
             return ["code"=>"000004","msg"=>"已有改名字"];
             exit;
         }
-        $res=User::insert($data);
-        if($res){
-            return ["code"=>"000000","msg"=>"注册成功"];
+        $res=User::insertGetId($data);
+        if(!empty($res)){
+           
+            return ["code"=>"000000","msg"=>"注册成功","admin_id"=>$res];
+            
         }else{
             return ["code"=>"000001","msg"=>"注册失败"];
         }
@@ -75,6 +78,36 @@ class LoginController extends Controller
         }else{
             return ["code"=>"000001","msg"=>"没有此用户"];
         }
+    }
+
+    //登录详情信息
+    public function home($id){
+        
+        return view("admin.login.home",["id"=>$id]);
+    }
+    //登录详细信息执行
+    public function homeAdd(Request $request){
+        $_token=$request->except("_token");
+        
+        // print_r($_token);exit;
+        //添加图片 单文件上传
+        if(request()->hasFile('s_img')){
+            $_token['s_img']=$this->uplode('s_img');
+        }
+        $res=UserInfo::insert($_token);
+        if($res){
+            return redirect("admin/login/login");
+        }
+    }
+    //单文件上传
+    public function uplode($img){
+        $file=request()->$img;
+        if($file->isValid()){
+           
+            $store=$file->store('uploads');
+            return $store;
+        }
+        exit('图片上传失败');
     }
     
 }

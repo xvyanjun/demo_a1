@@ -9,25 +9,17 @@ use App\Models\shop_service;
 use App\Models\shop_slide;
 use App\Models\shop_sku_name;
 use App\Models\shop_sku_val;
+use App\Models\shop_goods;
+use App\Models\shop_property;
 
 class demo_a2_contr extends Controller
 {
-//-------------------------------------------------------------demo
-public function eva_demo_a(){
-  dd('eva');
-  return view('admin.nav_demo.eva_demo');
-}
-public function eva_demo_b(){
-  dd('eva');
-  $xx=request()->all();
-  $urls=file_s('imgs');
-  dd($urls);
-}
-//-------------------------------------------------------------
+
+//-------------------------------------------------------------导航
 public function nav_tjq(){
   return view('admin.nav_demo.dhang_tjq');
 }
-//-------------------------------------------------------------导航
+//-------------------------------------------------------------
 public function nav_tje(){
 	$xx=request()->all();
 	$a1=array_key_exists('nav_name',$xx);
@@ -598,13 +590,15 @@ public function sku_name_sce(){
 }
 //-------------------------------------------------------------sku属性值
 public function sku_val_tjq(){
-  return view('admin.sku_val_demo.sku_val_tjq');
+  $xxi=shop_sku_name::where('attr_del','1')->get();
+  return view('admin.sku_val_demo.sku_val_tjq',['xxi'=>$xxi]);
 }
 //-------------------------------------------------------------
 public function sku_val_tje(){
   $xx=request()->all();
   $a1=array_key_exists('val_name',$xx);
-  if($a1==false){
+  $a2=array_key_exists('attr_id',$xx);
+  if($a1==false||$a2==false){
     $fh=['a1'=>'1','a2'=>'参数缺失'];
     return json_encode($fh);exit;
   }
@@ -615,6 +609,7 @@ public function sku_val_tje(){
   }
   $tj=shop_sku_val::insert([
      'val_name'=>$xx['val_name'],
+     'attr_id'=>$xx['attr_id'],
      'val_time'=>time(),
      'val_del'=>'1'
     ]);
@@ -628,11 +623,12 @@ public function sku_val_tje(){
 //-------------------------------------------------------------
 public function sku_val_zse(){
   $xx=request()->all();
+  $sxing=shop_sku_name::where('attr_del','1')->get();
   $xxi=shop_sku_val::where('val_del','1')->paginate(2);
   if(request()->ajax()){
-    return view('admin.sku_val_demo.sku_val_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
+    return view('admin.sku_val_demo.sku_val_zse_s',['xxi'=>$xxi,'xx'=>$xx,'sxing'=>$sxing]);
   }
-  return view('admin.sku_val_demo.sku_val_zse',['xxi'=>$xxi,'xx'=>$xx]);
+  return view('admin.sku_val_demo.sku_val_zse',['xxi'=>$xxi,'xx'=>$xx,'sxing'=>$sxing]);
 }
 //-------------------------------------------------------------
 public function sku_val_jd_s(){

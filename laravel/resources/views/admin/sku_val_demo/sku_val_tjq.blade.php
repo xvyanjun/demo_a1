@@ -29,6 +29,18 @@
                 <div class="tab-pane active" id="home">
                     <div class="row data-type">
 
+                        <div class="col-md-2 title">所属属性</div>
+                        <div class="col-md-10 data">
+                            <select name="attr_id" id="attr_id">
+                                @foreach($xxi as $r=>$t)
+                                 <option value="{{$t['attr_id']}}">{{$t['attr_name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <span id='attr_id_t'></span>
+                    </div>
+                    <div class="row data-type">
+
                         <div class="col-md-2 title">属性值名称</div>
                         <div class="col-md-10 data">
                             <input type="text" class="form-control"  id='val_name' ng-model="entity.name"  placeholder="属性值名称" value="">
@@ -54,6 +66,7 @@
     $(function(){
       $(document).on('click','#tj',function(){
         var val_name=$("#val_name").val();
+        var attr_id=$("#attr_id>option:checked").val();
         var zz=/^[a-z A-Z 0-9 \w \u4e00-\u9fa5]{1,}$/;
         var f1=false;
         if(!zz.test(val_name)){
@@ -68,7 +81,7 @@
               url:'/sku_val/sku_val_tje',
               type:'post',
               dataType:'json',
-              data:{'val_name':val_name},
+              data:{'val_name':val_name,'attr_id':attr_id},
               success:function(rc){
                 if(rc.a1==0){
                     location.href='/sku_val/sku_val_zse';

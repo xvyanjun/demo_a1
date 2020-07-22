@@ -29,7 +29,7 @@
                     <td>{{$v->admin_name}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->admin_time)}}</td>
                     <td class="text-center">
-                        <a href="{{url('/admin/content/'.$v->admin_id)}}" class="btn bg-olive btn-xs">赋角色</a>
+                        <a href="{{url('/admin/user/content/'.$v->admin_id)}}" class="btn bg-olive btn-xs">赋角色</a>
                         <button type="button" data-id="{{$v->admin_id}}" id="del" class="btn btn-danger btn-xs">删除</button>
                     </td> 
                 </tr>

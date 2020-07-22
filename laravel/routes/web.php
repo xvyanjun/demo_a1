@@ -162,3 +162,17 @@ Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
 Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
 Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //注册执行
 
+Route::any('/admin/login/home/{id}','admin\LoginController@home'); //登录详情信息
+Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详情信息执行
+
+
+//商品
+Route::prefix('/admin')->group(function(){
+    Route::any('/goods/create', 'admin\GoodsController@create');//商品展示
+    Route::any('/goods/add', 'admin\GoodsController@add');//商品执行
+    Route::any('/goods/list', 'admin\GoodsController@list');//商品展示
+    Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除
+    Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
+    Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
+});
+

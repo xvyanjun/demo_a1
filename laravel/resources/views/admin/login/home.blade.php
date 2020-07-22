@@ -18,34 +18,42 @@
 		</div>
 		<!--register-->
 		<div class="registerArea">
-			<h3>商家入驻申请<span class="go">我有账号，去<a href="/admin/login/login">登陆</a></span></h3>
+			<h3>商家入驻详情页<span class="go"></h3>
 			<div class="info">
-				<form class="sui-form form-horizontal">
-				
+				<form class="sui-form form-horizontal" action="{{url('/admin/login/homeAdd')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" value="{{$id}}" name="admin_id">
 					<div class="control-group">
-						<label class="control-label">用户名：</label>
+						<label class="control-label">个人昵称：</label>
 						<div class="controls">
-							<input type="text" placeholder="登陆名" id="admin_name" class="input-xfat input-xlarge">
+							<input type="text" placeholder="昵称" name="s_name" class="input-xfat input-xlarge">
 						</div>
 					</div>
 					
 					<div class="control-group">
-						<label class="control-label">用户密码：</label>
+						<label class="control-label">性别：</label>
 						<div class="controls">
-							<input type="password" placeholder="登陆密码" id="admin_pwd" class="input-xfat input-xlarge">
+                            <input type="radio"  name="s_sex" class="input-xfat input-xlarge" value="1" checked>男
+                            <input type="radio"  name="s_sex" class="input-xfat input-xlarge" value="2">女
+						</div>
+                    </div>
+                    <div class="control-group">
+						<label class="control-label">年龄：</label>
+						<div class="controls">
+							<input type="text" placeholder="年龄" name="s_birt" class="input-xfat input-xlarge">
+						</div>
+					</div>
+                    <div class="control-group">
+						<label class="control-label">头像：</label>
+						<div class="controls">
+							<input type="file" name="s_img" class="input-xfat input-xlarge">
 						</div>
 					</div>
 					
-					<div class="control-group">
-						<label for="inputPassword" class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-						<div class="controls">
-							<input name="m1" type="checkbox" value="2" checked=""><span>同意协议并注册  <a href="sampling.html">《品优购商家入驻协议》</a></span>
-						</div>
-					</div>
 					<div class="control-group">
 						<label class="control-label"></label>
 						<div class="controls btn-reg">
-							<a class="sui-btn btn-block btn-xlarge btn-danger" id="tj" href="javascript:;">申请入驻</a>
+                            <input type="submit" class="sui-btn btn-block btn-xlarge btn-danger" value="详情信息">
 						</div>
 					</div>
 				</form>
@@ -74,26 +82,3 @@
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
-<script>
-    $(document).on("click","#tj",function(){
-        var admin_name=$("#admin_name").val();
-        var admin_pwd=$("#admin_pwd").val();
-        var data={};
-        data.admin_name=admin_name;
-        data.admin_pwd=admin_pwd;
-        $.ajax({
-            url:"/admin/login/regAdd",
-            data:data,
-            dataType:"json",
-            success:function(res){
-				// console.log(res.admin_id);
-                if(res.code==000000){
-                    alert(res.msg);
-                    location.href="/admin/login/home/"+res.admin_id;
-                }else{
-                    alert(res.msg);
-                }
-            }
-        })
-    })
-</script>

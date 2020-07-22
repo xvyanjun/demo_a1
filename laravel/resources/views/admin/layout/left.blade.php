@@ -212,6 +212,27 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>商品管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/goods/uploades" target="iframe">
+                            <i class="fa fa-circle-o"></i> 添加商品相册
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/uploadeslist" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品相册管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <!-- 菜单 /-->
 
         </ul>

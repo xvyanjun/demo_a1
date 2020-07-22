@@ -101,11 +101,13 @@ Route::prefix('/admin')->group(function(){
 
 //商品
 Route::prefix('/admin')->group(function(){
-    Route::any('/goods', 'admin\GoodsController@index');//展示
-    Route::any('/goodsadd', 'admin\GoodsController@addshow');//添加
+    Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传
+    Route::any('/goods/uploadesadd', 'admin\GoodsController@uploadesadd');//商品相册上传
+    Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
+    Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
 });
 //分类
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
     Route::any('/cateadd', 'admin\CateController@addshow');//添加页
     Route::any('/cateadds', 'admin\CateController@add');//添加
@@ -160,5 +162,5 @@ Route::prefix('/slide')->group(function(){
 Route::any('/admin/login/reg','admin\LoginController@reg'); //注册展示
 Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
 Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
-Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //注册执行
+Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //登录执行
 

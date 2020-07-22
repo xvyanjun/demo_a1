@@ -32,7 +32,7 @@
                         <ul class="nav nav-tabs">                       		
                             <li class="active">
                                 <a href="#home" data-toggle="tab">商品基本信息</a>                                                        
-                            </li>                      
+							</li>                          
                         </ul>
                         <!--tab头/-->
 						<form class="sui-form form-horizontal" action="{{url('/admin/goods/add')}}" method="post" enctype="multipart/form-data">
@@ -110,7 +110,7 @@
                                     
                                 </div>
                             </div>
-                            
+							
                         </div>
                         <!--tab内容/-->
 						<!--表单内容/-->
@@ -124,8 +124,6 @@
 				  </form>
 			</section>
 				 
-            
-            
 
         <!-- 正文区域 /-->
 <script type="text/javascript">

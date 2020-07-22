@@ -23,7 +23,7 @@ class CheckToken
 //            header("location:http://shop.com/admin/login/login");
 //            exit;
            // echo "<script>window.location = 'http://shop.com/admin/login/login'</script>";
-           echo "<script>window.open('http://shop.com/admin/login/login','_top' )</script>";
+           echo "<script>window.open('/admin/login/login','_top' )</script>";
             exit;
         }
 

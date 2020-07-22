@@ -98,13 +98,16 @@ Route::prefix('/admin')->group(function(){
     Route::any('/friend/updAdd', 'admin\FriendController@updAdd');//友情修改执行
 });
 //---------------------------------------------------------商品
-//商品
+//商品相册
 Route::prefix('/admin')->group(function(){
-    Route::any('/goods', 'admin\GoodsController@index');//展示
-    Route::any('/goodsadd', 'admin\GoodsController@addshow');//添加
+    Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传
+    Route::any('/goods/uploadesadd', 'admin\GoodsController@uploadesadd');//商品相册上传
+    Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
+    Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
 });
-//---------------------------------------------------------分类
-Route::prefix('/admin')->group(function(){
+
+//分类
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
     Route::any('/cateadd', 'admin\CateController@addshow');//添加页
     Route::any('/cateadds', 'admin\CateController@add');//添加
@@ -178,7 +181,8 @@ Route::prefix('/sku_val')->group(function(){
 Route::any('/admin/login/reg','admin\LoginController@reg'); //注册展示
 Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
 Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
-Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //注册执行
+
+Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //登录执行
 //---------------------------------------------------------
 Route::any('/admin/login/home/{id}','admin\LoginController@home'); //登录详情信息
 Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详情信息执行
@@ -192,4 +196,3 @@ Route::prefix('/admin')->group(function(){
     Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
     Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
 });
-//---------------------------------------------------------

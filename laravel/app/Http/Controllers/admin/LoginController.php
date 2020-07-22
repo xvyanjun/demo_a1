@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PowerRole;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserInfo;
@@ -58,8 +60,17 @@ class LoginController extends Controller
         $user=User::where("admin_name",$data["admin_name"])->first();
         if($user){
             if($user['admin_pwd']==md5($data['admin_pwd'])){
+                $u_id=$user->admin_id;
+                $role_id=UserRole::where("admin_id",$u_id)->get(['role_id']);
+//                dd($role_id);
+
+                $powerrole=PowerRole::join("admin_power","role_power.power_id","=","admin_power.power_id")
+                    ->whereIn("role_power.role_id",$role_id)
+                    ->get()
+                    ->toArray();
+                $user['power']=$powerrole;
                 //登录存session
-                session(["admin_name"=>$user['admin_name']]);
+                session(["admin_user"=>$user]);
                 return ["code"=>"000000","msg"=>"登录成功"];
             }else{
                 return ["code"=>"000004","msg"=>"密码错误"];

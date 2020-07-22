@@ -25,8 +25,9 @@
 
                         <div>赋予权限</div>
                         <div class="col-md-10 data">
-                            <input type="checkbox" name="power_id" id="power_id" value="1">添加
-                            <input type="checkbox" name="power_id" id="power_id" value="2">展示
+                            <input type="checkbox" name="power_id" class="power_id" value="0">所有权限
+                            <input type="checkbox" name="power_id" class="power_id" value="1">添加
+                            <input type="checkbox" name="power_id" class="power_id" value="2">展示
                         </div>
                     </div>
                 </div>

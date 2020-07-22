@@ -199,16 +199,7 @@
                         <a href="{{url('/admin/friend/list')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 友情链接展示
                         </a>
-                        <a href="/admin/goodsadd" target="iframe">
-                            <i class="fa fa-circle-o"></i> 新增商品
-                        </a>
                     </li>
-                    <li id="admin-login">
-                        <a href="/admin/goods" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品管理
-                        </a>
-                    </li>
-
                 </ul>
             </li>
             <li class="treeview">
@@ -263,6 +254,16 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
+                        <a href="/admin/goods/uploades" target="iframe">
+                            <i class="fa fa-circle-o"></i> 添加商品相册
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/uploadeslist" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品相册管理
+                        </a>
+                    </li>
+                    <li id="admin-login">
                         <a href="/admin/goods/create" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品添加
                         </a>
@@ -270,6 +271,7 @@
                     <li id="admin-login">
                         <a href="/admin/goods/list" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品展示
+
                         </a>
                     </li>
                 </ul>

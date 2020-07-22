@@ -39,7 +39,7 @@
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
                     <td>{{$v->goods_stock}}</td>
-                    <td>{{$v->f_url}}</td>
+                    <td><img src="/{{$v->goods_img}}" width="80" height="60"></td>
                     <td>{{$v->goods_price}}</td>
                     <td>{{$v->content}}</td>
                     <td>{{$v->goods_show?"是":"否"}}</td>
@@ -53,7 +53,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td colspan="6">{{$res->links()}}</td>
+                    <td colspan="13">{{$res->links()}}</td>
                 </tr>
                 </tbody>
             </table>

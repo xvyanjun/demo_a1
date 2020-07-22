@@ -14,7 +14,7 @@
         </div>
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
-            <li id="admin-index"><a href="javascript:;"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li id="admin-index"><a href="/index"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
              <li class="treeview">
@@ -216,6 +216,9 @@
                             <i class="fa fa-circle-o"></i> 新增分类
                         </a>
                     </li>
+
+
+
                     <li id="admin-login">
                         <a href="/admin/cate" target="iframe">
                             <i class="fa fa-circle-o"></i> 分类管理
@@ -272,6 +275,27 @@
                         <a href="/admin/goods/list" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品展示
 
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>配送方式管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/modeadd" target="iframe">
+                            <i class="fa fa-circle-o"></i> 新增配送方式
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/mode" target="iframe">
+                            <i class="fa fa-circle-o"></i> 配送管理
                         </a>
                     </li>
                 </ul>

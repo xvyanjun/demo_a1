@@ -36,6 +36,19 @@
                         </div>
                     </div>
 
+                    <div class="tab-pane active" id="home">
+                        <div class="row data-type">
+                            <div class="col-md-2 title">选择商品</div>
+                            <div class="col-md-10 data">
+                                <select class="form-control" name="goods_id" ng-model="entity.name">
+                                    @foreach($goods as $k=>$v)
+                                        <option value="{{$v['goods_id']}}">{{$v['goods_name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <!--tab内容/-->
                 <!--表单内容/-->

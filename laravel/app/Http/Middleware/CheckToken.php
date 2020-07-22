@@ -17,18 +17,26 @@ class CheckToken
     public function handle($request, Closure $next)
     {
         $user=session('admin_user');
+//        dd($user);
         if(!$user){
-            return redirect('/admin/login/login');
+           // return redirect('/admin/login/login');
+//            header("location:http://shop.com/admin/login/login");
+//            exit;
+           // echo "<script>window.location = 'http://shop.com/admin/login/login'</script>";
+           echo "<script>window.open('http://shop.com/admin/login/login','_top' )</script>";
+            exit;
         }
+
         $server_name=$request->path();
+//        dd($server_name);
         $route=0;
         $allroute=['/'];
-//        dd($user['power']);
+//        dd($user);
         if(in_array($server_name,$allroute)){
             $route=1;
         }else{
             foreach($user['power'] as $k=>$v){
-                if($v['power_url']==$server_name){
+                if(strpos('/'.$server_name,$v['power_url'])!==false){
                     $route=1;
                     break;
                 }

@@ -53,19 +53,65 @@ class BrandController extends Controller
 //        dd($brand_img);
             $brand_name = $request->post('brand_name');
             if (empty($brand_name)) {
-                echo '<a href="/admin/brandadd">品牌名称未填写,点我重新添加</a>';
+                echo "
+                    <style>
+                        .listbut{
+                            position:absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-top: -150px;
+                            margin-left: -150px;
+                        }
+                    </style>
+                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                    <div class='listbut'>
+                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌名称未填写,点我重新添加</button></a><br>
+                    </div>
+                ";
                 exit;
             }
             $brand_url = $request->post('url');
             if (empty($brand_url)) {
-                echo '<a href="/admin/brandadd">品牌地址未填写,点我重新添加</a>';
+                echo "
+                    <style>
+                        .listbut{
+                            position:absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-top: -150px;
+                            margin-left: -150px;
+                        }
+                    </style>
+                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                    <div class='listbut'>
+                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌地址未填写,点我重新添加</button></a><br>
+                    </div>
+                ";
                 exit;
+
             }
             $brand_time = time();
             $model = new Brand();
             $res = $model::where(['brand_name' => $brand_name])->first();
             if (!empty($res)) {
-                echo '<a href="/admin/brandadd">品牌名称已存在,点我重新添加</a>';
+                echo "
+                    <style>
+                        .listbut{
+                            position:absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-top: -150px;
+                            margin-left: -150px;
+                        }
+                    </style>
+                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                    <div class='listbut'>
+                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌名称已存在,点我重新添加</button></a><br>
+                    </div>
+                ";
                 exit;
             } else {
                 $model->brand_name = $brand_name;
@@ -75,7 +121,22 @@ class BrandController extends Controller
                 if ($model->save()) {
                     return redirect('/admin/brand');
                 } else {
-                    echo '<a href="/admin/brandadd">品牌添加失败,点我重新添加</a>';
+                    echo "
+                        <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                        </style>
+                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                        <div class='listbut'>
+                            <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌添加失败,点我重新添加</button></a><br>
+                        </div>
+                    ";
                     exit;
                 }
             }

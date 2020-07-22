@@ -15,7 +15,9 @@ class GoodsController extends Controller
      * 多文件上传页面
      */
     public function uploades(){
-        return view('admin.goods.uploades');
+        $model=new Goods();
+        $goods=$model::get()->toArray();
+        return view('admin.goods.uploades',['goods'=>$goods]);
     }
     /**
      * 多文件上传
@@ -23,6 +25,25 @@ class GoodsController extends Controller
     public function uploadesadd(Request $request){
         $data=$request->except('_token');
 //        dd($data);
+        if(!array_key_exists('goods_imgs',$data)){
+            echo "
+                        <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                        </style>
+            <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+              <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+              <div class='listbut'>
+                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>文件未经检测到到或者不识别,请重新添加</button></a><br>
+               </div>
+            ";
+            exit;
+        }
         if($data['goods_imgs']){
             $photos=$this->Moreuploads('goods_imgs');
             $data['goods_imgs']=implode('|',$photos);
@@ -30,11 +51,28 @@ class GoodsController extends Controller
 //        dd($data);
         $model=new Shop_album();
         $model->goods_imgs=$data['goods_imgs'];
+        $model->goods_id=$data['goods_id'];
         $model->time=time();
         if($model->save()){
             return redirect('/admin/goods/uploadeslist');
         }else{
-            return '<script>alert("相册添加失败,请重试")</script>';
+            echo "
+                        <style>
+                            .listbut{
+                                position:absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-top: -150px;
+                                margin-left: -150px;
+                            }
+                        </style>
+            <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+              <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+              <div class='listbut'>
+                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>相册添加失败,点击重新添加</button></a><br>
+               </div>
+            ";
+            exit;
         }
     }
     //多文件上传引用
@@ -59,12 +97,15 @@ class GoodsController extends Controller
         $model=new Shop_album();
         $info=$model::where(['is_del'=>1])->paginate(3);
 
+        $model=new Goods();
+        $goods=$model::get()->toArray();
+
         foreach($info as $k=>$v){
             $info[$k]['goods_imgs']=explode('|',$v['goods_imgs']);
 //            print_r($v);
         }
 //        dd($info);
-        return view('admin.goods.uploadeslist',['info'=>$info]);
+        return view('admin.goods.uploadeslist',['info'=>$info,'goods'=>$goods]);
     }
     /**
      *相册软删除
@@ -108,6 +149,7 @@ class GoodsController extends Controller
     //商品执行
     public function add(Request $request){
        $all=$request->except("_token");
+//        dd($all);
        $all['goods_time']=time();
        if(request()->hasFile('goods_img')){
         $all['goods_img']=$this->uplode('goods_img');

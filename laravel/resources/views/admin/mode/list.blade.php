@@ -6,7 +6,7 @@
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 <div class="box-header with-border">
-    <h3 class="box-title">商品相册管理</h3>
+    <h3 class="box-title">配送管理</h3>
 </div>
 <div class="box-body">
 
@@ -17,7 +17,7 @@
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default" title="新建" ><a href="/admin/goods/uploades" class="fa fa-file-o">新建</a></button>
+                    <button type="button" class="btn btn-default" title="新建" ><a href="/admin/modeadd" class="fa fa-file-o">新建</a></button>
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                 </div>
             </div>
@@ -27,38 +27,29 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
             <thead>
             <tr>
-                <th class="sorting_asc">相册ID</th>
-                <th class="sorting">相册图片</th>
-                <th class="sorting">商品名称</th>
+                <th class="sorting_asc">ID</th>
+                <th class="sorting">配送方式</th>
                 <th class="sorting">添加时间</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($info as $k=>$v)
-            <tr goods_imgid="{{$v['goods_imgid']}}">
-                <td>{{$v['goods_imgid']}}</td>
+            @foreach($res as $k=>$v)
+            <tr mode_id="{{$v['id']}}">
+                <td>{{$v['id']}}</td>
                 <td>
-                    @foreach($v['goods_imgs'] as $kk=>$vv)
-                        <img src="/{{$vv}}" width="80" height="50">
-                    @endforeach
+                    {{$v['mode_name']}}
                 </td>
-                <td>
-                    @foreach($goods as $kry=>$value)
-                        @if($v['goods_id']==$value['goods_id'])
-                            {{$value['goods_name']}}
-                        @endif
-                    @endforeach
-                </td>
-                <td>{{date('Y-m-d H:i:s',$v['time'])}}</td>
+                <td>{{date('Y-m-d H:i:s',$v['brand_time'])}}</td>
                 <td class="text-center">
                     <button type="button" class="del btn btn-danger">删除</button>
+                    <button type="button" class="btn btn-warning"><a href="/admin/modeupd/{{$v['id']}}" style="color:white">修改</a></button>
                 </td>
             </tr>
             @endforeach
 
             <div class="pull-right paginate">
-                {{$info->links()}}
+                {{ $res->links() }}
             </div>
 
             </tbody>
@@ -69,16 +60,16 @@
 </div>
 <script>
     $(document).on('click','.del',function(){
-        var goods_imgid=$(this).parents('tr').attr('goods_imgid');
+        var mode_id=$(this).parents('tr').attr('mode_id');
         $.ajax({
-            url: "{{'/admin/goods/uploadesdel'}}",
+            url: "{{'/admin/modedel'}}",
             type: 'post',
-            data: {goods_imgid:goods_imgid},
+            data: {mode_id:mode_id},
             dataType: 'json',
             success: function (res) {
                 if(res.code=='200'){
                     alert('删除完毕');
-                    window.location.href="{{'/admin/goods/uploadeslist'}}"
+                    window.location.href="{{'/admin/mode'}}"
                 }else{
                     alert(res.msg);
                 }

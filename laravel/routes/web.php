@@ -100,7 +100,7 @@ Route::prefix('/admin')->group(function(){
 //---------------------------------------------------------商品
 //商品相册
 Route::prefix('/admin')->group(function(){
-    Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传
+    Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传页
     Route::any('/goods/uploadesadd', 'admin\GoodsController@uploadesadd');//商品相册上传
     Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
     Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
@@ -126,6 +126,16 @@ Route::prefix('/admin')->group(function(){
     Route::any('/brandupdate', 'admin\BrandController@update');//修改
     Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
 });
+//---------------------------------------------------------配送方式
+Route::prefix('/admin')->group(function(){
+    Route::any('/mode', 'admin\ModeController@index');//展示
+    Route::any('/modeadd', 'admin\ModeController@addshow');//添加页
+    Route::any('/modeadds', 'admin\ModeController@add');//添加
+    Route::any('/modedel', 'admin\ModeController@del');//删除
+    Route::any('/modeupd/{id}', 'admin\ModeController@cateupd');//修改页
+    Route::any('/modeupdate', 'admin\ModeController@update');//修改
+});
+
 //---------------------------------------------------------导航
 Route::prefix('/nav')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 

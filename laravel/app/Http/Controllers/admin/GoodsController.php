@@ -266,4 +266,34 @@ class GoodsController extends Controller
         }
         exit('图片上传失败');
     }
+    //即点即改是否展示
+    public function ajaxshow(Request $request){
+        $id = request()->get("goods_id");
+        $goods_show = request()->get("goods_show");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_show"=>$goods_show]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }
+    }
+     //即点即改修改库存
+     public function ajaxname(Request $request){
+        $id = request()->get("goods_id");
+        $goods_stock = request()->get("goods_stock");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_stock"=>$goods_stock]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }
+    }
+    //即点即改修改价格
+    public function ajaxprice(Request $request){
+        $id = request()->get("goods_id");
+        $goods_price = request()->get("goods_price");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_price"=>$goods_price]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }
+    }
 }

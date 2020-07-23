@@ -33,16 +33,20 @@
                 </thead>
                 <tbody>
                 @foreach($res as $k=>$v)
-                <tr>
+                <tr goods_id="{{$v->goods_id}}">
                     <td>{{$v->goods_id}}</td>
                     <td>{{$v->goods_name}}</td>
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
-                    <td>{{$v->goods_stock}}</td>
+                    <td>
+                        <span id="stock">{{$v->goods_stock}}</span>
+                    </td>
                     <td><img src="/{{$v->goods_img}}" width="80" height="60"></td>
-                    <td>{{$v->goods_price}}</td>
+                    <td>
+                        <span id="price">{{$v->goods_price}}</span>
+                    </td>
                     <td>{{$v->content}}</td>
-                    <td>{{$v->goods_show?"是":"否"}}</td>
+                    <td id="eva_jd" goods_id="{{$v->goods_id}}">{{$v->goods_show?"是":"否"}}</td>
                     <td>{{$v->goods_pack}}</td>
                     <td>{{$v->goods_service}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->goods_time)}}</td>
@@ -80,4 +84,78 @@ $(document).on("click","#del",function(){
     })
 })
 
+//是否显示的即点即改
+$(document).on("click","#eva_jd",function(){
+    var _this=$(this);
+    var goods_id=_this.attr("goods_id");
+    var goods_show=_this.text();
+    if(goods_show=="是"){
+        _this.text("否");
+    }else{
+        _this.text("是");
+    }
+    if(goods_show=="是"){
+        goods_show='2';
+    }else{
+        goods_show='1';
+    }
+    $.get(
+        "/admin/goods/ajaxshow",
+        {goods_id:goods_id,goods_show:goods_show},
+        function(res){
+            if(res.code==00000){
+                if(goods_show=="是"){
+                    goods_show.text("否");
+                }else{
+                    goods_show.text("是");
+                }
+            }
+        },"json"
+    )
+    // console.log(goods_show);
+})
+
+//极点技改商品库存
+$(document).on("click","#stock",function(){
+    var goods_stock=$(this).text();
+    $(this).parent().html("<input type='text' class='input_name' value="+goods_stock+">");
+})
+$(document).on("blur",".input_name",function(){
+    var _this=$(this);
+    var goods_stock=_this.val();
+    //获取id值
+    var goods_id=_this.parents("tr").attr("goods_id");
+    // console.log(goods_id);
+    $.get(
+        "/admin/goods/ajaxname",
+        {goods_id:goods_id,goods_stock:goods_stock},
+        function(res){
+            if(res.code==00000){
+                _this.parent().html("<span class='span_name'>"+goods_stock+"</span>");
+            }
+        },"json"
+    )
+})
+
+//即点技改商品价格
+$(document).on("click","#price",function(){
+    var goods_price=$(this).text();
+    $(this).parent().html("<input type='text' class='input_price' value="+goods_price+">");
+})
+$(document).on("blur",".input_price",function(){
+    var _this=$(this);
+    var goods_price=_this.val();
+    //获取id值
+    var goods_id=_this.parents("tr").attr("goods_id");
+    // console.log(goods_id);
+    $.get(
+        "/admin/goods/ajaxprice",
+        {goods_id:goods_id,goods_price:goods_price},
+        function(res){
+            if(res.code==00000){
+                _this.parent().html("<span class='span_name'>"+goods_price+"</span>");
+            }
+        },"json"
+    )
+})
 </script>

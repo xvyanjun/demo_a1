@@ -203,6 +203,9 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除
     Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
     Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
+    Route::get('/goods/ajaxshow', 'admin\GoodsController@ajaxshow');//商品是否展示极点技改
+    Route::get('/goods/ajaxname', 'admin\GoodsController@ajaxname');//商品是库存极点技改
+    Route::get('/goods/ajaxprice', 'admin\GoodsController@ajaxprice');//商品是价格极点技改
 });
 //sku关联字段
 Route::prefix('/admin')->group(function(){

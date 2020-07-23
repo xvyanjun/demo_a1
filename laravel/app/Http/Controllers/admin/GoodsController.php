@@ -221,11 +221,20 @@ class GoodsController extends Controller
     }
     //商品展示
     public function list(Request $request){
+        $goods_name=$request->goods_name;
+        $where=[['goods_del','1']];
+        if($goods_name){
+            $where[]=['goods_name','like',"%$goods_name%"];
+        }
+        // $where=[
+        //     'goods_del'=>1
+        // ];
         $res=Goods::leftjoin("shop_brand","shop_goods.brand_id","=","shop_brand.brand_id")
                     ->leftjoin("shop_cate","shop_cate.cate_id","=","shop_goods.cate_id")
-                    ->where(['goods_del'=>1])
+                    ->where($where)
                     ->paginate(1);
-        return view("admin.goods.list",compact("res"));
+        $query=request()->all();
+        return view("admin.goods.list",compact("res","query"));
     }
     //商品软删除
     public function del(Request $request){

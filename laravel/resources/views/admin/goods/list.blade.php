@@ -8,8 +8,11 @@
         <h3 class="box-title">商品列表</h3>
     </div>
 
+<form>
+<input type="text" name="goods_name" placeholder="请输入商品名称" value="{{$query['goods_name']??''}}">
+<input type="submit" value="搜索">
+</form>
     <div class="box-body">
-
         <!-- 数据表格 -->
         <div class="table-box">
             <!--数据列表-->
@@ -58,7 +61,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td colspan="13">{{$res->links()}}</td>
+                    <td colspan="13">{{$res->appends($query)->links()}}</td>
                 </tr>
                 </tbody>
             </table>

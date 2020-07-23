@@ -39,7 +39,7 @@ class GoodsController extends Controller
             <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
               <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
               <div class='listbut'>
-                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>文件未经检测到到或者不识别,请重新添加</button></a><br>
+                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>文件未经检测到到或者不识别,点击重新添加</button></a><br>
                </div>
             ";
             exit;

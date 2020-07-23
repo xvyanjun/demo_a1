@@ -54,40 +54,20 @@ class BrandController extends Controller
             $brand_name = $request->post('brand_name');
             if (empty($brand_name)) {
                 echo "
-                    <style>
-                        .listbut{
-                            position:absolute;
-                            top: 50%;
-                            left: 50%;
-                            margin-top: -150px;
-                            margin-left: -150px;
-                        }
-                    </style>
-                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                    <div class='listbut'>
-                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌名称未填写,点我重新添加</button></a><br>
-                    </div>
+                    <script>
+                        alert('品牌名称未填写');
+                        window.location.href='/admin/brandadd';
+                    </script>
                 ";
                 exit;
             }
             $brand_url = $request->post('url');
             if (empty($brand_url)) {
                 echo "
-                    <style>
-                        .listbut{
-                            position:absolute;
-                            top: 50%;
-                            left: 50%;
-                            margin-top: -150px;
-                            margin-left: -150px;
-                        }
-                    </style>
-                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                    <div class='listbut'>
-                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌地址未填写,点我重新添加</button></a><br>
-                    </div>
+                   <script>
+                        alert('品牌地址未填写');
+                        window.location.href='/admin/brandadd';
+                    </script>
                 ";
                 exit;
 
@@ -97,20 +77,10 @@ class BrandController extends Controller
             $res = $model::where(['brand_name' => $brand_name])->first();
             if (!empty($res)) {
                 echo "
-                    <style>
-                        .listbut{
-                            position:absolute;
-                            top: 50%;
-                            left: 50%;
-                            margin-top: -150px;
-                            margin-left: -150px;
-                        }
-                    </style>
-                    <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                    <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                    <div class='listbut'>
-                        <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌名称已存在,点我重新添加</button></a><br>
-                    </div>
+                    <script>
+                        alert('品牌名称已存在');
+                        window.location.href='/admin/brandadd';
+                    </script>
                 ";
                 exit;
             } else {
@@ -122,20 +92,10 @@ class BrandController extends Controller
                     return redirect('/admin/brand');
                 } else {
                     echo "
-                        <style>
-                            .listbut{
-                                position:absolute;
-                                top: 50%;
-                                left: 50%;
-                                margin-top: -150px;
-                                margin-left: -150px;
-                            }
-                        </style>
-                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                        <div class='listbut'>
-                            <a href='/admin/brandadd'><button type='button' class='btn btn-primary'>品牌添加失败,点我重新添加</button></a><br>
-                        </div>
+                        <script>
+                            alert('品牌添加失败');
+                            window.location.href='/admin/brandadd';
+                        </script>
                     ";
                     exit;
                 }
@@ -199,21 +159,21 @@ class BrandController extends Controller
         $brand_url=$request->post('brand_url');
         if(empty($brand_name)){
             echo "
-                        <style>
-                            .listbut{
-                                position:absolute;
-                                top: 50%;
-                                left: 50%;
-                                margin-top: -150px;
-                                margin-left: -150px;
-                            }
-                        </style>
-            <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-              <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-              <div class='listbut'>
+                  <style>
+                      .listbut{
+                          position:absolute;
+                          top: 50%;
+                          left: 50%;
+                          margin-top: -150px;
+                          margin-left: -150px;
+                      }
+                  </style>
+                  <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                  <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                  <div class='listbut'>
                     <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>品牌名称未填写,点我重新修改</button></a><br>
                     <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
-               </div>
+                  </div>
             ";
             exit;
         }
@@ -243,21 +203,21 @@ class BrandController extends Controller
                 return redirect('/admin/brand');
             } else {
                 echo "
-                        <style>
-                            .listbut{
-                                position:absolute;
-                                top: 50%;
-                                left: 50%;
-                                margin-top: -150px;
-                                margin-left: -150px;
-                            }
-                        </style>
-                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                        <div class='listbut'>
-                        <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
-                        <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
-                        </div>
+                     <style>
+                         .listbut{
+                             position:absolute;
+                             top: 50%;
+                             left: 50%;
+                             margin-top: -150px;
+                             margin-left: -150px;
+                         }
+                     </style>
+                     <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                     <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                     <div class='listbut'>
+                         <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
+                         <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
+                     </div>
                 ";
                 exit;
             }
@@ -269,21 +229,21 @@ class BrandController extends Controller
                 return redirect('/admin/brand');
             } else {
                 echo "
-                      <style>
-                            .listbut{
-                                position:absolute;
-                                top: 50%;
-                                left: 50%;
-                                margin-top: -150px;
-                                margin-left: -150px;
-                            }
-                       </style>
-                        <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
-                        <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
-                        <div class='listbut'>
-                        <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
-                        <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
-                        </div>
+                     <style>
+                        .listbut{
+                           position:absolute;
+                           top: 50%;
+                           left: 50%;
+                           margin-top: -150px;
+                           margin-left: -150px;
+                        }
+                     </style>
+                     <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
+                     <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
+                     <div class='listbut'>
+                         <a href='/admin/brandupd/".$brand_id."'><button type='button' class='btn btn-primary'>修改失败,点我重新修改</button></a><br>
+                         <a href='/admin/brand'><button type='button' class='btn btn-primary'>点击返回管理页面</button></a>
+                     </div>
                 ";
                 exit;
             }

@@ -22,12 +22,16 @@
                 <!--表单内容-->
                 <div class="tab-pane active" id="home">
                     <div class="row data-type">
-
-                        <div>赋予权限</div>
                         <div>
-                            <input type="checkbox" name="power_id" class="power_id" value="999999999">所有权限
+                            <h4 style="color: red;"><input type="checkbox" name="power_id" id="ding_id" class="ding_id" value="999999999">所有权限</h4>
+                            <br>
                             @foreach($power as $k=>$v)
-                                <input type="checkbox" name="power_id" class="power_id" value="{{$v['power_id']}}">{{$v['power_name']}}
+                                <span style="display:inline-block">
+                                    <div class="form-group form-check" style="margin:0 10px;">
+                                        <input type="checkbox" class="form-check-input power_id" id="exampleCheck1" value="{{$v['power_id']}}">
+                                        <label class="form-check-label" for="exampleCheck1">{{$v['power_name']}}</label>
+                                    </div>
+                                </span>
                             @endforeach
                         </div>
                     </div>
@@ -46,6 +50,25 @@
 </section>
 <!-- 正文区域 /-->
 <script>
+    $(document).ready(function(){
+        var i = 0;
+        $("span").each(function()
+        {
+            i++;
+            if (i%4==0)
+            {
+                $(this).after("<br/>");
+            }
+        });
+    });
+
+    $(document).on("click","input[type='checkbox'].power_id",function(){
+            $("input[type='checkbox']#ding_id").prop('checked',false);
+    });
+    $(document).on("click","input[type='checkbox']#ding_id",function(){
+            $('input[type="checkbox"].power_id').prop('checked',false);
+    });
+
 	$(document).on("click","#tj",function(){
 		var role_id=$(this).data("id");
         var power_id=[];

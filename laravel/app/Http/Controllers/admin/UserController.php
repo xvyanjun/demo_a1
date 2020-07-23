@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserRole;
@@ -27,19 +28,29 @@ class UserController extends Controller
     public function content(Request $request){
         $id=$request->id;
         $res=User::where("admin_id",$id)->first();
-        return view('admin.user.content',compact("res"));
+//        dd($res);
+        $role=Role::get()->toArray();
+        return view('admin.user.content',compact("res","role"));
     }
     //赋予角色执行
     public function contentAdd(Request $request){
         $res=$request->all();
         $model=new UserRole;
-        foreach($res['role_id'] as $k=>$v){
-            $data=[
-                "role_id"=>intval($v),
-                "admin_id"=>$res['admin_id'],
-            ];
-            $res1=$model->insert($data);
+
+        $date=$model::where("admin_id",$res["admin_id"])->get()->toArray();
+        if(!empty($date)){
+            $model::where("admin_id",$res['admin_id'])->delete();
         }
+
+
+
+
+//            $data=[
+//                "role_id"=>intval($v),
+//                "admin_id"=>$res['admin_id'],
+//            ];
+            $res1=$model->insert($res);
+
         if($res1){
             return ['code'=>'000000',"msg"=>"赋予角色成功"];
         }else{

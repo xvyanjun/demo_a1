@@ -28,16 +28,6 @@
                             <input type="text" class="form-control" id="role_name" value="{{$res->role_name}}" placeholder="角色名称" value="">
                         </div>
 
-                        <div class="col-md-2 title">用户名</div>
-                        <div class="col-md-10 data">
-                            <select name="" id="admin_id">
-                                <option value="">--请选择--</option>
-                                @foreach($data as $k=>$v)
-                                    <option value="{{$v->admin_id}}"{{$res->admin_id==$v->admin_id ? "selected" : ""}}>{{$v->admin_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
                     </div>
                 </div>
                 
@@ -48,7 +38,6 @@
 
     </div>
     <div class="btn-toolbar list-toolbar">
-        <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
         <a ng-click="submit()" data-toggle="modal" data-id="{{$res->role_id}}" class="btn btn-danger">提交</a>
     </div>
 
@@ -57,11 +46,9 @@
 <script>
 $(document).on("click",".btn-danger",function(){
     var role_name=$("#role_name").val();
-    var admin_id=$("#admin_id").val();
     var role_id=$(this).data("id");
     var data={};
     data.role_name=role_name;
-    data.admin_id=admin_id;
     data.role_id=role_id;
     $.ajax({
         url:"/admin/role/updAdd",

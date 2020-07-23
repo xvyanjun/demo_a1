@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Power;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
@@ -11,8 +12,7 @@ class RoleController extends Controller
 {
     //角色展示
     public function create(Request $request){
-        $res=User::get();
-        return view("admin.role.create",compact("res"));
+        return view("admin.role.create");
     }
     //角色执行
     public function add(Request $request){
@@ -32,9 +32,7 @@ class RoleController extends Controller
     }
     //角色列表展示
     public function list(Request $request){
-        $res=Role::leftjoin("admin_user","admin_user.admin_id","=","admin_role.admin_id")
-            ->where(["role_del"=>1])
-            ->paginate(2);
+        $res=Role::where(["role_del"=>1])->paginate(2);
         return view("admin.role.list",compact("res"));
     }
     //角色软删除
@@ -51,8 +49,7 @@ class RoleController extends Controller
     public function upd(Request $request){
         $id=$request->id;
         $res=Role::where("role_id",$id)->first();
-        $data=User::get();
-        return view("admin.role.upd",compact("res","data"));
+        return view("admin.role.upd",compact("res"));
     }
     //角色修改执行
     public function updAdd(Request $request){
@@ -68,13 +65,20 @@ class RoleController extends Controller
     //角色赋予权限
     public function content(Request $request){
         $id=$request->id;
-        // print_r($res);exit;
+        $power=Power::get()->toArray();
        $res= Role::where("role_id",$id)->first();
-        return view("admin.role.content",compact("res"));
+
+        return view("admin.role.content",compact("res","power"));
     }
     //角色执行
     public function contentAdd(Request $request){
         $res=$request->all();
+
+        $data=PowerRole::where("role_id",$res["role_id"])->get()->toArray();
+        foreach($data as $k=>$v){
+            PowerRole::where("role_id",$v['role_id'])->delete();
+        }
+
         // print_r($res);exit;
         $model=new PowerRole;
         foreach($res["power_id"] as $k=>$v){

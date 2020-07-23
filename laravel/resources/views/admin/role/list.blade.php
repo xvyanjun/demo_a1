@@ -18,7 +18,6 @@
                 <tr>
                     <th class="sorting_asc">角色ID</th>
                     <th class="sorting">角色名称</th>
-                    <th class="sorting">用户名</th>
                     <th class="sorting">添加时间</th>
                     <th class="text-center">操作</th>
                 </tr>
@@ -28,7 +27,6 @@
                 <tr>
                     <td>{{$v->role_id}}</td>
                     <td>{{$v->role_name}}</td>
-                    <td>{{$v->admin_name}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->role_time)}}</td>
                     <td class="text-center">
                         <a href="{{url('/admin/role/upd/'.$v->role_id)}}" class="btn bg-olive btn-xs">修改</a>

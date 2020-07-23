@@ -24,10 +24,11 @@
                     <div class="row data-type">
 
                         <div>赋予权限</div>
-                        <div class="col-md-10 data">
-                            <input type="checkbox" name="power_id" class="power_id" value="0">所有权限
-                            <input type="checkbox" name="power_id" class="power_id" value="1">添加
-                            <input type="checkbox" name="power_id" class="power_id" value="2">展示
+                        <div>
+                            <input type="checkbox" name="power_id" class="power_id" value="999999999">所有权限
+                            @foreach($power as $k=>$v)
+                                <input type="checkbox" name="power_id" class="power_id" value="{{$v['power_id']}}">{{$v['power_name']}}
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,6 @@
 
     </div>
     <div class="btn-toolbar list-toolbar">
-        <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
         <a ng-click="submit()" data-toggle="modal" id="tj" data-id="{{$res->role_id}}" class="btn btn-danger">提交</a>
     </div>
 

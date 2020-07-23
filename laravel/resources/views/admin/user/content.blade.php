@@ -25,10 +25,9 @@
 
                         <div>赋予角色</div>
                         <div class="col-md-10 data">
-                            <input type="checkbox" name="role_id" id="role_id" value="1">组长
-                            <input type="checkbox" name="role_id" id="role_id" value="2">总监
-                            <input type="checkbox" name="role_id" id="role_id" value="3">经理
-                            <input type="checkbox" name="role_id" id="role_id" value="4">员工
+                            @foreach($role as $k=>$v)
+                                <input type="radio" name="role_id" id="role_id" value="{{$v['role_id']}}">{{$v['role_name']}}
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -40,7 +39,6 @@
 
     </div>
     <div class="btn-toolbar list-toolbar">
-        <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
         <a ng-click="submit()" data-toggle="modal" id="tj" data-id="{{$res->admin_id}}" class="btn btn-danger">提交</a>
     </div>
 
@@ -50,11 +48,11 @@
 	$(document).on("click","#tj",function(){
 		var admin_id=$(this).data("id");
         var role_id=[];
-		$("input[name='role_id']:checked").each(function(i){
-            role_id[i]=$(this).val();
-        });
+		var role_id=$("input[name='role_id']:checked").val();
+//                .each(function(i){
+//            role_id[i]=$(this).val();
+//        });
         // console.log(p_id);exit;
-        
 		var data={};
 		data.role_id=role_id;
 		data.admin_id=admin_id;

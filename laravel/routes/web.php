@@ -87,7 +87,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/user/contentAdd', 'admin\UserController@contentAdd');//给用户赋予角色执行
 });
 //---------------------------------------------------------友情链接
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/friend/create', 'admin\FriendController@create');//友情添加展示
     Route::any('/friend/add', 'admin\FriendController@add');//友情添加执行
     Route::any('/friend/list', 'admin\FriendController@list');//友情添加展示
@@ -97,7 +97,7 @@ Route::prefix('/admin')->group(function(){
 });
 //---------------------------------------------------------商品
 //商品相册
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/uploades', 'admin\GoodsController@uploades');//商品相册上传页
     Route::any('/goods/uploadesadd', 'admin\GoodsController@uploadesadd');//商品相册上传
     Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
@@ -115,7 +115,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/updateshow', 'admin\CateController@updateshow');//即点即改
 });
 //---------------------------------------------------------品牌
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/brand', 'admin\BrandController@index');//展示
     Route::any('/brandadd', 'admin\BrandController@addshow');//添加页
     Route::any('/brandadds', 'admin\BrandController@add');//添加
@@ -125,7 +125,7 @@ Route::prefix('/admin')->group(function(){
     Route::any('/updateshow', 'admin\BrandController@updateshow');//即点即改
 });
 //---------------------------------------------------------配送方式
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/mode', 'admin\ModeController@index');//展示
     Route::any('/modeadd', 'admin\ModeController@addshow');//添加页
     Route::any('/modeadds', 'admin\ModeController@add');//添加
@@ -135,7 +135,7 @@ Route::prefix('/admin')->group(function(){
 });
 
 //---------------------------------------------------------导航
-Route::prefix('/nav')->group(function(){
+Route::prefix('/nav')->middleware('checklogin')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
   Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
   Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
@@ -146,7 +146,7 @@ Route::prefix('/nav')->group(function(){
   Route::any('nav_xge','a_1\demo_a2_contr@nav_xge');   
 });
 //---------------------------------------------------------资讯
-Route::prefix('/service')->group(function(){
+Route::prefix('/service')->middleware('checklogin')->group(function(){
   Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
   Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
   Route::any('service_zse','a_1\demo_a2_contr@service_zse');
@@ -157,7 +157,7 @@ Route::prefix('/service')->group(function(){
   Route::any('service_xge','a_1\demo_a2_contr@service_xge');   
 });
 //---------------------------------------------------------轮播图
-Route::prefix('/slide')->group(function(){
+Route::prefix('/slide')->middleware('checklogin')->group(function(){
   Route::any('slide_tjq','a_1\demo_a2_contr@slide_tjq'); 
   Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
   Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
@@ -169,7 +169,7 @@ Route::prefix('/slide')->group(function(){
   Route::any('slide_xge','a_1\demo_a2_contr@slide_xge');   
 });
 //---------------------------------------------------------sku属性
-Route::prefix('/sku_name')->group(function(){
+Route::prefix('/sku_name')->middleware('checklogin')->group(function(){
   Route::any('sku_name_tjq','a_1\demo_a2_contr@sku_name_tjq'); 
   Route::any('sku_name_tje','a_1\demo_a2_contr@sku_name_tje'); 
   Route::any('sku_name_zse','a_1\demo_a2_contr@sku_name_zse'); 
@@ -177,7 +177,7 @@ Route::prefix('/sku_name')->group(function(){
   Route::any('sku_name_sce','a_1\demo_a2_contr@sku_name_sce');
 });
 //---------------------------------------------------------sku属性值
-Route::prefix('/sku_val')->group(function(){
+Route::prefix('/sku_val')->middleware('checklogin')->group(function(){
   Route::any('sku_val_tjq','a_1\demo_a2_contr@sku_val_tjq'); 
   Route::any('sku_val_tje','a_1\demo_a2_contr@sku_val_tje'); 
   Route::any('sku_val_zse','a_1\demo_a2_contr@sku_val_zse'); 
@@ -189,14 +189,14 @@ Route::prefix('/sku_val')->group(function(){
 Route::any('/admin/login/reg','admin\LoginController@reg'); //注册展示
 Route::any('/admin/login/login','admin\LoginController@login'); //登录展示
 Route::any('/admin/login/regAdd','admin\LoginController@regAdd'); //注册执行
-
+Route::any('/admin/login/login_del','admin\LoginController@login_del'); //退出
 Route::any('/admin/login/loginAdd','admin\LoginController@loginAdd'); //登录执行
 //---------------------------------------------------------
 Route::any('/admin/login/home/{id}','admin\LoginController@home'); //登录详情信息
 Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详情信息执行
 //---------------------------------------------------------
 //商品
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/create', 'admin\GoodsController@create');//商品展示
     Route::any('/goods/add', 'admin\GoodsController@add');//商品执行
     Route::any('/goods/list', 'admin\GoodsController@list');//商品展示

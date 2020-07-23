@@ -270,10 +270,11 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{url('/admin/login/login')}}" class="btn btn-default btn-flat">登录</a>
+                                <a href="{{url('/admin/login/login')}}" class="btn btn-success">登录</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{url('/admin/login/reg')}}" class="btn btn-default btn-flat">注册</a>
+                                {{--<button type="button" class="btn btn-danger">Danger</button>--}}
+                                <a href="{{url('/admin/login/login_del')}}" class="btn btn-danger">退出</a>
                             </div>
                         </li>
                     </ul>

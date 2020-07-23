@@ -23,12 +23,7 @@
             </div>
         </div>
         <div class="box-tools pull-right">
-            <div class="has-feedback">
-                <form>
-                分类名称<input name="cate_name" value="{{$cate_name}}" type="text">
-                <input type="submit" class="btn btn-default" value="查询">
-                </form>
-            </div>
+
         </div>
         <!--工具栏/-->
 

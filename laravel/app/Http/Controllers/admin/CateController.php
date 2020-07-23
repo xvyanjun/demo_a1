@@ -10,23 +10,20 @@ class CateController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * 商品展示
+     * 分类展示
      */
     public function index(Request $request){
-        $cate_name=$request->cate_name??'';
+
         $where=[
             ['cate_del','=',1],
         ];
-//        if($cate_name){
-//            $where[]=['cate_name','like',"%$$cate_name%"];
-//        }
         $model=new Cate();
         $cate=$model::get()->toArray();
         $res=$model::where($where)->get()->toArray();
 //        print_r($res);
         $info=self::cate_list($res);
 //        dd($info);
-        return view('admin.cate.list',['info'=>$info,'cate'=>$cate,'cate_name'=>$cate_name]);
+        return view('admin.cate.list',['info'=>$info,'cate'=>$cate]);
     }
 
     /**

@@ -23,12 +23,17 @@
                     </div>
                 </div>
             </div>
-    <!--         <div class="box-tools pull-right">
+            <div class="box-tools pull-right">
                 <div class="has-feedback">
-                    咨讯标题：<input id='title_cx' placeholder='标题'>
+              状态：<select id='service_show'>
+                        <option value="0">未选择</option>
+                        <option value="1">显示</option>
+                        <option value="2">隐藏</option>
+                    </select>
+                    标题：<input id='service_title'>
                     <button class="btn btn-default" id='cx'>查询</button>
                 </div>
-            </div> -->
+            </div>
             <!--工具栏/-->
 
             <!--数据列表-->
@@ -45,13 +50,15 @@
                     <th class="sorting">权重</th>
                     <th class="sorting">是否显示</th>
                     <th class="sorting">时间</th>
-                    <th class="sorting">操作</th>
+                    <th class="sorting">操作
+                    <button type="button" class="btn btn-warning" id='sc_s'>删除已选</button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody id='th'>
                 @foreach($xxi as $c=>$v)
                 <tr>
-                    <td><input  type="checkbox"></td>
+                    <td><input  name='ck' type="checkbox" service_id="{{$v['service_id']}}"></td>
                     <td>{{$v['service_id']}}</td>
                     <td id='eva_jd_s' service_id="{{$v['service_id']}}">{{$v['service_title']}}</td>
                     <td>{{$v['service_titles']}}</td>
@@ -87,6 +94,7 @@
     </div>
     <script>
     $(function(){
+      $("#sc_s").hide();  
 //-----------------------------------------------------------------
       $(document).on('click','#sc',function(){
         var service_id=$(this).attr('service_id');
@@ -115,6 +123,8 @@
               dataType:'html',
               success:function(ty){
                     $("#th").html(ty);
+                    $("#selall").prop('checked',false);//去除复选框选中状态 
+                    $("#sc_s").hide();//删除按钮隐藏 
               }
             });
        return false;
@@ -195,8 +205,68 @@
               console.log(service_id,service_ytitle,service_title);
             return false;
        }); 
+//-----------------------------------------------------------------全选
+       $(document).on('click','#selall',function(){
+        var sf=$(this).prop('checked');
+               $("[type='checkbox'][name='ck']").prop('checked',sf);
+            if(sf){
+              $("#sc_s").show();  
+            }else{
+              $("#sc_s").hide(); 
+            }
+       });
 //-----------------------------------------------------------------
-
+       $(document).on('click',"[type='checkbox'][name='ck']",function(){
+            var sf=0;
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               sf=sf+1;
+            }); 
+              if(sf>0){
+                $("#sc_s").show();  
+              }else{
+                $("#sc_s").hide(); 
+                $("#selall").prop('checked',false);//去除复选框选中状态 
+              }
+       });
+//-----------------------------------------------------------------删除已选
+       $(document).on('click',"#sc_s",function(){
+            var id_s='';
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               id_s=id_s+$(this).attr('service_id')+',';
+            });
+            var cd=(id_s.length)-1;
+            var id_s=id_s.substr(0,cd);
+            if(id_s!=''){
+              $.ajax({
+                url:'/service/service_qx',
+                type:'post',
+                dataType:'json',
+                data:{'id_s':id_s},
+                success:function(rc){
+                  if(rc.a1=='0'){
+                    location.href='/service/service_zse';
+                  }
+                  console.log(rc.a2);
+                }
+              });
+            }
+        });
+//-----------------------------------------------------------------
+        $(document).on('click','#cx',function(){
+          var service_show=$("#service_show>option:checked").val();
+          var service_title=$("#service_title").val();
+          $.ajax({
+            url:'/service/service_zse',
+            type:'post',
+            dataType:'html',
+            data:{'service_show':service_show,'service_title':service_title},  
+            success:function(rt){
+             $("#th").html(rt);
+            }                          
+          });
+          console.log(service_show,service_title);
+        });
+        return false;
 //-----------------------------------------------------------------             
     });
 </script>

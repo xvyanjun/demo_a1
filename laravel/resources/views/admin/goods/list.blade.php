@@ -41,10 +41,10 @@
                     <td>{{$v->goods_stock}}</td>
                     <td><img src="/{{$v->goods_img}}" width="80" height="60"></td>
                     <td>{{$v->goods_price}}</td>
-                    <td>{{$v->content}}</td>
+                    <td title="{{$v->content}}">{{mb_substr($v->content,0,6)}}</td>
                     <td>{{$v->goods_show?"是":"否"}}</td>
-                    <td>{{$v->goods_pack}}</td>
-                    <td>{{$v->goods_service}}</td>
+                    <td title="{{$v->goods_pack}}">{{mb_substr($v->goods_pack,0,6)}}</td>
+                    <td title="{{$v->goods_service}}">{{mb_substr($v->goods_service,0,6)}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->goods_time)}}</td>
                     <td class="text-center">
                         <a href="{{url('/admin/goods/upd/'.$v->goods_id)}}" class="btn bg-olive btn-xs">修改</a>

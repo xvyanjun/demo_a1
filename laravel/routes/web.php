@@ -139,6 +139,7 @@ Route::prefix('/nav')->middleware('checklogin')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
   Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
   Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
+  Route::any('nav_qx','a_1\demo_a2_contr@nav_qx');
   Route::any('nav_jd','a_1\demo_a2_contr@nav_jd');
   Route::any('nav_jd_s','a_1\demo_a2_contr@nav_jd_s');
   Route::any('nav_sce','a_1\demo_a2_contr@nav_sce');
@@ -150,6 +151,7 @@ Route::prefix('/service')->middleware('checklogin')->group(function(){
   Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
   Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
   Route::any('service_zse','a_1\demo_a2_contr@service_zse');
+  Route::any('service_qx','a_1\demo_a2_contr@service_qx');
   Route::any('service_jd','a_1\demo_a2_contr@service_jd');
   Route::any('service_jd_s','a_1\demo_a2_contr@service_jd_s');  
   Route::any('service_sce','a_1\demo_a2_contr@service_sce');
@@ -162,6 +164,7 @@ Route::prefix('/slide')->middleware('checklogin')->group(function(){
   Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
   Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
   Route::any('slide_zse','a_1\demo_a2_contr@slide_zse');
+  Route::any('slide_qx','a_1\demo_a2_contr@slide_qx');
   Route::any('slide_jd','a_1\demo_a2_contr@slide_jd');
   Route::any('slide_jd_s','a_1\demo_a2_contr@slide_jd_s');   
   Route::any('slide_sce','a_1\demo_a2_contr@slide_sce');
@@ -173,6 +176,7 @@ Route::prefix('/sku_name')->middleware('checklogin')->group(function(){
   Route::any('sku_name_tjq','a_1\demo_a2_contr@sku_name_tjq'); 
   Route::any('sku_name_tje','a_1\demo_a2_contr@sku_name_tje'); 
   Route::any('sku_name_zse','a_1\demo_a2_contr@sku_name_zse'); 
+  Route::any('sku_name_qx','a_1\demo_a2_contr@sku_name_qx');
   Route::any('sku_name_jd_s','a_1\demo_a2_contr@sku_name_jd_s');    
   Route::any('sku_name_sce','a_1\demo_a2_contr@sku_name_sce');
 });
@@ -181,6 +185,7 @@ Route::prefix('/sku_val')->middleware('checklogin')->group(function(){
   Route::any('sku_val_tjq','a_1\demo_a2_contr@sku_val_tjq'); 
   Route::any('sku_val_tje','a_1\demo_a2_contr@sku_val_tje'); 
   Route::any('sku_val_zse','a_1\demo_a2_contr@sku_val_zse'); 
+  Route::any('sku_val_qx','a_1\demo_a2_contr@sku_val_qx');
   Route::any('sku_val_jd_s','a_1\demo_a2_contr@sku_val_jd_s');   
   Route::any('sku_val_sce','a_1\demo_a2_contr@sku_val_sce');   
 });

@@ -39,6 +39,83 @@
                     </li>
                 </ul>
             </li>
+            
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>商品管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/goods/uploades" target="iframe">
+                            <i class="fa fa-circle-o"></i> 添加商品相册
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/uploadeslist" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品相册管理
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/create" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/goods/list" target="iframe">
+                            <i class="fa fa-circle-o"></i> 商品展示
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+              <li class="treeview">
+                 <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>分类管理</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="admin-login">
+                            <a href="/admin/cateadd" target="iframe">
+                                <i class="fa fa-circle-o"></i> 新增分类
+                            </a>
+                        </li>
+                    <li id="admin-login">
+                        <a href="/admin/cate" target="iframe">
+                            <i class="fa fa-circle-o"></i> 分类管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>品牌管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/brandadd" target="iframe">
+                            <i class="fa fa-circle-o"></i> 新增品牌
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/brand" target="iframe">
+                            <i class="fa fa-circle-o"></i> 品牌管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="treeview">
                 <a href="#">
@@ -58,29 +135,6 @@
                     <li id="admin-login">
                         <a href="/service/service_tjq" target="iframe">
                             <i class="fa fa-circle-o"></i> 咨询添加
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>轮播图管理</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                </a>
-                <ul class="treeview-menu">
-
-                    <li id="admin-login">
-                        <a href="/slide/slide_zse" target="iframe">
-                            <i class="fa fa-circle-o"></i> 轮播图列表
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/slide/slide_tjq" target="iframe">
-                            <i class="fa fa-circle-o"></i> 轮播图添加
                         </a>
                     </li>
                 </ul>
@@ -129,6 +183,31 @@
                 </ul>
             </li>
 
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>轮播图管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/slide/slide_zse" target="iframe">
+                            <i class="fa fa-circle-o"></i> 轮播图列表
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/slide/slide_tjq" target="iframe">
+                            <i class="fa fa-circle-o"></i> 轮播图添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -212,83 +291,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>分类管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li id="admin-login">
-                        <a href="/admin/cateadd" target="iframe">
-                            <i class="fa fa-circle-o"></i> 新增分类
-                        </a>
-                    </li>
 
-
-
-                    <li id="admin-login">
-                        <a href="/admin/cate" target="iframe">
-                            <i class="fa fa-circle-o"></i> 分类管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>品牌管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li id="admin-login">
-                        <a href="/admin/brandadd" target="iframe">
-                            <i class="fa fa-circle-o"></i> 新增品牌
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admin/brand" target="iframe">
-                            <i class="fa fa-circle-o"></i> 品牌管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>商品管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li id="admin-login">
-                        <a href="/admin/goods/uploades" target="iframe">
-                            <i class="fa fa-circle-o"></i> 添加商品相册
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admin/goods/uploadeslist" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品相册管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admin/goods/create" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品添加
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admin/goods/list" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品展示
-
-                        </a>
-                    </li>
-                </ul>
-            </li>
+           
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>

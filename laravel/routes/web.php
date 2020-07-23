@@ -105,7 +105,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
 });
 
 //分类
-Route::prefix('/admin')->middleware('checklogin')->group(function(){
+Route::prefix('/admin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
     Route::any('/cateadd', 'admin\CateController@addshow');//添加页
     Route::any('/cateadds', 'admin\CateController@add');//添加

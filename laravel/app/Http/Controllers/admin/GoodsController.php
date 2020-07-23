@@ -151,6 +151,57 @@ class GoodsController extends Controller
        $all=$request->except("_token");
 //        dd($all);
        $all['goods_time']=time();
+       //判断商品名称不能为空
+       if(empty($all['goods_name'])){
+            echo '
+            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script>
+                alert("商品名称不能为空");
+                window.location.href="/admin/goods/create"
+            </script>';
+            exit;
+       }
+       $str="/^[0-9]*$/";
+        //验证是否为空正则
+        if(empty($all['goods_stroe'])){
+            echo '
+            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script>
+                alert("库存不能为空");
+                window.location.href="/admin/goods/create"
+            </script>';
+             exit;
+        }else if(!preg_match($str,$all['goods_stroe'])){
+            echo '
+            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script>
+                alert("必须是纯数字");
+                window.location.href="/admin/goods/create"
+            </script>';
+            exit;
+        }
+        if(empty($all['goods_price'])){
+            echo '
+            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script>
+                alert("价格不能为空");
+                window.location.href="/admin/goods/create"
+            </script>';
+            exit;
+        }else if(!preg_match($str,$all['goods_price'])){
+            echo '
+            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script>
+                alert("价格必须是纯数字");
+                window.location.href="/admin/goods/create"
+            </script>';
+            exit;
+        }
        if(request()->hasFile('goods_img')){
         $all['goods_img']=$this->uplode('goods_img');
         }

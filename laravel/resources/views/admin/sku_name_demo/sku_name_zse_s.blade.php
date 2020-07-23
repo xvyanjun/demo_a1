@@ -1,6 +1,6 @@
  @foreach($xxi as $c=>$v)
                 <tr>
-                    <td><input  type="checkbox"></td>
+                    <td><input  name='ck' type="checkbox" attr_id="{{$v['attr_id']}}"></td>
                     <td>{{$v['attr_id']}}</td>
                     <td id='eva_jd_s' attr_id="{{$v['attr_id']}}">{{$v['attr_name']}}</td>
                     <td>{{date('Y-m-d H:i',$v['attr_time'])}}</td>

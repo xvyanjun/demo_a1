@@ -1,6 +1,6 @@
  @foreach($xxi as $c=>$v)
                 <tr>
-                    <td><input  type="checkbox"></td>
+                    <td><input  name='ck' type="checkbox" service_id="{{$v['service_id']}}"></td>
                     <td>{{$v['service_id']}}</td>
                     <td id='eva_jd_s' service_id="{{$v['service_id']}}">{{$v['service_title']}}</td>
                     <td>{{$v['service_titles']}}</td>

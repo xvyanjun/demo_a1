@@ -28,7 +28,7 @@
                             @foreach($power as $k=>$v)
                                 <span style="display:inline-block">
                                     <div class="form-group form-check" style="margin:0 10px;">
-                                        <input type="checkbox" class="form-check-input power_id" id="exampleCheck1" value="{{$v['power_id']}}">
+                                        <input type="checkbox" class="form-check-input power_id" name="power_id" id="exampleCheck1" value="{{$v['power_id']}}">
                                         <label class="form-check-label" for="exampleCheck1">{{$v['power_name']}}</label>
                                     </div>
                                 </span>

@@ -83,7 +83,7 @@ class RoleController extends Controller
             PowerRole::where("role_id",$v['role_id'])->delete();
         }
 
-        // print_r($res);exit;
+//         print_r($res);exit;
         $model=new PowerRole;
         foreach($res["power_id"] as $k=>$v){
             $data=[

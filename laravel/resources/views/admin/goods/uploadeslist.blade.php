@@ -56,10 +56,16 @@
                 </td>
             </tr>
             @endforeach
+            <tr >
+                <th class="sorting_asc" colspan='5'>
+                <center>
 
-            <div class="pull-right paginate">
-                {{$info->links()}}
-            </div>
+                    {{$info->links()}}
+
+                </center>
+                </th>
+            </tr>
+            
 
             </tbody>
         </table>

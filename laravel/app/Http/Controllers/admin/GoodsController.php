@@ -97,7 +97,7 @@ class GoodsController extends Controller
      */
     public function uploadeslist(){
         $model=new Shop_album();
-        $info=$model::where(['is_del'=>1])->paginate(3);
+        $info=$model::where(['is_del'=>1])->paginate(13);
 
         $model=new Goods();
         $goods=$model::get()->toArray();

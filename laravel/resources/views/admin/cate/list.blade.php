@@ -47,9 +47,9 @@
                     {{ str_repeat("|--",$v['level']) }}
                     {{$v['cate_name']}}
                 </td>
-                <td>
+                <td> 
                     @if($v['p_id']==0)
-                        顶级分类
+                            顶级分类
                     @else
                         @foreach($cate as $key=>$value)
                             @if($v['p_id']==$value['cate_id'])

@@ -7,11 +7,22 @@
     <div class="box-header with-border">
         <h3 class="box-title">商品列表</h3>
     </div>
-
+<div class="pull-left">
+                <div class="form-group form-inline">
+                    <div class="btn-group">
+                        <a href="/admin/goods/create" class="btn btn-default" title="添加">
+                            <i class="fa fa-file-o"></i>添加商品
+                        </a>
+                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                    </div>
+                </div>
+            </div>
+<center>
 <form>
 <input type="text" name="goods_name" placeholder="请输入商品名称" value="{{$query['goods_name']??''}}">
 <input type="submit" value="搜索">
 </form>
+</center>
     <div class="box-body">
         <!-- 数据表格 -->
         <div class="table-box">
@@ -38,7 +49,7 @@
                 @foreach($res as $k=>$v)
                 <tr goods_id="{{$v->goods_id}}">
                     <td>{{$v->goods_id}}</td>
-                    <td>{{$v->goods_name}}</td>
+                    <td title="{{$v->goods_name}}">{{mb_substr($v->goods_name,0,6)}}...</td>
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
                     <td>
@@ -50,7 +61,7 @@
                         <span id="price">{{$v->goods_price}}</span>
                     </td>
                     <td title="{{$v->content}}">{{mb_substr($v->content,0,6)}}...</td>
-                    <td id="eva_jd" goods_id="{{$v->goods_id}}">{{$v->goods_show?"是":"否"}}</td>
+                    <td id="eva_jd" goods_id="{{$v->goods_id}}">{{$v->goods_show=='1'?"是":"否"}}</td>
                     <td title="{{$v->goods_pack}}">{{mb_substr($v->goods_pack,0,6)}}...</td>
                     <td title="{{$v->goods_service}}">{{mb_substr($v->goods_service,0,6)}}...</td>
                     <td>{{date("Y-m-d H:i:s",$v->goods_time)}}</td>
@@ -109,9 +120,9 @@ $(document).on("click","#eva_jd",function(){
         function(res){
             if(res.code==00000){
                 if(goods_show=="是"){
-                    goods_show.text("否");
+                    _this.text("否");
                 }else{
-                    goods_show.text("是");
+                    _this.text("是");
                 }
             }
         },"json"
@@ -122,7 +133,8 @@ $(document).on("click","#eva_jd",function(){
 //极点技改商品库存
 $(document).on("click","#stock",function(){
     var goods_stock=$(this).text();
-    $(this).parent().html("<input type='text' class='input_name' value="+goods_stock+">");
+    $(this).parent().html("<input type='text' class='input_name' goods_stock="+goods_stock+" value="+goods_stock+">");
+    $(".input_name").focus();
 })
 $(document).on("blur",".input_name",function(){
     var _this=$(this);
@@ -135,7 +147,10 @@ $(document).on("blur",".input_name",function(){
         {goods_id:goods_id,goods_stock:goods_stock},
         function(res){
             if(res.code==00000){
-                _this.parent().html("<span class='span_name'>"+goods_stock+"</span>");
+                _this.parent().html("<span id='stock'>"+goods_stock+"</span>");
+            }else{
+               var aa=_this.attr("goods_stock");
+               _this.parent().html("<span id='stock'>"+aa+"</span>");
             }
         },"json"
     )
@@ -144,7 +159,8 @@ $(document).on("blur",".input_name",function(){
 //即点技改商品价格
 $(document).on("click","#price",function(){
     var goods_price=$(this).text();
-    $(this).parent().html("<input type='text' class='input_price' value="+goods_price+">");
+    $(this).parent().html("<input type='text' class='input_price' goods_price="+goods_price+" value="+goods_price+">");
+    $(".input_price").focus();
 })
 $(document).on("blur",".input_price",function(){
     var _this=$(this);
@@ -157,7 +173,10 @@ $(document).on("blur",".input_price",function(){
         {goods_id:goods_id,goods_price:goods_price},
         function(res){
             if(res.code==00000){
-                _this.parent().html("<span class='span_name'>"+goods_price+"</span>");
+                _this.parent().html("<span id='price' >"+goods_price+"</span>");
+            }else{
+                var aa=_this.attr("goods_price");
+               _this.parent().html("<span id='price'>"+aa+"</span>");
             }
         },"json"
     )

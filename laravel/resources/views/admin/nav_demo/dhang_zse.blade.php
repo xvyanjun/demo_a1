@@ -20,11 +20,7 @@
                         <a href="/nav/nav_tjq" class="btn btn-default" title="添加">
                             <i class="fa fa-file-o"></i>添加导航
                         </a>
-                        <!-- <button type="button" class="btn btn-default" title="添加" ><i class="fa fa-file-o"></i>添加</button> -->
-                        <!-- <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-                        <button type="button" class="btn btn-default" title="提交审核" ><i class="fa fa-check"></i> 提交审核</button>
-                        <button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
-                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button> -->
+                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                     </div>
                 </div>
             </div>

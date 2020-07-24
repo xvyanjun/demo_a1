@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="/admin/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/admin/css/pages-register.css" />
 </head>
-
 <body>
 	<div class="register py-container ">
 		<!--head-->

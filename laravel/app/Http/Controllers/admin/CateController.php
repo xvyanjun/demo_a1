@@ -200,6 +200,7 @@ class CateController extends Controller
      */
     public function updateshow(Request $request){
         $cate_id=$request->post('cate_id');
+        $cate_show=$request->post('cate_show');
         if(empty($cate_id)){
             $arr=[
                 'code'=>'300',
@@ -209,13 +210,13 @@ class CateController extends Controller
             return json_encode($arr,JSON_UNESCAPED_UNICODE);
         }
         $model=new Cate();
-        $cate=$model::where(['cate_id'=>$cate_id])->first();
-        if($cate['cate_show']==1){
+
+        if($cate_show==1){
             $cate_show=2;
-        }elseif($cate['cate_show']==2){
+        }elseif($cate_show==2){
             $cate_show=1;
         }
-//        dd($cate['cate_show']);
+        $cate=$model::where(['cate_id'=>$cate_id])->first();
         $cate->cate_show=$cate_show;
         if($cate->save()){
             $arr=[

@@ -14,9 +14,17 @@ class BrandController extends Controller
      * 品牌展示
      */
     public function index(Request $request){
+        $brand_name=$request->brand_name;
+        $where=[
+            ['brand_del','=',1],
+        ];
+        if($brand_name){
+            $where[]=['brand_name','like','%'.$brand_name.'%'];
+        }
         $model=new Brand();
-        $res=$model::where(['brand_del'=>1])->paginate(5);
-        return view('admin.brand.list',['res'=>$res]);
+        $res=$model::where($where)->paginate(5);
+        $query=request()->all();
+        return view('admin.brand.list',['res'=>$res,'query'=>$query]);
     }
 
     /**

@@ -17,6 +17,10 @@ class RoleController extends Controller
     //角色执行
     public function add(Request $request){
         $data=$request->all();
+        if(empty($data['role_name'])){
+            return ['code'=>"000009","msg"=>"角色名称不能为空"];
+            exit;
+        }
         $rw=Role::where("role_name",$data['role_name'])->first();
         if($rw){
             return ['code'=>"000001","msg"=>"已有改名字"];

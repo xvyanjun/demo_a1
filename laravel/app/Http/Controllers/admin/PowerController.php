@@ -14,9 +14,17 @@ class PowerController extends Controller
     //权限执行
     public function add(Request $request){
         $data=$request->all();
+        if(empty($data['power_name'])){
+            return ['code'=>"000009","msg"=>"权限名称不能为空"];
+            exit;
+        }
+        if(empty($data['power_url'])){
+            return ['code'=>"000009","msg"=>"权限地址不能为空"];
+            exit;
+        }
         $re=Power::where("power_name",$data['power_name'])->first();
         if($re){
-            return ['code'=>"000001","msg"=>"以后改名字"];
+            return ['code'=>"000001","msg"=>"以有改名字"];
             exit;
         }
         $data['power_time']=time();
@@ -29,7 +37,7 @@ class PowerController extends Controller
     }
     //权限展示页面
     public function list(Request $request){
-        $res=Power::where(["power_del"=>1])->paginate(2);
+        $res=Power::where(["power_del"=>1])->paginate(10);
         return view("admin.power.list",compact("res"));
     }
     //权限软删除

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Goods;
 use App\Models\Brand;
 use App\Models\Cate;
+use App\Models\shop_property;
+
 class GoodsController extends Controller
 {
 
@@ -144,7 +146,19 @@ class GoodsController extends Controller
     public function create(Request $request){
         $brand=Brand::get();
         $cate=Cate::get();
+        $cate=$this->cate_list($cate);
         return view("admin.goods.create",compact("brand","cate"));
+    }
+    public function cate_list($res,$pid=0,$level=0){
+        static $data=[];
+        foreach ($res as $k=>$v){
+            if($v['p_id']==$pid){
+                $v['level']=$level;
+                $data[]=$v;
+                self::cate_list($res,$v['cate_id'],$v['level']+1);
+            }
+        }
+        return $data;
     }
     //商品执行
     public function add(Request $request){
@@ -164,7 +178,7 @@ class GoodsController extends Controller
        }
        $str="/^[0-9]*$/";
         //验证是否为空正则
-        if(empty($all['goods_stroe'])){
+        if(empty($all['goods_stock'])){
             echo '
             <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -173,7 +187,7 @@ class GoodsController extends Controller
                 window.location.href="/admin/goods/create"
             </script>';
              exit;
-        }else if(!preg_match($str,$all['goods_stroe'])){
+        }else if(!preg_match($str,$all['goods_stock'])){
             echo '
             <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -232,13 +246,27 @@ class GoodsController extends Controller
         $res=Goods::leftjoin("shop_brand","shop_goods.brand_id","=","shop_brand.brand_id")
                     ->leftjoin("shop_cate","shop_cate.cate_id","=","shop_goods.cate_id")
                     ->where($where)
-                    ->paginate(1);
+                    ->paginate(10);
         $query=request()->all();
         return view("admin.goods.list",compact("res","query"));
     }
     //商品软删除
     public function del(Request $request){
+        $xx=request()->all();
         $goods_id=$request->goods_id;
+        
+        $a1=array_key_exists('goods_id',$xx);
+        if($a1==false){
+            $fh=['code'=>'000003','msg'=>'参数缺失'];
+            return json_encode($fh);exit;
+        }
+        $sf_a1=Shop_album::where([['goods_id',$xx['goods_id']],['is_del','1']])->first();
+        $sf_a2=shop_property::where([['goods_id',$xx['goods_id']],['property_del','1']])->first();
+        if($sf_a1==true||$sf_a2==true){
+            $fh=['code'=>'000006','msg'=>'相册或sku关联表有关联数据不可删除'];
+            return json_encode($fh);exit;
+        }
+
         $res=Goods::where("goods_id",$goods_id)->update(['goods_del'=>2]);
         if($res){
             return ['code'=>"000000","msg"=>"商品软删除成功"];
@@ -293,6 +321,8 @@ class GoodsController extends Controller
         $res = Goods::where("goods_id",$id)->update(["goods_stock"=>$goods_stock]);
         if($res){
             return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }else{
+            return json_encode(["code"=>"00001","msg"=>"no"]);
         }
     }
     //即点即改修改价格
@@ -303,6 +333,8 @@ class GoodsController extends Controller
         $res = Goods::where("goods_id",$id)->update(["goods_price"=>$goods_price]);
         if($res){
             return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }else{
+            return json_encode(["code"=>"00001","msg"=>"no"]);
         }
     }
 }

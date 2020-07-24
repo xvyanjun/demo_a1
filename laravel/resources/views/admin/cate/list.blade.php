@@ -47,14 +47,18 @@
                     {{ str_repeat("|--",$v['level']) }}
                     {{$v['cate_name']}}
                 </td>
-                <td>
-                    @foreach($cate as $key=>$value)
-                        @if($v['p_id']==0)
+                <td> 
+                    @if($v['p_id']==0)
                             顶级分类
-                        @elseif($v['p_id']==$value['cate_id'])
+                    @else
+                    @foreach($cate as $key=>$value)
+                        @if($v['p_id']==$value['cate_id'])
+                        
                             {{$value['cate_name']}}
+                        
                         @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </td>
                 <td>{{date('Y-m-d H:i:s',$v['cate_time'])}}</td>
                 <td class="cate_show">

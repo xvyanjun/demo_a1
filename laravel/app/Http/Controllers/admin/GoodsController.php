@@ -164,7 +164,7 @@ class GoodsController extends Controller
        }
        $str="/^[0-9]*$/";
         //验证是否为空正则
-        if(empty($all['goods_stroe'])){
+        if(empty($all['goods_stock'])){
             echo '
             <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -173,7 +173,7 @@ class GoodsController extends Controller
                 window.location.href="/admin/goods/create"
             </script>';
              exit;
-        }else if(!preg_match($str,$all['goods_stroe'])){
+        }else if(!preg_match($str,$all['goods_stock'])){
             echo '
             <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>

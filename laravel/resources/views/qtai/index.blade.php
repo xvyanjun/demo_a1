@@ -5,7 +5,6 @@
 	<div class="sort">
 		<div class="py-container">
 			<div class="yui3-g SortList ">
-				<!-- eva -->
 				<div class="yui3-u Left all-sort-list">
 					<div class="all-sort-list2">
 						<div class="item bo">
@@ -394,55 +393,44 @@
 						</div>
 					</div>
 				</div>
-				<!-- eva -->
 				<div class="yui3-u Center banerArea">
 					<!--banner轮播-->
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 					  <ol class="carousel-indicators">
-					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					  	@foreach($slide_s as $c_1=>$v_1)
+                          <li data-target="#myCarousel" data-slide-to="{{$c_1}}" class="{{$c_1=='0'?'active':''}}"></li>
+                        @endforeach
+<!-- 					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li>
+					    <li data-target="#myCarousel" data-slide-to="2"></li> -->
 					  </ol>
 					  <div class="carousel-inner">
-					    <div class="active item">
-					    <a href="http://baidu2.wypxj.com/">
-					    	<img src="qtai/img/banner1.jpg"  />
-					      </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="qtai/img/banner2.jpg"  />
-					     </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="qtai/img/banner3.jpg"  />
-						</a>
-					     
-					    </div>
-					  </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
+                        
+                        @foreach($slide_s as $c=>$v)
+                          <div class="{{$c=='0'?'active item':'item'}}">
+					        <a href="{{$v['slide_url']}}">
+					    	  <img src="{{$v['slide_img']}}"  />
+					        </a>
+					      </div>
+                        @endforeach
+
+					  </div>
+					  <a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a>
+					  <a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
 					</div>
 				</div>
 				<div class="yui3-u Right">
 					<div class="news">
-						<h4><em class="fl">品优购快报</em><span class="fr tip">更多 ></span></h4>
+						<h4><em class="fl">品优购快报</em><span class="fr tip">咨询列表<!-- 更多 > --></span></h4>
 						<div class="clearix"></div>
 						<ul class="news-list unstyled">
+
+							@foreach($service_s as $f=>$g)
 							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
+								<span class="bold">[{{$g['service_title']}}]</span>
+                                <span title="{{$g['service_text']}}">{{$g['service_titles']}}</span>
 							</li>
-							<li>
-								<span class="bold">[公告]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[公告]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
-							</li>
+							@endforeach
 						</ul>
 					</div>
 					<ul class="yui3-g Lifeservice">
@@ -515,7 +503,7 @@
 						</div>
 					</div>
 					<div class="ads">
-						<img src="qtai/img/ad1.png" />
+						<img src="/qtai/img/ad1.png" />
 					</div>
 				</div>
 			</div>
@@ -527,21 +515,21 @@
 			<ul class="yui3-g Recommend">
 				<li class="yui3-u-1-6  clock">
 					<div class="time">
-						<img src="qtai/img/clock.png" />
+						<img src="/qtai/img/clock.png" />
 						<h3>今日推荐</h3>
 					</div>
 				</li>
 				<li class="yui3-u-5-24">
-					<a href="list.html" target="_blank"><img src="qtai/img/today01.png" /></a>
+					<a href="list.html" target="_blank"><img src="/qtai/img/today01.png" /></a>
 				</li>
 				<li class="yui3-u-5-24">
-					<img src="qtai/img/today02.png" />
+					<img src="/qtai/img/today02.png" />
 				</li>
 				<li class="yui3-u-5-24">
-					<img src="qtai/img/today03.png" />
+					<img src="/qtai/img/today03.png" />
 				</li>
 				<li class="yui3-u-5-24">
-					<img src="qtai/img/today04.png" />
+					<img src="/qtai/img/today04.png" />
 				</li>
 			</ul>
 		</div>
@@ -559,14 +547,14 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl huozhe">
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
 									<h3>¥116.00</h3>
 								</div>
 							</dd>
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
 									<h3>¥116.00</h3>
@@ -577,14 +565,14 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl jilu">
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_03.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_03.png" alt="" /></a>
 								<div class="like-text">
 									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
 									<h3>¥116.00</h3>
 								</div>
 							</dd>
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
 									<h3>¥116.00</h3>
@@ -595,7 +583,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl tuhua">
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>捷波朗 </p>
 									<p>（jabra）BOOSI劲步</p>
@@ -603,7 +591,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="" class="pic"><img nsrc="assets/qtai/img/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img nsrc="assets//qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>三星（G5500）</p>
 									<p>移动联通双网通</p>
@@ -615,14 +603,14 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl huozhe">
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
 									<h3>¥116.00</h3>
 								</div>
 							</dd>
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
+								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
 									<h3>¥116.00</h3>
@@ -633,7 +621,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl jilu">
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_03.png" alt="" /></a>
+								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_03.png" alt="" /></a>
 								<div class="like-text">
 									<p>捷波朗 </p>
 									<p>（jabra）BOOSI劲步</p>
@@ -641,7 +629,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
+								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>欧普</p>
 									<p>JYLZ08面板灯平板灯铝</p>
@@ -653,7 +641,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl tuhua">
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
+								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>三星（G5500）</p>
 									<p>移动联通双网通</p>
@@ -661,7 +649,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets/qtai/img/like_02.png" alt="" /></a>
+								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets//qtai/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>韩国所望紧致湿润精华露400ml</p>
 									<h3>¥896.00</h3>
@@ -682,42 +670,42 @@
 			<div class="clearfix yui3-g Interest">
 				<span class="x-line"></span>
 				<div class="yui3-u row-405 Interest-conver">
-					<img src="qtai/img/interest01.png" />
+					<img src="/qtai/img/interest01.png" />
 				</div>
 				<div class="yui3-u row-225 Interest-conver-split">
 					<h5>好东西</h5>
-					<img src="qtai/img/interest02.png" />
-					<img src="qtai/img/interest03.png" />
+					<img src="/qtai/img/interest02.png" />
+					<img src="/qtai/img/interest03.png" />
 				</div>
 				<div class="yui3-u row-405 Interest-conver-split blockgary">
 					<h5>品牌街</h5>
 					<div class="split-bt">
-						<img src="qtai/img/interest04.png" />
+						<img src="/qtai/img/interest04.png" />
 					</div>
 					<div class="x-img fl">
-						<img src="qtai/img/interest05.png" />
+						<img src="/qtai/img/interest05.png" />
 					</div>
 					<div class="x-img fr">
-						<img src="qtai/img/interest06.png" />
+						<img src="/qtai/img/interest06.png" />
 					</div>
 				</div>
 				<div class="yui3-u row-165 brandArea">
 					<span class="brand-yline"></span>
 					<ul class="yui3-g brand-list">
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand01.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand02.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand03.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand04.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand05.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand06.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand07.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand08.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand09.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand10.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand11.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand12.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand13.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand03.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand01.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand02.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand03.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand04.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand05.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand06.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand07.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand08.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand09.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand10.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand11.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand12.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand13.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand03.png" /></li>
 					</ul>
 				</div>
 			</div>
@@ -766,7 +754,7 @@
 								<li>滚筒洗衣机</li>
 								<li>电热水器</li>
 							</ul>
-							<img src="qtai/img/floor-1-1.png" />
+							<img src="/qtai/img/floor-1-1.png" />
 						</div>
 						<div class="yui3-u row-330 floorBanner">
 							<div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
@@ -777,13 +765,13 @@
 								</ol>
 								<div class="carousel-inner">
 									<div class="active item">
-										<img src="qtai/img/floor-1-b01.png">
+										<img src="/qtai/img/floor-1-b01.png">
 									</div>
 									<div class="item">
-										<img src="qtai/img/floor-1-b02.png">
+										<img src="/qtai/img/floor-1-b02.png">
 									</div>
 									<div class="item">
-										<img src="qtai/img/floor-1-b03.png">
+										<img src="/qtai/img/floor-1-b03.png">
 									</div>
 								</div>
 								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
@@ -793,22 +781,22 @@
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-2.png" />
+								<img src="/qtai/img/floor-1-2.png" />
 							</div>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-3.png" />
+								<img src="/qtai/img/floor-1-3.png" />
 							</div>
 						</div>
 						<div class="yui3-u row-218 split">
-							<img src="qtai/img/floor-1-4.png" />
+							<img src="/qtai/img/floor-1-4.png" />
 						</div>
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-5.png" />
+								<img src="/qtai/img/floor-1-5.png" />
 							</div>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-6.png" />
+								<img src="/qtai/img/floor-1-6.png" />
 							</div>
 						</div>
 					</div>
@@ -876,7 +864,7 @@
 								<li>滚筒洗衣机</li>
 								<li>电热水器</li>
 							</ul>
-							<img src="qtai/img/floor-1-1.png" />
+							<img src="/qtai/img/floor-1-1.png" />
 						</div>
 						<div class="yui3-u row-330 floorBanner">
 							<div id="floorCarousell" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
@@ -887,13 +875,13 @@
 								</ol>
 								<div class="carousel-inner">
 									<div class="active item">
-										<img src="qtai/img/floor-1-b01.png">
+										<img src="/qtai/img/floor-1-b01.png">
 									</div>
 									<div class="item">
-										<img src="qtai/img/floor-1-b02.png">
+										<img src="/qtai/img/floor-1-b02.png">
 									</div>
 									<div class="item">
-										<img src="qtai/img/floor-1-b03.png">
+										<img src="/qtai/img/floor-1-b03.png">
 									</div>
 								</div>
 								<a href="#floorCarousell" data-slide="prev" class="carousel-control left">‹</a>
@@ -903,22 +891,22 @@
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-2.png" />
+								<img src="/qtai/img/floor-1-2.png" />
 							</div>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-3.png" />
+								<img src="/qtai/img/floor-1-3.png" />
 							</div>
 						</div>
 						<div class="yui3-u row-218 split">
-							<img src="qtai/img/floor-1-4.png" />
+							<img src="/qtai/img/floor-1-4.png" />
 						</div>
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-5.png" />
+								<img src="/qtai/img/floor-1-5.png" />
 							</div>
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-6.png" />
+								<img src="/qtai/img/floor-1-6.png" />
 							</div>
 						</div>
 					</div>
@@ -952,21 +940,20 @@
 		<div class="py-container">
 			<ul class="Brand-list blockgary">
 				<li class="Brand-item">
-					<img src="qtai/img/brand_21.png" />
+					<img src="/qtai/img/brand_21.png" />
 				</li>
-				<li class="Brand-item"><img src="qtai/img/brand_03.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_05.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_07.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_09.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_11.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_13.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_15.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_17.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_19.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_03.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_05.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_07.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_09.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_11.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_13.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_15.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_17.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_19.png" /></li>
 			</ul>
 		</div>
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
-	<!-- eva_eva -->
-	@endsection 
+@endsection 

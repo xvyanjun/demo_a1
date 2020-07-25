@@ -5,19 +5,14 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
-	 <link rel="icon" href="assets/qtai/img/favicon.ico">
+	 <link rel="icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-cart.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-list.css" />
-	<link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
-	<link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-item.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-zoom.css" />
+    <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -77,7 +72,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="hotwords">
+<!-- 						<div class="hotwords">
 							<ul>
 								<li class="f-item">品优购首发</li>
 								<li class="f-item">亿元优惠</li>
@@ -88,7 +83,7 @@
 								<li class="f-item">办公用品</li>
 
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
@@ -112,7 +107,7 @@
 						<h4>全部商品分类</h4>
 					</div>
 					<div class="yui3-u Center navArea">
-						<ul class="nav">
+						<ul class="nav" id='nav_s'>
 							<li class="f-item">服装城</li>
 							<li class="f-item">美妆馆</li>
 							<li class="f-item">品优超市</li>
@@ -125,14 +120,38 @@
 					</div>
 					<div class="yui3-u Right"></div>
 				</div>
+				<script>					
+					$(function(){
+//----------------------------------------------------------------						
+						$.ajax({
+							url:'/dhang_jz',
+							type:'post',
+							dataType:'json',
+							success:function(jk){
+							   var pj='';
+							   var cd=jk.length;
+                               for(var e1=0;e1<=cd-1;e1++){
+                               	pj=pj+"<li class='f-item' nav_url='"+jk[e1]['nav_url']+"' id='nav_dh'>"+jk[e1]['nav_name']+"</li>";
+                               }
+                               $("#nav_s").empty().append(pj);
+							}
+						});
+//----------------------------------------------------------------
+                        $(document).on('click','#nav_dh',function(){
+                        	var nav_url=$(this).attr('nav_url');
+                        	    location.href=nav_url;
+                        });
+//----------------------------------------------------------------						
+					});
+				</script>
 			</div>
 		</div>
 	</div>
-	<!-- eva_eva -->
 </div>
+<!-- eva -->
 @yield('content')
-<!-- eva_zhong -->
-<div class="clearfix footer"><!--.....-->
+<!-- eva -->
+<div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
 			<div class="Mod-service">
@@ -239,7 +258,7 @@
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="qtai/img/wx_cz.jpg">
+						<img src="/qtai/img/wx_cz.jpg">
 					</div>
 				</div>
 			</div>
@@ -352,12 +371,12 @@
 							<div class="jt-history-wrap">
 								<ul>
 									<!--<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src=".portal/qtai/img/like_03.png" height="100" width="100" /> </a>
+										<a href="#" class="img-wrap"> <img src=".portal//qtai/img/like_03.png" height="100" width="100" /> </a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
 									</li>
 									<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="portal/qtai/img/like_02.png" height="100" width="100" /></a>
+										<a href="#" class="img-wrap"> <img src="portal//qtai/img/like_02.png" height="100" width="100" /></a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
 									</li>-->

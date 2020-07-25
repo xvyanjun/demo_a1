@@ -421,7 +421,7 @@
 				</div>
 				<div class="yui3-u Right">
 					<div class="news">
-						<h4><em class="fl">品优购快报</em><span class="fr tip"><!-- 更多 > --></span></h4>
+						<h4><em class="fl">品优购快报</em><span class="fr tip">咨询列表<!-- 更多 > --></span></h4>
 						<div class="clearix"></div>
 						<ul class="news-list unstyled">
 

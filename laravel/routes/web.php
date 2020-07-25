@@ -24,17 +24,14 @@ use Illuminate\Support\Facades\Route;
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
 
-
+//---------------------------------------------------------
 //前台
 Route::any('/','index\IndexController@index');
-
 //---------------------------------------------------------导航
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------楼层左侧
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------前台首页
-//---------------------------------------------------------
-Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------
@@ -112,7 +109,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
     Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
 });
-
+//---------------------------------------------------------
 //分类
 Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
@@ -221,6 +218,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::get('/goods/ajaxname', 'admin\GoodsController@ajaxname');//商品是库存极点技改
     Route::get('/goods/ajaxprice', 'admin\GoodsController@ajaxprice');//商品是价格极点技改
 });
+//---------------------------------------------------------
 //sku关联字段
 Route::prefix('/admin')->group(function(){
     Route::any('/skug/sku', 'admin\SkuController@sku');//商品属性展示
@@ -230,3 +228,4 @@ Route::prefix('/admin')->group(function(){
     Route::any('/skug/upd/{id}', 'admin\SkuController@upd');//商品属性修改展示
     Route::any('/skug/updAdd', 'admin\SkuController@updAdd');//商品属性修改执行
 });
+//---------------------------------------------------------

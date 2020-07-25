@@ -35,7 +35,7 @@ public function index(){
   	$v['cate_to']=$cate_s_s;
   	$goods_hits=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->limit(6)->get();
   	$v['cate_hits_desc']=$goods_hits;
-    $goods_s=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->limit(3)->get();
+    $goods_s=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->limit(5)->get();
     $v['cate_goods']=$goods_s;
   }
 //..............................

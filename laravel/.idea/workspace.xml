@@ -143,8 +143,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="198" />
-    <option name="y" value="61" />
+    <option name="x" value="14" />
+    <option name="y" value="23" />
     <option name="width" value="1801" />
     <option name="height" value="935" />
   </component>
@@ -347,7 +347,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../qiyezhan" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sev" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -405,7 +405,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="198" y="61" width="1801" height="935" extended-state="1" />
+    <frame x="14" y="23" width="1801" height="935" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20739457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

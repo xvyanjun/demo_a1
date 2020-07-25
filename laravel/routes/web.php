@@ -24,9 +24,16 @@ use Illuminate\Support\Facades\Route;
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
 
-//---------------------------------------------------------前台首页
+
+//前台
 Route::any('/','index\IndexController@index');
-Route::any('/index/cate_list','index\IndexController@cate_list');//首页分类子类
+
+//---------------------------------------------------------导航
+Route::any('/dhang_jz','index\IndexController@dhang_jz');
+//---------------------------------------------------------楼层左侧
+Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
+//---------------------------------------------------------前台首页
+
 //---------------------------------------------------------
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------

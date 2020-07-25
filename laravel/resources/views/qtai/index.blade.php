@@ -36,9 +36,7 @@
 					  	@foreach($slide_s as $c_1=>$v_1)
                           <li data-target="#myCarousel" data-slide-to="{{$c_1}}" class="{{$c_1=='0'?'active':''}}"></li>
                         @endforeach
-<!-- 					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li> -->
+
 					  </ol>
 					  <div class="carousel-inner">
                         
@@ -173,119 +171,19 @@
 			</div>
 			<div class="bd">
 				<ul class="clearfix yui3-g Favourate picLB" id="picLBxxl">
+				@foreach($history_goods as $k=>$v)
 					<li class="yui3-u-1-6">
 						<dl class="picDl huozhe">
 							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
+								<a href="" class="pic"><img src="/{{$v['goods_img']}}" alt="" /></a>
 								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
+									<p>{{$v['goods_name']}}</p>
+									<h3>¥{{$v['goods_price']}}</h3>
 								</div>
 							</dd>
 						</dl>
 					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl jilu">
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_03.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl tuhua">
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>捷波朗 </p>
-									<p>（jabra）BOOSI劲步</p>
-									<h3>¥236.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img nsrc="assets//qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>三星（G5500）</p>
-									<p>移动联通双网通</p>
-									<h3>¥566.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl huozhe">
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl jilu">
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_03.png" alt="" /></a>
-								<div class="like-text">
-									<p>捷波朗 </p>
-									<p>（jabra）BOOSI劲步</p>
-									<h3>¥236.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>欧普</p>
-									<p>JYLZ08面板灯平板灯铝</p>
-									<h3>¥456.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl tuhua">
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="/qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>三星（G5500）</p>
-									<p>移动联通双网通</p>
-									<h3>¥566.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets//qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>韩国所望紧致湿润精华露400ml</p>
-									<h3>¥896.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
+				@endforeach	
 				</ul>
 			</div>
 		</div>
@@ -341,16 +239,17 @@
 		</div>
 	</div>
 <!-- 楼层——eva -->
+<input type="hidden" id='cd' value="{{count($cate_s)}}">
 @foreach($cate_s as $t_a1=>$y_a1)
-<div id="floor-1" class="floor">
+<div id="floor-1" class="floor" l_ceng="lou_{{$t_a1+1}}">
 		<div class="py-container">
 			<div class="title floors">
-				<h3 class="fl">{{$y_a1['cate_name']}}</h3>
+				<h3 class="fl"><span>{{$t_a1+1}}F   </span>{{$y_a1['cate_name']}}</h3>
 				<div class="fr">
 					<ul class="sui-nav nav-tabs">
 
                         @foreach($y_a1['cate_to'] as $h1=>$h2)
-                        <li class="{{$h1==0?'active':''}}">
+                        <li ><!--class="{{$h1==0?'active':''}}"-->
 							<a href="#tab2" data-toggle="tab">{{$h2['cate_name']}}</a>
 						</li>
                         @endforeach
@@ -367,322 +266,69 @@
                                 @foreach($y_a1['cate_hits_desc'] as $j1=>$j2)
                                  <li title="{{$j2['goods_name']}}">{{mb_substr($j2['goods_name'],0,6)}}</li>
                                 @endforeach
-<!-- 
-								<li>节能补贴</li>
-								<li>4K电视</li>
-								<li>空气净化器</li>
-								<li>IH电饭煲</li>
-								<li>滚筒洗衣机</li>
-								<li>电热水器</li> -->
+
 							</ul>
 							@foreach($y_a1['cate_goods'] as $j1_s=>$j2_s)
 							     @if($j1_s=='0')
                                  <img src="{{$j2_s['goods_img']}}" />
                                  @endif
                             @endforeach
-							<!-- <img src="/qtai/img/floor-1-1.png" /> -->
+
 						</div>
 						<div class="yui3-u row-330 floorBanner">
+							@if($y_a1['cate_goods']!='[]')
 							<div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 								<ol class="carousel-indicators">
-									<li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#floorCarousel" data-slide-to="1"></li>
-									<li data-target="#floorCarousel" data-slide-to="2"></li>
+									@foreach($y_a1['cate_goods'] as $m_1=>$m_2)
+                                     <li data-target="#floorCarousel" data-slide-to="{{$m_1}}" {{$m_1=='0'?"'class='active'":''}}></li>
+									@endforeach
 								</ol>
 								<div class="carousel-inner">
-									<div class="active item">
-										<img src="/qtai/img/floor-1-b01.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b02.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b03.png">
-									</div>
+									@foreach($y_a1['cate_goods'] as $m_s=>$m_ss)
+                                     <div class="{{$m_s=='0'?'active item':'item'}}">
+										<img style="width:329px;height:360px;" src="{{$m_ss['goods_img']}}">
+									 </div>
+									@endforeach
 								</div>
+								
 								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
 								<a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
+								
 							</div>
+							@endif
 						</div>
 						<div class="yui3-u row-220 split">
-							<!-- <span class="floor-x-line"></span> -->
 							@foreach($y_a1['cate_goods'] as $t1=>$t2)
 							@if($t1<2)
-							<span>标题喵~~~~~~~~~~~~~~~~~</span>
 							<div class="floor-conver-pit" >
-								<img src="{{$t2['goods_img']}}" />
+								<img style="width:220px;height:180px;" src="{{$t2['goods_img']}}" />
 							</div>
 							@endif
 							@endforeach
-							<!-- <div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-3.png" />
-							</div> -->
 						</div>
+						@foreach($y_a1['cate_goods'] as $n1=>$n2)
+						@if($n1==2)
 						<div class="yui3-u row-218 split">
-							<img src="/qtai/img/floor-1-4.png" />
+							<img style="width:218px;height:355.73px;" src="{{$n2['goods_img']}}" />
 						</div>
+						@endif
+						@endforeach
 						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
+							@foreach($y_a1['cate_goods'] as $k1=>$k2)
+							@if($k1>2)
 							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-5.png" />
+								<img  style="width:220px;height:180px;" src="{{$k2['goods_img']}}" />
 							</div>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-6.png" />
-							</div>
+							@endif
+							@endforeach
 						</div>
 					</div>
-				</div>
-				<div id="tab2" class="tab-pane">
-					<p>第二个</p>
-				</div>
-				<div id="tab3" class="tab-pane">
-					<p>第三个</p>
-				</div>
-				<div id="tab4" class="tab-pane">
-					<p>第4个</p>
-				</div>
-				<div id="tab5" class="tab-pane">
-					<p>第5个</p>
-				</div>
-				<div id="tab6" class="tab-pane">
-					<p>第6个</p>
-				</div>
-				<div id="tab7" class="tab-pane">
-					<p>第7个</p>
 				</div>
 			</div>
 		</div>
 </div>
 @endforeach
-<!-- 楼层——eva -->
-	<!--楼层-->
-<!-- 	<div id="floor-1" class="floor">
-		<div class="py-container">
-			<div class="title floors">
-				<h3 class="fl">家用电器</h3>
-				<div class="fr">
-					<ul class="sui-nav nav-tabs">
-						<li class="active">
-							<a href="#tab1" data-toggle="tab">热门</a>
-						</li>
-						<li>
-							<a href="#tab2" data-toggle="tab">大家电</a>
-						</li>
-						<li>
-							<a href="#tab3" data-toggle="tab">生活电器</a>
-						</li>
-						<li>
-							<a href="#tab4" data-toggle="tab">厨房电器</a>
-						</li>
-						<li>
-							<a href="#tab5" data-toggle="tab">应季电器</a>
-						</li>
-						<li>
-							<a href="#tab6" data-toggle="tab">空气/净水</a>
-						</li>
-						<li>
-							<a href="#tab7" data-toggle="tab">高端电器</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="clearfix  tab-content floor-content">
-				<div id="tab1" class="tab-pane active">
-					<div class="yui3-g Floor-1">
-						<div class="yui3-u Left blockgary">
-							<ul class="jd-list">
-								<li>节能补贴</li>
-								<li>4K电视</li>
-								<li>空气净化器</li>
-								<li>IH电饭煲</li>
-								<li>滚筒洗衣机</li>
-								<li>电热水器</li>
-							</ul>
-							<img src="/qtai/img/floor-1-1.png" />
-						</div>
-						<div class="yui3-u row-330 floorBanner">
-							<div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-								<ol class="carousel-indicators">
-									<li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#floorCarousel" data-slide-to="1"></li>
-									<li data-target="#floorCarousel" data-slide-to="2"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="active item">
-										<img src="/qtai/img/floor-1-b01.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b02.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b03.png">
-									</div>
-								</div>
-								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
-								<a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
-							</div>
-						</div>
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-2.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-3.png" />
-							</div>
-						</div>
-						<div class="yui3-u row-218 split">
-							<img src="/qtai/img/floor-1-4.png" />
-						</div>
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-5.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-6.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="tab2" class="tab-pane">
-					<p>第二个</p>
-				</div>
-				<div id="tab3" class="tab-pane">
-					<p>第三个</p>
-				</div>
-				<div id="tab4" class="tab-pane">
-					<p>第4个</p>
-				</div>
-				<div id="tab5" class="tab-pane">
-					<p>第5个</p>
-				</div>
-				<div id="tab6" class="tab-pane">
-					<p>第6个</p>
-				</div>
-				<div id="tab7" class="tab-pane">
-					<p>第7个</p>
-				</div>
-			</div>
-		</div>
-	</div> -->
-<!-- 	<div id="floor-2" class="floor">
-		<div class="py-container">
-			<div class="title floors">
-				<h3 class="fl">手机通讯</h3>
-				<div class="fr">
-					<ul class="sui-nav nav-tabs">
-						<li class="active">
-							<a href="#tab8" data-toggle="tab">热门</a>
-						</li>
-						<li>
-							<a href="#tab9" data-toggle="tab">品质优选</a>
-						</li>
-						<li>
-							<a href="#tab10" data-toggle="tab">新机尝鲜</a>
-						</li>
-						<li>
-							<a href="#tab11" data-toggle="tab">高性价比</a>
-						</li>
-						<li>
-							<a href="#tab12" data-toggle="tab">合约机</a>
-						</li>
-						<li>
-							<a href="#tab13" data-toggle="tab">手机卡</a>
-						</li>
-						<li>
-							<a href="#tab14" data-toggle="tab">手机配件</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="clearfix  tab-content floor-content">
-				<div id="tab8" class="tab-pane active">
-					<div class="yui3-g Floor-1">
-						<div class="yui3-u Left blockgary">
-							<ul class="jd-list">
-								<li>节能补贴</li>
-								<li>4K电视</li>
-								<li>空气净化器</li>
-								<li>IH电饭煲</li>
-								<li>滚筒洗衣机</li>
-								<li>电热水器</li>
-							</ul>
-							<img src="/qtai/img/floor-1-1.png" />
-						</div>
-						<div class="yui3-u row-330 floorBanner">
-							<div id="floorCarousell" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-								<ol class="carousel-indicators">
-									<li data-target="#floorCarousell" data-slide-to="0" class="active"></li>
-									<li data-target="#floorCarousell" data-slide-to="1"></li>
-									<li data-target="#floorCarousell" data-slide-to="2"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="active item">
-										<img src="/qtai/img/floor-1-b01.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b02.png">
-									</div>
-									<div class="item">
-										<img src="/qtai/img/floor-1-b03.png">
-									</div>
-								</div>
-								<a href="#floorCarousell" data-slide="prev" class="carousel-control left">‹</a>
-								<a href="#floorCarousell" data-slide="next" class="carousel-control right">›</a>
-							</div>
-						</div>
-
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-2.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-3.png" />
-							</div>
-						</div>
-
-						<div class="yui3-u row-218 split">
-							<img src="/qtai/img/floor-1-4.png" />
-						</div>
-
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-5.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="/qtai/img/floor-1-6.png" />
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<div id="tab2" class="tab-pane">
-					<p>第二个</p>
-				</div>
-				<div id="tab9" class="tab-pane">
-					<p>第三个</p>
-				</div>
-				<div id="tab10" class="tab-pane">
-					<p>第4个</p>
-				</div>
-				<div id="tab11" class="tab-pane">
-					<p>第5个</p>
-				</div>
-				<div id="tab12" class="tab-pane">
-					<p>第6个</p>
-				</div>
-				<div id="tab13" class="tab-pane">
-					<p>第7个</p>
-				</div>
-				<div id="tab14" class="tab-pane">
-					<p>第8个</p>
-				</div>
-			</div>
-		</div>
-	</div> -->
+       <span id='j_zai'><h3><center id='tx'>加载更多</center></h3></span>
 	<!--商标-->
 	<div class="brand">
 		<div class="py-container">
@@ -704,9 +350,34 @@
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
-	<!-- eva_eva -->
-
-
-
+    <script>
+    	$(function(){
+    		  var cd=$("#cd").val();
+    		  var xshi=5;
+    		  for(var l_1=1;l_1<=cd;l_1++){
+    		  	if(l_1>xshi){
+    		  		$("[l_ceng='lou_"+l_1+"']").hide();
+    		  	}
+    		  	// console.log(l_1);
+    		  }
+//----------------------------------------------------------------------
+              $(document).on('click','#j_zai',function(){
+              	if(xshi+5>=cd){
+                  xshi=cd;
+                  $("#tx").text('');
+              	}else{
+                  xshi=xshi+5;
+              	}
+              	
+              	for(var l_1=1;l_1<=cd;l_1++){
+              		$("[l_ceng='lou_"+l_1+"']").show();
+    		  	  if(l_1>xshi){
+    		  	  	$("[l_ceng='lou_"+l_1+"']").hide();
+    		  	  }
+    		    }
+              });
+//---------------------------------------------------------------------- 
+    	});
+    </script>
 @endsection 
 

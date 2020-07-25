@@ -72,18 +72,6 @@
 								</div>
 							</form>
 						</div>
-<!-- 						<div class="hotwords">
-							<ul>
-								<li class="f-item">品优购首发</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">每满99减30</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">办公用品</li>
-
-							</ul>
-						</div> -->
 					</div>
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
@@ -482,6 +470,7 @@ $(function(){
 <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/qtai/js/pages/index.js"></script>
 <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
 <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>

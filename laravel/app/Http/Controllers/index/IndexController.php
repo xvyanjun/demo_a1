@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\shop_slide;
 use App\Models\shop_nav;
 use App\Models\shop_service;
+
 use App\Models\Goods;
 use App\Models\Cate;
 
@@ -14,6 +15,13 @@ class IndexController extends Controller
 {
 //-------------------------------------------------------------------------
 public function index(){
+//..............................	
+  //查询最新的数据
+  $goods=Goods::where(["goods_del"=>1])->orderby("goods_id","desc")->limit(4)->get();
+  $model=new Cate();
+  $cate=$model::where(['cate_del'=>1])->get()->toArray();
+  $cate_info=self::cate_list($cate);
+//..............................
   $slide_s=shop_slide::where([['slide_del','1'],['slide_show','1']])->orderby('slide_weight','asc')->get();	
   $service_s=shop_service::where([['service_show','1'],['service_del','1']])->paginate(5);
 
@@ -30,9 +38,8 @@ public function index(){
     $goods_s=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->limit(3)->get();
     $v['cate_goods']=$goods_s;
   }
-  // dd($cate_s[0]['cate_goods'][0]['goods_img']);
-
-  return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_s'=>$cate_s]);
+//..............................
+  return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_s'=>$cate_s,'cate_info'=>$cate_info,"goods"=>$goods]);
 }
 //-------------------------------------------------------------------------导航
 public function dhang_jz(){
@@ -45,8 +52,26 @@ public function dhang_lceng(){
   return json_encode($cate_s);
 }
 //-------------------------------------------------------------------------
+    /**
+     *无限极分类
+     */
+    public function cate_list($res,$pid=0,$level=0){
+        static $data=[];
+        foreach ($res as $k=>$v){
+            if($v['p_id']==$pid){
+                $v['level']=$level;
+                $data[]=$v;
+                self::cate_list($res,$v['cate_id'],$v['level']+1);
+            }
+        }
+        return $data;
+    }
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------
+
 }

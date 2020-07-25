@@ -271,8 +271,8 @@
 </div>
 <!--页面底部END-->
 	<!-- 楼层位置 -->
-	<div id="floor-index" class="floor-index">
-		<ul>
+<!-- 	<div id="floor-index" class="floor-index">
+		<ul id='f_kuai'>
 			<li>
 				<a class="num" href="javascript:;" style="display: none;">1F</a>
 				<a class="word" href="javascript;;" style="display: block;">家用电器</a>
@@ -294,7 +294,27 @@
 				<a class="word" href="javascript;;" style="display: block;">运动户外</a>
 			</li>
 		</ul>
-	</div>
+	</div> -->
+<script>					
+					$(function(){
+//----------------------------------------------------------------						
+						// $.ajax({
+						// 	url:'/dhang_lceng',
+						// 	type:'post',
+						// 	dataType:'json',
+						// 	success:function(tc){
+						// 	   var pj_s='';
+						// 	   var cd_s=tc.length;
+      //                          for(var e2=0;e2<=cd_s-1;e2++){
+      //                          	var shu=e2+1;
+      //                          	pj_s=pj_s+"<li><a class='num' href='javascript:;' style='display: none;'>"+shu+"F</a><a class='word' href='javascript;;' style='display: block;'>"+tc[e2]['cate_name']+"</a></li>";
+      //                          }
+      //                          $("#f_kuai").empty().append(pj_s);
+						// 	}
+						// });
+//----------------------------------------------------------------						
+					});
+</script>
 	<!--侧栏面板开始-->
 <div class="J-global-toolbar">
 	<div class="toolbar-wrap J-wrap">

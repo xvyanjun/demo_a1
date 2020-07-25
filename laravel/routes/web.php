@@ -27,10 +27,15 @@ use Illuminate\Support\Facades\Route;
 
 //前台
 Route::any('/','index\IndexController@index');
+
+//---------------------------------------------------------导航
+Route::any('/dhang_jz','index\IndexController@dhang_jz');
+//---------------------------------------------------------楼层左侧
+Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------前台首页
+
 //---------------------------------------------------------
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
-
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------

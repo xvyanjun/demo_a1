@@ -7,25 +7,26 @@
 			<div class="yui3-g SortList ">
 				<div class="yui3-u Left all-sort-list">
 					<div class="all-sort-list2">
+                        @foreach($cate_info as $k=>$v)
 						<div class="item">
-							@foreach($cate_info as $k=>$v)
-							<h3 class="cate_name" cate_id="{{$v['cate_id']}}"><a href="">
-									@if($v['p_id']==0)
-										{{$v['cate_name']}}
-									@endif
+							<h3><a href="">
+                                    {{$v['cate_name']}}
 								</a></h3>
-							@endforeach
-							<div class="item-list clearfix">
+							<div class="item-list clearfix" id="cate_prev_list">
 
-								<div class="subitem">
+								<div class="subitem cate_prev_list">
 									<dl class="fore1">
-										<dt><a href="">电子书</a></dt>
-										<dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
+										<dt><a href="">{{$v['cate_name']}}</a></dt>
+										<dd>
+                                            @foreach($v['cate'] as $kk=>$vv)
+                                            <em><a href="">{{$vv['cate_name']}}</a></em>
+                                            @endforeach
+                                        </dd>
 									</dl>
 								</div>
-
 							</div>
 						</div>
+                        @endforeach
 					</div>
 				</div>
 				<div class="yui3-u Center banerArea">
@@ -35,9 +36,7 @@
 					  	@foreach($slide_s as $c_1=>$v_1)
                           <li data-target="#myCarousel" data-slide-to="{{$c_1}}" class="{{$c_1=='0'?'active':''}}"></li>
                         @endforeach
-<!-- 					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li> -->
+
 					  </ol>
 					  <div class="carousel-inner">
                         
@@ -239,8 +238,123 @@
 			</div>
 		</div>
 	</div>
+<!-- 楼层——eva -->
+@foreach($cate_s as $t_a1=>$y_a1)
+<div id="floor-1" class="floor">
+		<div class="py-container">
+			<div class="title floors">
+				<h3 class="fl">{{$y_a1['cate_name']}}</h3>
+				<div class="fr">
+					<ul class="sui-nav nav-tabs">
+
+                        @foreach($y_a1['cate_to'] as $h1=>$h2)
+                        <li class="{{$h1==0?'active':''}}">
+							<a href="#tab2" data-toggle="tab">{{$h2['cate_name']}}</a>
+						</li>
+                        @endforeach
+
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix  tab-content floor-content">
+				<div id="tab1" class="tab-pane active">
+					<div class="yui3-g Floor-1">
+						<div class="yui3-u Left blockgary">
+							<ul class="jd-list">
+
+                                @foreach($y_a1['cate_hits_desc'] as $j1=>$j2)
+                                 <li title="{{$j2['goods_name']}}">{{mb_substr($j2['goods_name'],0,6)}}</li>
+                                @endforeach
+<!-- 
+								<li>节能补贴</li>
+								<li>4K电视</li>
+								<li>空气净化器</li>
+								<li>IH电饭煲</li>
+								<li>滚筒洗衣机</li>
+								<li>电热水器</li> -->
+							</ul>
+							@foreach($y_a1['cate_goods'] as $j1_s=>$j2_s)
+							     @if($j1_s=='0')
+                                 <img src="{{$j2_s['goods_img']}}" />
+                                 @endif
+                            @endforeach
+							<!-- <img src="/qtai/img/floor-1-1.png" /> -->
+						</div>
+						<div class="yui3-u row-330 floorBanner">
+							<div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
+								<ol class="carousel-indicators">
+									<li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#floorCarousel" data-slide-to="1"></li>
+									<li data-target="#floorCarousel" data-slide-to="2"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="active item">
+										<img src="/qtai/img/floor-1-b01.png">
+									</div>
+									<div class="item">
+										<img src="/qtai/img/floor-1-b02.png">
+									</div>
+									<div class="item">
+										<img src="/qtai/img/floor-1-b03.png">
+									</div>
+								</div>
+								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
+								<a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
+							</div>
+						</div>
+						<div class="yui3-u row-220 split">
+							<!-- <span class="floor-x-line"></span> -->
+							@foreach($y_a1['cate_goods'] as $t1=>$t2)
+							@if($t1<2)
+							<span>标题喵~~~~~~~~~~~~~~~~~</span>
+							<div class="floor-conver-pit" >
+								<img src="{{$t2['goods_img']}}" />
+							</div>
+							@endif
+							@endforeach
+							<!-- <div class="floor-conver-pit">
+								<img src="/qtai/img/floor-1-3.png" />
+							</div> -->
+						</div>
+						<div class="yui3-u row-218 split">
+							<img src="/qtai/img/floor-1-4.png" />
+						</div>
+						<div class="yui3-u row-220 split">
+							<span class="floor-x-line"></span>
+							<div class="floor-conver-pit">
+								<img src="/qtai/img/floor-1-5.png" />
+							</div>
+							<div class="floor-conver-pit">
+								<img src="/qtai/img/floor-1-6.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab2" class="tab-pane">
+					<p>第二个</p>
+				</div>
+				<div id="tab3" class="tab-pane">
+					<p>第三个</p>
+				</div>
+				<div id="tab4" class="tab-pane">
+					<p>第4个</p>
+				</div>
+				<div id="tab5" class="tab-pane">
+					<p>第5个</p>
+				</div>
+				<div id="tab6" class="tab-pane">
+					<p>第6个</p>
+				</div>
+				<div id="tab7" class="tab-pane">
+					<p>第7个</p>
+				</div>
+			</div>
+		</div>
+</div>
+@endforeach
+<!-- 楼层——eva -->
 	<!--楼层-->
-	<div id="floor-1" class="floor">
+<!-- 	<div id="floor-1" class="floor">
 		<div class="py-container">
 			<div class="title floors">
 				<h3 class="fl">家用电器</h3>
@@ -349,8 +463,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="floor-2" class="floor">
+	</div> -->
+<!-- 	<div id="floor-2" class="floor">
 		<div class="py-container">
 			<div class="title floors">
 				<h3 class="fl">手机通讯</h3>
@@ -416,6 +530,7 @@
 								<a href="#floorCarousell" data-slide="next" class="carousel-control right">›</a>
 							</div>
 						</div>
+
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
@@ -425,9 +540,11 @@
 								<img src="/qtai/img/floor-1-3.png" />
 							</div>
 						</div>
+
 						<div class="yui3-u row-218 split">
 							<img src="/qtai/img/floor-1-4.png" />
 						</div>
+
 						<div class="yui3-u row-220 split">
 							<span class="floor-x-line"></span>
 							<div class="floor-conver-pit">
@@ -437,6 +554,7 @@
 								<img src="/qtai/img/floor-1-6.png" />
 							</div>
 						</div>
+
 					</div>
 				</div>
 				<div id="tab2" class="tab-pane">
@@ -462,7 +580,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!--商标-->
 	<div class="brand">
 		<div class="py-container">
@@ -485,19 +603,6 @@
 	<!-- 底部栏位 -->
 	<!--页面底部-->
 	<!-- eva_eva -->
-    <!-- <script>
-        $(document).ready(function(){
-            $("h3.cate_name").hover(
-                    function(){
-                        var cate_id=$(this).attr('cate_id');
-                        console.log(cate_id);
-                    },
-                    function(){
-
-                    }
-            );
-        });
-    </script> -->
 
 
 @endsection 

@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
-	 <link rel="icon" href="assets/qtai/img/favicon.ico">
+	 <link rel="icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
@@ -443,6 +443,7 @@ $(function(){
 <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/qtai/js/pages/index.js"></script>
 <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
 <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>

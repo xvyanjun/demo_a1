@@ -515,7 +515,7 @@
 						</div>
 					</div>
 					<div class="ads">
-						<img src="qtai/img/ad1.png" />
+						<img src="/qtai/img/ad1.png" />
 					</div>
 				</div>
 			</div>
@@ -531,18 +531,11 @@
 						<h3>今日推荐</h3>
 					</div>
 				</li>
+				@foreach($goods as $k=>$v)
 				<li class="yui3-u-5-24">
-					<a href="list.html" target="_blank"><img src="qtai/img/today01.png" /></a>
+					<a href="{{$v->goods_id}}" target="_blank"><img src="/{{$v->goods_img}}" style="height:165px;width:249.984px"/></a>
 				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today02.png" />
-				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today03.png" />
-				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today04.png" />
-				</li>
+				@endforeach
 			</ul>
 		</div>
 	</div>

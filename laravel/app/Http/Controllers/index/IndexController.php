@@ -12,7 +12,9 @@ use App\Models\Goods;
 
 use App\Models\History;
 use App\Models\Indexuser;
+
 use App\Models\Cate;
+use App\Models\Friend;
 
 class IndexController extends Controller
 {
@@ -78,7 +80,11 @@ class IndexController extends Controller
             return $res;
         }
     //-------------------------------------------------------------------------
-
+    //友情链接
+    public function friend(Request $request){
+        $friend=Friend::where(['f_del'=>1])->get();
+        return view('qtai.cooperation',compact("friend"));
+    }
     //-------------------------------------------------------------------------
 
     //-------------------------------------------------------------------------

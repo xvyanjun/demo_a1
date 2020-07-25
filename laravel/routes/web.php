@@ -36,6 +36,10 @@ Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 
 //---------------------------------------------------------
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
+
+//----------------------------------------------------------
+Route::any('/friend','index\IndexController@friend');
+
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------

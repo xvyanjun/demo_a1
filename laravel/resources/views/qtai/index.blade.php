@@ -484,20 +484,6 @@
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
-	<!-- eva_eva -->
-    <!-- <script>
-        $(document).ready(function(){
-            $("h3.cate_name").hover(
-                    function(){
-                        var cate_id=$(this).attr('cate_id');
-                        console.log(cate_id);
-                    },
-                    function(){
-
-                    }
-            );
-        });
-    </script> -->
 
 
 @endsection 

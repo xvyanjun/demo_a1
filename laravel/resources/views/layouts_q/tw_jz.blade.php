@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
-	 <link rel="icon" href="assets/qtai/img/favicon.ico">
+	 <link rel="icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
@@ -77,18 +77,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="hotwords">
-							<ul>
-								<li class="f-item">品优购首发</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">每满99减30</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">办公用品</li>
 
-							</ul>
-						</div>
 					</div>
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">

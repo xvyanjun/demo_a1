@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 
 //前台
-Route::any('/','a_1\demo_a1_contr@index');
+Route::any('/','index\IndexController@index');
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------

@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 //---------------------------------------------------------前台首页
 Route::any('/','index\IndexController@index');
+Route::any('/index/cate_list','index\IndexController@cate_list');//首页分类子类
 //---------------------------------------------------------
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------

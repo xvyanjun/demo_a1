@@ -7,25 +7,26 @@
 			<div class="yui3-g SortList ">
 				<div class="yui3-u Left all-sort-list">
 					<div class="all-sort-list2">
+                        @foreach($cate_info as $k=>$v)
 						<div class="item">
-							@foreach($cate_info as $k=>$v)
-							<h3 class="cate_name" cate_id="{{$v['cate_id']}}"><a href="">
-									@if($v['p_id']==0)
-										{{$v['cate_name']}}
-									@endif
+							<h3><a href="">
+                                    {{$v['cate_name']}}
 								</a></h3>
-							@endforeach
-							<div class="item-list clearfix">
+							<div class="item-list clearfix" id="cate_prev_list">
 
-								<div class="subitem">
+								<div class="subitem cate_prev_list">
 									<dl class="fore1">
-										<dt><a href="">电子书</a></dt>
-										<dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
+										<dt><a href="">{{$v['cate_name']}}</a></dt>
+										<dd>
+                                            @foreach($v['cate'] as $kk=>$vv)
+                                            <em><a href="">{{$vv['cate_name']}}</a></em>
+                                            @endforeach
+                                        </dd>
 									</dl>
 								</div>
-
 							</div>
 						</div>
+                        @endforeach
 					</div>
 				</div>
 				<div class="yui3-u Center banerArea">
@@ -592,19 +593,7 @@
 	<!-- 底部栏位 -->
 	<!--页面底部-->
 	<!-- eva_eva -->
-    <script>
-        $(document).ready(function(){
-            $("h3.cate_name").hover(
-                    function(){
-                        var cate_id=$(this).attr('cate_id');
-                        console.log(cate_id);
-                    },
-                    function(){
 
-                    }
-            );
-        });
-    </script>
 
 
 @endsection 

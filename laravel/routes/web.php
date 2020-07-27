@@ -27,12 +27,21 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 //前台
 Route::any('/','index\IndexController@index');
+//---------------------------------------------------------
+Route::prefix('/')->group(function(){
 //---------------------------------------------------------导航
-Route::any('/dhang_jz','index\IndexController@dhang_jz');
+Route::any('dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------楼层左侧
-Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
-//---------------------------------------------------------前台首页
+Route::any('dhang_lceng','index\IndexController@dhang_lceng');
+//---------------------------------------------------------js楼层-条件-数据获取
+Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
+//---------------------------------------------------------js有趣—加载时获数据
+Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
+//---------------------------------------------------------首页品牌加载
+Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
+});
+//---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------
 

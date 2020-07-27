@@ -167,7 +167,7 @@
 			<div class="title">
 				<h3 class="fl">猜你喜欢</h3>
 				<b class="border"></b>
-				<a href="javascript:;" class="fr tip changeBnt" id="xxlChg"><i></i>换一换</a>
+				<!-- <a href="javascript:;" class="fr tip changeBnt" id="xxlChg"><i></i>换一换</a> -->
 			</div>
 			<div class="bd">
 				<ul class="clearfix yui3-g Favourate picLB" id="picLBxxl">
@@ -190,7 +190,7 @@
 	</div>
 	<!--有趣-->
 	<div class="fun">
-		<div class="py-container">
+		<div class="py-container" id='yqv_replace'>
 			<div class="title">
 				<h3 class="fl">传智播客.有趣区</h3>
 			</div>
@@ -239,25 +239,28 @@
 		</div>
 	</div>
 <!-- 楼层——eva -->
-<input type="hidden" id='cd' value="{{count($cate_s)}}">
+<!-- <input type="hidden" id='cd' value="{{count($cate_s)}}"> -->
+<input type="hidden" id='cd' value="{{$cate_eva_sum['cate_id']}}">
 @foreach($cate_s as $t_a1=>$y_a1)
 <div id="floor-1" class="floor" l_ceng="lou_{{$t_a1+1}}">
-		<div class="py-container">
+		<div class="py-container" id='dsang_a'>
 			<div class="title floors">
 				<h3 class="fl"><span>{{$t_a1+1}}F   </span>{{$y_a1['cate_name']}}</h3>
 				<div class="fr">
 					<ul class="sui-nav nav-tabs">
-
+                        <li class='active'>
+							<a href="#tab2" data-toggle="tab" id='cate_wher' cate_id="{{$y_a1['cate_id']}}">热门</a>
+						</li>
                         @foreach($y_a1['cate_to'] as $h1=>$h2)
-                        <li ><!--class="{{$h1==0?'active':''}}"-->
-							<a href="#tab2" data-toggle="tab">{{$h2['cate_name']}}</a>
+                        <li >
+							<a href="#tab2" data-toggle="tab" id='cate_wher' cate_id="{{$h2['cate_id']}}">{{$h2['cate_name']}}</a>
 						</li>
                         @endforeach
 
 					</ul>
 				</div>
 			</div>
-			<div class="clearfix  tab-content floor-content">
+			<div class="clearfix  tab-content floor-content" id='t_huan'>
 				<div id="tab1" class="tab-pane active">
 					<div class="yui3-g Floor-1">
 						<div class="yui3-u Left blockgary">
@@ -268,7 +271,7 @@
                                 @endforeach
 
 							</ul>
-							@foreach($y_a1['cate_goods'] as $j1_s=>$j2_s)
+							@foreach($y_a1['cate_hits_desc'] as $j1_s=>$j2_s)
 							     @if($j1_s=='0')
                                  <img src="{{$j2_s['goods_img']}}" />
                                  @endif
@@ -324,18 +327,21 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 </div>
 @endforeach
-       <span id='j_zai'><h3><center id='tx'>加载更多</center></h3></span>
+       <span id='j_zai' end_cate_id="{{$cate_s[count($cate_s)-1]['cate_id']}}" ><h3><center id='tx'>加载更多</center></h3></span>
 	<!--商标-->
-	<div class="brand">
+
+	<div class="brand" id='brand_shu' num=''>
+
 		<div class="py-container">
-			<ul class="Brand-list blockgary">
-				<li class="Brand-item">
-					<img src="/qtai/img/brand_21.png" />
-				</li>
+        <div><a href="javascript:;" id='h_yhuan' brand_id=""><i></i>换一换</a></div>
+			<ul class="Brand-list blockgary" id='brand_eva'>
+
+				<li class="Brand-item"><img src="/qtai/img/brand_21.png" /></li>
 				<li class="Brand-item"><img src="/qtai/img/brand_03.png" /></li>
 				<li class="Brand-item"><img src="/qtai/img/brand_05.png" /></li>
 				<li class="Brand-item"><img src="/qtai/img/brand_07.png" /></li>
@@ -350,34 +356,98 @@
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
+<!--------------------------------------------------------------------->
     <script>
     	$(function(){
-    		  var cd=$("#cd").val();
-    		  var xshi=5;
-    		  for(var l_1=1;l_1<=cd;l_1++){
-    		  	if(l_1>xshi){
-    		  		$("[l_ceng='lou_"+l_1+"']").hide();
-    		  	}
-    		  	// console.log(l_1);
-    		  }
-//----------------------------------------------------------------------
-              $(document).on('click','#j_zai',function(){
-              	if(xshi+5>=cd){
-                  xshi=cd;
-                  $("#tx").text('');
-              	}else{
-                  xshi=xshi+5;
+//----------------------------------------------------------------------品牌加载   		
+              $.ajax({
+              	url:'/ppai_js',
+              	type:'post',
+              	dataType:'json',
+              	success:function(f_jk){		
+              	  var pj_a='';
+              	  for(var g1=0;g1<=f_jk['a1']-1;g1++){
+              	  	pj_a=pj_a+"<li class='Brand-item'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk['a2'][g1]['brand_img']+"' /></li>";
+              	  	if(g1==f_jk['a1']-1){
+              	  		$("#h_yhuan").attr('brand_id',f_jk['a2'][g1]['brand_id']);
+              	  	}
+              	  }	
+                  $("#brand_eva").empty().html(pj_a);
               	}
-              	
-              	for(var l_1=1;l_1<=cd;l_1++){
-              		$("[l_ceng='lou_"+l_1+"']").show();
-    		  	  if(l_1>xshi){
-    		  	  	$("[l_ceng='lou_"+l_1+"']").hide();
-    		  	  }
-    		    }
               });
+//----------------------------------------------------------------------品牌点击
+              $(document).on('click','#h_yhuan',function(){
+              	var brand_id=$(this).attr('brand_id');
+              	if(brand_id!=''){
+              		$.ajax({
+                    	url:'/ppai_js',
+                    	type:'post',
+                    	dataType:'json',
+                    	data:{'brand_id':brand_id},
+                    	success:function(f_jk_s){
+                    	  var pj_a='';
+                    	  for(var g1=0;g1<=f_jk_s['a1']-1;g1++){
+                    	  	pj_a=pj_a+"<li class='Brand-item'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk_s['a2'][g1]['brand_img']+"' /></li>";
+                    	  	if(g1==f_jk_s['a1']-1){
+                    	  		$("#h_yhuan").attr('brand_id',f_jk_s['a2'][g1]['brand_id']);
+                    	  	}
+                    	  }	
+                        $("#brand_eva").empty().html(pj_a);
+                    	}
+                    });
+              	}
+              });
+//----------------------------------------------------------------------有趣区
+              $.ajax({
+              	url:'/yqv_replace_sj',
+              	typr:'post',
+              	dataType:'html',
+              	success:function(hk){
+              		$("#yqv_replace").html(hk);
+              	}
+              });    		  
+//----------------------------------------------------------------------点击加载
+              $(document).on('click','#j_zai',function(){
+              	var ts=$(this);
+              	var cate_id=$(this).attr('end_cate_id');
+              	// console.log(cate_id);return false;
+              	var cd=$("#cd").val();
+              	if(cate_id!=''&&cate_id!=cd){
+              		$.ajax({
+                    	url:'/',
+                    	typr:'post',
+                    	dataType:'html',
+                    	data:{'begin_num':cate_id},
+                    	success:function(jk_2){
+                    		// console.log(jk_2);
+                    		ts.before(jk_2);
+                    		ts.remove();
+                    	}
+                    });  
+              	}else{
+              		$("#tx").text('已显示全部分类');
+              	}
+              });
+//----------------------------------------------------------------------
+              $(document).on('click','#cate_wher',function(){
+              	var ts=$(this);
+              	var cate_id=$(this).attr('cate_id');
+              	if(cate_id!=''){
+              		$.ajax({
+              		  url:'/lou_ceng_sj',
+              		  type:'post',
+              		  dataType:'html',
+              		  data:{'cate_id':cate_id},
+              		  success:function(my){
+              		  	ts.parents('#dsang_a').find("#t_huan").html(my);
+                        // console.log(my);
+              		  }
+              		});
+              	}
+              });              
 //---------------------------------------------------------------------- 
     	});
     </script>
+<!--------------------------------------------------------------------->    
 @endsection 
 

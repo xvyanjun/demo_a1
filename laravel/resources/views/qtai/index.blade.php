@@ -369,7 +369,7 @@
               	success:function(f_jk){		
               	  var pj_a='';
               	  for(var g1=0;g1<=f_jk['a1']-1;g1++){
-              	  	pj_a=pj_a+"<li class='Brand-item'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk['a2'][g1]['brand_img']+"' /></li>";
+              	  	pj_a=pj_a+"<li class='Brand-item'><a href='/list/"+f_jk['a2'][g1]['brand_id']+"'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk['a2'][g1]['brand_img']+"' /></a></li>";
               	  	if(g1==f_jk['a1']-1){
               	  		$("#h_yhuan").attr('brand_id',f_jk['a2'][g1]['brand_id']);
               	  	}
@@ -389,7 +389,7 @@
                     	success:function(f_jk_s){
                     	  var pj_a='';
                     	  for(var g1=0;g1<=f_jk_s['a1']-1;g1++){
-                    	  	pj_a=pj_a+"<li class='Brand-item'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk_s['a2'][g1]['brand_img']+"' /></li>";
+                    	  	pj_a=pj_a+"<li class='Brand-item'><a href='/list/"+f_jk_s['a2'][g1]['brand_id']+"'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk_s['a2'][g1]['brand_img']+"' /></a></li>";
                     	  	if(g1==f_jk_s['a1']-1){
                     	  		$("#h_yhuan").attr('brand_id',f_jk_s['a2'][g1]['brand_id']);
                     	  	}

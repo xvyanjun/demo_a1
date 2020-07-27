@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\shop_slide;
 use App\Models\shop_nav;
 use App\Models\shop_service;
-
 use App\Models\Goods;
-
 use App\Models\History;
 use App\Models\Indexuser;
-
 use App\Models\Cate;
 use App\Models\Friend;
-
+use App\Models\Brand;
 class IndexController extends Controller
 {
 //-------------------------------------------------------------------------前台首页
@@ -52,10 +49,13 @@ public function index(){
     $goods_s=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->limit(3)->get();
     $v['cate_goods']=$goods_s;
   }
-    // dd($cate_id);exit;
-  return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s]);
+  //-----------------------------------------------------------------------------------------------
+    //查询商品品牌
+    $brand=Brand::where(["brand_del"=>1])->limit(10)->get();
+    return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand]);
 }
 
+//--------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------导航
 public function dhang_jz(){

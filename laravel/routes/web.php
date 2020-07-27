@@ -31,6 +31,9 @@ Route::any('/','index\IndexController@index');
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------楼层左侧
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
+//-----------------------------------------------------------
+Route::any('/list/{id}','index\ListController@list');//品牌列表
+
 //---------------------------------------------------------前台首页
 //----------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');

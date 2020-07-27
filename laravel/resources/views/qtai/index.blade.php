@@ -330,27 +330,25 @@
 @endforeach
        <span id='j_zai'><h3><center id='tx'>加载更多</center></h3></span>
 	<!--商标-->
+
 	<div class="brand">
 		<div class="py-container">
+		    <div>
+			<!-- <input type="button" onclick="getChane()" value="换一换"> -->
+			<a href="javascript:;"  id="huan"><i></i>换一换</a>	
+			</div>
 			<ul class="Brand-list blockgary">
-				<li class="Brand-item">
-					<img src="/qtai/img/brand_21.png" />
-				</li>
-				<li class="Brand-item"><img src="/qtai/img/brand_03.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_05.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_07.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_09.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_11.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_13.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_15.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_17.png" /></li>
-				<li class="Brand-item"><img src="/qtai/img/brand_19.png" /></li>
+			@foreach($brand as $k=>$v)
+				<li class="Brand-item" ><a href="/list/{{$v->brand_id}}"><img src="{{$v->brand_img}}" style="width:100px;height:60px;" /></a></li>
+			@endforeach
 			</ul>
+			
 		</div>
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
     <script>
+		//换一换
     	$(function(){
     		  var cd=$("#cd").val();
     		  var xshi=5;
@@ -378,6 +376,9 @@
               });
 //---------------------------------------------------------------------- 
     	});
+//---------------------------------------------------------------------- 
+
+
     </script>
 @endsection 
 

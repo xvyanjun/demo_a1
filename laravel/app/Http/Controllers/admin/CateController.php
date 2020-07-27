@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Cate;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,10 @@ class CateController extends Controller
     public function addshow(){
         $model=new Cate();
         $cate=$model::get()->toArray();
-        return view('admin.cate.add',['cate'=>$cate]);
+
+        $brand=new Brand();
+        $brand_info=$brand::get()->toArray();
+        return view('admin.cate.add',['cate'=>$cate,'brand_info'=>$brand_info]);
     }
 
     /**
@@ -58,8 +62,12 @@ class CateController extends Controller
      * 分类添加
      */
     public function add(Request $request){
+        $brand_id=$request->post('brand_id');
+//        dd($brand_id);
+        $brand_id=implode(',',$brand_id);
         $cate_name=$request->post('cate_name');
         $p_id=$request->post('p_id');
+//        dd($p_id);
         if(empty($cate_name)){
             $arr=[
                 'code'=>'300',
@@ -82,6 +90,11 @@ class CateController extends Controller
         }else{
             $model->cate_name=$cate_name;
             $model->p_id=$p_id;
+            if($p_id=="0"){
+                $model->brand_id=null;
+            }else{
+                $model->brand_id=$brand_id;
+            }
             $model->cate_show=$cate_show;
             $model->cate_time=$cate_time;
             if($model->save()){
@@ -149,7 +162,13 @@ class CateController extends Controller
             ['cate_id','!=',$id]
         ];
         $info=$model::where($where)->get()->toArray();
-        return view('admin.cate.upd',['cate'=>$cate,'info'=>$info]);
+
+        $cate['brand_id']=explode(',',$cate['brand_id']);
+
+        $brand=new Brand();
+        $brand_info=$brand::get()->toArray();
+//        dd($cate);
+        return view('admin.cate.upd',['cate'=>$cate,'info'=>$info,'brand_info'=>$brand_info]);
     }
 
     /**
@@ -157,6 +176,10 @@ class CateController extends Controller
      * 修改
      */
     public function update(Request $request){
+        $brand_id=$request->post('brand_id');
+//        dd($brand_id);
+        $brand_id=implode(',',$brand_id);
+
         $cate_id=$request->post('cate_id');
         $cate_name=$request->post('cate_name');
         $p_id=$request->post('p_id');
@@ -174,19 +197,24 @@ class CateController extends Controller
         $data=$model::where(['cate_id'=>$cate_id])->first();
         $data->cate_name=$cate_name;
         $data->p_id=$p_id;
+        if($p_id=="0"){
+            $data->brand_id=null;
+        }else{
+            $data->brand_id=$brand_id;
+        }
         $data->cate_show=$cate_show;
         $data->cate_time=$cate_time;
         if($data->save()){
             $arr=[
                 'code'=>'200',
-                'msg'=>'添加分类成功',
+                'msg'=>'修改分类成功',
                 'sult'=>[]
             ];
             return json_encode($arr,JSON_UNESCAPED_UNICODE);
         }else{
             $arr=[
                 'code'=>'300',
-                'msg'=>'添加分类失败,请重试',
+                'msg'=>'修改分类失败,请重试',
                 'sult'=>[]
             ];
             return json_encode($arr,JSON_UNESCAPED_UNICODE);

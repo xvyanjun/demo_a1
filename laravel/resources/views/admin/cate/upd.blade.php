@@ -44,6 +44,13 @@
                             </select>
                         </div>
 
+                        <div class="col-md-2 title">拥有的品牌</div>
+                        <div class="col-md-10 text">
+                            @foreach($brand_info as $k=>$v)
+                                <input type="checkbox" class="brand_id" @foreach($cate['brand_id'] as $kk=>$vv){{$vv==$v['brand_id']?'checked':''}}@endforeach name="brand_id" value="{{$v['brand_id']}}">{{$v['brand_name']}}
+                            @endforeach
+                        </div>
+
                         <div class="col-md-2 title">是否显示</div>
                         <div class="col-md-10 data">
                             <input type="radio" name="cate_show" class="cate_show" {{$cate['cate_show']==1?'checked':''}} value="1">显示
@@ -77,10 +84,15 @@
             alert('未选择是否显示');
             return false;
         }
+        var brand_id=[];
+        $("input[name='brand_id'].brand_id:checked").each(function(i){
+            brand_id[i]=$(this).val();
+        });
+
         $.ajax({
             url: "{{'/admin/update'}}",
             type: 'post',
-            data: {cate_id:cate_id,cate_name:cate_name,p_id:p_id,cate_show:cate_show},
+            data: {cate_id:cate_id,cate_name:cate_name,p_id:p_id,brand_id:brand_id,cate_show:cate_show},
             dataType: 'json',
             success: function (res) {
                 if(res.code=='200'){

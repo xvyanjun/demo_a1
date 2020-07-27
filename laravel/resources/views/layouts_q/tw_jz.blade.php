@@ -6,13 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
 	 <link rel="icon" href="/favicon.ico">
-
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
-    <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
+    <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/pages/index.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
 </head>
 
 <body>
@@ -450,7 +457,6 @@
 	</div>
 </script>
 <!--侧栏面板结束-->
-<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#service").hover(function(){
@@ -466,15 +472,6 @@ $(function(){
 
 })
 </script>
-<script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
-<script type="text/javascript" src="/qtai/js/czFunction.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/qtai/js/pages/index.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
 </body>
 
 

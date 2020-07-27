@@ -29,6 +29,10 @@ use Illuminate\Support\Facades\Route;
 Route::any('/','index\IndexController@index');
 //---------------------------------------------------------导航
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
+//---------------------------------------------------------点击分类页下的商品页
+Route::any('/cate_list/{id}','index\CateController@cate_list');
+//---------------------------------------------------------商品详情页
+Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------楼层左侧
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------前台首页

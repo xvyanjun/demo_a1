@@ -19,7 +19,7 @@
 										<dt><a href="">{{$v['cate_name']}}</a></dt>
 										<dd>
                                             @foreach($v['cate'] as $kk=>$vv)
-                                            <em><a href="">{{$vv['cate_name']}}</a></em>
+                                            <em><a href="/cate_list/{{$vv['cate_id']}}">{{$vv['cate_name']}}</a></em>
                                             @endforeach
                                         </dd>
 									</dl>
@@ -155,7 +155,7 @@
 				</li>
 				@foreach($goods as $k=>$v)
 				<li class="yui3-u-5-24">
-					<a href="{{$v->goods_id}}" target="_blank"><img src="/{{$v->goods_img}}" style="height:165px;width:249.984px"/></a>
+					<a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v->goods_img}}" style="height:165px;width:249.984px"/></a>
 				</li>
 				@endforeach
 			</ul>
@@ -175,7 +175,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl huozhe">
 							<dd>
-								<a href="" class="pic"><img src="/{{$v['goods_img']}}" alt="" /></a>
+								<a href="/goods_list/{{$v['goods_id']}}" class="pic"><img src="/{{$v['goods_img']}}" alt="" /></a>
 								<div class="like-text">
 									<p>{{$v['goods_name']}}</p>
 									<h3>¥{{$v['goods_price']}}</h3>

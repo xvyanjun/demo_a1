@@ -36,13 +36,13 @@ Route::any('/cate_list/{id}','index\CateController@cate_list');
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------楼层左侧
-<<<<<<< HEAD
+
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //-----------------------------------------------------------
 Route::any('/list/{id}','index\ListController@list');//品牌列表
 
 //---------------------------------------------------------前台首页
-=======
+
 Route::any('dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------js楼层-条件-数据获取
 Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
@@ -50,7 +50,7 @@ Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
 Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 //---------------------------------------------------------首页品牌加载
 Route::any('ppai_js','index\IndexController@ppai_js');
->>>>>>> 971960e92393c7dba1f6f1e0348a6325863f860d
+
 //----------------------------------------------------------
 });
 //---------------------------------------------------------

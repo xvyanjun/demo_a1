@@ -12,13 +12,10 @@ use App\Models\History;
 use App\Models\Indexuser;
 use App\Models\Cate;
 use App\Models\Friend;
-<<<<<<< HEAD
-use App\Models\Brand;
-=======
 
 use App\Models\Brand;
 
->>>>>>> 971960e92393c7dba1f6f1e0348a6325863f860d
+
 class IndexController extends Controller
 {
 //.-------------------------------------------------------------------------前台首页
@@ -60,29 +57,25 @@ public function index(){
     $goods_s=Goods::wherein('cate_id',$id_s)->where([['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->limit(5)->get();
     $v['cate_goods']=$goods_s;
   }
-<<<<<<< HEAD
   //-----------------------------------------------------------------------------------------------
     //查询商品品牌
     $brand=Brand::where(["brand_del"=>1])->limit(10)->get();
-    return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand]);
-}
-
-//--------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------导航
-=======
+    //-------------------------------------------------------------------------导航
   if(request()->ajax()){
     $at_present=cate::where([['cate_id','<',$begin_num],['p_id','0'],['cate_show','1'],['cate_del','1']])->count();
     return view('qtai.floor_replace_s',['cate_s'=>$cate_s,'cate_eva_sum'=>$cate_eva_sum,'at_present'=>$at_present]);
   }
+    return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand,'cate_eva_sum'=>$cate_eva_sum]);
+}
+
+//--------------------------------------------------------------------------
+
+
   //..............................eva
   
-  //..............................eva
-  return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,'cate_eva_sum'=>$cate_eva_sum]);
 //..............................eva
-}
+
 //.-------------------------------------------------------------------------导航
->>>>>>> 971960e92393c7dba1f6f1e0348a6325863f860d
 public function dhang_jz(){
   $nav_s=shop_nav::where([['nav_show','1'],['nav_del','1']])->get();
   return json_encode($nav_s);

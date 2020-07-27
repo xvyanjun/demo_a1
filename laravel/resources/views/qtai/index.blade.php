@@ -335,18 +335,7 @@
        <span id='j_zai' end_cate_id="{{$cate_s[count($cate_s)-1]['cate_id']}}" ><h3><center id='tx'>加载更多</center></h3></span>
 	<!--商标-->
 
-<<<<<<< HEAD
-	<div class="brand">
-		<div class="py-container">
-		    <div>
-			<!-- <input type="button" onclick="getChane()" value="换一换"> -->
-			<a href="javascript:;"  id="huan"><i></i>换一换</a>	
-			</div>
-			<ul class="Brand-list blockgary">
-			@foreach($brand as $k=>$v)
-				<li class="Brand-item" ><a href="/list/{{$v->brand_id}}"><img src="{{$v->brand_img}}" style="width:100px;height:60px;" /></a></li>
-			@endforeach
-=======
+
 	<div class="brand" id='brand_shu' num=''>
 
 		<div class="py-container">
@@ -363,9 +352,7 @@
 				<li class="Brand-item"><img src="/qtai/img/brand_15.png" /></li>
 				<li class="Brand-item"><img src="/qtai/img/brand_17.png" /></li>
 				<li class="Brand-item"><img src="/qtai/img/brand_19.png" /></li>
->>>>>>> 971960e92393c7dba1f6f1e0348a6325863f860d
-			</ul>
-			
+			</ul>		
 		</div>
 	</div>
 	<!-- 底部栏位 -->

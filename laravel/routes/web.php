@@ -55,6 +55,31 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
+//前台登录
+Route::any('/login','index\LoginController@login'); //登录展示
+Route::any('/login_do','index\LoginController@login_do'); //执行登录
+//前台注册
+Route::any('/reg','index\LoginController@reg');//注册
+Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
+Route::any('/reg_do','index\LoginController@reg_do');//执行注册
+
+//个人信息
+Route::any('/add','index\HomeController@add');
+Route::any('/add_do','index\HomeController@add_do');
+Route::any('/city','index\HomeController@city');
+
+//收获地址
+Route::any('/add_list','index\AddressController@add_list');
+Route::any('/city','index\AddressController@city');
+Route::any('/add_do','index\AddressController@add_do');
+Route::any('/del','index\AddressController@del');
+Route::any('/upd/{address_id}','index\AddressController@upd');
+Route::any('/updAdd','index\AddressController@updAdd');
+
+
+
+
+
 
 //---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页
@@ -105,7 +130,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
 });
 
 //分类
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
     Route::any('/cateadd', 'admin\CateController@addshow');//添加页
     Route::any('/cateadds', 'admin\CateController@add');//添加
@@ -139,6 +164,7 @@ Route::prefix('/nav')->middleware('checklogin')->group(function(){
   Route::any('nav_tjq','a_1\demo_a2_contr@nav_tjq'); 
   Route::any('nav_tje','a_1\demo_a2_contr@nav_tje'); 
   Route::any('nav_zse','a_1\demo_a2_contr@nav_zse');
+  Route::any('nav_qx','a_1\demo_a2_contr@nav_qx');
   Route::any('nav_jd','a_1\demo_a2_contr@nav_jd');
   Route::any('nav_jd_s','a_1\demo_a2_contr@nav_jd_s');
   Route::any('nav_sce','a_1\demo_a2_contr@nav_sce');
@@ -150,6 +176,7 @@ Route::prefix('/service')->middleware('checklogin')->group(function(){
   Route::any('service_tjq','a_1\demo_a2_contr@service_tjq'); 
   Route::any('service_tje','a_1\demo_a2_contr@service_tje'); 
   Route::any('service_zse','a_1\demo_a2_contr@service_zse');
+  Route::any('service_qx','a_1\demo_a2_contr@service_qx');
   Route::any('service_jd','a_1\demo_a2_contr@service_jd');
   Route::any('service_jd_s','a_1\demo_a2_contr@service_jd_s');  
   Route::any('service_sce','a_1\demo_a2_contr@service_sce');
@@ -162,6 +189,7 @@ Route::prefix('/slide')->middleware('checklogin')->group(function(){
   Route::any('slide_wje','a_1\demo_a2_contr@slide_wje');
   Route::any('slide_tje','a_1\demo_a2_contr@slide_tje'); 
   Route::any('slide_zse','a_1\demo_a2_contr@slide_zse');
+  Route::any('slide_qx','a_1\demo_a2_contr@slide_qx');
   Route::any('slide_jd','a_1\demo_a2_contr@slide_jd');
   Route::any('slide_jd_s','a_1\demo_a2_contr@slide_jd_s');   
   Route::any('slide_sce','a_1\demo_a2_contr@slide_sce');
@@ -173,6 +201,7 @@ Route::prefix('/sku_name')->middleware('checklogin')->group(function(){
   Route::any('sku_name_tjq','a_1\demo_a2_contr@sku_name_tjq'); 
   Route::any('sku_name_tje','a_1\demo_a2_contr@sku_name_tje'); 
   Route::any('sku_name_zse','a_1\demo_a2_contr@sku_name_zse'); 
+  Route::any('sku_name_qx','a_1\demo_a2_contr@sku_name_qx');
   Route::any('sku_name_jd_s','a_1\demo_a2_contr@sku_name_jd_s');    
   Route::any('sku_name_sce','a_1\demo_a2_contr@sku_name_sce');
 });
@@ -181,6 +210,7 @@ Route::prefix('/sku_val')->middleware('checklogin')->group(function(){
   Route::any('sku_val_tjq','a_1\demo_a2_contr@sku_val_tjq'); 
   Route::any('sku_val_tje','a_1\demo_a2_contr@sku_val_tje'); 
   Route::any('sku_val_zse','a_1\demo_a2_contr@sku_val_zse'); 
+  Route::any('sku_val_qx','a_1\demo_a2_contr@sku_val_qx');
   Route::any('sku_val_jd_s','a_1\demo_a2_contr@sku_val_jd_s');   
   Route::any('sku_val_sce','a_1\demo_a2_contr@sku_val_sce');   
 });
@@ -203,6 +233,9 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除
     Route::any('/goods/upd/{id}', 'admin\GoodsController@upd');//商品软删除
     Route::any('/goods/updAdd/{id}', 'admin\GoodsController@updAdd');//修改执行
+    Route::get('/goods/ajaxshow', 'admin\GoodsController@ajaxshow');//商品是否展示极点技改
+    Route::get('/goods/ajaxname', 'admin\GoodsController@ajaxname');//商品是库存极点技改
+    Route::get('/goods/ajaxprice', 'admin\GoodsController@ajaxprice');//商品是价格极点技改
 });
 //sku关联字段
 Route::prefix('/admin')->group(function(){

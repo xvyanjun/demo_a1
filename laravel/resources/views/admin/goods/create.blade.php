@@ -51,7 +51,7 @@
 		                              <select class="form-control" name="cate_id">
 										  <option value="">--请选择--</option>
 										  @foreach($cate as $k=>$v)
-										  <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+										  <option value="{{$v->cate_id}}">{{ str_repeat("|--",$v['level']) }}{{$v->cate_name}}</option>
 										  @endforeach
 									  </select>
 		                            </div>	                              

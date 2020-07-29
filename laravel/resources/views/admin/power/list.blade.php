@@ -7,7 +7,16 @@
     <div class="box-header with-border">
         <h3 class="box-title">权限列表</h3>
     </div>
-
+<div class="pull-left">
+        <div class="form-group form-inline">
+            <div class="btn-group">
+                <a href="/admin/power/create" class="btn btn-default" title="添加">
+                    <i class="fa fa-file-o"></i>添加权限
+                </a>
+                <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+            </div>
+        </div>
+    </div>
     <div class="box-body">
 
         <!-- 数据表格 -->
@@ -31,7 +40,7 @@
                     <td>{{$v->power_url}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->power_time)}}</td>
                     <td class="text-center">
-                        <a href="{{url('/admin/power/upd/'.$v->power_id)}}" class="btn bg-olive btn-xs">修改</a>
+                          <a href="{{url('/admin/power/upd/'.$v->power_id)}}" class="btn bg-olive btn-xs">修改</a>
                         <button type="button" data-id="{{$v->power_id}}" id="del" class="btn btn-danger btn-xs">删除</button>
                     </td> 
                 </tr>

@@ -59,7 +59,7 @@
 
                         <div class="col-md-2 title">url</div>
                         <div class="col-md-10 data">
-                            <input type="text" id="url" ng-model="entity.name" name="url" class="form-control" placeholder="品牌地址" value="{{$brand['brand_url']}}">
+                            <input type="text" id="url" ng-model="entity.name" name="brand_url" class="form-control" placeholder="品牌地址" value="{{$brand['brand_url']}}">
                         </div>
                     </div>
                 </div>

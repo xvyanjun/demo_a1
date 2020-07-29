@@ -57,6 +57,23 @@ public function nav_zse(){
 	return view('admin.nav_demo.dhang_zse',['xxi'=>$xxi,'xx'=>$xx]);
 }
 //-------------------------------------------------------------
+public function nav_qx(){
+   $xx=request()->all();
+   $a1=array_key_exists('id_s',$xx);
+   if($a1==false){
+     $fh=['a1'=>'1','a2'=>'参数缺失'];
+     return json_encode($fh);exit; 
+   }
+   $id_s=explode(',',$xx['id_s']);
+   $sc_s=shop_nav::wherein('nav_id',$id_s)->update(['nav_del'=>'2']);
+    if($sc_s){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }   
+   return json_encode($fh);
+}
+//-------------------------------------------------------------
 public function nav_jd(){
 	$xx=request()->all();
 	$a1=array_key_exists('nav_id',$xx);
@@ -195,11 +212,46 @@ public function service_tje(){
 //-------------------------------------------------------------
 public function service_zse(){
 	$xx=request()->all();
-	$xxi=shop_service::where('service_del','1')->paginate(2);
+  $a1=array_key_exists('service_show',$xx);
+  $a2=array_key_exists('service_title',$xx);
+
+  $wher=[['service_del','1']];
+
+  if($a1==false&&$a2==false){
+    $wher=[['service_del','1']];
+  }else{
+    if(!empty($xx['service_show'])){
+       $wher[]=['service_show',$xx['service_show']];
+    }
+    if(!empty($xx['service_title'])){
+       $vl=$xx['service_title'];
+       $wher[]=['service_title','like',"%$vl%"];
+    }
+  }
+
+
+	$xxi=shop_service::where($wher)->paginate(2);
 	if(request()->ajax()){
 	  return view('admin.service_demo.service_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
 	}
 	return view('admin.service_demo.service_zse',['xxi'=>$xxi,'xx'=>$xx]);
+}
+//-------------------------------------------------------------
+public function service_qx(){
+   $xx=request()->all();
+   $a1=array_key_exists('id_s',$xx);
+   if($a1==false){
+     $fh=['a1'=>'1','a2'=>'参数缺失'];
+     return json_encode($fh);exit; 
+   }
+   $id_s=explode(',',$xx['id_s']);
+   $sc_s=shop_service::wherein('service_id',$id_s)->update(['service_del'=>'2']);
+    if($sc_s){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }   
+   return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function service_jd(){
@@ -384,6 +436,23 @@ public function slide_zse(){
 	return view('admin.slide_demo.slide_zse',['xxi'=>$xxi,'xx'=>$xx]);
 }
 //-------------------------------------------------------------
+public function slide_qx(){
+   $xx=request()->all();
+   $a1=array_key_exists('id_s',$xx);
+   if($a1==false){
+     $fh=['a1'=>'1','a2'=>'参数缺失'];
+     return json_encode($fh);exit; 
+   }
+   $id_s=explode(',',$xx['id_s']);
+   $sc_s=shop_slide::wherein('slide_id',$id_s)->update(['slide_del'=>'2']);
+    if($sc_s){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }   
+   return json_encode($fh);
+}
+//-------------------------------------------------------------
 public function slide_jd(){
   $xx=request()->all();
   $a1=array_key_exists('slide_id',$xx);
@@ -551,6 +620,23 @@ public function sku_name_zse(){
   return view('admin.sku_name_demo.sku_name_zse',['xxi'=>$xxi,'xx'=>$xx]);
 }
 //-------------------------------------------------------------
+public function sku_name_qx(){
+   $xx=request()->all();
+   $a1=array_key_exists('id_s',$xx);
+   if($a1==false){
+     $fh=['a1'=>'1','a2'=>'参数缺失'];
+     return json_encode($fh);exit; 
+   }
+   $id_s=explode(',',$xx['id_s']);
+   $sc_s=shop_sku_name::wherein('attr_id',$id_s)->update(['attr_del'=>'2']);
+    if($sc_s){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }   
+   return json_encode($fh);
+}
+//-------------------------------------------------------------
 public function sku_name_jd_s(){
   $xx=request()->all();
   $a1=array_key_exists('attr_id',$xx);
@@ -629,6 +715,23 @@ public function sku_val_zse(){
     return view('admin.sku_val_demo.sku_val_zse_s',['xxi'=>$xxi,'xx'=>$xx,'sxing'=>$sxing]);
   }
   return view('admin.sku_val_demo.sku_val_zse',['xxi'=>$xxi,'xx'=>$xx,'sxing'=>$sxing]);
+}
+//-------------------------------------------------------------
+public function sku_val_qx(){
+   $xx=request()->all();
+   $a1=array_key_exists('id_s',$xx);
+   if($a1==false){
+     $fh=['a1'=>'1','a2'=>'参数缺失'];
+     return json_encode($fh);exit; 
+   }
+   $id_s=explode(',',$xx['id_s']);
+   $sc_s=shop_sku_val::wherein('val_id',$id_s)->update(['val_del'=>'2']);
+    if($sc_s){
+      $fh=['a1'=>'0','a2'=>'删除成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'删除失败'];
+    }   
+   return json_encode($fh);
 }
 //-------------------------------------------------------------
 public function sku_val_jd_s(){

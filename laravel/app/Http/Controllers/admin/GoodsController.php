@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Goods;
 use App\Models\Brand;
 use App\Models\Cate;
+use App\Models\shop_property;
+
 class GoodsController extends Controller
 {
 
@@ -39,7 +41,7 @@ class GoodsController extends Controller
             <link rel='stylesheet' href='/admin/plugins/bootstrap/css/bootstrap.min.css'>
               <script src='/admin/plugins/bootstrap/js/bootstrap.min.js'></script>
               <div class='listbut'>
-                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>文件未经检测到到或者不识别,请重新添加</button></a><br>
+                    <a href='/admin/goods/uploades'><button type='button' class='btn btn-primary'>文件未经检测到到或者不识别,点击重新添加</button></a><br>
                </div>
             ";
             exit;
@@ -95,7 +97,7 @@ class GoodsController extends Controller
      */
     public function uploadeslist(){
         $model=new Shop_album();
-        $info=$model::where(['is_del'=>1])->paginate(3);
+        $info=$model::where(['is_del'=>1])->paginate(13);
 
         $model=new Goods();
         $goods=$model::get()->toArray();
@@ -144,7 +146,19 @@ class GoodsController extends Controller
     public function create(Request $request){
         $brand=Brand::get();
         $cate=Cate::get();
+        $cate=$this->cate_list($cate);
         return view("admin.goods.create",compact("brand","cate"));
+    }
+    public function cate_list($res,$pid=0,$level=0){
+        static $data=[];
+        foreach ($res as $k=>$v){
+            if($v['p_id']==$pid){
+                $v['level']=$level;
+                $data[]=$v;
+                self::cate_list($res,$v['cate_id'],$v['level']+1);
+            }
+        }
+        return $data;
     }
     //商品执行
     public function add(Request $request){
@@ -221,15 +235,38 @@ class GoodsController extends Controller
     }
     //商品展示
     public function list(Request $request){
+        $goods_name=$request->goods_name;
+        $where=[['goods_del','1']];
+        if($goods_name){
+            $where[]=['goods_name','like',"%$goods_name%"];
+        }
+        // $where=[
+        //     'goods_del'=>1
+        // ];
         $res=Goods::leftjoin("shop_brand","shop_goods.brand_id","=","shop_brand.brand_id")
                     ->leftjoin("shop_cate","shop_cate.cate_id","=","shop_goods.cate_id")
-                    ->where(['goods_del'=>1])
-                    ->paginate(1);
-        return view("admin.goods.list",compact("res"));
+                    ->where($where)
+                    ->paginate(10);
+        $query=request()->all();
+        return view("admin.goods.list",compact("res","query"));
     }
     //商品软删除
     public function del(Request $request){
+        $xx=request()->all();
         $goods_id=$request->goods_id;
+        
+        $a1=array_key_exists('goods_id',$xx);
+        if($a1==false){
+            $fh=['code'=>'000003','msg'=>'参数缺失'];
+            return json_encode($fh);exit;
+        }
+        $sf_a1=Shop_album::where([['goods_id',$xx['goods_id']],['is_del','1']])->first();
+        $sf_a2=shop_property::where([['goods_id',$xx['goods_id']],['property_del','1']])->first();
+        if($sf_a1==true||$sf_a2==true){
+            $fh=['code'=>'000006','msg'=>'相册或sku关联表有关联数据不可删除'];
+            return json_encode($fh);exit;
+        }
+
         $res=Goods::where("goods_id",$goods_id)->update(['goods_del'=>2]);
         if($res){
             return ['code'=>"000000","msg"=>"商品软删除成功"];
@@ -265,5 +302,39 @@ class GoodsController extends Controller
             return $store;
         }
         exit('图片上传失败');
+    }
+    //即点即改是否展示
+    public function ajaxshow(Request $request){
+        $id = request()->get("goods_id");
+        $goods_show = request()->get("goods_show");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_show"=>$goods_show]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }
+    }
+     //即点即改修改库存
+     public function ajaxname(Request $request){
+        $id = request()->get("goods_id");
+        $goods_stock = request()->get("goods_stock");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_stock"=>$goods_stock]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }else{
+            return json_encode(["code"=>"00001","msg"=>"no"]);
+        }
+    }
+    //即点即改修改价格
+    public function ajaxprice(Request $request){
+        $id = request()->get("goods_id");
+        $goods_price = request()->get("goods_price");
+        // dd($id);
+        $res = Goods::where("goods_id",$id)->update(["goods_price"=>$goods_price]);
+        if($res){
+            return json_encode(["code"=>"00000","msg"=>"ok"]);
+        }else{
+            return json_encode(["code"=>"00001","msg"=>"no"]);
+        }
     }
 }

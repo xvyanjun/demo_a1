@@ -23,12 +23,7 @@
             </div>
         </div>
         <div class="box-tools pull-right">
-            <div class="has-feedback">
-                <form>
-                分类名称<input name="cate_name" value="{{$cate_name}}" type="text">
-                <input type="submit" class="btn btn-default" value="查询">
-                </form>
-            </div>
+
         </div>
         <!--工具栏/-->
 
@@ -52,17 +47,19 @@
                     {{ str_repeat("|--",$v['level']) }}
                     {{$v['cate_name']}}
                 </td>
-                <td>
-                    @foreach($cate as $key=>$value)
-                        @if($v['p_id']==0)
+                <td> 
+                    @if($v['p_id']==0)
                             顶级分类
-                        @elseif($v['p_id']==$value['cate_id'])
-                            {{$value['cate_name']}}
-                        @endif
-                    @endforeach
+                    @else
+                        @foreach($cate as $key=>$value)
+                            @if($v['p_id']==$value['cate_id'])
+                                {{$value['cate_name']}}
+                            @endif
+                        @endforeach
+                    @endif
                 </td>
                 <td>{{date('Y-m-d H:i:s',$v['cate_time'])}}</td>
-                <td class="cate_show">
+                <td class="cate_show" cate_show="{{$v['cate_show']}}">
                     @if($v['cate_show']==1)
                         显示
                     @elseif($v['cate_show']==2)
@@ -101,21 +98,22 @@
         });
     })
 //即点即改
-    $(document).on('click','.cate_show',function(){
-        var cate_id=$(this).parents('tr').attr('cate_id');
-        $.ajax({
-            url: "{{'/admin/updateshow'}}",
-            type: 'post',
-            data: {cate_id:cate_id},
-            dataType: 'json',
-            success: function (res) {
-                if(res.code=='200'){
-                    window.location.href=""
-                }else{
-                    alert(res.msg);
-                }
-            }
-        });
-    });
+    {{--$(document).on('click','.cate_show',function(){--}}
+        {{--var cate_id=$(this).parents('tr').attr('cate_id');--}}
+        {{--var cate_show=$(this).attr('cate_show');--}}
+        {{--$.ajax({--}}
+            {{--url: "{{'/admin/updateshow'}}",--}}
+            {{--type: 'post',--}}
+            {{--data: {cate_id:cate_id,cate_show:cate_show},--}}
+            {{--dataType: 'json',--}}
+            {{--success: function (res) {--}}
+                {{--if(res.code=='200'){--}}
+                    {{--window.location.href=""--}}
+                {{--}else{--}}
+                    {{--alert(res.msg);--}}
+                {{--}--}}
+            {{--}--}}
+        {{--});--}}
+    {{--});--}}
 </script>
 

@@ -41,10 +41,6 @@ class UserController extends Controller
         if(!empty($date)){
             $model::where("admin_id",$res['admin_id'])->delete();
         }
-
-
-
-
 //            $data=[
 //                "role_id"=>intval($v),
 //                "admin_id"=>$res['admin_id'],

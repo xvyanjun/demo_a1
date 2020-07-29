@@ -20,11 +20,7 @@
                         <a href="/nav/nav_tjq" class="btn btn-default" title="添加">
                             <i class="fa fa-file-o"></i>添加导航
                         </a>
-                        <!-- <button type="button" class="btn btn-default" title="添加" ><i class="fa fa-file-o"></i>添加</button> -->
-                        <!-- <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-                        <button type="button" class="btn btn-default" title="提交审核" ><i class="fa fa-check"></i> 提交审核</button>
-                        <button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
-                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button> -->
+                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                     </div>
                 </div>
             </div>
@@ -55,13 +51,15 @@
                     <th class="sorting">url</th>
                     <th class="sorting">显示</th>
                     <th class="sorting">时间</th>
-                    <th class="sorting">操作</th>
+                    <th class="sorting">操作
+                        <button type="button" class="btn btn-warning" id='sc_s'>删除已选</button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody id='th'>
                 @foreach($xxi as $c=>$v)
                 <tr>
-                    <td><input  type="checkbox"></td>
+                    <td><input name='ck' type="checkbox" nav_id="{{$v['nav_id']}}"></td>
                     <td>{{$v['nav_id']}}</td>
                     <td id='eva_jd_s' nav_id="{{$v['nav_id']}}">{{$v['nav_name']}}</td>
                     <td>{{$v['nav_url']}}</td>
@@ -95,6 +93,7 @@
     </div>
     <script>
     $(function(){
+    $("#sc_s").hide();  
 //-----------------------------------------------------------------      
       $(document).on('click','#sc',function(){
         var nav_id=$(this).attr('nav_id');
@@ -123,6 +122,8 @@
               dataType:'html',
               success:function(ty){
                     $("#th").html(ty);
+                    $("#selall").prop('checked',false);//去除复选框选中状态 
+                    $("#sc_s").hide();//删除按钮隐藏 
               }
             });
        return false;
@@ -201,6 +202,52 @@
               console.log(nav_id,nav_yname,nav_name);
             return false;
        }); 
+//-----------------------------------------------------------------全选
+       $(document).on('click','#selall',function(){
+        var sf=$(this).prop('checked');
+               $("[type='checkbox'][name='ck']").prop('checked',sf);
+            if(sf){
+              $("#sc_s").show();  
+            }else{
+              $("#sc_s").hide(); 
+            }
+       });
+//-----------------------------------------------------------------
+       $(document).on('click',"[type='checkbox'][name='ck']",function(){
+            var sf=0;
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               sf=sf+1;
+            }); 
+              if(sf>0){
+                $("#sc_s").show();  
+              }else{
+                $("#sc_s").hide(); 
+                $("#selall").prop('checked',false);//去除复选框选中状态 
+              }
+       });
+//-----------------------------------------------------------------删除已选
+       $(document).on('click',"#sc_s",function(){
+            var id_s='';
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               id_s=id_s+$(this).attr('nav_id')+',';
+            });
+            var cd=(id_s.length)-1;
+            var id_s=id_s.substr(0,cd);
+            if(id_s!=''){
+              $.ajax({
+                url:'/nav/nav_qx',
+                type:'post',
+                dataType:'json',
+                data:{'id_s':id_s},
+                success:function(rc){
+                  if(rc.a1=='0'){
+                    location.href='/nav/nav_zse';
+                  }
+                  console.log(rc.a2);
+                }
+              });
+            }
+        });
 //-----------------------------------------------------------------
     });
 </script>

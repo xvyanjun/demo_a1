@@ -48,13 +48,15 @@
                     <th class="sorting_asc" >ID</th>
                     <th class="sorting">属性名称</th>
                     <th class="sorting">时间</th>
-                    <th class="sorting">操作</th>
+                    <th class="sorting">操作
+                    <button type="button" class="btn btn-warning" id='sc_s'>删除已选</button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody id='th'>
                 @foreach($xxi as $c=>$v)
                 <tr>
-                    <td><input  type="checkbox"></td>
+                    <td><input  name='ck' type="checkbox" attr_id="{{$v['attr_id']}}"></td>
                     <td>{{$v['attr_id']}}</td>
                     <td id='eva_jd_s' attr_id="{{$v['attr_id']}}">{{$v['attr_name']}}</td>
                     <td>{{date('Y-m-d H:i',$v['attr_time'])}}</td>
@@ -82,6 +84,7 @@
     </div>
     <script>
     $(function(){
+      $("#sc_s").hide();  
 //-----------------------------------------------------------------
       $(document).on('click','#sc',function(){
         var attr_id=$(this).attr('attr_id');
@@ -110,6 +113,8 @@
               dataType:'html',
               success:function(ty){
                     $("#th").html(ty);
+                    $("#selall").prop('checked',false);//去除复选框选中状态 
+                    $("#sc_s").hide();//删除按钮隐藏 
               }
             });
        return false;
@@ -162,6 +167,52 @@
               console.log(attr_id,attr_yname,attr_name);
             return false;
        }); 
+//-----------------------------------------------------------------全选
+       $(document).on('click','#selall',function(){
+        var sf=$(this).prop('checked');
+               $("[type='checkbox'][name='ck']").prop('checked',sf);
+            if(sf){
+              $("#sc_s").show();  
+            }else{
+              $("#sc_s").hide(); 
+            }
+       });
+//-----------------------------------------------------------------
+       $(document).on('click',"[type='checkbox'][name='ck']",function(){
+            var sf=0;
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               sf=sf+1;
+            }); 
+              if(sf>0){
+                $("#sc_s").show();  
+              }else{
+                $("#sc_s").hide(); 
+                $("#selall").prop('checked',false);//去除复选框选中状态 
+              }
+       });
+//-----------------------------------------------------------------删除已选
+       $(document).on('click',"#sc_s",function(){
+            var id_s='';
+            $("[type='checkbox'][name='ck']:checked").each(function(){
+               id_s=id_s+$(this).attr('attr_id')+',';
+            });
+            var cd=(id_s.length)-1;
+            var id_s=id_s.substr(0,cd);
+            if(id_s!=''){
+              $.ajax({
+                url:'/sku_name/sku_name_qx',
+                type:'post',
+                dataType:'json',
+                data:{'id_s':id_s},
+                success:function(rc){
+                  if(rc.a1=='0'){
+                    location.href='/sku_name/sku_name_zse';
+                  }
+                  console.log(rc.a2);
+                }
+              });
+            }
+        });      
 //-----------------------------------------------------------------             
     });
 </script>

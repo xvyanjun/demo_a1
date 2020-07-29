@@ -7,7 +7,16 @@
     <div class="box-header with-border">
         <h3 class="box-title">友情列表</h3>
     </div>
-
+<div class="pull-left">
+        <div class="form-group form-inline">
+            <div class="btn-group">
+                <a href="/admin/friend/create" class="btn btn-default" title="添加">
+                    <i class="fa fa-file-o"></i>添加友情
+                </a>
+                <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+            </div>
+        </div>
+    </div>
     <div class="box-body">
 
         <!-- 数据表格 -->

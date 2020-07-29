@@ -22,6 +22,14 @@
                 </div>
             </div>
         </div>
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+                <form>
+                    <input type="text" name="brand_name" placeholder="请输入品牌名称" value="{{$query['brand_name']??''}}">
+                    <input type="submit" value="查询">
+                </form>
+            </div>
+        </div>
         <!--工具栏/-->
         <!--数据列表-->
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
@@ -55,7 +63,10 @@
             @endforeach
 
             <div class="pull-right paginate">
-                {{ $res->links() }}
+                <tr>
+                    <td colspan="6" style="text-align:center;">{{$res->appends($query)->links()}}</td>
+                </tr>
+                {{--{{ $res->links() }}--}}
             </div>
 
             </tbody>

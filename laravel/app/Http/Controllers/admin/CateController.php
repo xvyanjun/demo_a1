@@ -10,23 +10,20 @@ class CateController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * 商品展示
+     * 分类展示
      */
     public function index(Request $request){
-        $cate_name=$request->cate_name??'';
+
         $where=[
             ['cate_del','=',1],
         ];
-//        if($cate_name){
-//            $where[]=['cate_name','like',"%$$cate_name%"];
-//        }
         $model=new Cate();
         $cate=$model::get()->toArray();
         $res=$model::where($where)->get()->toArray();
 //        print_r($res);
         $info=self::cate_list($res);
 //        dd($info);
-        return view('admin.cate.list',['info'=>$info,'cate'=>$cate,'cate_name'=>$cate_name]);
+        return view('admin.cate.list',['info'=>$info,'cate'=>$cate]);
     }
 
     /**
@@ -203,6 +200,7 @@ class CateController extends Controller
      */
     public function updateshow(Request $request){
         $cate_id=$request->post('cate_id');
+        $cate_show=$request->post('cate_show');
         if(empty($cate_id)){
             $arr=[
                 'code'=>'300',
@@ -212,13 +210,13 @@ class CateController extends Controller
             return json_encode($arr,JSON_UNESCAPED_UNICODE);
         }
         $model=new Cate();
-        $cate=$model::where(['cate_id'=>$cate_id])->first();
-        if($cate['cate_show']==1){
+
+        if($cate_show==1){
             $cate_show=2;
-        }elseif($cate['cate_show']==2){
+        }elseif($cate_show==2){
             $cate_show=1;
         }
-//        dd($cate['cate_show']);
+        $cate=$model::where(['cate_id'=>$cate_id])->first();
         $cate->cate_show=$cate_show;
         if($cate->save()){
             $arr=[

@@ -7,9 +7,23 @@
     <div class="box-header with-border">
         <h3 class="box-title">商品列表</h3>
     </div>
-
+<div class="pull-left">
+                <div class="form-group form-inline">
+                    <div class="btn-group">
+                        <a href="/admin/goods/create" class="btn btn-default" title="添加">
+                            <i class="fa fa-file-o"></i>添加商品
+                        </a>
+                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                    </div>
+                </div>
+            </div>
+<center>
+<form>
+<input type="text" name="goods_name" placeholder="请输入商品名称" value="{{$query['goods_name']??''}}">
+<input type="submit" value="搜索">
+</form>
+</center>
     <div class="box-body">
-
         <!-- 数据表格 -->
         <div class="table-box">
             <!--数据列表-->
@@ -33,18 +47,23 @@
                 </thead>
                 <tbody>
                 @foreach($res as $k=>$v)
-                <tr>
+                <tr goods_id="{{$v->goods_id}}">
                     <td>{{$v->goods_id}}</td>
-                    <td>{{$v->goods_name}}</td>
+                    <td title="{{$v->goods_name}}">{{mb_substr($v->goods_name,0,6)}}...</td>
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
-                    <td>{{$v->goods_stock}}</td>
+                    <td>
+                        <span id="stock">{{$v->goods_stock}}</span>
+                    </td>
                     <td><img src="/{{$v->goods_img}}" width="80" height="60"></td>
-                    <td>{{$v->goods_price}}</td>
-                    <td>{{$v->content}}</td>
-                    <td>{{$v->goods_show?"是":"否"}}</td>
-                    <td>{{$v->goods_pack}}</td>
-                    <td>{{$v->goods_service}}</td>
+
+                    <td>
+                        <span id="price">{{$v->goods_price}}</span>
+                    </td>
+                    <td title="{{$v->content}}">{{mb_substr($v->content,0,6)}}...</td>
+                    <td id="eva_jd" goods_id="{{$v->goods_id}}">{{$v->goods_show=='1'?"是":"否"}}</td>
+                    <td title="{{$v->goods_pack}}">{{mb_substr($v->goods_pack,0,6)}}...</td>
+                    <td title="{{$v->goods_service}}">{{mb_substr($v->goods_service,0,6)}}...</td>
                     <td>{{date("Y-m-d H:i:s",$v->goods_time)}}</td>
                     <td class="text-center">
                         <a href="{{url('/admin/goods/upd/'.$v->goods_id)}}" class="btn bg-olive btn-xs">修改</a>
@@ -53,7 +72,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td colspan="13">{{$res->links()}}</td>
+                    <td colspan="13">{{$res->appends($query)->links()}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -80,4 +99,86 @@ $(document).on("click","#del",function(){
     })
 })
 
+//是否显示的即点即改
+$(document).on("click","#eva_jd",function(){
+    var _this=$(this);
+    var goods_id=_this.attr("goods_id");
+    var goods_show=_this.text();
+    if(goods_show=="是"){
+        _this.text("否");
+    }else{
+        _this.text("是");
+    }
+    if(goods_show=="是"){
+        goods_show='2';
+    }else{
+        goods_show='1';
+    }
+    $.get(
+        "/admin/goods/ajaxshow",
+        {goods_id:goods_id,goods_show:goods_show},
+        function(res){
+            if(res.code==00000){
+                if(goods_show=="是"){
+                    _this.text("否");
+                }else{
+                    _this.text("是");
+                }
+            }
+        },"json"
+    )
+    // console.log(goods_show);
+})
+
+//极点技改商品库存
+$(document).on("click","#stock",function(){
+    var goods_stock=$(this).text();
+    $(this).parent().html("<input type='text' class='input_name' goods_stock="+goods_stock+" value="+goods_stock+">");
+    $(".input_name").focus();
+})
+$(document).on("blur",".input_name",function(){
+    var _this=$(this);
+    var goods_stock=_this.val();
+    //获取id值
+    var goods_id=_this.parents("tr").attr("goods_id");
+    // console.log(goods_id);
+    $.get(
+        "/admin/goods/ajaxname",
+        {goods_id:goods_id,goods_stock:goods_stock},
+        function(res){
+            if(res.code==00000){
+                _this.parent().html("<span id='stock'>"+goods_stock+"</span>");
+            }else{
+               var aa=_this.attr("goods_stock");
+               _this.parent().html("<span id='stock'>"+aa+"</span>");
+            }
+        },"json"
+    )
+})
+
+//即点技改商品价格
+$(document).on("click","#price",function(){
+    var goods_price=$(this).text();
+    $(this).parent().html("<input type='text' class='input_price' goods_price="+goods_price+" value="+goods_price+">");
+    $(".input_price").focus();
+})
+$(document).on("blur",".input_price",function(){
+    var _this=$(this);
+    var goods_price=_this.val();
+    //获取id值
+    var goods_id=_this.parents("tr").attr("goods_id");
+    // console.log(goods_id);
+    $.get(
+        "/admin/goods/ajaxprice",
+        {goods_id:goods_id,goods_price:goods_price},
+        function(res){
+            if(res.code==00000){
+                _this.parent().html("<span id='price' >"+goods_price+"</span>");
+            }else{
+                var aa=_this.attr("goods_price");
+               _this.parent().html("<span id='price'>"+aa+"</span>");
+            }
+        },"json"
+    )
+})
 </script>

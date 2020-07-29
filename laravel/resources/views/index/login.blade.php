@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>商家入驻申请</title>
+	<title>用户登录</title>
     <link rel="stylesheet" type="text/css" href="/admin/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/admin/css/pages-register.css" />
 </head>
@@ -16,20 +16,20 @@
 		</div>
 		<!--register-->
 		<div class="registerArea">
-			<h3>商家入驻登录<span class="go">我没有账号，去<a href="/admin/login/reg">注册</a></span></h3>
+			<h3>用户登录<span class="go">我没有账号，去<a href="/reg">注册</a></span></h3>
 			<div class="info">
 				<form class="sui-form form-horizontal">				
 					<div class="control-group">
 						<label class="control-label">用户名：</label>
 						<div class="controls">
-							<input type="text" placeholder="登陆名" id="admin_name" class="input-xfat input-xlarge">
+							<input type="text" placeholder="登陆名" id="u_phone" name="u_phone" class="input-xfat input-xlarge">
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">用户密码：</label>
 						<div class="controls">
-							<input type="password" placeholder="登陆密码" id="admin_pwd" class="input-xfat input-xlarge">
+							<input type="password" placeholder="登陆密码" id="u_pwd"  name="u_pwd"  class="input-xfat input-xlarge">
 						</div>
 					</div>
 					
@@ -42,7 +42,7 @@
 					<div class="control-group">
 						<label class="control-label"></label>
 						<div class="controls btn-reg">
-							<a class="sui-btn btn-block btn-xlarge btn-danger" id="tj" href="javascript:;">登录</a>
+							<a class="sui-btn btn-block btn-xlarge btn-danger" id="login" href="javascript:;">登录</a>
 						</div>
 					</div>
 				</form>
@@ -70,25 +70,26 @@
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 <script>
-    $(document).on("click","#tj",function(){
-        var admin_name=$("#admin_name").val();
-        var admin_pwd=$("#admin_pwd").val();
-        var data={};
-        data.admin_name=admin_name;
-        data.admin_pwd=admin_pwd;
-        $.ajax({
-            url:"/admin/login/loginAdd",
-            data:data,
-            dataType:"json",
-            success:function(res){
-                if(res.code==000000){
-                    alert(res.msg);
-                    location.href="/index";
-                }else{
-                    alert(res.msg);
-                }
-            }
-        })
-    })
+      $(document).on('click','#login',function(){
+          var u_phone = $('#u_phone').val();
+          var u_pwd = $('#u_pwd').val();
+          $.ajax({
+              url:'/login_do',
+              type:'post',
+              dataType:'json',
+              data:{'u_phone':u_phone,'u_pwd':u_pwd},
+              success:function(res){
+				  if(res.code==00000){
+					  alert(res.msg);
+					  location.href = "http://jiaoyan.com";
+				  }else{
+                  alert(res.msg);
+				  }
+              }
+          })
+
+      });
+
 </script>

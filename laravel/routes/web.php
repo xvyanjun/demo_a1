@@ -86,6 +86,31 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
+//前台登录
+Route::any('/login','index\LoginController@login'); //登录展示
+Route::any('/login_do','index\LoginController@login_do'); //执行登录
+//前台注册
+Route::any('/reg','index\LoginController@reg');//注册
+Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
+Route::any('/reg_do','index\LoginController@reg_do');//执行注册
+
+//个人信息
+Route::any('/add','index\HomeController@add');
+Route::any('/add_do','index\HomeController@add_do');
+Route::any('/city','index\HomeController@city');
+
+//收获地址
+Route::any('/add_list','index\AddressController@add_list');
+Route::any('/city','index\AddressController@city');
+Route::any('/add_do','index\AddressController@add_do');
+Route::any('/del','index\AddressController@del');
+Route::any('/upd/{address_id}','index\AddressController@upd');
+Route::any('/updAdd','index\AddressController@updAdd');
+
+
+
+
+
 
 //---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页

@@ -67,7 +67,7 @@
 			<div class="py-container">
 				<div class="yui3-g Logo">
 					<div class="yui3-u Left logoArea">
-						<a class="logo-bd" title="品优购" href="JD-index.html" target="_blank"></a>
+						<a class="logo-bd" title="品优购" href="/"></a><!--target="_blank"-->
 					</div>
 					<div class="yui3-u Center searchArea">
 						<div class="search">
@@ -84,13 +84,15 @@
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
 								<span class="car"></span>
-								<a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
+								<a class="sui-btn btn-default btn-xlarge" href="/cart" ><!--target="_blank"-->
 									<span>我的购物车</span>
-									<i class="shopnum">0</i>
+									<i class="shopnum" id='cat_num_0522'>0</i>
 								</a>
 								<div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
 									<p>"啊哦，你的购物车还没有商品哦！"</p>
 									<p>"啊哦，你的购物车还没有商品哦！"</p>
+									<p>"啊哦，你的购物车还没有商品哦！"</p>
+									<p id='cat_add_886'>"查看更多~~~~~~~~~~~~~~~~~~~~"</p>
 								</div>
 							</div>
 						</div>
@@ -117,6 +119,15 @@
 				</div>
 				<script>					
 					$(function(){
+//----------------------------------------------------------------						
+						$.ajax({
+							url:'/cat_top_list',
+							type:'post',
+							dataType:'json',
+							success:function(jk_005){
+								$("#cat_num_0522").text(jk_005['cd']);
+							}
+						});
 //----------------------------------------------------------------						
 						$.ajax({
 							url:'/dhang_jz',

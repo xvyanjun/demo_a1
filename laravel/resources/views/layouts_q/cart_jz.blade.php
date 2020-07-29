@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-cart.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-getOrderInfo.css" />
+    <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body>
@@ -39,7 +40,7 @@
 			</div>
 		</div>
 	</div>
-
+    
 @yield('content')
 <!-- eva_zhong -->
 	<!-- 底部栏位 -->

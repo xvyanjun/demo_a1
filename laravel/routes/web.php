@@ -36,13 +36,10 @@ Route::any('/cate_list/{id}','index\CateController@cate_list');
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------楼层左侧
-
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //-----------------------------------------------------------
 Route::any('/list/{id}','index\ListController@list');//品牌列表
-
 //---------------------------------------------------------前台首页
-
 Route::any('dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------js楼层-条件-数据获取
 Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
@@ -50,8 +47,20 @@ Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
 Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 //---------------------------------------------------------首页品牌加载
 Route::any('ppai_js','index\IndexController@ppai_js');
-
 //----------------------------------------------------------
+});
+//---------------------------------------------------------
+Route::prefix('/')->group(function(){
+//---------------------------------------------------------
+Route::any('/cart','index\CartController@cart');
+Route::any('/cat_num_ny','index\CartController@cat_num_ny');//加减效果
+Route::any('/cat_num_ny_s','index\CartController@cat_num_ny_s');//数量
+Route::any('/cart_num_del','index\CartController@cart_num_del');//删除列表展示
+Route::any('/cart_num_del_new','index\CartController@cart_num_del_new');//取消删除状态
+Route::any('/cart_num_dels','index\CartController@cart_num_dels');//批量删除列表展示
+Route::any('/cart_del_yes','index\CartController@cart_del_yes');//删除记录
+Route::any('/cat_top_list','index\CartController@cat_top_list');//头部购物车
+//---------------------------------------------------------
 });
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
@@ -77,13 +86,13 @@ Route::any('/home_setting_address','a_1\demo_a1_contr@home_setting_address');
 //---------------------------------------------------------
 Route::any('/home_setting_safe','a_1\demo_a1_contr@home_setting_safe');
 //---------------------------------------------------------
-Route::any('/cart','a_1\demo_a1_contr@cart');
+// Route::any('/cart','a_1\demo_a1_contr@cart');
 //---------------------------------------------------------
 Route::any('/getOrderInfo','a_1\demo_a1_contr@getOrderInfo');
 //---------------------------------------------------------
 Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
-Route::any('/item','a_1\demo_a1_contr@item');
+// Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
 
 //---------------------------------------------------------后台

@@ -67,14 +67,6 @@ public function index(){
   }
     return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand,'cate_eva_sum'=>$cate_eva_sum]);
 }
-
-//--------------------------------------------------------------------------
-
-
-  //..............................eva
-  
-//..............................eva
-
 //.-------------------------------------------------------------------------导航
 public function dhang_jz(){
   $nav_s=shop_nav::where([['nav_show','1'],['nav_del','1']])->get();

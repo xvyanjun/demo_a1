@@ -613,7 +613,7 @@ public function sku_name_tje(){
 public function sku_name_zse(){
   // dd(eva());
   $xx=request()->all();
-  $xxi=shop_sku_name::where('attr_del','1')->paginate(2);
+  $xxi=shop_sku_name::where('attr_del','1')->paginate(20);
   if(request()->ajax()){
     return view('admin.sku_name_demo.sku_name_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
   }
@@ -710,7 +710,7 @@ public function sku_val_tje(){
 public function sku_val_zse(){
   $xx=request()->all();
   $sxing=shop_sku_name::where('attr_del','1')->get();
-  $xxi=shop_sku_val::where('val_del','1')->paginate(2);
+  $xxi=shop_sku_val::where('val_del','1')->paginate(20);
   if(request()->ajax()){
     return view('admin.sku_val_demo.sku_val_zse_s',['xxi'=>$xxi,'xx'=>$xx,'sxing'=>$sxing]);
   }

@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
 
+
     <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
     <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
@@ -20,7 +21,7 @@
     <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
-</head>
+{{--</head>--}}
 
 <body>
 	<!-- 头部栏位 -->
@@ -33,7 +34,7 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+						<li class="f-item">请<a href="/login" target="_blank">登录</a>　<span><a href="/reg" target="_blank">免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>

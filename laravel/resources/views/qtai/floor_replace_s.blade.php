@@ -24,13 +24,13 @@
 							<ul class="jd-list">
 
                                 @foreach($y_a1['cate_hits_desc'] as $j1=>$j2)
-                                 <li title="{{$j2['goods_name']}}">{{mb_substr($j2['goods_name'],0,6)}}</li>
+									<a href="/goods_list/{{$j2['goods_id']}}"><li title="{{$j2['goods_name']}}">{{mb_substr($j2['goods_name'],0,6)}}</li></a>
                                 @endforeach
 
 							</ul>
 							@foreach($y_a1['cate_hits_desc'] as $j1_s=>$j2_s)
 							     @if($j1_s=='0')
-                                 <img src="{{$j2_s['goods_img']}}" />
+                                 <a href="/goods_list/{{$j2_s['goods_id']}}"><img src="{{$j2_s['goods_img']}}" /></a>
                                  @endif
                             @endforeach
 
@@ -61,7 +61,7 @@
 							@foreach($y_a1['cate_goods'] as $t1=>$t2)
 							@if($t1<2)
 							<div class="floor-conver-pit" >
-								<img style="width:220px;height:180px;" src="{{$t2['goods_img']}}" />
+								<a href="/goods_list/{{$t2['goods_id']}}"><img style="width:220px;height:180px;" src="{{$t2['goods_img']}}" /></a>
 							</div>
 							@endif
 							@endforeach
@@ -69,7 +69,7 @@
 						@foreach($y_a1['cate_goods'] as $n1=>$n2)
 						@if($n1==2)
 						<div class="yui3-u row-218 split">
-							<img style="width:218px;height:355.73px;" src="{{$n2['goods_img']}}" />
+							<a href="/goods_list/{{$n2['goods_id']}}"><img style="width:218px;height:355.73px;" src="{{$n2['goods_img']}}" /></a>
 						</div>
 						@endif
 						@endforeach
@@ -77,7 +77,7 @@
 							@foreach($y_a1['cate_goods'] as $k1=>$k2)
 							@if($k1>2)
 							<div class="floor-conver-pit">
-								<img  style="width:220px;height:180px;" src="{{$k2['goods_img']}}" />
+								<a href="/goods_list/{{$k2['goods_id']}}"><img  style="width:220px;height:180px;" src="{{$k2['goods_img']}}" /></a>
 							</div>
 							@endif
 							@endforeach

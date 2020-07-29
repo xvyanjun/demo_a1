@@ -24,9 +24,39 @@ use Illuminate\Support\Facades\Route;
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
 
-//前台
-Route::any('/','a_1\demo_a1_contr@index');
 //---------------------------------------------------------
+//前台
+Route::any('/','index\IndexController@index');
+//---------------------------------------------------------
+Route::prefix('/')->group(function(){
+//---------------------------------------------------------导航
+Route::any('/dhang_jz','index\IndexController@dhang_jz');
+//---------------------------------------------------------点击分类页下的商品页
+Route::any('/cate_list/{id}','index\CateController@cate_list');
+//---------------------------------------------------------商品详情页
+Route::any('/goods_list/{id}','index\GoodsController@goods_list');
+//---------------------------------------------------------楼层左侧
+
+Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
+//-----------------------------------------------------------
+Route::any('/list/{id}','index\ListController@list');//品牌列表
+
+//---------------------------------------------------------前台首页
+
+Route::any('dhang_lceng','index\IndexController@dhang_lceng');
+//---------------------------------------------------------js楼层-条件-数据获取
+Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
+//---------------------------------------------------------js有趣—加载时获数据
+Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
+//---------------------------------------------------------首页品牌加载
+Route::any('ppai_js','index\IndexController@ppai_js');
+
+//----------------------------------------------------------
+});
+//---------------------------------------------------------
+Route::any('/friend','index\IndexController@friend');
+//---------------------------------------------------------
+
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------
 Route::any('/home_order_pay','a_1\demo_a1_contr@home_order_pay');
@@ -128,7 +158,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/uploadeslist', 'admin\GoodsController@uploadeslist');//相册展示
     Route::any('/goods/uploadesdel', 'admin\GoodsController@uploadesdel');//相册删除
 });
-
+//---------------------------------------------------------
 //分类
 Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/cate', 'admin\CateController@index');//展示
@@ -237,6 +267,7 @@ Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::get('/goods/ajaxname', 'admin\GoodsController@ajaxname');//商品是库存极点技改
     Route::get('/goods/ajaxprice', 'admin\GoodsController@ajaxprice');//商品是价格极点技改
 });
+//---------------------------------------------------------
 //sku关联字段
 Route::prefix('/admin')->group(function(){
     Route::any('/skug/sku', 'admin\SkuController@sku');//商品属性展示
@@ -246,3 +277,4 @@ Route::prefix('/admin')->group(function(){
     Route::any('/skug/upd/{id}', 'admin\SkuController@upd');//商品属性修改展示
     Route::any('/skug/updAdd', 'admin\SkuController@updAdd');//商品属性修改执行
 });
+//---------------------------------------------------------

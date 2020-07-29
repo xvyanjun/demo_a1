@@ -5,444 +5,66 @@
 	<div class="sort">
 		<div class="py-container">
 			<div class="yui3-g SortList ">
-				<!-- eva -->
 				<div class="yui3-u Left all-sort-list">
 					<div class="all-sort-list2">
-						<div class="item bo">
-							<h3><a href="">图书、音像、数字商品</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书</a></dt>
-										<dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
+                        @foreach($cate_info as $k=>$v)
 						<div class="item">
-							<h3><a href="">家用电器</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
+							<h3><a href="">
+                                    {{$v['cate_name']}}
+								</a></h3>
+							<div class="item-list clearfix" id="cate_prev_list">
+
+								<div class="subitem cate_prev_list">
 									<dl class="fore1">
-										<dt><a href="">电子书1</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-									<dl class="fore9">
-										<dt>少儿</dt>
-										<dd><em><a href="">少儿</a></em><em><a href="">0-2岁</a></em><em><a href="">3-6岁</a></em><em><a href="">7-10岁</a></em><em><a href="">11-14岁</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">手机、数码</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书2</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">电脑、办公</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书3</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-									<dl class="fore9">
-										<dt>少儿</dt>
-										<dd><em><a href="">少儿</a></em><em><a href="">0-2岁</a></em><em><a href="">3-6岁</a></em><em><a href="">7-10岁</a></em><em><a href="">11-14岁</a></em></dd>
-									</dl>
-									<dl class="fore10">
-										<dt>教育</dt>
-										<dd><em><a href="">教材教辅</a></em><em><a href="">考试</a></em><em><a href="">外语学习</a></em></dd>
-									</dl>
-									<dl class="fore11">
-										<dt>其它</dt>
-										<dd><em><a href="">英文原版书</a></em><em><a href="">港台图书</a></em><em><a href="">工具书</a></em><em><a href="">套装书</a></em><em><a href="">杂志/期刊</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">家居、家具、家装、厨具</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书4</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-									<dl class="fore9">
-										<dt>少儿</dt>
-										<dd><em><a href="">少儿</a></em><em><a href="">0-2岁</a></em><em><a href="">3-6岁</a></em><em><a href="">7-10岁</a></em><em><a href="">11-14岁</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">服饰内衣</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书5</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">个护化妆</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书6</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-									<dl class="fore9">
-										<dt>少儿</dt>
-										<dd><em><a href="">少儿</a></em><em><a href="">0-2岁</a></em><em><a href="">3-6岁</a></em><em><a href="">7-10岁</a></em><em><a href="">11-14岁</a></em></dd>
-									</dl>
-									<dl class="fore10">
-										<dt>教育</dt>
-										<dd><em><a href="">教材教辅</a></em><em><a href="">考试</a></em><em><a href="">外语学习</a></em></dd>
-									</dl>
-									<dl class="fore11">
-										<dt>其它</dt>
-										<dd><em><a href="">英文原版书</a></em><em><a href="">港台图书</a></em><em><a href="">工具书</a></em><em><a href="">套装书</a></em><em><a href="">杂志/期刊</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">运动健康</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书7</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-								</div>
-								<div class="cat-right">
-									<dl class="categorys-brands" clstag="homepage|keycount|home2013|0601d">
-										<dt>推荐品牌出版商</dt>
+										<dt><a href="">{{$v['cate_name']}}</a></dt>
 										<dd>
-											<ul>
-												<li>
-													<a href="">中华书局</a>
-												</li>
-												<li>
-													<a href="">人民邮电出版社</a>
-												</li>
-											</ul>
-										</dd>
+                                            @foreach($v['cate'] as $kk=>$vv)
+                                            <em><a href="/cate_list/{{$vv['cate_id']}}">{{$vv['cate_name']}}</a></em>
+                                            @endforeach
+                                        </dd>
 									</dl>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<h3><a href="">汽车用品</a></h3>
-							<div class="item-list clearfix">
-								<div class="subitem">
-									<dl class="fore1">
-										<dt><a href="">电子书8</a></dt>
-										<dd><em><a href="">免费</a></em><em><a href="">小说</a></em><em><a href="">励志与成功</a></em><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd>
-									</dl>
-									<dl class="fore2">
-										<dt><a href="">数字音乐</a></dt>
-										<dd><em><a href="">通俗流行</a></em><em><a href="">古典音乐</a></em><em><a href="">摇滚说唱</a></em><em><a href="">爵士蓝调</a></em><em><a href="">乡村民谣</a></em><em><a href="">有声读物</a></em></dd>
-									</dl>
-									<dl class="fore3">
-										<dt><a href="">音像</a></dt>
-										<dd><em><a href="">音乐</a></em><em><a href="">影视</a></em><em><a href="">教育音像</a></em><em><a href="">游戏</a></em></dd>
-									</dl>
-									<dl class="fore4">
-										<dt>文艺</dt>
-										<dd><em><a href="">小说</a></em><em><a href="">文学</a></em><em><a href="">青春文学</a></em><em><a href="">传记</a></em><em><a href="">艺术</a></em></dd>
-									</dl>
-									<dl class="fore5">
-										<dt>人文社科</dt>
-										<dd><em><a href="">历史</a></em><em><a href="">心理学</a></em><em><a href="">政治/军事</a></em><em><a href="">国学/古籍</a></em><em><a href="">哲学/宗教</a></em><em><a href="">社会科学</a></em></dd>
-									</dl>
-									<dl class="fore6">
-										<dt>经管励志</dt>
-										<dd><em><a href="">经济</a></em><em><a href="">金融与投资</a></em><em><a href="">管理</a></em><em><a href="">励志与成功</a></em></dd>
-									</dl>
-									<dl class="fore7">
-										<dt>生活</dt>
-										<dd><em><a href="">家庭与育儿</a></em><em><a href="">旅游/地图</a></em><em><a href="">烹饪/美食</a></em><em><a href="">时尚/美妆</a></em><em><a href="">家居</a></em><em><a href="">婚恋与两性</a></em><em><a href="">娱乐/休闲</a></em><em><a href="">健身与保健</a></em><em><a href="">动漫/幽默</a></em><em><a href="">体育/运动</a></em></dd>
-									</dl>
-									<dl class="fore8">
-										<dt>科技</dt>
-										<dd><em><a href="">科普</a></em><em><a href="">IT</a></em><em><a href="">建筑</a></em><em><a href="">医学</a></em><em><a href="">工业技术</a></em><em><a href="">电子/通信</a></em><em><a href="">农林</a></em><em><a href="">科学与自然</a></em></dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<h3><a href="">彩票、旅行</a></h3>
-						</div>
-						<div class="item">
-							<h3><a href="">理财、众筹</a></h3>
-						</div>
-						<div class="item">
-							<h3><a href="">母婴、玩具</a></h3>
-						</div>
-						<div class="item">
-							<h3><a href="">箱包</a></h3>
-						</div>
-						<div class="item">
-							<h3><a href="">运动户外</a></h3>
-						</div>
-						<div class="item">
-							<h3><a href="">箱包</a></h3>
-						</div>
+                        @endforeach
 					</div>
 				</div>
-				<!-- eva -->
 				<div class="yui3-u Center banerArea">
 					<!--banner轮播-->
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 					  <ol class="carousel-indicators">
-					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li>
+					  	@foreach($slide_s as $c_1=>$v_1)
+                          <li data-target="#myCarousel" data-slide-to="{{$c_1}}" class="{{$c_1=='0'?'active':''}}"></li>
+                        @endforeach
+
 					  </ol>
 					  <div class="carousel-inner">
-					    <div class="active item">
-					    <a href="http://baidu2.wypxj.com/">
-					    	<img src="qtai/img/banner1.jpg"  />
-					      </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="qtai/img/banner2.jpg"  />
-					     </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="qtai/img/banner3.jpg"  />
-						</a>
-					     
-					    </div>
-					  </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
+                        
+                        @foreach($slide_s as $c=>$v)
+                          <div class="{{$c=='0'?'active item':'item'}}">
+					        <a href="{{$v['slide_url']}}">
+					    	  <img src="{{$v['slide_img']}}"  />
+					        </a>
+					      </div>
+                        @endforeach
+
+					  </div>
+					  <a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a>
+					  <a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
 					</div>
 				</div>
 				<div class="yui3-u Right">
 					<div class="news">
-						<h4><em class="fl">品优购快报</em><span class="fr tip">更多 ></span></h4>
+						<h4><em class="fl">品优购快报</em><span class="fr tip">咨询列表<!-- 更多 > --></span></h4>
 						<div class="clearix"></div>
 						<ul class="news-list unstyled">
+
+							@foreach($service_s as $f=>$g)
 							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
+								<span class="bold">[{{$g['service_title']}}]</span>
+                                <span title="{{$g['service_text']}}">{{$g['service_titles']}}</span>
 							</li>
-							<li>
-								<span class="bold">[公告]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[公告]</span>备战开学季 全民半价购数码
-							</li>
-							<li>
-								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
-							</li>
+							@endforeach
 						</ul>
 					</div>
 					<ul class="yui3-g Lifeservice">
@@ -515,7 +137,7 @@
 						</div>
 					</div>
 					<div class="ads">
-						<img src="qtai/img/ad1.png" />
+						<img src="/qtai/img/ad1.png" />
 					</div>
 				</div>
 			</div>
@@ -527,22 +149,15 @@
 			<ul class="yui3-g Recommend">
 				<li class="yui3-u-1-6  clock">
 					<div class="time">
-						<img src="qtai/img/clock.png" />
+						<img src="/qtai/img/clock.png" />
 						<h3>今日推荐</h3>
 					</div>
 				</li>
+				@foreach($goods as $k=>$v)
 				<li class="yui3-u-5-24">
-					<a href="list.html" target="_blank"><img src="qtai/img/today01.png" /></a>
+					<a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v->goods_img}}" style="height:165px;width:249.984px"/></a>
 				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today02.png" />
-				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today03.png" />
-				</li>
-				<li class="yui3-u-5-24">
-					<img src="qtai/img/today04.png" />
-				</li>
+				@endforeach
 			</ul>
 		</div>
 	</div>
@@ -552,421 +167,289 @@
 			<div class="title">
 				<h3 class="fl">猜你喜欢</h3>
 				<b class="border"></b>
-				<a href="javascript:;" class="fr tip changeBnt" id="xxlChg"><i></i>换一换</a>
+				<!-- <a href="javascript:;" class="fr tip changeBnt" id="xxlChg"><i></i>换一换</a> -->
 			</div>
 			<div class="bd">
 				<ul class="clearfix yui3-g Favourate picLB" id="picLBxxl">
+				@foreach($history_goods as $k=>$v)
 					<li class="yui3-u-1-6">
 						<dl class="picDl huozhe">
 							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
+								<a href="/goods_list/{{$v['goods_id']}}" class="pic"><img src="/{{$v['goods_img']}}" alt="" /></a>
 								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
+									<p>{{$v['goods_name']}}</p>
+									<h3>¥{{$v['goods_price']}}</h3>
 								</div>
 							</dd>
 						</dl>
 					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl jilu">
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_03.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl tuhua">
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>捷波朗 </p>
-									<p>（jabra）BOOSI劲步</p>
-									<h3>¥236.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img nsrc="assets/qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>三星（G5500）</p>
-									<p>移动联通双网通</p>
-									<h3>¥566.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl huozhe">
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-									<h3>¥116.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl jilu">
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_03.png" alt="" /></a>
-								<div class="like-text">
-									<p>捷波朗 </p>
-									<p>（jabra）BOOSI劲步</p>
-									<h3>¥236.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>欧普</p>
-									<p>JYLZ08面板灯平板灯铝</p>
-									<h3>¥456.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
-					<li class="yui3-u-1-6">
-						<dl class="picDl tuhua">
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="qtai/img/like_01.png" alt="" /></a>
-								<div class="like-text">
-									<p>三星（G5500）</p>
-									<p>移动联通双网通</p>
-									<h3>¥566.00</h3>
-								</div>
-							</dd>
-							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets/qtai/img/like_02.png" alt="" /></a>
-								<div class="like-text">
-									<p>韩国所望紧致湿润精华露400ml</p>
-									<h3>¥896.00</h3>
-								</div>
-							</dd>
-						</dl>
-					</li>
+				@endforeach	
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!--有趣-->
 	<div class="fun">
-		<div class="py-container">
+		<div class="py-container" id='yqv_replace'>
 			<div class="title">
 				<h3 class="fl">传智播客.有趣区</h3>
 			</div>
 			<div class="clearfix yui3-g Interest">
 				<span class="x-line"></span>
 				<div class="yui3-u row-405 Interest-conver">
-					<img src="qtai/img/interest01.png" />
+					<img src="/qtai/img/interest01.png" />
 				</div>
 				<div class="yui3-u row-225 Interest-conver-split">
 					<h5>好东西</h5>
-					<img src="qtai/img/interest02.png" />
-					<img src="qtai/img/interest03.png" />
+					<img src="/qtai/img/interest02.png" />
+					<img src="/qtai/img/interest03.png" />
 				</div>
 				<div class="yui3-u row-405 Interest-conver-split blockgary">
 					<h5>品牌街</h5>
 					<div class="split-bt">
-						<img src="qtai/img/interest04.png" />
+						<img src="/qtai/img/interest04.png" />
 					</div>
 					<div class="x-img fl">
-						<img src="qtai/img/interest05.png" />
+						<img src="/qtai/img/interest05.png" />
 					</div>
 					<div class="x-img fr">
-						<img src="qtai/img/interest06.png" />
+						<img src="/qtai/img/interest06.png" />
 					</div>
 				</div>
 				<div class="yui3-u row-165 brandArea">
 					<span class="brand-yline"></span>
 					<ul class="yui3-g brand-list">
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand01.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand02.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand03.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand04.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand05.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand06.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand07.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand08.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand09.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand10.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand11.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand12.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand13.png" /></li>
-						<li class="yui3-u-1-2 brand-pit"><img src="qtai/img/brand03.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand01.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand02.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand03.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand04.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand05.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand06.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand07.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand08.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand09.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand10.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand11.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand12.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand13.png" /></li>
+						<li class="yui3-u-1-2 brand-pit"><img src="/qtai/img/brand03.png" /></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--楼层-->
-	<div id="floor-1" class="floor">
-		<div class="py-container">
+<!-- 楼层——eva -->
+<!-- <input type="hidden" id='cd' value="{{count($cate_s)}}"> -->
+<input type="hidden" id='cd' value="{{$cate_eva_sum['cate_id']}}">
+@foreach($cate_s as $t_a1=>$y_a1)
+<div id="floor-1" class="floor" l_ceng="lou_{{$t_a1+1}}">
+		<div class="py-container" id='dsang_a'>
 			<div class="title floors">
-				<h3 class="fl">家用电器</h3>
+				<h3 class="fl"><span>{{$t_a1+1}}F   </span>{{$y_a1['cate_name']}}</h3>
 				<div class="fr">
 					<ul class="sui-nav nav-tabs">
-						<li class="active">
-							<a href="#tab1" data-toggle="tab">热门</a>
+                        <li class='active'>
+							<a href="#tab2" data-toggle="tab" id='cate_wher' cate_id="{{$y_a1['cate_id']}}">热门</a>
 						</li>
-						<li>
-							<a href="#tab2" data-toggle="tab">大家电</a>
+                        @foreach($y_a1['cate_to'] as $h1=>$h2)
+                        <li >
+							<a href="#tab2" data-toggle="tab" id='cate_wher' cate_id="{{$h2['cate_id']}}">{{$h2['cate_name']}}</a>
 						</li>
-						<li>
-							<a href="#tab3" data-toggle="tab">生活电器</a>
-						</li>
-						<li>
-							<a href="#tab4" data-toggle="tab">厨房电器</a>
-						</li>
-						<li>
-							<a href="#tab5" data-toggle="tab">应季电器</a>
-						</li>
-						<li>
-							<a href="#tab6" data-toggle="tab">空气/净水</a>
-						</li>
-						<li>
-							<a href="#tab7" data-toggle="tab">高端电器</a>
-						</li>
+                        @endforeach
+
 					</ul>
 				</div>
 			</div>
-			<div class="clearfix  tab-content floor-content">
+			<div class="clearfix  tab-content floor-content" id='t_huan'>
 				<div id="tab1" class="tab-pane active">
 					<div class="yui3-g Floor-1">
 						<div class="yui3-u Left blockgary">
 							<ul class="jd-list">
-								<li>节能补贴</li>
-								<li>4K电视</li>
-								<li>空气净化器</li>
-								<li>IH电饭煲</li>
-								<li>滚筒洗衣机</li>
-								<li>电热水器</li>
+
+                                @foreach($y_a1['cate_hits_desc'] as $j1=>$j2)
+                                 <li title="{{$j2['goods_name']}}">{{mb_substr($j2['goods_name'],0,6)}}</li>
+                                @endforeach
+
 							</ul>
-							<img src="qtai/img/floor-1-1.png" />
+							@foreach($y_a1['cate_hits_desc'] as $j1_s=>$j2_s)
+							     @if($j1_s=='0')
+                                 <img src="{{$j2_s['goods_img']}}" />
+                                 @endif
+                            @endforeach
+
 						</div>
 						<div class="yui3-u row-330 floorBanner">
+							@if($y_a1['cate_goods']!='[]')
 							<div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 								<ol class="carousel-indicators">
-									<li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#floorCarousel" data-slide-to="1"></li>
-									<li data-target="#floorCarousel" data-slide-to="2"></li>
+									@foreach($y_a1['cate_goods'] as $m_1=>$m_2)
+                                     <li data-target="#floorCarousel" data-slide-to="{{$m_1}}" {{$m_1=='0'?"'class='active'":''}}></li>
+									@endforeach
 								</ol>
 								<div class="carousel-inner">
-									<div class="active item">
-										<img src="qtai/img/floor-1-b01.png">
-									</div>
-									<div class="item">
-										<img src="qtai/img/floor-1-b02.png">
-									</div>
-									<div class="item">
-										<img src="qtai/img/floor-1-b03.png">
-									</div>
+									@foreach($y_a1['cate_goods'] as $m_s=>$m_ss)
+                                     <div class="{{$m_s=='0'?'active item':'item'}}">
+										<img style="width:329px;height:360px;" src="{{$m_ss['goods_img']}}">
+									 </div>
+									@endforeach
 								</div>
+								
 								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
 								<a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
+								
 							</div>
+							@endif
 						</div>
 						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-2.png" />
+							@foreach($y_a1['cate_goods'] as $t1=>$t2)
+							@if($t1<2)
+							<div class="floor-conver-pit" >
+								<img style="width:220px;height:180px;" src="{{$t2['goods_img']}}" />
 							</div>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-3.png" />
-							</div>
+							@endif
+							@endforeach
 						</div>
+						@foreach($y_a1['cate_goods'] as $n1=>$n2)
+						@if($n1==2)
 						<div class="yui3-u row-218 split">
-							<img src="qtai/img/floor-1-4.png" />
+							<img style="width:218px;height:355.73px;" src="{{$n2['goods_img']}}" />
 						</div>
+						@endif
+						@endforeach
 						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
+							@foreach($y_a1['cate_goods'] as $k1=>$k2)
+							@if($k1>2)
 							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-5.png" />
+								<img  style="width:220px;height:180px;" src="{{$k2['goods_img']}}" />
 							</div>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-6.png" />
-							</div>
+							@endif
+							@endforeach
 						</div>
 					</div>
 				</div>
-				<div id="tab2" class="tab-pane">
-					<p>第二个</p>
-				</div>
-				<div id="tab3" class="tab-pane">
-					<p>第三个</p>
-				</div>
-				<div id="tab4" class="tab-pane">
-					<p>第4个</p>
-				</div>
-				<div id="tab5" class="tab-pane">
-					<p>第5个</p>
-				</div>
-				<div id="tab6" class="tab-pane">
-					<p>第6个</p>
-				</div>
-				<div id="tab7" class="tab-pane">
-					<p>第7个</p>
-				</div>
+
 			</div>
 		</div>
-	</div>
-	<div id="floor-2" class="floor">
-		<div class="py-container">
-			<div class="title floors">
-				<h3 class="fl">手机通讯</h3>
-				<div class="fr">
-					<ul class="sui-nav nav-tabs">
-						<li class="active">
-							<a href="#tab8" data-toggle="tab">热门</a>
-						</li>
-						<li>
-							<a href="#tab9" data-toggle="tab">品质优选</a>
-						</li>
-						<li>
-							<a href="#tab10" data-toggle="tab">新机尝鲜</a>
-						</li>
-						<li>
-							<a href="#tab11" data-toggle="tab">高性价比</a>
-						</li>
-						<li>
-							<a href="#tab12" data-toggle="tab">合约机</a>
-						</li>
-						<li>
-							<a href="#tab13" data-toggle="tab">手机卡</a>
-						</li>
-						<li>
-							<a href="#tab14" data-toggle="tab">手机配件</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="clearfix  tab-content floor-content">
-				<div id="tab8" class="tab-pane active">
-					<div class="yui3-g Floor-1">
-						<div class="yui3-u Left blockgary">
-							<ul class="jd-list">
-								<li>节能补贴</li>
-								<li>4K电视</li>
-								<li>空气净化器</li>
-								<li>IH电饭煲</li>
-								<li>滚筒洗衣机</li>
-								<li>电热水器</li>
-							</ul>
-							<img src="qtai/img/floor-1-1.png" />
-						</div>
-						<div class="yui3-u row-330 floorBanner">
-							<div id="floorCarousell" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-								<ol class="carousel-indicators">
-									<li data-target="#floorCarousell" data-slide-to="0" class="active"></li>
-									<li data-target="#floorCarousell" data-slide-to="1"></li>
-									<li data-target="#floorCarousell" data-slide-to="2"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="active item">
-										<img src="qtai/img/floor-1-b01.png">
-									</div>
-									<div class="item">
-										<img src="qtai/img/floor-1-b02.png">
-									</div>
-									<div class="item">
-										<img src="qtai/img/floor-1-b03.png">
-									</div>
-								</div>
-								<a href="#floorCarousell" data-slide="prev" class="carousel-control left">‹</a>
-								<a href="#floorCarousell" data-slide="next" class="carousel-control right">›</a>
-							</div>
-						</div>
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-2.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-3.png" />
-							</div>
-						</div>
-						<div class="yui3-u row-218 split">
-							<img src="qtai/img/floor-1-4.png" />
-						</div>
-						<div class="yui3-u row-220 split">
-							<span class="floor-x-line"></span>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-5.png" />
-							</div>
-							<div class="floor-conver-pit">
-								<img src="qtai/img/floor-1-6.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="tab2" class="tab-pane">
-					<p>第二个</p>
-				</div>
-				<div id="tab9" class="tab-pane">
-					<p>第三个</p>
-				</div>
-				<div id="tab10" class="tab-pane">
-					<p>第4个</p>
-				</div>
-				<div id="tab11" class="tab-pane">
-					<p>第5个</p>
-				</div>
-				<div id="tab12" class="tab-pane">
-					<p>第6个</p>
-				</div>
-				<div id="tab13" class="tab-pane">
-					<p>第7个</p>
-				</div>
-				<div id="tab14" class="tab-pane">
-					<p>第8个</p>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
+@endforeach
+       <span id='j_zai' end_cate_id="{{$cate_s[count($cate_s)-1]['cate_id']}}" ><h3><center id='tx'>加载更多</center></h3></span>
 	<!--商标-->
-	<div class="brand">
+
+
+	<div class="brand" id='brand_shu' num=''>
+
 		<div class="py-container">
-			<ul class="Brand-list blockgary">
-				<li class="Brand-item">
-					<img src="qtai/img/brand_21.png" />
-				</li>
-				<li class="Brand-item"><img src="qtai/img/brand_03.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_05.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_07.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_09.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_11.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_13.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_15.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_17.png" /></li>
-				<li class="Brand-item"><img src="qtai/img/brand_19.png" /></li>
-			</ul>
+        <div><a href="javascript:;" id='h_yhuan' brand_id=""><i></i>换一换</a></div>
+			<ul class="Brand-list blockgary" id='brand_eva'>
+
+				<li class="Brand-item"><img src="/qtai/img/brand_21.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_03.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_05.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_07.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_09.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_11.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_13.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_15.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_17.png" /></li>
+				<li class="Brand-item"><img src="/qtai/img/brand_19.png" /></li>
+			</ul>		
 		</div>
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
-	<!-- eva_eva -->
-	@endsection 
+
+    <script>
+		//换一换
+    	$(function(){
+//----------------------------------------------------------------------品牌加载   		
+              $.ajax({
+              	url:'/ppai_js',
+              	type:'post',
+              	dataType:'json',
+              	success:function(f_jk){		
+              	  var pj_a='';
+              	  for(var g1=0;g1<=f_jk['a1']-1;g1++){
+              	  	pj_a=pj_a+"<li class='Brand-item'><a href='/list/"+f_jk['a2'][g1]['brand_id']+"'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk['a2'][g1]['brand_img']+"' /></a></li>";
+              	  	if(g1==f_jk['a1']-1){
+              	  		$("#h_yhuan").attr('brand_id',f_jk['a2'][g1]['brand_id']);
+              	  	}
+              	  }	
+                  $("#brand_eva").empty().html(pj_a);
+              	}
+              });
+//----------------------------------------------------------------------品牌点击
+              $(document).on('click','#h_yhuan',function(){
+              	var brand_id=$(this).attr('brand_id');
+              	if(brand_id!=''){
+              		$.ajax({
+                    	url:'/ppai_js',
+                    	type:'post',
+                    	dataType:'json',
+                    	data:{'brand_id':brand_id},
+                    	success:function(f_jk_s){
+                    	  var pj_a='';
+                    	  for(var g1=0;g1<=f_jk_s['a1']-1;g1++){
+                    	  	pj_a=pj_a+"<li class='Brand-item'><a href='/list/"+f_jk_s['a2'][g1]['brand_id']+"'><img style='"+'width:91px;height:37px;'+"' src='"+f_jk_s['a2'][g1]['brand_img']+"' /></a></li>";
+                    	  	if(g1==f_jk_s['a1']-1){
+                    	  		$("#h_yhuan").attr('brand_id',f_jk_s['a2'][g1]['brand_id']);
+                    	  	}
+                    	  }	
+                        $("#brand_eva").empty().html(pj_a);
+                    	}
+                    });
+              	}
+              });
+//----------------------------------------------------------------------有趣区
+              $.ajax({
+              	url:'/yqv_replace_sj',
+              	typr:'post',
+              	dataType:'html',
+              	success:function(hk){
+              		$("#yqv_replace").html(hk);
+              	}
+              });    		  
+//----------------------------------------------------------------------点击加载
+              $(document).on('click','#j_zai',function(){
+              	var ts=$(this);
+              	var cate_id=$(this).attr('end_cate_id');
+              	// console.log(cate_id);return false;
+              	var cd=$("#cd").val();
+              	if(cate_id!=''&&cate_id!=cd){
+              		$.ajax({
+                    	url:'/',
+                    	typr:'post',
+                    	dataType:'html',
+                    	data:{'begin_num':cate_id},
+                    	success:function(jk_2){
+                    		// console.log(jk_2);
+                    		ts.before(jk_2);
+                    		ts.remove();
+                    	}
+                    });  
+              	}else{
+              		$("#tx").text('已显示全部分类');
+              	}
+              });
+//----------------------------------------------------------------------
+              $(document).on('click','#cate_wher',function(){
+              	var ts=$(this);
+              	var cate_id=$(this).attr('cate_id');
+              	if(cate_id!=''){
+              		$.ajax({
+              		  url:'/lou_ceng_sj',
+              		  type:'post',
+              		  dataType:'html',
+              		  data:{'cate_id':cate_id},
+              		  success:function(my){
+              		  	ts.parents('#dsang_a').find("#t_huan").html(my);
+                        // console.log(my);
+              		  }
+              		});
+              	}
+              });              
+//---------------------------------------------------------------------- 
+    	});
+//---------------------------------------------------------------------- 
+    </script>   
+@endsection 
+

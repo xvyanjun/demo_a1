@@ -1,6 +1,8 @@
 @extends('layouts_q.tw_jz')
 @section('title','详情')
 @section('content')
+    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-item.css" />
+    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-zoom.css" />
 	<div class="py-container">
 		<div id="item">
 			<div class="crumb-wrap">
@@ -21,10 +23,10 @@
 			<div class="product-info">
 				<div class="fl preview-wrap">
 					<!--放大镜效果-->
-					<div class="zoom">
+					    <div class="zoom">
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
-							<span class="jqzoom"><img jqimg="/qtai/img/_/b1.png" src="/qtai/img/_/s1.png" /></span>
+							<span class="jqzoom"><img jqimg="/{{$goods_info['goods_img']}}" src="/{{$goods_info['goods_img']}}" width="400" height="400"/></span>
 						</div>
 						<!--下方的缩略图-->
 						<div class="spec-scroll">
@@ -32,16 +34,13 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									<li><img src="/qtai/img/_/s1.png" bimg="/qtai/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s2.png" bimg="/qtai/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s3.png" bimg="/qtai/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s1.png" bimg="/qtai/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s2.png" bimg="/qtai/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s3.png" bimg="/qtai/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s1.png" bimg="/qtai/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s2.png" bimg="/qtai/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/qtai/img/_/s3.png" bimg="/qtai/img/_/b3.png" onmousemove="preview(this)" /></li>
-								</ul>
+                                    <li><img src="/{{$goods_info['goods_img']}}" bimg="/{{$goods_info['goods_img']}}" onmousemove="preview(this)" /></li>
+                                    @foreach($goods_images as $k=>$v)
+                                        @foreach($v['goods_imgs'] as $kk=>$vv)
+									<li><img src="/{{$vv}}" bimg="/{{$vv}}" onmousemove="preview(this)" /></li>
+                                        @endforeach
+                                    @endforeach
+                                </ul>
 							</div>
 							<a class="next">&gt;</a>
 						</div>
@@ -49,7 +48,7 @@
 				</div>
 				<div class="fr itemInfo-wrap">
 					<div class="sku-name">
-						<h4>Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机</h4>
+						<h4>{{$goods_info['goods_name']}}</h4>
 					</div>
 					<div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
 					<div class="summary">
@@ -59,11 +58,11 @@
 							</div>
 							<div class="fl price">
 								<i>¥</i>
-								<em>5299.00</em>
+								<em>{{$goods_info['goods_price']}}</em>
 								<span>降价通知</span>
 							</div>
 							<div class="fr remark">
-								<i>累计评价</i><em>612188</em>
+								<i>累计评价</i><em>{{$goods_info['goods_hits']}}</em>
 							</div>
 						</div>
 						<div class="summary-wrap">
@@ -73,7 +72,7 @@
 							<div class="fl fix-width">
 								<i class="red-bg">加价购</i>
 								<em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-购热销商品</em>
+                                        购热销商品</em>
 							</div>
 						</div>
 					</div>
@@ -104,7 +103,7 @@
 								</div>
 								</dt>
 								<dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+                                    </a></dd>
 								<dd><a href="javascript:;">银色</a></dd>
 								<dd><a href="javascript:;">黑色</a></dd>
 							</dl>
@@ -115,7 +114,7 @@
 								</div>
 								</dt>
 								<dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+                                    </a></dd>
 								<dd><a href="javascript:;">64G</a></dd>
 								<dd><a href="javascript:;" class="locked">128G</a></dd>
 							</dl>
@@ -126,7 +125,7 @@
 								</div>
 								</dt>
 								<dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+                                    </a></dd>
 								<dd><a href="javascript:;">移动版</a></dd>							
 							</dl>
 							<dl>
@@ -136,7 +135,7 @@
 								</div>
 								</dt>
 								<dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span>
-</a></dd>
+                                    </a></dd>
 								<dd><a href="javascript:;">移动优惠版</a></dd>	
 								<dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
 							</dl>
@@ -147,22 +146,10 @@
 								</div>
 								</dt>
 								<dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span>
-</a></dd>
-								<dd><a href="javascript:;"  class="locked">充电套装</a></dd>	
-								
+                                    </a></dd>
+								<dd><a href="javascript:;"  class="locked">充电套装</a></dd>
 							</dl>
-							
-							
 						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						<div class="summary-wrap">
 							<div class="fl title">
 								<div class="control-group">
@@ -331,29 +318,29 @@
 										</div>
 										<i>Feless费勒斯VR</i>
 										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>39</span>
-  </label>
+                                            <input type="checkbox"><span>39</span>
+                                        </label>
 									</li>
 									<li class="">
 										<div id=""><img src="/qtai/img/_/dp02.png" /> </div>
 										<i>Feless费勒斯VR</i>
 										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>50</span>
-  </label>
+                                            <input type="checkbox"><span>50</span>
+                                        </label>
 									</li>
 									<li class="">
 										<div id=""><img src="/qtai/img/_/dp03.png" /></div>
 										<i>Feless费勒斯VR</i>
 										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>59</span>
-  </label>
+                                            <input type="checkbox"><span>59</span>
+                                        </label>
 									</li>
 									<li class="">
 										<div id=""><img src="/qtai/img/_/dp04.png" /></div>
 										<i>Feless费勒斯VR</i>
 										<label data-toggle="checkbox" class="checkbox-pretty">
-    <input type="checkbox"><span>99</span>
-  </label>
+                                            <input type="checkbox"><span>99</span>
+                                        </label>
 									</li>
 								</ul>
 							</div>
@@ -397,25 +384,14 @@
 						<div class="tab-content tab-wraped">
 							<div id="one" class="tab-pane active">
 								<ul class="goods-intro unstyled">
-									<li>分辨率：1920*1080(FHD)</li>
-									<li>后置摄像头：1200万像素</li>
-									<li>前置摄像头：500万像素</li>
-									<li>核 数：其他</li>
-									<li>频 率：以官网信息为准</li>
-									<li>品牌： Apple</li>
-									<li>商品名称：APPLEiPhone 6s Plus</li>
-									<li>商品编号：1861098</li>
-									<li>商品毛重：0.51kg</li>
-									<li>商品产地：中国大陆</li>
-									<li>热点：指纹识别，Apple Pay，金属机身，拍照神器</li>
-									<li>系统：苹果（IOS）</li>
-									<li>像素：1000-1600万</li>
-									<li>机身内存：64GB</li>
+									<li>{{$goods_info['content']}}</li>
 								</ul>
 								<div class="intro-detail">
-									<img src="/qtai/img/_/intro01.png" />
-									<img src="/qtai/img/_/intro02.png" />
-									<img src="/qtai/img/_/intro03.png" />
+                                    @foreach($goods_images as $k=>$v)
+                                        @foreach($v['goods_imgs'] as $kk=>$vv)
+    									<img src="/{{$vv}}" width="1200" height="600" />
+                                        @endforeach
+                                    @endforeach
 								</div>
 							</div>
 							<div id="two" class="tab-pane">
@@ -440,18 +416,21 @@
 				<h4 class="kt">猜你喜欢</h4>
 				<div class="like-list">
 					<ul class="yui3-g">
+                        @foreach($history_goods as $k=>$v)
 						<li class="yui3-u-1-6">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="/qtai/img/_/itemlike01.png" />
+                                    <a href="/goods_list/{{$v['goods_id']}}">
+									<img src="/{{$v['goods_img']}}" />
+                                    </a>
 								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+								<div class="attr" style="margin-bottom:50px;">
+									<em>{{$v['goods_name']}}</em>
 								</div>
 								<div class="price">
 									<strong>
 											<em>¥</em>
-											<i>3699.00</i>
+											<i>{{$v['goods_price']}}</i>
 										</strong>
 								</div>
 								<div class="commit">
@@ -459,101 +438,7 @@
 								</div>
 							</div>
 						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/_/itemlike02.png" />
-								</div>
-								<div class="attr">
-									<em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/_/itemlike03.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/_/itemlike04.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/_/itemlike05.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-6">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/_/itemlike06.png" />
-								</div>
-								<div class="attr">
-									<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
+						@endforeach
 					</ul>
 				</div>
 			</div>
@@ -561,4 +446,7 @@
 	</div>
 	<!-- 底部栏位 -->
 	<!--页面底部-->
-	@endsection 
+    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/zoom.js"></script>
+	@endsection

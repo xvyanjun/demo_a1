@@ -5,20 +5,22 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
-	 <link rel="icon" href="assets/qtai/img/favicon.ico">
-
+	 <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-cart.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-list.css" />
-	<link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
-	<link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-item.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-zoom.css" />
-	<link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
+
+
+    <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
+    <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="/qtai/js/pages/index.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
 </head>
 
 <body>
@@ -78,18 +80,6 @@
 								</div>
 							</form>
 						</div>
-						<div class="hotwords">
-							<ul>
-								<li class="f-item">品优购首发</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">每满99减30</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">办公用品</li>
-
-							</ul>
-						</div>
 					</div>
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
@@ -113,7 +103,7 @@
 						<h4>全部商品分类</h4>
 					</div>
 					<div class="yui3-u Center navArea">
-						<ul class="nav">
+						<ul class="nav" id='nav_s'>
 							<li class="f-item">服装城</li>
 							<li class="f-item">美妆馆</li>
 							<li class="f-item">品优超市</li>
@@ -126,14 +116,38 @@
 					</div>
 					<div class="yui3-u Right"></div>
 				</div>
+				<script>					
+					$(function(){
+//----------------------------------------------------------------						
+						$.ajax({
+							url:'/dhang_jz',
+							type:'post',
+							dataType:'json',
+							success:function(jk){
+							   var pj='';
+							   var cd=jk.length;
+                               for(var e1=0;e1<=cd-1;e1++){
+                               	pj=pj+"<li class='f-item' nav_url='"+jk[e1]['nav_url']+"' id='nav_dh'>"+jk[e1]['nav_name']+"</li>";
+                               }
+                               $("#nav_s").empty().append(pj);
+							}
+						});
+//----------------------------------------------------------------
+                        $(document).on('click','#nav_dh',function(){
+                        	var nav_url=$(this).attr('nav_url');
+                        	    location.href=nav_url;
+                        });
+//----------------------------------------------------------------						
+					});
+				</script>
 			</div>
 		</div>
 	</div>
-	<!-- eva_eva -->
 </div>
+<!-- eva -->
 @yield('content')
-<!-- eva_zhong -->
-<div class="clearfix footer"><!--.....-->
+<!-- eva -->
+<div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
 			<div class="Mod-service">
@@ -240,22 +254,22 @@
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="qtai/img/wx_cz.jpg">
+						<img src="/qtai/img/wx_cz.jpg">
 					</div>
 				</div>
 			</div>
 			<div class="Mod-copyright">
 				<ul class="helpLink">
-					<li>关于我们<span class="space"></span></li>
-					<li>联系我们<span class="space"></span></li>
-					<li>关于我们<span class="space"></span></li>
-					<li>商家入驻<span class="space"></span></li>
-					<li>营销中心<span class="space"></span></li>
-					<li>友情链接<span class="space"></span></li>
-					<li>关于我们<span class="space"></span></li>
-					<li>营销中心<span class="space"></span></li>
-					<li>友情链接<span class="space"></span></li>
-					<li>关于我们</li>
+					<li><a href="javascript:;" style="color:black">关于我们</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">联系我们</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">联系客服</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">商家帮助</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">营销中心</a><span class="space"></span></li>
+					<li><a href="/friend" style="color:black">友情链接</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">风险检测</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">营销中心</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">销售联盟</a><span class="space"></span></li>
+					<li><a href="javascript:;" style="color:black">隐私政策</a></li>
 				</ul>
 				<p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</p>
 				<p>京ICP备08001421号京公网安备110108007702</p>
@@ -265,8 +279,8 @@
 </div>
 <!--页面底部END-->
 	<!-- 楼层位置 -->
-	<div id="floor-index" class="floor-index">
-		<ul>
+<!-- 	<div id="floor-index" class="floor-index">
+		<ul id='f_kuai'>
 			<li>
 				<a class="num" href="javascript:;" style="display: none;">1F</a>
 				<a class="word" href="javascript;;" style="display: block;">家用电器</a>
@@ -288,7 +302,27 @@
 				<a class="word" href="javascript;;" style="display: block;">运动户外</a>
 			</li>
 		</ul>
-	</div>
+	</div> -->
+<script>					
+					$(function(){
+//----------------------------------------------------------------						
+						// $.ajax({
+						// 	url:'/dhang_lceng',
+						// 	type:'post',
+						// 	dataType:'json',
+						// 	success:function(tc){
+						// 	   var pj_s='';
+						// 	   var cd_s=tc.length;
+      //                          for(var e2=0;e2<=cd_s-1;e2++){
+      //                          	var shu=e2+1;
+      //                          	pj_s=pj_s+"<li><a class='num' href='javascript:;' style='display: none;'>"+shu+"F</a><a class='word' href='javascript;;' style='display: block;'>"+tc[e2]['cate_name']+"</a></li>";
+      //                          }
+      //                          $("#f_kuai").empty().append(pj_s);
+						// 	}
+						// });
+//----------------------------------------------------------------						
+					});
+</script>
 	<!--侧栏面板开始-->
 <div class="J-global-toolbar">
 	<div class="toolbar-wrap J-wrap">
@@ -353,12 +387,12 @@
 							<div class="jt-history-wrap">
 								<ul>
 									<!--<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src=".portal/qtai/img/like_03.png" height="100" width="100" /> </a>
+										<a href="#" class="img-wrap"> <img src=".portal//qtai/img/like_03.png" height="100" width="100" /> </a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
 									</li>
 									<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="portal/qtai/img/like_02.png" height="100" width="100" /></a>
+										<a href="#" class="img-wrap"> <img src="portal//qtai/img/like_02.png" height="100" width="100" /></a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
 									</li>-->
@@ -424,7 +458,6 @@
 	</div>
 </script>
 <!--侧栏面板结束-->
-<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#service").hover(function(){
@@ -440,14 +473,6 @@ $(function(){
 
 })
 </script>
-<script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
-<script type="text/javascript" src="/qtai/js/czFunction.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/qtai/js/pages/index.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
 </body>
 
 

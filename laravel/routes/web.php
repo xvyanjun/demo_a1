@@ -33,6 +33,7 @@ Route::prefix('/')->group(function(){
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------点击分类页下的商品页
 Route::any('/cate_list/{id}','index\CateController@cate_list');
+Route::any('/cate_goods_list/tiaojian','index\GoodsController@goods_tiao_list'); //分类商品列表页点击条件
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------楼层左侧
@@ -233,6 +234,7 @@ Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详�
 //商品
 Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/create', 'admin\GoodsController@create');//商品展示
+    Route::any('/goods/brand_list', 'admin\GoodsController@brand_list');//商品分类下的品牌展示
     Route::any('/goods/add', 'admin\GoodsController@add');//商品执行
     Route::any('/goods/list', 'admin\GoodsController@list');//商品展示
     Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除

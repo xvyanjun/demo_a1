@@ -20,7 +20,7 @@
     <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
-</head>
+{{--</head>--}}
 
 <body>
 	<!-- 头部栏位 -->

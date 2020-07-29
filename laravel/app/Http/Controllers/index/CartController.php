@@ -224,20 +224,7 @@ public function cart_del_yes(){
 public function cat_top_list(){
   $u_id=1;
   $cd=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->count();
-  $cat_list=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->limit(3)->get();
-  foreach($cat_list as $r1=>$r2){
-    $property=shop_property::where([['id',$r2['id']],['property_del','1']])->first();
-
-    $sku_vl_id=$this->explode_id($property);
-    $sku_vl_val=shop_sku_val::wherein('val_id',$sku_vl_id)->where('val_del','1')->get();
-    $property['sku']=$sku_vl_val;
-
-    $r2['id']=$property;
-    $goods=Goods::where([['goods_id',$r2['goods_id']],['goods_del','1']])->first();
-    $r2['goods_id']=$goods;
-  }
-  $cat_list=['cat_list'=>$cat_list,'cd'=>$cd];
-  return json_encode($cat_list);
+  return json_encode($cd);
 }
 //-----------------------------------------------------------------------------
 public function explode_id($xxi){

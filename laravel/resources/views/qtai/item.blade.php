@@ -2,23 +2,10 @@
 @section('title','详情')
 @section('content')
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-item.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-zoom.css" />
+	<link rel="stylesheet" type="text/css" href="/qtai/css/pages-zoom.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" /> -->
 	<div class="py-container">
 		<div id="item">
-			<div class="crumb-wrap">
-				<ul class="sui-breadcrumb">
-					<li>
-						<a href="#">手机、数码、通讯</a>
-					</li>
-					<li>
-						<a href="#">手机</a>
-					</li>
-					<li>
-						<a href="#">Apple苹果</a>
-					</li>
-					<li class="active">iphone 6S系类</li>
-				</ul>
-			</div>
 			<!--product-info-->
 			<div class="product-info">
 				<div class="fl preview-wrap">
@@ -50,7 +37,7 @@
 					<div class="sku-name">
 						<h4>{{$goods_info['goods_name']}}</h4>
 					</div>
-					<div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
+					
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title">
@@ -58,112 +45,53 @@
 							</div>
 							<div class="fl price">
 								<i>¥</i>
-								<em>{{$goods_info['goods_price']}}</em>
+								<em id="aa">{{$goods_info['goods_price']}}</em>
 								<span>降价通知</span>
 							</div>
 							<div class="fr remark">
 								<i>累计评价</i><em>{{$goods_info['goods_hits']}}</em>
 							</div>
 						</div>
-						<div class="summary-wrap">
-							<div class="fl title">
-								<i>促　　销</i>
-							</div>
-							<div class="fl fix-width">
-								<i class="red-bg">加价购</i>
-								<em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                                        购热销商品</em>
-							</div>
-						</div>
+					
 					</div>
-					<div class="support">
-						<div class="summary-wrap">
-							<div class="fl title">
-								<i>支　　持</i>
-							</div>
-							<div class="fl fix-width">
-								<em class="t-gray">以旧换新，闲置手机回收  4G套餐超值抢  礼品购</em>
-							</div>
-						</div>
-						<div class="summary-wrap">
-							<div class="fl title">
-								<i>配 送 至</i>
-							</div>
-							<div class="fl fix-width">
-								<em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品</em>
-							</div>
-						</div>
-					</div>
+				
 					<div class="clearfix choose">
 						<div id="specification" class="summary-wrap clearfix">
-							<dl>
+						<div id="dd" num={{sizeof($goods_sku)}}></div>
+							@foreach($goods_sku as $k=>$v)
+							<input type="hidden" id="attr_id_{{$k}}" attr_id="{{$v['attr_id']}}" value="{{$v->attr_name}}">	
+							<dl id="dl">
 								<dt>
 									<div class="fl title">
-									<i>选择颜色</i>
+									<i>{{$v['attr_name']}}</i>
 								</div>
 								</dt>
-								<dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-								<dd><a href="javascript:;">银色</a></dd>
-								<dd><a href="javascript:;">黑色</a></dd>
+								<input type="hidden" class="col-md-10 data"  id="val_id_{{$k}}"  value="{{$v->val_name}}">
+								@foreach($v['val_s'] as $kk=>$vv)
+								<dd><a href="javascript:;" name="yanshi"  id="ys" goods_id="{{$goods_info['goods_id']}}"  class="{{$kk==0?'selected':''}}" val_id="{{$vv['val_id']}}">{{$vv['val_name']}}<span title="点击取消选择">&nbsp;</span>
+									</a></dd>
+								@endforeach
+								<!-- <dd><a href="javascript:;">64G</a></dd>
+								<dd><a href="javascript:;" class="locked">128G</a></dd> -->
 							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>内存容量</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-								<dd><a href="javascript:;">64G</a></dd>
-								<dd><a href="javascript:;" class="locked">128G</a></dd>
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>选择版本</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-								<dd><a href="javascript:;">移动版</a></dd>							
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>购买方式</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-								<dd><a href="javascript:;">移动优惠版</a></dd>	
-								<dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
-							</dl>
-							<dl>
-								<dt>
-									<div class="fl title">
-									<i>套　　装</i>
-								</div>
-								</dt>
-								<dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-								<dd><a href="javascript:;"  class="locked">充电套装</a></dd>
-							</dl>
+							@endforeach
+							
 						</div>
+
 						<div class="summary-wrap">
 							<div class="fl title">
 								<div class="control-group">
 									<div class="controls">
-										<input autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
-										<a href="javascript:void(0)" class="increment plus">+</a>
-										<a href="javascript:void(0)" class="increment mins">-</a>
+										<input id="goods_stock"  goods_stock="{{$goods_info['goods_stock']}}" autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
+										<a href="javascript:void(0)" style="padding-right:6px; " class="increment plus">+</a>
+										<a href="javascript:void(0)" style="padding-right:6px; " class="increment mins">-</a>
 									</div>
 								</div>
 							</div>
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+										<a href="javascript:void(0)"  id="gwc" goods_price="{{$goods_info['goods_price']}}" goods_id="{{$goods_info['goods_id']}}" class="sui-btn  btn-danger addshopcar">加入购物车</a>
 									</li>
 								</ul>
 							</div>
@@ -188,29 +116,20 @@
 					</ul>
 					<div class="tab-content tab-wraped">
 						<div id="index" class="tab-pane active">
-							<ul class="part-list unstyled">
-								<li>手机</li>
-								<li>手机壳</li>
-								<li>内存卡</li>
-								<li>Iphone配件</li>
-								<li>贴膜</li>
-								<li>手机耳机</li>
-								<li>移动电源</li>
-								<li>平板电脑</li>
-							</ul>
 							<ul class="goods-list unstyled">
+								@foreach($g_cate as $k=>$v)
 								<li>
 									<div class="list-wrap">
 										<div class="p-img">
-											<img src="/qtai/img/_/part01.png" />
+											<img src="/{{$v->goods_img}}" style="width:150px;" />
 										</div>
 										<div class="attr">
-											<em>Apple苹果iPhone 6s (A1699)</em>
+											<em>{{$v->goods_name}}</em>
 										</div>
 										<div class="price">
 											<strong>
 											<em>¥</em>
-											<i>6088.00</i>
+											<i>{{$v->goods_price}}</i>
 										</strong>
 										</div>
 										<div class="operate">
@@ -218,82 +137,13 @@
 										</div>
 									</div>
 								</li>
-								<li>
-									<div class="list-wrap">
-										<div class="p-img">
-											<img src="/qtai/img/_/part02.png" />
-										</div>
-										<div class="attr">
-											<em>Apple苹果iPhone 6s (A1699)</em>
-										</div>
-										<div class="price">
-											<strong>
-											<em>¥</em>
-											<i>6088.00</i>
-										</strong>
-										</div>
-										<div class="operate">
-											<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="list-wrap">
-										<div class="p-img">
-											<img src="/qtai/img/_/part03.png" />
-										</div>
-										<div class="attr">
-											<em>Apple苹果iPhone 6s (A1699)</em>
-										</div>
-										<div class="price">
-											<strong>
-											<em>¥</em>
-											<i>6088.00</i>
-										</strong>
-										</div>
-										<div class="operate">
-											<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-										</div>
-									</div>
-									<div class="list-wrap">
-										<div class="p-img">
-											<img src="/qtai/img/_/part02.png" />
-										</div>
-										<div class="attr">
-											<em>Apple苹果iPhone 6s (A1699)</em>
-										</div>
-										<div class="price">
-											<strong>
-											<em>¥</em>
-											<i>6088.00</i>
-										</strong>
-										</div>
-										<div class="operate">
-											<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-										</div>
-									</div>
-									<div class="list-wrap">
-										<div class="p-img">
-											<img src="/qtai/img/_/part03.png" />
-										</div>
-										<div class="attr">
-											<em>Apple苹果iPhone 6s (A1699)</em>
-										</div>
-										<div class="price">
-											<strong>
-											<em>¥</em>
-											<i>6088.00</i>
-										</strong>
-										</div>
-										<div class="operate">
-											<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-										</div>
-									</div>
-								</li>
+								@endforeach
 							</ul>
 						</div>
 						<div id="profile" class="tab-pane">
-							<p>推荐品牌</p>
+						@foreach($brand as $K=>$v)
+							<a href="/list/{{$v->brand_id}}"><p>{{$v->brand_name}}</p></a>
+						@endforeach
 						</div>
 					</div>
 				</div>
@@ -448,5 +298,146 @@
 	<!--页面底部-->
     <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
-    <script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/zoom.js"></script>
+	<script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/zoom.js"></script>
+<script>
+	$(function(){
+		//点击+号数字加1
+		$(document).on("click",".plus",function(){
+			//获取加号
+			var _this=$(this);
+			//获取文本框的值
+			var itxt=parseInt($(".itxt").val());
+			//获取数据库的库存
+			var goods_stock=parseInt(_this.parent().find("#goods_stock").attr("goods_stock"));
+			//判断是否超过库存
+			if(itxt>=goods_stock){
+				_this.parent().find("#goods_stock").val(goods_stock);
+				itxt=goods_stock;
+			}else{
+				itxt=itxt+1;
+				_this.parent().find("#goods_stock").val(itxt);
+			}
+
+		})
+		//点击-号数字减1
+		$(document).on("click",".mins",function(){
+			var _this=$(this);
+			var itxt=parseInt($(".itxt").val());
+			if(itxt<=1){
+				itxt=1;
+				_this.parent().find("#goods_stock").val(itxt);
+			}else{
+				itxt=itxt-1;
+				_this.parent().find("#goods_stock").val(itxt);
+			}
+			
+		})
+
+		//获取文本框的值
+		$(document).on("blur","#goods_stock",function(){
+			//获取文本框
+			var _this=$(this);
+			//获取文本框的值
+			var itxt=$(".itxt").val();
+			//获取数据库的库存
+			var goods_stock=_this.parent().find("#goods_stock").attr("goods_stock");
+			//判断不能超库存
+			//正则验证只能是数字
+			var arr=/^\d{1,}$/;
+			if(itxt==''){
+				_this.val(1);
+				itxt=1;
+			}else if(!arr.test(itxt)){
+				_this.val(1);
+				itxt=1;
+			}else if(parseInt(itxt)>=goods_stock){
+				_this.val(goods_stock);
+				itxt=goods_stock;
+			}
+		})
+
+		//点击加入购物车
+		$(document).on("click","#gwc",function(){
+			var _this=$(this);
+			//获取本页面的id
+			var goods_id=_this.attr("goods_id");
+			//获取文本框的数量
+			var itxt=parseInt($(".itxt").val());
+			//获取单个价格
+			var price_one=_this.attr("goods_price");
+			//获取商品总价
+			var price_total=itxt*price_one;
+			//sku
+			var num=$("#dd").attr("num");
+			// console.log(num);
+			var sku="";
+			for(var i=1;i<=num;i++){
+				var attr_id=$("#attr_id_"+i).attr("attr_id");
+				var val_id=$("#val_id_"+i).parents("#dl").find("[name='yanshi'][class='selected']").attr('val_id');
+				if(!val_id==""){
+					sku=sku+'['+attr_id+':'+val_id+'],';
+				}
+			}
+			var cd=sku.length;
+			sku=sku.substr(0,cd-1);
+			// console.log(sku);
+			var data={};
+			data.goods_id=goods_id;
+			data.itxt=itxt;
+			data.price_total=price_total;
+			data.price_one=price_one;
+			data.sku=sku;
+			$.ajax({
+				url:'/shopping',
+				data:data,
+				dataType:"json",
+				success:function(res){
+					if(res.code==000000){
+						alert(res.msg);
+					}
+					if(res.code==000002){
+						alert(res.msg);
+					}
+				}
+			})
+		})
+		//点击选框的样式
+		$(document).on("click","#ys",function(){
+			var _this=$(this);
+			_this.parents('dl').find("[name='yanshi']").prop("class",'');
+			_this.prop("class",'selected');
+			
+			//sku
+			var num=$("#dd").attr("num");
+			//获取本页面的id
+			var goods_id=_this.attr("goods_id");
+			//获取sku
+			var sku="";
+			for(var i=1;i<=num;i++){
+				var attr_id=$("#attr_id_"+i).attr("attr_id");
+				var val_id=$("#val_id_"+i).parents("#dl").find("[name='yanshi'][class='selected']").attr('val_id');
+				if(!val_id==""){
+					sku=sku+'['+attr_id+':'+val_id+'],';
+				}
+			}
+			var cd=sku.length;
+			sku=sku.substr(0,cd-1);
+			$.ajax({
+				url:'/sehao',
+				data:{"sku":sku,"goods_id":goods_id},
+				dataType:"json",
+				success:function(res){
+					if(res.code==000002){
+						alert(res.msg);
+					}
+					
+					var res=res;
+					// console.log(res['price']);
+					$("#aa").text(res['price']);
+					// console.log(re);
+				}
+			})
+		})
+	})
+</script>
 	@endsection

@@ -35,6 +35,9 @@ Route::any('/dhang_jz','index\IndexController@dhang_jz');
 Route::any('/cate_list/{id}','index\CateController@cate_list');
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
+//---------------------------------------------------------商品加入购物车
+Route::any('/shopping','index\GoodsController@shopping');
+Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
 
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');

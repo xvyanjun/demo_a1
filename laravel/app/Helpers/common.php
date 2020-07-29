@@ -40,7 +40,9 @@ function goods_sku($goods_id){
   foreach($xxi as $c=>$v){
    $sxing=shop_sku_name::where([['attr_id',$c],['attr_del','1']])->first();
    $sku[$c]=$sxing;
-   $vl=shop_sku_val::where([['attr_id',$c],['val_del','1']])->get();
+   $id_s=explode(',',$v);
+
+   $vl=shop_sku_val::wherein('val_id',$id_s)->where('val_del','1')->get();
    $sku[$c]['val_s']=$vl;
   }
   return $sku;
@@ -65,11 +67,21 @@ function goods_sku_id($goods_id){
       
       if(array_key_exists($a3,$sxing)){
         $yvl=$sxing[$a3];
+        $yvl_s=explode(',',$yvl);
+        $num_s=0;
+        foreach($yvl_s as $y1=>$y2){
+          if($y2==$c){
+            $num_s=$num_s+1;
+          }
+        }
+        if($num_s==0){
+          $sxing[$a3]=$yvl.$c.',';
+        }
       }else{
-        $yvl='';
+        // $yvl='';
+        $sxing[$a3]=$c.',';
       }
-
-      $sxing[$a3]=$yvl.$c.',';
+      // $sxing[$a3]=$yvl.$c.',';
 
     }
   }

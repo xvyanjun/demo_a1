@@ -18,10 +18,17 @@
 	<div class="top">
 		<div class="py-container">
 			<div class="shortcut">
-				<ul class="fl">
-					<li class="f-item">品优购欢迎您！</li>
-					<li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
-				</ul>
+				@if(!session('u_id'))
+					<ul class="fl">
+						<li class="f-item">品优购欢迎您！</li>
+						<li class="f-item">请<a href="/login" >登录</a>　<span><a href="/reg" >免费注册</a></span></li>
+					</ul>
+				@else
+					<ul class="fl">
+						<li class="f-item">品优购欢迎您！</li>
+						<li class="f-item">欢迎<a href="javascript:;" >{{session('u_name')}}</a>登录　<span><a href="/tuichu" >退出</a></span></li>
+					</ul>
+				@endif
 				<ul class="fr">
 					<li class="f-item">我的订单</li>
 					<li class="f-item space"></li>

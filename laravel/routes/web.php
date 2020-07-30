@@ -105,6 +105,7 @@ Route::any('/login_do','index\LoginController@login_do'); //执行登录
 Route::any('/reg','index\LoginController@reg');//注册
 Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
 Route::any('/reg_do','index\LoginController@reg_do');//执行注册
+Route::any('/tuichu','index\LoginController@tuichu');//退出执行
 
 //个人信息
 Route::any('/add','index\HomeController@add');
@@ -291,4 +292,6 @@ Route::prefix('/admin')->group(function(){
     Route::any('/skug/upd/{id}', 'admin\SkuController@upd');//商品属性修改展示
     Route::any('/skug/updAdd', 'admin\SkuController@updAdd');//商品属性修改执行
 });
+
+
 //---------------------------------------------------------

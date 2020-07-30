@@ -12,6 +12,7 @@ use App\Models\shop_sku_name;
 use App\Models\Propertyp;
 use App\Models\shop_cat;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Cookie;
 class GoodsController extends Controller
 {
     /**
@@ -20,6 +21,16 @@ class GoodsController extends Controller
      * 详情
      */
     public function goods_list($id){
+        //添加浏览记录
+        //判断是否登录
+        $u_id=request()->session()->get('u_id');
+        if($u_id){
+            //已登录 存储到数据库
+           $this->HistroyDb($id);
+        }else{
+            //未登录 存储到cookie中
+            $this->HistroyCookie($id);
+        }
         //现在商品的数据
         $goods=new Goods();
         $goods_info=$goods::where(['goods_id'=>$id,'goods_del'=>1])->first()->toArray();
@@ -30,7 +41,7 @@ class GoodsController extends Controller
             $info[$k]['goods_imgs']=explode('|',$v['goods_imgs']);
         }
         //猜你喜欢
-        $u_id=request()->session()->get('u_id');
+        
         $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
         if($history){
             $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
@@ -65,6 +76,48 @@ class GoodsController extends Controller
         $brand=Brand::limit(15)->get();
         return view('qtai.item',['goods_info'=>$goods_info,'goods_images'=>$info,'history_goods'=>$history_goods,'goods_sku'=>$goods_sku,'g_cate'=>$g_cate,'brand'=>$brand]);
     }
+
+    //添加浏览记录到数据库
+    public function HistroyDb($id){
+        $u_id=request()->session()->get('u_id');
+        $hist=History::where("goods_id",$id)->get();
+        if($hist){
+            $h_hits=History::where("goods_id",$id)->value('h_hits');
+            $h_hits=$h_hits+1;
+            History::where("goods_id",$id)->update(['h_hits'=>$h_hits]);
+        }else{
+            $h_hits=1;
+            $history=["goods_id"=>$id,'u_id'=>$u_id,"h_time"=>time(),"h_hits"=>$h_hits];
+            $res=History::insert($history);
+        }
+       
+    }
+    
+    //添加数据到cookie
+    public function HistroyCookie($id){
+        // $HistroyInfo=request()->cookie("test");
+        // dump($HistroyInfo);
+        // if(isset($HistroyInfo)){
+            $h_hits=1;
+            $HistroyInfo=["goods_id"=>$id,'h_time'=>time(),"h_hits"=>$h_hits];
+            $HistroyInfo=json_encode($HistroyInfo);
+            // dd($HistroyInfo);
+            Cookie::queue('test',$HistroyInfo);
+            
+        // }else{
+        //     if(array_key_exists($id,$HistroyInfo)){
+        //         dump(11);
+        //         $h_hits=$HistroyInfo[$id]['h_hits']+1;
+        //         // dd($h_hits);
+        //         $HistroyInfo[$id]=["goods_id"=>$id,'h_time'=>time(),"h_hits"=>$h_hits];
+        //         $HistroyInfo=json_encode($HistroyInfo);
+
+        //         Cookie::queue('HistroyInfo',$HistroyInfo, 7*24*60);
+        //     }
+        // }
+        
+       }
+
 
     //加入购物车数据库
     public function shopping(Request $request){

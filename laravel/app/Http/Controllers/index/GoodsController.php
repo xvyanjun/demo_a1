@@ -38,7 +38,7 @@ class GoodsController extends Controller
         }else{
             $history_goods=[];
         }
-        
+
         //---------------------------------------------------------------------------------------------
         //商品的详细信息
         $goods_id=request()->id;
@@ -270,6 +270,7 @@ class GoodsController extends Controller
         return $sxing;
     }
 
+
     /**
      * 分类加其他条件下的商品
      */
@@ -310,32 +311,55 @@ class GoodsController extends Controller
 
         $goods=new Goods();
         $tiao=$request->post('tiao');//倒叙条件
+//        dd($where);
 
+        $pageNum=$request->post('page')??"1";//页数
+        $limit="10";//每页显示条数
+        $page=$pageNum-1;
+        if ($page != 0) {
+            $page = $limit * $page;
+        }
+//        echo $page;
+//        echo $limit;
         if(!empty($tiao)){
             if(count($where)==2){
-                $goods_info=$goods::where($where)->orderBy($tiao,'desc')->paginate(10);//加条件后的商品
+                $count=count($goods::where($where)->orderBy($tiao,'desc')->get()->toArray());//总条数
+                $count=ceil($count/$limit);
+                $goods_info=$goods::where($where)->orderBy($tiao,'desc')->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
             }else{
-                $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->orderBy($tiao,'desc')->paginate(10);//加条件后的商品
+                $count=count($goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->orderBy($tiao,'desc')->get()->toArray());//总条数
+                $count=ceil($count/$limit);
+                $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->orderBy($tiao,'desc')->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
             }
         }else{
             if(count($where)==2){
-                $goods_info=$goods::where($where)->paginate(10);//加条件后的商品
+                $count=count($goods::where($where)->get()->toArray());//总条数
+                $count=ceil($count/$limit);
+                $goods_info=$goods::where($where)->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
             }else{
                 if(!empty($yan_sku) || !empty($chi_sku)){
-                    $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->paginate(10);//加条件后的商品
+                    $count=count($goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->get()->toArray());//总条数
+                    $count=ceil($count/$limit);
+                    $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
                 }else{
-                    $goods_info=$goods::where($where)->paginate(10);//加条件后的商品
+                    $count=count($goods::where($where)->get()->toArray());//总条数
+                    $count=ceil($count/$limit);
+                    $goods_info=$goods::where($where)->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
                 }
             }
         }
-//        dd($goods_info);
+//        print_r($goods_info);
         return view('qtai.cate_goods_list',[
                                                 'goods_info'=>$goods_info,
                                                 'brand_id'=>$brand_id,
                                                 'yan_sku'=>$yan_sku,
                                                 'chi_sku'=>$chi_sku,
                                                 'qu_price'=>$qu_price_in,
-                                                'tiao'=>$tiao
+                                                'tiao'=>$tiao,
+                                                'cate_id'=>$cate_id,
+                                                'count'=>$count,
+                                                'pageNum'=>$pageNum
                                                 ]);
     }
+
 }

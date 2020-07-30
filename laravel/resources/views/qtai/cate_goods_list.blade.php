@@ -38,10 +38,10 @@
                             </strong>
                         </div>
                         <div class="attr">
-                            <em>{{$v['goods_name']}}</em>
+                            <em>{{mb_substr($v['goods_name'],0,9)}}</em>
                         </div>
                         <div class="cu">
-                            <em><span>促</span>满一件可参加超值换购</em>
+                            <!-- <em><span>促</span>满一件可参加超值换购</em> -->
                         </div>
                         <div class="commit">
                             <i class="command">已有{{$v['goods_hits']}}人查看</i>

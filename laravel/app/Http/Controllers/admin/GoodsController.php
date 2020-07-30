@@ -337,4 +337,18 @@ class GoodsController extends Controller
             return json_encode(["code"=>"00001","msg"=>"no"]);
         }
     }
+
+    public function brand_list(Request $request){
+        $cate_id=$request->post('cate_id');
+        $cate=new Cate();
+        $cate_info=$cate::where(['cate_id'=>$cate_id])->first();
+//        dd($cate_info['brand_id']);
+        $brand_id=explode(',',$cate_info['brand_id']);
+//        dd($brand_id);
+        $brand=new Brand();
+        $brand_info=$brand::whereIn('brand_id',$brand_id)->get()->toArray();
+//        dd($brand_info);
+        return view('admin.goods.cate_brand_list',['brand_info'=>$brand_info]);
+    }
+
 }

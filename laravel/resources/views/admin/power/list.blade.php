@@ -40,7 +40,7 @@
                     <td>{{$v->power_url}}</td>
                     <td>{{date("Y-m-d H:i:s",$v->power_time)}}</td>
                     <td class="text-center">
-                        <a href="{{url('/admin/power/upd/'.$v->power_id)}}" class="btn bg-olive btn-xs">修改</a>
+                          <a href="{{url('/admin/power/upd/'.$v->power_id)}}" class="btn bg-olive btn-xs">修改</a>
                         <button type="button" data-id="{{$v->power_id}}" id="del" class="btn btn-danger btn-xs">删除</button>
                     </td> 
                 </tr>

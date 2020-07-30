@@ -44,7 +44,7 @@
         <div class="col-md-10 data">
             <select name="sku" id="val_id_{{$k+1}}">
             <option value="">--请选择--</option>
-            @foreach($v['a'] as $Kk=>$vv)
+            @foreach($v['a'] as $Kk=>$vv)`
                 <option value="{{$vv->val_id}}" class="val_id">{{$vv->val_name}}</option>
             @endforeach
             </select>

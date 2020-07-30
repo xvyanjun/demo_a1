@@ -48,22 +48,22 @@
 		                           </div>                                  
 								   <div class="col-md-2 title">商品分类</div>
 								   <div class="col-md-10 data">
-		                              <select class="form-control" name="cate_id">
+		                              <select class="form-control" name="cate_id" id="cate_id">
 										  <option value="">--请选择--</option>
 										  @foreach($cate as $k=>$v)
-										  <option value="{{$v->cate_id}}">{{ str_repeat("|--",$v['level']) }}{{$v->cate_name}}</option>
+										  <option value="{{$v->cate_id}}" class="cate_id">{{ str_repeat("|--",$v['level']) }}{{$v->cate_name}}</option>
 										  @endforeach
 									  </select>
 		                            </div>	                              
 		                          	  
 		                           
 		                           <div class="col-md-2 title">品牌</div>
-		                           <div class="col-md-10 data">
+		                           <div class="col-md-10 data" id="brand_list">
 		                              <select class="form-control" name="brand_id">
-									  <option value="">--请选择--</option>
-										  @foreach($brand as $k=>$v)
-										  <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
-										  @endforeach
+									  <option value="">--请先选择分类--</option>
+										  {{--@foreach($brand as $k=>$v)--}}
+										  {{--<option value="{{$v->brand_id}}">{{$v->brand_name}}</option>--}}
+										  {{--@endforeach--}}
 									  </select>
 		                           </div>
 		
@@ -127,7 +127,6 @@
 
         <!-- 正文区域 /-->
 <script type="text/javascript">
-
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
@@ -135,6 +134,19 @@
 		});
 	});
 
+	$(document).on("change","#cate_id",function(){
+        var cate_id=$(".cate_id:selected").val();
+//        console.log(cate_id);
+        $.ajax({
+            url: "{{'/admin/goods/brand_list'}}",
+            type: 'post',
+            data: {cate_id:cate_id},
+            dataType: 'html',
+            success: function (res) {
+                $("#brand_list").html(res);
+            }
+        });
+    });
 </script>
 </body>
 </html>

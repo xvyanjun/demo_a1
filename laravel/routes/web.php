@@ -33,8 +33,12 @@ Route::prefix('/')->group(function(){
 Route::any('/dhang_jz','index\IndexController@dhang_jz');
 //---------------------------------------------------------点击分类页下的商品页
 Route::any('/cate_list/{id}','index\CateController@cate_list');
+Route::any('/cate_goods_list/tiaojian','index\GoodsController@goods_tiao_list'); //分类商品列表页点击条件
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
+//---------------------------------------------------------商品加入购物车
+Route::any('/shopping','index\GoodsController@shopping');
+Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
 Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //-----------------------------------------------------------
@@ -94,6 +98,31 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 // Route::any('/item','a_1\demo_a1_contr@item');
 //---------------------------------------------------------
+//前台登录
+Route::any('/login','index\LoginController@login'); //登录展示
+Route::any('/login_do','index\LoginController@login_do'); //执行登录
+//前台注册
+Route::any('/reg','index\LoginController@reg');//注册
+Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
+Route::any('/reg_do','index\LoginController@reg_do');//执行注册
+
+//个人信息
+Route::any('/add','index\HomeController@add');
+Route::any('/add_do','index\HomeController@add_do');
+Route::any('/city','index\HomeController@city');
+
+//收获地址
+Route::any('/add_list','index\AddressController@add_list');
+Route::any('/city','index\AddressController@city');
+Route::any('/add_do','index\AddressController@add_do');
+Route::any('/del','index\AddressController@del');
+Route::any('/upd/{address_id}','index\AddressController@upd');
+Route::any('/updAdd','index\AddressController@updAdd');
+
+
+
+
+
 
 //---------------------------------------------------------后台
 Route::any('/index', 'admin\IndexController@index');//首页
@@ -242,6 +271,7 @@ Route::any('/admin/login/homeAdd','admin\LoginController@homeAdd'); //登录详�
 //商品
 Route::prefix('/admin')->middleware('checklogin')->group(function(){
     Route::any('/goods/create', 'admin\GoodsController@create');//商品展示
+    Route::any('/goods/brand_list', 'admin\GoodsController@brand_list');//商品分类下的品牌展示
     Route::any('/goods/add', 'admin\GoodsController@add');//商品执行
     Route::any('/goods/list', 'admin\GoodsController@list');//商品展示
     Route::any('/goods/del', 'admin\GoodsController@del');//商品软删除

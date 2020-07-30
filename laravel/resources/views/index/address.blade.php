@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>设置-个人信息</title>
-    <link rel="icon" href="/assets/img/favicon.ico">
-
+    <link rel="icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
     <script src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
-                            <form action="" method="post" enctype="multipart/form-data" class="sui-form form-inline">
+                            <form action="" class="sui-form form-inline">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
                                     <input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
@@ -123,31 +124,29 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/qtai/plugins/jquery/jquery.min.js"></script>
-{{--<script type="text/javascript">--}}
-{{--$(function(){--}}
-{{--$("#service").hover(function(){--}}
-{{--$(".service").show();--}}
-{{--},function(){--}}
-{{--$(".service").hide();--}}
-{{--});--}}
-{{--$("#shopcar").hover(function(){--}}
-{{--$("#shopcarlist").show();--}}
-{{--},function(){--}}
-{{--$("#shopcarlist").hide();--}}
-{{--});--}}
-
-{{--})--}}
-{{--</script>--}}
-<script>
-    $(function() {
-        $.ms_DatePicker({
-            YearSelector: "#select_year2",
-            MonthSelector: "#select_month2",
-            DaySelector: "#select_day2"
+<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#service").hover(function(){
+            $(".service").show();
+        },function(){
+            $(".service").hide();
         });
-    });
+        $("#shopcar").hover(function(){
+            $("#shopcarlist").show();
+        },function(){
+            $("#shopcarlist").hide();
+        });
+
+    })
 </script>
+<script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/qtai/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
+<script type="text/javascript" src="/qtai/js/pages/userInfo/distpicker.data.js"></script>
+<script type="text/javascript" src="/qtai/js/pages/userInfo/distpicker.js"></script>
+<script type="text/javascript" src="/qtai/js/pages/userInfo/main.js"></script>
 </body>
 <!--header-->
 <div id="account">
@@ -183,108 +182,67 @@
                     </dl>
                     <dl>
                         <dt><i>·</i> 设置</dt>
-                        <dd><a href="home-setting-info.html" class="list-active">个人信息</a></dd>
-                        <dd><a href="home-setting-address.html"  >地址管理</a></dd>
+                        <dd><a href="home-setting-info.html" >个人信息</a></dd>
+                        <dd><a href="home-setting-address.html" class="list-active" >地址管理</a></dd>
                         <dd><a href="home-setting-safe.html" >安全管理</a></dd>
                     </dl>
                 </div>
             </div>
-            <!--右侧主内容-->
-            <div class="yui3-u-5-6">
-                <div class="body userInfo">
-                    <ul class="sui-nav nav-tabs nav-large nav-primary ">
-                        <li class="active"><a href="#one" data-toggle="tab">基本资料</a></li>
-                    </ul>
-                    <div class="tab-content ">
-                        <div id="one" class="tab-pane active">
-                            <form id="form-msg" class="sui-form form-horizontal" action="{{url('add_do')}}">
-                                <div class="new-photo">
-                                    <p>当前头像：</p>
-                                    <div class="upload">
-                                        <img id="imgShow_WU_FILE_0" width="100" height="100" src="/qtai/img/_/photo_icon.png" alt="">
-                                        <input type="file"  name="y_img" />
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="inputName" class="control-label">昵称：</label>
-                                        <div class="controls">
-                                            <input type="text" id="inputName" name="y_name" placeholder="昵称"  name="y_name">
-                                        </div>
-                                    </div>
 
-                                    <div class="control-group">
-                                        <label for="inputGender" class="control-label">性别：</label>
-                                        <div class="controls">
-                                            <input type="radio" name="y_sex" checked  value="1"><span>男</span>
-                                            </label>
-                                            <input type="radio" name="y_sex" value="2"><span>女</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="inputPassword" class="control-label" name="y_birthday">生日：</label>
-                                        <div class="controls">
-                                            <select id="select_year2" name="year" rel="1990" >
-                                                <option value="">——</option>
-                                                @foreach($date as $k => $v)
-                                                    @if($v->year != null)
-                                                        <option value="{{$v->year}}">{{$v->year}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>年
-                                            <select id="select_month2" name="month" rel="4">
-                                                <option value="">——</option>
-                                                @foreach($date as $k => $v)
-                                                    @if($v->month != null)
-                                                        <option value="{{$v->month}}">{{$v->month}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>月
-                                            <select id="select_day2" name="day" rel="3">
-                                                <option value="">——</option>
-                                                @foreach($date as $k => $v)
-                                                    @if($v->day != null)
-                                                        <option value="{{$v->day}}}">{{$v->day}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>日
-                                        </div>
-                                    </div>
+                    <!--新增地址弹出层-->
 
 
-                                    <div class="control-group">
-                                        <label for="inputPassword" class="control-label">所在地：</label>
-                                        <div class="controls">
-                                            <div data-toggle="distpicker">
-                                                <div class="col-md-2">
-                                                    <select class="form-control" id="y_province" name="y_province">
+
+                                    <form action="" class="sui-form form-horizontal">
+                                        <input type="hidden" id="address_id" value="{{$res['address_id']}}">
+                                        <div class="control-group">
+                                            <label class="control-label">收货人：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium" id="address_name" name="address_name" value="{{$res['address_name']}}">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">所在地区：</label>
+                                            <div class="controls">
+                                                <div data-toggle="distpicker">
+                                                    <select class="form-control" id="y_province" name="y_province" value="{{$res['y_province']}}">
                                                         <option value="">请选择所在省</option>
                                                         @foreach($province as $key => $val)
                                                             <option value="{{$val->id}}">{{$val->name}}</option>
                                                         @endforeach
                                                     </select>
 
-                                                    <select class="form-control" name="y_city"id="y_city"><option value="1">请选择</option></select>
-                                                    <select class="form-control" name="y_district" id="y_district" ><option value="1">请选择</option></select>
+                                                    <select class="form-control" name="y_city"id="y_city"  value="{{$res['y_city']}}"><option value="1">请选择</option></select>
+                                                    <select class="form-control" name="y_district" id="y_district"  value="{{$res['y_district']}}"><option value="1">请选择</option></select>
+
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <button type="submit">提交</button>
-                            </form>
-                        </div>
-                        <div id="two" class="tab-pane">
+                                        <div class="control-group">
+                                            <label class="control-label">详细地址：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" name="address_addre" id="address_addre" value="{{$res['address_addre']}}">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" >联系电话：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium" name="address_tel" id="address_tel" value="{{$res['address_tel']}}">
+                                            </div>
+                                        </div>
 
 
-
-                        </div>
-                    </div>
-                </div>
-
+            <div class="modal-footer">
+                <button type="button"  id="add" data-ok="modal"   class="sui-btn btn-primary btn-large">提交</button>
+                <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
             </div>
-        </div>
-    </div>
-</div>
-</div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
 <!-- 底部栏位 -->
 <!--页面底部-->
 <div class="clearfix footer">
@@ -419,8 +377,8 @@
 </div>
 <!--页面底部END-->
 
-</html>
 
+</html>
 
 <script>
 
@@ -442,13 +400,68 @@
                     $("select[name='y_district ']").append(options);
 
                 });
-                $.each(msg,function(k,v){
-                    var opt="<option value='"+ v.id+"'>"+ v.name+"</option>";
-                    $("select[name='y_district']").append(opt);
-
-                });
 
             }
         });
     });
+    $("select[name='y_city']").change(function(){
+        var id = $(this).val();
+        var data = {};
+        data.p_id = id;
+        var url = "city";
+        $.ajax({
+            type : "post",
+            data: data,
+            dataType : "json",
+            url: url,
+            success:function(msg){
+                $("select[name='y_district']").empty();
+                $.each(msg,function(k,v){
+                    var options="<option value='"+ v.id+"'>"+ v.name+"</option>";
+                    $("select[name='y_district']").append(options);
+
+                });
+
+
+            }
+        });
+    });
+
+
+    $(document).on('click','#add',function(){
+        var address_name=$("#address_name").val();
+        if(address_name==''){
+            alert('未填写收货人姓名');
+            return false;
+        }
+        var address_id=$("#address_id").val();
+        var address_name=$("#address_name").val();
+        var address_addre=$("#address_addre").val();
+        var address_tel=$("#address_tel").val();
+        var y_province=$("#y_province").val();
+        var y_city=$("#y_city").val();
+        var y_district=$("#y_district").val();
+        var data={};
+        data.address_id=address_id;
+        data.address_name=address_name;
+        data.address_addre=address_addre;
+        data.address_tel=address_tel;
+        data.y_province=y_province;
+        data.y_city=y_city;
+        data.y_district=y_district;
+        $.ajax({
+            url: "{{'/updAdd'}}",
+            type: 'post',
+            data: {address_id:address_id,address_name:address_name,address_addre:address_addre,address_tel:address_tel,y_district:y_district,y_city:y_city,y_province:y_province},
+            dataType: 'json',
+            success:function(res){
+                if(res.code==000000){
+                    alert(res.msg);
+                    location.href="/add_list";
+                }else{
+                    alert(res.msg);
+                }
+            }
+        });
+    })
 </script>

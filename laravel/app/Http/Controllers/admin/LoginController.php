@@ -38,9 +38,9 @@ class LoginController extends Controller
         }
         $res=User::insertGetId($data);
         if(!empty($res)){
-           
+
             return ["code"=>"000000","msg"=>"注册成功","admin_id"=>$res];
-            
+
         }else{
             return ["code"=>"000001","msg"=>"注册失败"];
         }
@@ -98,10 +98,10 @@ class LoginController extends Controller
         
         return view("admin.login.home",["id"=>$id]);
     }
-    //登录详细信息执行
+       //登录详细信息执行
     public function homeAdd(Request $request){
         $_token=$request->except("_token");
-        
+
         // print_r($_token);exit;
         //添加图片 单文件上传
         if(request()->hasFile('s_img')){
@@ -116,7 +116,7 @@ class LoginController extends Controller
     public function uplode($img){
         $file=request()->$img;
         if($file->isValid()){
-           
+
             $store=$file->store('uploads');
             return $store;
         }

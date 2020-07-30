@@ -46,7 +46,7 @@
 							<div class="fl price">
 								<i>¥</i>
 								<em id="aa">{{$goods_info['goods_price']}}</em>
-								<span>降价通知</span>
+								<!-- <span>降价通知</span> -->
 							</div>
 							<div class="fr remark">
 								<i>累计评价</i><em>{{$goods_info['goods_hits']}}</em>
@@ -301,6 +301,48 @@
 	<script type="text/javascript" src="/qtai/js/plugins/jquery.jqzoom/zoom.js"></script>
 <script>
 	$(function(){
+//-----------------------------------------------------------------------------
+			var _this=$(this);
+			$("#ys").parents('dl').find("[name='yanshi']").prop("class",'');
+			$("#ys").prop("class",'selected');
+			
+			//sku
+			var num=$("#dd").attr("num");
+			//获取本页面的id
+			var goods_id=$("#ys").attr("goods_id");
+			//获取sku
+			var sku="";
+			for(var i=1;i<=num;i++){
+				var attr_id=$("#attr_id_"+i).attr("attr_id");
+				var val_id=$("#val_id_"+i).parents("#dl").find("[name='yanshi'][class='selected']").attr('val_id');
+				if(!val_id==""){
+					sku=sku+'['+attr_id+':'+val_id+'],';
+				}
+			}
+			var cd=sku.length;
+			sku=sku.substr(0,cd-1);
+			$.ajax({
+				url:'/sehao',
+				data:{"sku":sku,"goods_id":goods_id},
+				dataType:"json",
+				success:function(res){
+					if(res.code==000002){
+						// alert(res.msg);
+						$("#aa").text('该型号无货请更换~~');
+					}else{
+                    var res=res;
+					$("#aa").text(res['price']);
+					$("#gwc").attr('goods_price',res['price']);
+					}
+					
+					
+					// console.log(re);
+				}
+			})
+//-----------------------------------------------------------------------------
+	});
+	$(function(){
+
 		//点击+号数字加1
 		$(document).on("click",".plus",function(){
 			//获取加号
@@ -429,11 +471,12 @@
 				success:function(res){
 					if(res.code==000002){
 						alert(res.msg);
-					}
-					
-					var res=res;
-					// console.log(res['price']);
+						$("#aa").text('该型号无货请更换~~');
+					}else{
+                    var res=res;
 					$("#aa").text(res['price']);
+					$("#gwc").attr('goods_price',res['price']);
+					}
 					// console.log(re);
 				}
 			})

@@ -14,7 +14,7 @@ class CartController extends Controller
 {
 //-----------------------------------------------------------------------------
 public function cart(){
-  $u_id='1';	
+  $u_id=request()->session()->get('u_id');	
   $cat_list=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->get();
   foreach($cat_list as $r1=>$r2){
   	$property=shop_property::where([['id',$r2['id']],['property_del','1']])->first();
@@ -40,10 +40,14 @@ public function cart(){
   	$r2['goods_id']=$goods;
   }
 
-    // $u_id=session(['u_id'=>2]);
-    $history=History::where("u_id",2)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
-    $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
+    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+    if($history){
+      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
     $history_goods=Goods::where([["cate_id"=>$cate_id],['goods_show','1'],['goods_del','1']])->orderby("goods_hits","desc")->limit(8)->get()->toArray();
+    }else{
+      $history_goods=[];
+    }
+    
 
   return view('qtai.cart',['cat_list'=>$cat_list,'del_list'=>$del_list,'history_goods'=>$history_goods]);
 }
@@ -222,8 +226,11 @@ public function cart_del_yes(){
 }
 //-----------------------------------------------------------------------------
 public function cat_top_list(){
-  $u_id=1;
+  $u_id=request()->session()->get('u_id');
   $cd=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->count();
+  if(!$cd){
+    $cd=0;
+  }
   return json_encode($cd);
 }
 //-----------------------------------------------------------------------------

@@ -22,7 +22,7 @@
 					<div class="control-group">
 						<label class="control-label">用户名：</label>
 						<div class="controls">
-							<input type="text" placeholder="登陆名" id="u_phone" name="u_phone" class="input-xfat input-xlarge">
+							<input type="text" placeholder="手机号" id="u_phone" name="u_phone" class="input-xfat input-xlarge">
 						</div>
 					</div>
 					
@@ -83,7 +83,7 @@
               success:function(res){
 				  if(res.code==00000){
 					  alert(res.msg);
-					  location.href = "http://jiaoyan.com";
+					  location.href = "/";
 				  }else{
                   alert(res.msg);
 				  }

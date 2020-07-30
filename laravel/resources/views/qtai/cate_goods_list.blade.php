@@ -25,34 +25,34 @@
     <div class="goods-list">
         <ul class="yui3-g">
             @if(!empty($goods_info))
-            @foreach($goods_info as $k=>$v)
-                <li class="yui3-u-1-5">
-                    <div class="list-wrap">
-                        <div class="p-img">
-                            <a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v['goods_img']}}" width="200" height="210"/></a>
+                @foreach($goods_info as $k=>$v)
+                    <li class="yui3-u-1-5">
+                        <div class="list-wrap">
+                            <div class="p-img">
+                                <a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v['goods_img']}}" width="200" height="210"/></a>
+                            </div>
+                            <div class="price">
+                                <strong>
+                                    <em>¥</em>
+                                    <i>{{$v['goods_price']}}</i>
+                                </strong>
+                            </div>
+                            <div class="attr">
+                                <em>{{$v['goods_name']}}</em>
+                            </div>
+                            <div class="cu">
+                                <em><span>促</span>满一件可参加超值换购</em>
+                            </div>
+                            <div class="commit">
+                                <i class="command">已有{{$v['goods_hits']}}人查看</i>
+                            </div>
+                            <div class="operate">
+                                <a href="/goods_list/{{$v['goods_id']}}"class="sui-btn btn-bordered btn-danger">查看商品详情</a>
+                                <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
+                            </div>
                         </div>
-                        <div class="price">
-                            <strong>
-                                <em>¥</em>
-                                <i>{{$v['goods_price']}}</i>
-                            </strong>
-                        </div>
-                        <div class="attr">
-                            <em>{{$v['goods_name']}}</em>
-                        </div>
-                        <div class="cu">
-                            <em><span>促</span>满一件可参加超值换购</em>
-                        </div>
-                        <div class="commit">
-                            <i class="command">已有{{$v['goods_hits']}}人查看</i>
-                        </div>
-                        <div class="operate">
-                            <a href="success-cart.html"class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                            <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
-                        </div>
-                    </div>
-                </li>
-            @endforeach
+                    </li>
+                @endforeach
             @else
                 <li class="yui3-u-1-5">
                     <h2>没有找到对应的商品</h2>
@@ -62,35 +62,9 @@
     </div>
     <div class="fr page">
         <div class="sui-pagination pagination-large">
+            <ul>
             {{ $goods_info->links() }}
-            {{--<ul>--}}
-                {{--<li class="prev disabled">--}}
-                    {{--<a href="#">«上一页</a>--}}
-                {{--</li>--}}
-                {{--<li class="active">--}}
-                    {{--<a href="#">1</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#">2</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#">3</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#">4</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#">5</a>--}}
-                {{--</li>--}}
-                {{--<li class="dotted"><span>...</span></li>--}}
-                {{--<li class="next">--}}
-                    {{--<a href="#">下一页»</a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-            {{--<div><span>共10页&nbsp;</span><span>--}}
-      {{--到第--}}
-      {{--<input type="text" class="page-num">--}}
-      {{--页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>--}}
+            </ul>
         </div>
     </div>
 </div>

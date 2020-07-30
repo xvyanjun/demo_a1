@@ -120,7 +120,7 @@
 									<i class="command">已有{{$v['goods_hits']}}人查看</i>
 								</div>
 								<div class="operate">
-									<a href="success-cart.html"class="sui-btn btn-bordered btn-danger">加入购物车</a>
+									<a href="/goods_list/{{$v['goods_id']}}"class="sui-btn btn-bordered btn-danger">查看商品详情</a>
 									<a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
 								</div>
 							</div>

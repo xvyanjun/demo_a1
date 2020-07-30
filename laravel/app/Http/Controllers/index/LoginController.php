@@ -153,7 +153,7 @@ class LoginController extends Controller
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
                 session(['u_phone' => $user_model->u_phone]);
                 session(['u_id' => $user_model->u_id]);
-
+                session(['u_name' => $user_model->u_name]);
                 $request->session()->save();
                 return [
                     'code' => 00000,
@@ -161,8 +161,28 @@ class LoginController extends Controller
                     'result' => ''
                 ];
             }else{
-                echo "123";
+                return [
+                    'code' => 00003,
+                    'msg' => '密码错误',
+                    'result' => ''
+                ];
             }
+        }else{
+            return [
+                'code' => 00004,
+                'msg' => '没有次用户',
+                'result' => ''
+            ];
+        }
+    }
+
+    //退出页面
+    public function tuichu(Request $request){
+        $u_id=request()->session()->put('u_id',null);
+        $id=request()->session()->get('u_id');
+        // print_r($id);exit;
+        if(!$id){
+            return redirect('/');
         }
     }
 

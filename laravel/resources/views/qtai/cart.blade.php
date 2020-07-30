@@ -1,20 +1,6 @@
 @extends('layouts_q.cart_jz')
 @section('title','购物车')
 @section('content')
-<div class="cart py-container">
-		<!--logoArea-->
-		<div class="logoArea">
-			<div class="fl logo"><span class="title"></span></div>
-			<div class="fr search">
-				<form class="sui-form form-inline">
-					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!--All goods-->
 		<div class="allgoods">
 			<h4>全部商品<span>11</span></h4>
 			<div class="cart-main">
@@ -86,7 +72,7 @@
 						<!-- <span><em>已节省：</em><i>-¥20.00</i></span> -->
 					</div>
 					<div class="sumbtn">
-						<a class="sum-btn" href="/getOrderInfo" >结算</a><!--target="_blank"-->
+						<a class="sum-btn" href="javascript:;" id='in_all' target="_blank">结算</a><!--/getOrderInfo-->
 					</div>
 				</div>
 			</div>
@@ -186,7 +172,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
     <script>
 //------------------------------------------------------------------------------减 	
 		   $(document).on('click','#num_n',function(){
@@ -479,18 +464,23 @@
 		   	      }
             });
 //------------------------------------------------------------------------------
-           $(function(){
-           	//---------------------------
-             // $.ajax({
-             // 	url:'/you_live',
-             // 	typr:'post',
-             // 	dataType:'html',
-             // 	success:function(lve){
-             // 		$("#guess_as_love").html(lve);
-             // 	}
-             // });
-             //---------------------------
-    	   });
+            $(document).on('click','#in_all',function(){
+            	var sf_j1=0;
+            	var ar_s='';
+            	$("[type='checkbox'][name='ck_jb0528']:checked").each(function(index, el) {
+            		var trolley_id=$(this).attr('trolley_id');
+                        ar_s=ar_s+trolley_id+',';
+                        sf_j1=sf_j1+1;
+            	});
+            	var cd=ar_s.length;
+            	    ar_s=ar_s.substr(0,cd-1);
+            	if(sf_j1>0){
+            	  location.href='/getOrderInfo?trolley_id_s='+ar_s;
+            	}    
+            	console.log(sf_j1,ar_s);
+            });
+//------------------------------------------------------------------------------
+           
 //------------------------------------------------------------------------------ 		   
 	</script>
 @endsection

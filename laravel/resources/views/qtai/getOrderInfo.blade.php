@@ -1,59 +1,54 @@
 @extends('layouts_q.cart_jz')
 @section('title','结算')
 @section('content')
-<div class="cart py-container">
-		<!--logoArea-->
-		<div class="logoArea">
-			<div class="fl logo"><span class="title">结算页</span></div>
-			<div class="fr search">
-				<form class="sui-form form-inline">
-					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!--主内容-->
 		<div class="checkout py-container">
 			<div class="checkout-tit">
 				<h4 class="tit-txt">填写并核对订单信息</h4>
 			</div>
 			<div class="checkout-steps">
 				<!--收件人信息-->
-				<div class="step-tit">
-					<h5>收件人信息<span><a data-toggle="modal" data-target=".edit" data-keyboard="false" class="newadd">新增收货地址</a></span></h5>
+				<div class="step-tit"><!--data-toggle="modal" data-target=".edit" data-keyboard="false"-->
+					<h5>收件人信息<span><a  href='/add_list'   class="newadd">新增收货地址</a></span></h5>
 				</div>
 				<div class="step-cont">
 					<div class="addressInfo">
 						<ul class="addr-detail">
 							<li class="addr-item">
-							
-							  <div>
-								<div class="con name selected"><a href="javascript:;" >张默<span title="点击取消选择">&nbsp;</a></div>
-								<div class="con address">张默 北京市海淀区三环内 中关村软件园9号楼 <span>159****3201</span>
-									<span class="base">默认地址</span>
-									<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
-								</div>
-								<div class="clearfix"></div>
-							  </div>
-							  <div>
-								<div class="con name"><a href="javascript:;">李煜<span title="点击取消选择">&nbsp;</a></div>
-								<div class="con address">李煜 北京市海淀区三环内 中关村软件园8号楼 <span>187****4201</span>
+							@foreach($address_list as $r1=>$r2)
+							 <div id='dz_test'>
+								<div id='dzhi_2556' name='jk_233' address_id="{{$r2['address_id']}}" class="{{$r2['address_common']=='2'?'con name selected':'con name'}}"><a href="javascript:;" id='vl_e1'>{{$r2['address_name']}}<span title="点击取消选择">&nbsp;</span></a></div>
+								<div class="con address">
+									<span id='vl_e2'>
+									{{$r2['y_province']['name']}}-{{$r2['y_city']['name']}}-{{$r2['y_district']['name']}}:{{$r2['address_addre']}} 
+									</span>
+									<span id='vl_e3'>{{mb_substr($r2['address_tel'],0,3)}}****{{mb_substr($r2['address_tel'],7,10)}}</span>
+                                @if($r2['address_common']=='2')
+                                <span class="base">默认地址</span>
+                                @endif  
 								<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
 								</div>
 								<div class="clearfix"></div>
 							  </div>
+                             @endforeach
+	<!-- 						  <div>
+								<div class="con name selected"><a href="javascript:;">李煜<span title="点击取消选择">&nbsp;</span></a></div>
+								<div class="con address">李煜 北京市海淀区三环内 中关村软件园8号楼 <span>187****4201</span>
+                                
+                                <span class="base">默认地址</span>
+
+								<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
+								</div>
+								<div class="clearfix"></div>
+							  </div> -->
 							  
-							  <div>
-								<div class="con name"><a href="javascript:;">王希<span title="点击取消选择">&nbsp;</a></div>
+<!-- 							  <div>
+								<div class="con name"><a href="javascript:;">王希<span title="点击取消选择">&nbsp;</span></a></div>
 								<div class="con address">王希 北京市海淀区三环内 中关村软件园6号楼  <span>156****5681</span>
 								<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
 								</div>
 								<div class="clearfix"></div>
-							  </div>
+							  </div> -->
 							</li>
-							
 							
 						</ul>
 						<!--添加地址-->
@@ -125,8 +120,8 @@
 					</div>
 					<div class="step-cont">
 						<ul class="payType">
-							<li class="selected">微信付款<span title="点击取消选择"></span></li>
-							<li>货到付款<span title="点击取消选择"></span></li>
+							<li class="selected">支付宝<span title="点击取消选择"></span></li>
+							<!-- <li>货到付款<span title="点击取消选择"></span></li> -->
 						</ul>
 					</div>
 					<div class="hr"></div>
@@ -135,37 +130,36 @@
 					</div>
 					<div class="step-cont">
 						<ul class="send-detail">
+							@foreach($cat_list as $y=>$u)
 							<li>
-								
 								<div class="sendGoods">
 									
 									<ul class="yui3-g">
 										<li class="yui3-u-1-6">
-											<span><img src="/qtai/img/goods.png"/></span>
+											<span><img style="width:82px;height:82px" src="{{$u['goods_id']['goods_img']}}"/></span>
 										</li>
 										<li class="yui3-u-7-12">
-											<div class="desc">Apple iPhone 6s (A1700) 64G 玫瑰金色 移动联通电信4G手机硅胶透明防摔软壳 本色系列</div>
-											<div class="seven">7天无理由退货</div>
+											<div class="desc" title="{{$u['goods_id']['goods_name']}}">{{mb_substr($u['goods_id']['goods_name'],0,9)}}</div>
+											<div class="seven" name='trolley_up' trolley_id="{{$u['trolley_id']}}">&nbsp;</div>
 										</li>
 										<li class="yui3-u-1-12">
-											<div class="price">￥5399.00</div>
+											<div class="price">单价￥:{{$u['price_one']}}</div>
 										</li>
 										<li class="yui3-u-1-12">
-											<div class="num">X1</div>
+											<div class="num">X{{$u['goods_num']}}</div>
 										</li>
 										<li class="yui3-u-1-12">
-											<div class="exit">有货</div>
+											<div class="exit">总价￥:{{$u['price_total']}}</div>
 										</li>
 									</ul>
 								</div>
 							</li>
-							<li></li>
-							<li></li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="hr"></div>
 				</div>
-				<div class="linkInfo">
+<!-- 				<div class="linkInfo">
 					<div class="step-tit">
 						<h5>发票信息</h5>
 					</div>
@@ -179,31 +173,74 @@
 					<div class="step-tit">
 						<h5>使用优惠/抵用</h5>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="order-summary">
 			<div class="static fr">
 				<div class="list">
-					<span><i class="number">1</i>件商品，总商品金额</span>
-					<em class="allprice">¥5399.00</em>
+					<span><i class="number">{{$up_s['num_up']}}</i>件商品，总商品金额</span>
+					<em class="allprice">¥{{$up_s['price_up']}}</em>
 				</div>
-				<div class="list">
+<!-- 				<div class="list">
 					<span>返现：</span>
 					<em class="money">0.00</em>
 				</div>
 				<div class="list">
 					<span>运费：</span>
 					<em class="transport">0.00</em>
-				</div>
+				</div> -->
 			</div>
 		</div>
+		@php
+		 $t_1='';
+		 $t_2='';
+		 $t_3='';
+         foreach($address_list as $u1=>$u2){
+           if($u2['address_common']=='2'){
+              $t_1=$u2['address_name'];
+              $t_2=$u2['y_province']['name'].'-'.$u2['y_city']['name'].'-'.$u2['y_district']['name'].':'.$u2['address_addre'];
+              $t_3=mb_substr($u2['address_tel'],0,3).'****'.mb_substr($u2['address_tel'],7,9);
+           }
+         }
+		@endphp
 		<div class="clearfix trade">
-			<div class="fc-price">应付金额:　<span class="price">¥5399.00</span></div>
-			<div class="fc-receiverInfo">寄送至:北京市海淀区三环内 中关村软件园9号楼 收货人：某某某 159****3201</div>
+			<div class="fc-price">应付金额:　<span class="price">¥{{$up_s['price_up']}}</span></div>
+			<div class="fc-receiverInfo">寄送至:<span id='vl_t1'>{{$t_2}}</span>&nbsp;收货人:<span id='vl_t2'>{{$t_1}}</span>&nbsp;<span id='vl_t3'>{{$t_3}}</span></div>
 		</div>
 		<div class="submit">
-			<a class="sui-btn btn-danger btn-xlarge" href="pay.html">提交订单</a>
+			<a class="sui-btn btn-danger btn-xlarge" href="javascript:;" id='all_up'>提交订单</a>
 		</div>
-	</div>
+		<script>
+//---------------------------------------------------------------------			
+         $(document).on('click','#dzhi_2556',function(){
+         	$("[name='jk_233']").prop('class','con name');
+         	$(this).prop('class','con name selected');
+         	var a1=$(this).parents("#dz_test").find("#vl_e1").text().trim();
+         	var a2=$(this).parents("#dz_test").find("#vl_e2").text().trim();
+         	var a3=$(this).parents("#dz_test").find("#vl_e3").text().trim();
+         	$("#vl_t1").text(a2);
+         	$("#vl_t2").text(a1);
+         	$("#vl_t3").text(a3);
+         	console.log(a1,a2,a3);
+         });
+//---------------------------------------------------------------------		
+         $(document).on('click','#all_up',function(){
+         	var address_id='';
+         	$("[name='jk_233']").each(function(){
+               var sf=$(this).prop('class');
+                   if(sf=='con name selected'){
+                   	address_id+=$(this).attr('address_id');
+                   }
+         	});
+         	var trolley_id='';
+         	$("[name='trolley_up']").each(function(){
+         	   trolley_id=trolley_id+$(this).attr('trolley_id')+',';
+         	});
+         	var cd=trolley_id.length;
+         	    trolley_id=trolley_id.substr(0,cd-1);
+         	console.log('地址id:',address_id,'购物车id:',trolley_id);
+         });         
+//---------------------------------------------------------------------	
+		</script>
 @endsection

@@ -68,6 +68,12 @@ Route::any('/cat_top_list','index\CartController@cat_top_list');//头部购物�
 //---------------------------------------------------------
 });
 //---------------------------------------------------------
+Route::prefix('/')->group(function(){
+//---------------------------------------------------------
+Route::any('/getOrderInfo','index\getOrderinfoController@getOrderInfo');//订单列表
+//---------------------------------------------------------
+});
+//---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------
 
@@ -93,7 +99,7 @@ Route::any('/home_setting_safe','a_1\demo_a1_contr@home_setting_safe');
 //---------------------------------------------------------
 // Route::any('/cart','a_1\demo_a1_contr@cart');
 //---------------------------------------------------------
-Route::any('/getOrderInfo','a_1\demo_a1_contr@getOrderInfo');
+
 //---------------------------------------------------------
 Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
@@ -106,6 +112,7 @@ Route::any('/login_do','index\LoginController@login_do'); //执行登录
 Route::any('/reg','index\LoginController@reg');//注册
 Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
 Route::any('/reg_do','index\LoginController@reg_do');//执行注册
+Route::any('/tuichu','index\LoginController@tuichu');//退出执行
 
 //个人信息
 Route::any('/add','index\HomeController@add');
@@ -292,4 +299,6 @@ Route::prefix('/admin')->group(function(){
     Route::any('/skug/upd/{id}', 'admin\SkuController@upd');//商品属性修改展示
     Route::any('/skug/updAdd', 'admin\SkuController@updAdd');//商品属性修改执行
 });
+
+
 //---------------------------------------------------------

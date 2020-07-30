@@ -41,7 +41,23 @@
 		</div>
 	</div>
     
-@yield('content')
+
+<div class="cart py-container">
+		<!--logoArea-->
+		<div class="logoArea">
+			<div class="fl logo"><span class="title"></span></div>
+			<div class="fr search">
+				<form class="sui-form form-inline">
+					<div class="input-append">
+						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
+						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+					</div>
+				</form>
+			</div>
+		</div>
+      @yield('content')
+</div>
+
 <!-- eva_zhong -->
 	<!-- 底部栏位 -->
 	<!--页面底部-->

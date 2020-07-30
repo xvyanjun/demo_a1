@@ -310,21 +310,21 @@ class GoodsController extends Controller
 
         $goods=new Goods();
         $tiao=$request->post('tiao');//倒叙条件
-
+        $page_s=2;
         if(!empty($tiao)){
             if(count($where)==2){
-                $goods_info=$goods::where($where)->orderBy($tiao,'desc')->paginate(10);//加条件后的商品
+                $goods_info=$goods::where($where)->orderBy($tiao,'desc')->paginate(2);//加条件后的商品
             }else{
-                $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->orderBy($tiao,'desc')->paginate(10);//加条件后的商品
+                $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->orderBy($tiao,'desc')->paginate(2);//加条件后的商品
             }
         }else{
             if(count($where)==2){
-                $goods_info=$goods::where($where)->paginate(10);//加条件后的商品
+                $goods_info=$goods::where($where)->paginate(2);//加条件后的商品
             }else{
                 if(!empty($yan_sku) || !empty($chi_sku)){
-                    $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->paginate(10);//加条件后的商品
+                    $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->paginate(2);//加条件后的商品
                 }else{
-                    $goods_info=$goods::where($where)->paginate(10);//加条件后的商品
+                    $goods_info=$goods::where($where)->paginate(2);//加条件后的商品
                 }
             }
         }

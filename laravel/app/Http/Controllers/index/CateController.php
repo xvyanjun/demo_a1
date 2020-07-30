@@ -27,7 +27,7 @@ class CateController extends Controller
 
         //分类下的商品
         $goods=new Goods();
-        $goods_info=$goods::where(['cate_id'=>$id,'goods_del'=>1])->paginate(10);
+        $goods_info=$goods::where(['cate_id'=>$id,'goods_del'=>1])->paginate(2);
 //        dd($goods_info);
         //分类下的品牌
         $brand_id=explode(",",$cate_info['brand_id']);

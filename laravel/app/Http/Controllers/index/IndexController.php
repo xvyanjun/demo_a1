@@ -33,11 +33,16 @@ public function index(){
     $goods=Goods::where(["goods_del"=>1])->orderby("goods_id","desc")->limit(4)->get();
 //..............................eva
     //猜你喜欢
-    $u_id=session('u_id');
-    // print_r($u_id);exit;
+
+    $u_id=request()->session()->get('u_id');
     $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
-    $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
-    $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
+    if($history){
+      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
+      $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
+    }else{
+      $history_goods=[];
+    }
+    
 //..............................eva
   if(array_key_exists('begin_num',$xx)){
     $begin_num=$xx['begin_num']+1;
@@ -74,10 +79,10 @@ public function dhang_jz(){
   return json_encode($nav_s);
 }
 //.-------------------------------------------------------------------------楼层左侧浮块
-public function dhang_lceng(){
-  $cate_s=cate::where([['p_id','0'],['cate_show','1'],['cate_del','1']])->get();
-  return json_encode($cate_s);
-}
+// public function dhang_lceng(){
+//   $cate_s=cate::where([['p_id','0'],['cate_show','1'],['cate_del','1']])->get();
+//   return json_encode($cate_s);
+// }
 //.-------------------------------------------------------------------------js楼层-条件-数据获取
 public function lou_ceng_sj(){
     $xx=request()->all();

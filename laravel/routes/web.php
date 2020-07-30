@@ -40,11 +40,11 @@ Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 Route::any('/shopping','index\GoodsController@shopping');
 Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
-Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
+// Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
 //-----------------------------------------------------------
 Route::any('/list/{id}','index\ListController@list');//品牌列表
 //---------------------------------------------------------前台首页
-Route::any('dhang_lceng','index\IndexController@dhang_lceng');
+// Route::any('dhang_lceng','index\IndexController@dhang_lceng');
 //---------------------------------------------------------js楼层-条件-数据获取
 Route::any('lou_ceng_sj','index\IndexController@lou_ceng_sj');
 //---------------------------------------------------------js有趣—加载时获数据

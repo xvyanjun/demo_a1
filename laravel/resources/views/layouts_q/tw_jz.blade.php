@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-cartPanelView.css" />
 
-
     <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/qtai/js/model/cartModel.js"></script>
     <script type="text/javascript" src="/qtai/js/czFunction.js"></script>
@@ -89,12 +88,6 @@
 									<span>我的购物车</span>
 									<i class="shopnum" id='cat_num_0522'>0</i>
 								</a>
-								<div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
-									<p id='cat_add_886'>"查看更多~~~~~~~~~~~~~~~~~~~~"</p>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -290,30 +283,6 @@
 </div>
 <!--页面底部END-->
 	<!-- 楼层位置 -->
-<!-- 	<div id="floor-index" class="floor-index">
-		<ul id='f_kuai'>
-			<li>
-				<a class="num" href="javascript:;" style="display: none;">1F</a>
-				<a class="word" href="javascript;;" style="display: block;">家用电器</a>
-			</li>
-			<li>
-				<a class="num" href="javascript:;" style="display: none;">2F</a>
-				<a class="word" href="javascript;;" style="display: block;">手机通讯</a>
-			</li>
-			<li>
-				<a class="num" href="javascript:;" style="display: none;">3F</a>
-				<a class="word" href="javascript;;" style="display: block;">电脑办公</a>
-			</li>
-			<li>
-				<a class="num" href="javascript:;" style="display: none;">4F</a>
-				<a class="word" href="javascript;;" style="display: block;">家居家具</a>
-			</li>
-			<li>
-				<a class="num" href="javascript:;" style="display: none;">5F</a>
-				<a class="word" href="javascript;;" style="display: block;">运动户外</a>
-			</li>
-		</ul>
-	</div> -->
 <script>					
 					$(function(){
 //----------------------------------------------------------------						
@@ -397,16 +366,16 @@
 						<div class="tbar-panel-content J-panel-content">
 							<div class="jt-history-wrap">
 								<ul>
-									<!--<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src=".portal//qtai/img/like_03.png" height="100" width="100" /> </a>
+									<li class="jth-item">
+										<a href="#" class="img-wrap"> <img src="/qtai/img/like_03.png" height="100" width="100" /> </a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
 									</li>
 									<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="portal//qtai/img/like_02.png" height="100" width="100" /></a>
+										<a href="#" class="img-wrap"> <img src="/qtai/img/like_02.png" height="100" width="100" /></a>
 										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
 										<a href="#" target="_blank" class="price">￥498.00</a>
-									</li>-->
+									</li>
 								</ul>
 								<a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
 							</div>

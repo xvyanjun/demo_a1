@@ -30,11 +30,15 @@ class GoodsController extends Controller
             $info[$k]['goods_imgs']=explode('|',$v['goods_imgs']);
         }
         //猜你喜欢
-//         $u_id=session('u_id');
-        $u_id=2;
+        $u_id=request()->session()->get('u_id');
         $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
-        $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
+        if($history){
+            $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
         $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
+        }else{
+            $history_goods=[];
+        }
+        
         //---------------------------------------------------------------------------------------------
         //商品的详细信息
         $goods_id=request()->id;
@@ -117,7 +121,7 @@ class GoodsController extends Controller
                 return ['code'=>'000001','msg'=>"加入购物车失败"];
             }
         }
-        $u_id=session(2);
+        $u_id=request()->session()->get('u_id');
         $shop_cat=new shop_cat;
         $shop_cat->u_id=$u_id;
         $shop_cat->goods_id=$data['goods_id'];

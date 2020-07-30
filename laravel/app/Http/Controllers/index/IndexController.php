@@ -33,8 +33,9 @@ public function index(){
     $goods=Goods::where(["goods_del"=>1])->orderby("goods_id","desc")->limit(4)->get();
 //..............................eva
     //猜你喜欢
-    // $u_id=session(['u_id'=>2]);
-    $history=History::where("u_id",2)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+    $u_id=session('u_id');
+    // print_r($u_id);exit;
+    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
     $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
     $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
 //..............................eva

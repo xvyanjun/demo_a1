@@ -161,8 +161,18 @@ class LoginController extends Controller
                     'result' => ''
                 ];
             }else{
-                echo "123";
+                return [
+                    'code' => 00003,
+                    'msg' => '密码错误',
+                    'result' => ''
+                ];
             }
+        }else{
+            return [
+                'code' => 00004,
+                'msg' => '没有次用户',
+                'result' => ''
+            ];
         }
     }
 

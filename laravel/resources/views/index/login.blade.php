@@ -83,7 +83,7 @@
               success:function(res){
 				  if(res.code==00000){
 					  alert(res.msg);
-					  location.href = "http://jiaoyan.com";
+					  location.href = "/";
 				  }else{
                   alert(res.msg);
 				  }

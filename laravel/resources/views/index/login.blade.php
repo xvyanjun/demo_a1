@@ -76,7 +76,7 @@
           var u_phone = $('#u_phone').val();
           var u_pwd = $('#u_pwd').val();
           $.ajax({
-              url:'/login_do',
+              url:'/login_dos',
               type:'post',
               dataType:'json',
               data:{'u_phone':u_phone,'u_pwd':u_pwd},

@@ -15,6 +15,7 @@ class CartController extends Controller
 //-----------------------------------------------------------------------------
 public function cart(){
   $u_id=request()->session()->get('u_id');	
+  if(empty($u_id)){return redirect('/login');}
   $cat_list=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->get();
   foreach($cat_list as $r1=>$r2){
   	$property=shop_property::where([['id',$r2['id']],['property_del','1']])->first();
@@ -227,7 +228,9 @@ public function cart_del_yes(){
 //-----------------------------------------------------------------------------
 public function cat_top_list(){
   $u_id=request()->session()->get('u_id');
-  $cd=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->count();
+  if(empty($u_id)){$u_id=0;}
+  $cd=shop_cat::where([['u_id',$u_id],['trolley_del','1']])->get();
+  $cd=count($cd);
   if(!$cd){
     $cd=0;
   }

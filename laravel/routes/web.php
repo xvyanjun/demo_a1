@@ -35,6 +35,7 @@ Route::any('/dhang_jz','index\IndexController@dhang_jz');
 Route::any('/cate_list/{id}','index\CateController@cate_list');
 Route::any('/cate_goods_list/tiaojian','index\GoodsController@goods_tiao_list'); //分类商品列表页点击条件
 Route::any('/collect/guanzhu','index\CollertController@guanadd');//关注
+Route::any('/ce_lishi','index\IndexController@ce_lishi');
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------商品加入购物车
@@ -73,6 +74,8 @@ Route::prefix('/')->group(function(){
 Route::any('/getOrderInfo','index\getOrderinfoController@getOrderInfo');//订单列表
 //---------------------------------------------------------
 });
+
+Route::any('/eva','index\GoodsController@eva');
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------

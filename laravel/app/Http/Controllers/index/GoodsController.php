@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\index;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cate;
 use App\Models\Goods;
 use App\Models\History;
 use App\Models\Shop_album;
-use Illuminate\Http\Request;
 use App\Models\shop_sku_name;
 use App\Models\Propertyp;
 use App\Models\shop_cat;
@@ -20,6 +19,7 @@ class GoodsController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * 详情
      */
+//---------------------------------------------------------------------------------------------    
     public function goods_list($id){
         //添加浏览记录
         //判断是否登录
@@ -50,7 +50,7 @@ class GoodsController extends Controller
             $history_goods=[];
         }
 
-        //---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
         //商品的详细信息
         $goods_id=request()->id;
         $sku=goods_sku_id($goods_id);
@@ -76,7 +76,7 @@ class GoodsController extends Controller
         $brand=Brand::limit(15)->get();
         return view('qtai.item',['goods_info'=>$goods_info,'goods_images'=>$info,'history_goods'=>$history_goods,'goods_sku'=>$goods_sku,'g_cate'=>$g_cate,'brand'=>$brand]);
     }
-
+//---------------------------------------------------------------------------------------------eva
     //添加浏览记录到数据库
     public function HistroyDb($id){
         $u_id=request()->session()->get('u_id');
@@ -92,33 +92,44 @@ class GoodsController extends Controller
         }
        
     }
-    
+//---------------------------------------------------------------------------------------------eva
     //添加数据到cookie
     public function HistroyCookie($id){
-        // $HistroyInfo=request()->cookie("test");
-        // dump($HistroyInfo);
-        // if(isset($HistroyInfo)){
-            $h_hits=1;
-            $HistroyInfo=["goods_id"=>$id,'h_time'=>time(),"h_hits"=>$h_hits];
-            $HistroyInfo=json_encode($HistroyInfo);
-            // dd($HistroyInfo);
-            Cookie::queue('test',$HistroyInfo);
-            
-        // }else{
-        //     if(array_key_exists($id,$HistroyInfo)){
-        //         dump(11);
-        //         $h_hits=$HistroyInfo[$id]['h_hits']+1;
-        //         // dd($h_hits);
-        //         $HistroyInfo[$id]=["goods_id"=>$id,'h_time'=>time(),"h_hits"=>$h_hits];
-        //         $HistroyInfo=json_encode($HistroyInfo);
-
-        //         Cookie::queue('HistroyInfo',$HistroyInfo, 7*24*60);
-        //     }
-        // }
-        
-       }
-
-
+        $sf=Cookie::get('user_history');
+        if(empty($sf)){
+          $ar[$id]=['goods_id'=>$id,'h_time'=>time(),'h_hits'=>1];
+          $ar=serialize($ar);
+          Cookie::queue('user_history',$ar);
+        }else{
+          $vl=unserialize($sf);
+          if(array_key_exists($id,$vl)){
+              $num_a=$vl[$id]['h_hits'];
+          }else{
+              $num_a=0;
+          }
+          $vl[$id]=['goods_id'=>$id,'h_time'=>time(),'h_hits'=>$num_a+1];
+          $tj=serialize($vl);
+          Cookie::queue('user_history',$tj);
+        }
+    }
+//---------------------------------------------------------------------------------------------eva
+    public function eva(){
+        $sf=Cookie::get('user_history');
+        $ar=unserialize($sf);
+        dd($ar);
+    }
+//---------------------------------------------------------------------------------------------eva
+    public function cookie_vl($name,$sf){
+      $vl=request()->cookie($name);
+      $vl=$sf($vl);
+      if($vl=='hao'){
+        $jk='eva';
+      }else{
+        $jk='EVA';
+      }
+      return $vl;
+    }
+//---------------------------------------------------------------------------------------------
     //加入购物车数据库
     public function shopping(Request $request){
         $data=$request->all();
@@ -190,7 +201,7 @@ class GoodsController extends Controller
             return ['code'=>'000001','msg'=>"加入购物车失败"];
         }
     }
-
+//---------------------------------------------------------------------------------------------
     //sku点击变换价格
     public function sehao(Request $request){
         $data=$request->all();
@@ -225,7 +236,7 @@ class GoodsController extends Controller
         $property=Propertyp::where("id",$ii)->first();
         return $property;
     }
-
+//---------------------------------------------------------------------------------------------
     //sku拆分sku关联表数据
     private function goods_sku($xxi){
         $sxing=[];   
@@ -274,6 +285,7 @@ class GoodsController extends Controller
         $sxing=array_unique($sxing);
         return $sxing;
     }
+//---------------------------------------------------------------------------------------------    
     //拆分添加购物车过来数据
     private function goods_sku_aa($xxi){
         $sxing=[];   
@@ -322,8 +334,7 @@ class GoodsController extends Controller
         $sxing=array_unique($sxing);
         return $sxing;
     }
-
-
+//---------------------------------------------------------------------------------------------
     /**
      * 分类加其他条件下的商品
      */

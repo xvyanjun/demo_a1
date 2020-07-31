@@ -8,6 +8,8 @@ use App\Models\Indexuser;
 use App\Models\Shop_code;
 use App\models\PhoneCode;
 use Illuminate\Support\Facades\DB;
+use App\Models\History;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -151,6 +153,7 @@ class LoginController extends Controller
         $user_model = Indexuser::where('u_phone', $data['u_phone'])->first();
         if ($user_model) {
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
+                $this->user_history_insert($user_model->u_id);
                 session(['u_phone' => $user_model->u_phone]);
                 session(['u_id' => $user_model->u_id]);
                 session(['u_name' => $user_model->u_name]);
@@ -174,6 +177,7 @@ class LoginController extends Controller
                 'result' => ''
             ];
         }
+
     }
 
     //退出页面
@@ -184,6 +188,34 @@ class LoginController extends Controller
         if(!$id){
             return redirect('/');
         }
+    }
+
+    public function user_history_insert($u_id){
+       if(!empty($u_id)){
+        $sf=Cookie::get('user_history');
+        if(!empty($sf)){
+           $ar=unserialize($sf);  
+           foreach($ar as $r5=>$t5){
+            $History_vl=History::where([['u_id',$u_id],['goods_id',$r5]])->first();
+            if($History_vl){
+              $h_hits=$t5['h_hits']+$History_vl['h_hits'];  
+              History::where([['u_id',$u_id],['goods_id',$r5]])->update([
+              'h_time'=>$t5['h_time'],
+              'h_hits'=>$h_hits
+              ]);
+            }else{
+              History::insert([
+              'goods_id'=>$t5['goods_id'], 
+              'u_id'=>$u_id,
+              'h_time'=>$t5['h_time'],
+              'h_hits'=>$t5['h_hits']
+              ]);
+              $fh=Cookie::forget('user_history');
+              return $fh;
+            }
+           }
+        }
+       }
     }
 
 }

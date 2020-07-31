@@ -65,6 +65,7 @@
     <div class="fr page">
         <div class="sui-pagination pagination-large">
             {{--<ul>--}}
+            @if($count!='')
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
@@ -82,6 +83,9 @@
                     </li>
                 </ul>
             </nav>
+            @else
+
+            @endif
             {{--</ul>--}}
         </div>
     </div>

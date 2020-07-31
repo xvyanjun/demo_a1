@@ -62,7 +62,7 @@ class GoodsController extends Controller
             <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
             <script>
-                alert("该商品没有色号，请另选。");
+                alert("该商品暂无库存，请另选。");
                 window.location.href="/"
             </script>';
             exit;

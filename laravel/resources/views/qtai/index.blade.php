@@ -42,7 +42,7 @@
                         
                         @foreach($slide_s as $c=>$v)
                           <div class="{{$c=='0'?'active item':'item'}}">
-					        <a href="{{$v['slide_url']}}">
+					        <a href="/slide/list/{{$v['slide_id']}}">
 					    	  <img src="{{$v['slide_img']}}"  />
 					        </a>
 					      </div>

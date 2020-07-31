@@ -167,29 +167,32 @@ $(function(){
                                     <div class="control-group">
                                         <label for="inputusername" class="control-label">用户名：</label>
                                         <div class="controls">
-                                            <input id="pwdid" class="fn-tinput" data-rule-remote="http://www.baidu.com" type="password" name="OldPassword" placeholder="输入昵称"
-                                                required data-msg-required="请输入昵称" minlength="6" data-msg-minlength="至少输入6个字符"
-                                            />
-
+                                            <input id="pwdid" type="text" name="u_name"/>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label for="inputPassword" class="control-label">密码：</label>
+                                        <label for="inputPassword" class="control-label">原密码：</label>
                                         <div class="controls">
-                                            <input class="fn-tinput" type="password" name="password" value="" placeholder="新密码" required id="password" data-rule-remote="php.php">
+                                            <input class="fn-tinput" type="password" name="u_pwd" value="" placeholder="新密码" required id="password" data-rule-remote="php.php"  name="u_pwd" id="u_pwd">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="inputPassword" class="control-label">新密码：</label>
+                                        <div class="controls">
+                                            <input class="fn-tinput" type="password" name="new_pwd" value="" placeholder="新密码" required id="password" data-rule-remote="php.php"  name="u_pwd" id="u_pwd">
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label for="inputRepassword" class="control-label">重复密码：</label>
                                         <div class="controls">
-                                            <input class="fn-tinput" type="password" name="confirm_password" value="" placeholder="确认新密码" required equalTo="#password">
+                                            <input class="fn-tinput" type="password" id="re_pwd" name="=re_pwd" value="" placeholder="确认新密码" required equalTo="#password" name="u_pwd" id="u_pwd">
                                         </div>
                                     </div>
 
                                     <div class="control-group">
                                         <label class="control-label"></label>
                                         <div class="controls">
-                                            <button type="submit" class="sui-btn btn-primary">提交按钮</button>
+                                            <button type="button" id="change" class="sui-btn btn-primary">修改密码</button>
                                         </div>
                                     </div>
                                 </form>
@@ -219,29 +222,21 @@ $(function(){
                                 <form class="sui-form form-horizontal sui-validate" data-toggle='validate' id="bind-form">
 
                                     <div class="control-group">
-                                        <label for="inputPassword" class="control-label">验证方式：</label>
-                                        <div class="controls fixed">手机验证（138****9856）</div>                            
-                                    </div>
-                                     <div class="control-group">
-                                        <label for="inputcode" class="control-label">验证码：</label>
-                                        <div class="controls">
-                                            <input name="inputcode" type="text" id="inputcode">
-                                        </div>
-                                        <div class="controls">
-                                            验证码
-                                        </div>
+                                        <label for="inputPassword" class="control-label">手机号：</label>
+                                        <input type="text" name="u_phone">
+                                        <div class="controls fixed"></div>
                                     </div>
                                     <div class="control-group">
-                                        <label for="inputRepassword" class="control-label">短信验证码：</label>
+                                        <label for="inputRepassword" type="button" class="control-label">短信验证码：</label>
                                         <div class="controls">
                                             <input name="msgcode" type="text" id="msgcode">
                                         </div>
                                         <div class="controls">
-                                            <button class="sui-btn btn-info">发送</button>
+                                            <button class="sui-btn btn-info" type="button" id="send">发送</button>
                                         </div>
                                     </div>
                                     <div class="control-group next-btn">
-                                        <a class="sui-btn btn-primary" href="home-setting-address-phone.html">下一步</a>
+                                        <a class="sui-btn btn-primary" id="next" href="javascript:void(0)">下一步</a>
                                     </div>
                                 </form>
                             </div>
@@ -252,6 +247,95 @@ $(function(){
             </div>
         </div>
     </div>
-    <!-- 底部栏位 -->
-    <!--页面底部-->
-    @endsection 
+
+
+<!-- 底部栏位 -->
+<!--页面底部-->
+@endsection
+
+<script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $(function(){
+       $(document).on('click','#change',function(){
+           var data = {};
+           data.u_name = $('input[name=u_name]').val();
+           data.u_pwd = $('input[name=u_pwd]').val();
+           data.new_pwd = $('input[name=new_pwd]').val();
+           var re_pwd = $('#re_pwd').val();
+           if(data.u_pwd == data.new_pwd){
+               alert("新密码不能和旧密码一致！");
+               return false;
+           }
+           if(data.new_pwd != re_pwd){
+               alert("两次密码必须一致！！");
+               return false;
+           }
+           $.ajax({
+               data:data,
+               type:'post',
+               dataType:'json',
+               url:'/login_do',
+               success:function(res){
+                    if(res.errno == 00001){
+                        alert(res.msg);
+                    }else{
+                        alert(res.msg);
+                        location.href = '/login';
+                    }
+               }
+           })
+       }) ;
+    });
+</script>
+
+<script>
+    $(function(){
+        $(document).on('click','#send',function(){
+            var u_phone = $('input[name=u_phone]').val();
+            if(validatorTel(u_phone) == false){
+                alert("手机号格式不对");
+                return false;
+            }
+
+            $.ajax({
+                data:{u_phone:u_phone},
+                dataType:'json',
+                type:'post',
+                url:'/sendcode',
+                success:function(res){
+                    alert(res.msg);
+                }
+
+            });
+        });
+        function validatorTel(content){
+
+            // 正则验证格式
+            eval("var reg = /^1[34578]\\d{9}$/;");
+            return RegExp(reg).test(content);
+        }
+
+        $(document).on('click','#next',function(){
+            var u_phone = $('input[name=u_phone]').val();
+            var msgcode = $('input[name=msgcode]').val();
+            if(validatorTel(u_phone) == false){
+                alert("手机号格式不对");
+                return false;
+            }
+            $.ajax({
+                data:{u_phone:u_phone,msgcode:msgcode},
+                dataType:'json',
+                type:'post',
+                url:'/change_phone',
+                success:function(res){
+                    alert(res.msg);
+                }
+
+            });
+
+        });
+    });
+</script>
+

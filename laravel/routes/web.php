@@ -35,7 +35,12 @@ Route::any('/dhang_jz','index\IndexController@dhang_jz');
 Route::any('/cate_list/{id}','index\CateController@cate_list');
 Route::any('/cate_goods_list/tiaojian','index\GoodsController@goods_tiao_list'); //分类商品列表页点击条件
 Route::any('/collect/guanzhu','index\CollertController@guanadd');//关注
+
 Route::any('/ce_lishi','index\IndexController@ce_lishi');
+
+Route::any('/slide/list/{id}','index\SlideController@slide_list');//轮播图
+Route::any('/nav/list','index\SlideController@nav_list');//导航
+
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------商品加入购物车
@@ -110,7 +115,7 @@ Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
 //前台登录
 Route::any('/login','index\LoginController@login'); //登录展示
-Route::any('/login_do','index\LoginController@login_do'); //执行登录
+Route::any('/login_dos','index\LoginController@login_do'); //执行登录
 //前台注册
 Route::any('/reg','index\LoginController@reg');//注册
 Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
@@ -129,6 +134,12 @@ Route::any('/add_do','index\AddressController@add_do');
 Route::any('/del','index\AddressController@del');
 Route::any('/upd/{address_id}','index\AddressController@upd');
 Route::any('/updAdd','index\AddressController@updAdd');
+//安全中心
+Route::any('/lists','index\SafeController@lists');
+Route::any('/login_do','index\SafeController@login_do');
+Route::any('/sendcode','index\SafeController@sendcode');
+Route::any('/change_phone','index\SafeController@change_phone');
+
 
 
 

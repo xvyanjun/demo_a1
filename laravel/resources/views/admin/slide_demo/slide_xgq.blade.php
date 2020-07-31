@@ -52,6 +52,17 @@
                         <div class="col-md-10 data">
                             <input type="file" name='slide_img' id='slide_img'> 
                         </div>
+
+                        <span id='slide_url_t'></span>
+                        <div class="col-md-2 title">所属品牌</div>
+                        <div class="col-md-10 data">
+                            <select name='brand_id'>
+                                @foreach($brand_info as $k=>$v)
+                                    <option class=".brand_id" {{$v['brand_id']==$xxi['brand_']?'selected':''}}  value="{{$v['brand_id']}}">{{$v['brand_name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <span id='slide_img_t'></span>
                         <div class="col-md-2 title">权重</div>
                         <div class="col-md-10 data">

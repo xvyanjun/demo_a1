@@ -10,7 +10,6 @@
 <script src="/js/uploadify/jquery.js"></script>
 <script src="/js/uploadify/jquery.uploadify.js"></script>
 
-
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- 正文区域 -->
@@ -47,6 +46,17 @@
                         <div class="col-md-10 data">
                             <input type="file" name='slide_img' id='slide_img'> 
                         </div>
+
+                        <span id='slide_url_t'></span>
+                        <div class="col-md-2 title">所属品牌</div>
+                        <div class="col-md-10 data">
+                            <select name='brand_id'>
+                                @foreach($brand_info as $k=>$v)
+                                    <option class=".brand_id"  value="{{$v['brand_id']}}">{{$v['brand_name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <span id='slide_img_t'></span>
                         <div class="col-md-2 title">权重</div>
                         <div class="col-md-10 data">
@@ -85,6 +95,7 @@
         var slide_img=$("#slide_img").val();
         var slide_weight=$("#slide_weight").val();
         var slide_show=$("[name='slide_show']:checked").val();
+        var brand_id=$(".brand_id:selected").val();
         var f1=false;
         if(slide_url==''){
             $("#slide_url_t").html('<find>url不能为空|</find>');

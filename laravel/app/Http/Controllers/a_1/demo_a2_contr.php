@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\a_1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\shop_nav;
 use App\Models\shop_service;
@@ -359,11 +360,15 @@ public function service_xge(){
 }
 //-------------------------------------------------------------轮播图
 public function slide_tjq(){
-  return view('admin.slide_demo.slide_tjq');
+    $brand=new Brand();
+    $brand_info=$brand::where('brand_del',1)->get()->toArray();
+
+  return view('admin.slide_demo.slide_tjq',['brand_info'=>$brand_info]);
 }
 //-------------------------------------------------------------
 public function slide_tje(){
   $xx=request()->all();
+//    dd($xx);
   $qdz='';
   if(request()->hasFile('slide_img')) {
       $file = request()->file('slide_img');
@@ -399,6 +404,7 @@ public function slide_tje(){
   $tj=shop_slide::insert([
      'slide_url'=>$xx['slide_url'],
      'slide_img'=>$slide_img,
+      'brand_id'=>$xx['brand_id'],
      'slide_weight'=>$xx['slide_weight'],
      'slide_show'=>$xx['slide_show'],
      'slide_time'=>time(),
@@ -430,10 +436,12 @@ public function scs($xc){
 public function slide_zse(){
 	$xx=request()->all();
 	$xxi=shop_slide::where('slide_del','1')->paginate(2);
+    $brand=new Brand();
+    $brand_info=$brand::where('brand_del',1)->get()->toArray();
 	if(request()->ajax()){
-	  return view('admin.slide_demo.slide_zse_s',['xxi'=>$xxi,'xx'=>$xx]);
+	  return view('admin.slide_demo.slide_zse_s',['xxi'=>$xxi,'xx'=>$xx,'brand_info'=>$brand_info]);
 	}
-	return view('admin.slide_demo.slide_zse',['xxi'=>$xxi,'xx'=>$xx]);
+	return view('admin.slide_demo.slide_zse',['xxi'=>$xxi,'xx'=>$xx,'brand_info'=>$brand_info]);
 }
 //-------------------------------------------------------------
 public function slide_qx(){
@@ -509,6 +517,9 @@ public function slide_sce(){
 }
 //-------------------------------------------------------------
 public function slide_xgq(){
+    $brand=new Brand();
+    $brand_info=$brand::where('brand_del',1)->get()->toArray();
+
 	$xx=request()->all();
 	$a1=array_key_exists('slide_id',$xx);
 	if($a1==false){
@@ -517,7 +528,7 @@ public function slide_xgq(){
 	}
 	$xxi=shop_slide::where([['slide_del','1'],['slide_id',$xx['slide_id']]])->first();
 	if($xxi){
-    	return view('admin.slide_demo.slide_xgq',['xxi'=>$xxi]);
+    	return view('admin.slide_demo.slide_xgq',['xxi'=>$xxi,'brand_info'=>$brand_info]);
     }else{
     	return redirect('/slide/slide_zse');
     }

@@ -148,22 +148,25 @@ class LoginController extends Controller
             'u_pwd' => $u_pwd
         ];
 //        echo "123";die;
-        $user_model = Indexuser::where('u_phone', $data['u_phone'])->first();
+
+        $user_model = Indexuser::where('u_phone', $data['u_phone'])->first()->toArray();
         if ($user_model) {
-            if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
-                session(['u_phone' => $user_model->u_phone]);
-                session(['u_id' => $user_model->u_id]);
+
+            if ($user_model ['u_pwd'] != md5($data['u_pwd'])) {
+                return [
+                    'code' => 00003,
+                    'msg' => '密码错误',
+                    'result' => ''
+                ];
+
+            }else{
+                session(['u_phone' => $user_model['u_phone']]);
+                session(['u_id' => $user_model['u_id']]);
 
                 $request->session()->save();
                 return [
                     'code' => 00000,
                     'msg' => '登录成功',
-                    'result' => ''
-                ];
-            }else{
-                return [
-                    'code' => 00003,
-                    'msg' => '密码错误',
                     'result' => ''
                 ];
             }

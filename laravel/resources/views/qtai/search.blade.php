@@ -537,12 +537,15 @@ $(document).on("click",".tiao",function(){
                 },
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res);
-                    if(res.code=="200"){
-                        alert(关注成功);
-                    }else{
-                        alert(res.msg);
-                    }
+//                    console.log(res);
+					if(res.code=="200"){
+						alert(关注成功);
+					}else if(res.code=="555"){
+						alert(res.msg);
+						window.location.href="/login";
+					}else{
+						alert(res.msg);
+					}
                 }
             })
         });

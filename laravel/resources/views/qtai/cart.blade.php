@@ -476,8 +476,9 @@
             	    ar_s=ar_s.substr(0,cd-1);
             	if(sf_j1>0){
             	  location.href='/getOrderInfo?trolley_id_s='+ar_s;
+            	}else{
+            	  console.log('未选择商品');
             	}    
-            	console.log(sf_j1,ar_s);
             });
 //------------------------------------------------------------------------------
            

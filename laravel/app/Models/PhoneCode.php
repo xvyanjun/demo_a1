@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Shop_code;
+use Illuminate\Support\Facades\Session;
+
 class PhoneCode extends Model
 {
     /**
@@ -43,6 +45,7 @@ class PhoneCode extends Model
             'c_time'=>time(),
             'u_phone'=>$u_phone
         );
+        Session::put('code',$code);
         $res = $code_model -> insert($arr);
         return curl_exec($curl);
     }

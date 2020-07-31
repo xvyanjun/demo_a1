@@ -12,7 +12,7 @@ use App\Models\History;
 use App\Models\Indexuser;
 use App\Models\Cate;
 use App\Models\Friend;
-
+use Illuminate\Support\Facades\Cookie;
 use App\Models\Brand;
 
 
@@ -160,6 +160,29 @@ public function friend(Request $request){
     return view('qtai.cooperation',compact("friend"));
 }
 //.-------------------------------------------------------------------------
+public function ce_lishi(){
+  $u_id=request()->session()->get('u_id');
+  if(!empty($u_id)){
+     $id_s=History::where('u_id',$u_id)->limit('8')->limit(8)->get('goods_id');
+     $xxi=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->get();
+  }else{
+     $sf=Cookie::get('user_history');
+     if(empty($sf)){
+      $xxi=[];
+     }else{
+      $ar=unserialize($sf);
+      $id_s=[];
+      foreach($ar as $f=>$g){
+       $id_s[]=$f;
+      }
+      $goods=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->limit(8)->get();
+      $xxi=$goods;
+     }
+  }
+  $cd=count($xxi);
+  $arr=['cd'=>$cd,'xxi'=>$xxi];
+  return json_encode($arr);
+}
 //-------------------------------------------------------------------------
 //-------------------------------------------------------------------------
 

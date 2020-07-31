@@ -48,6 +48,7 @@
                     <th class="sorting_asc" >ID</th>
                     <th class="sorting">url</th>
                     <th class="sorting">图片</th>
+                    <th class="sorting">所属品牌</th>
                     <th class="sorting">权重</th>
                     <th class="sorting">显示</th>
                     <th class="sorting">时间</th>
@@ -66,6 +67,11 @@
                         <img src="{{$v['slide_img']}}" width="50" height="50">
                     <!-- {{$v['slide_img']}} -->
                     </td>
+                    <td>
+                        @foreach($brand_info as $kk=>$vv)
+                            {{$v['brand_id']==$vv['brand_id']?$vv['brand_name']:''}}
+                        @endforeach
+                    </td>
                     <td>{{$v['slide_weight']}}</td>
                     <td id='eva_jd' slide_id="{{$v['slide_id']}}">{{$v['slide_show']=='1'?'√':'×'}}</td>
                     <td>{{date('Y-m-d H:i',$v['slide_time'])}}</td>
@@ -78,7 +84,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td colspan='8'>
+                    <td colspan='9'>
                     <center>
                         {{$xxi->appends($xx)->links()}}
                     </center>

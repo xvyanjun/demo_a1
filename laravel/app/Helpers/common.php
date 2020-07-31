@@ -3,6 +3,7 @@ use Illuminate\Http\Request;
 use App\Models\shop_property;
 use App\Models\shop_sku_name;
 use App\Models\shop_sku_val;
+use Illuminate\Support\Facades\Cookie;
 //------------公共方法
 //---------------------------------------------------------------
 function EVA(){

@@ -7,6 +7,11 @@
                         <img src="{{$v['slide_img']}}" width="50" height="50">
                     
                     </td>
+                    <td>
+                        @foreach($brand_info as $kk=>$vv)
+                            {{$v['brand_id']==$vv['brand_id']?$vv['brand_name']:''}}
+                        @endforeach
+                    </td>
                     <td>{{$v['slide_weight']}}</td>
                     <td id='eva_jd' slide_id="{{$v['slide_id']}}">{{$v['slide_show']=='1'?'√':'×'}}</td>
                     <td>{{date('Y-m-d H:i',$v['slide_time'])}}</td>
@@ -19,7 +24,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td colspan='8'>
+                    <td colspan='9'>
                     <center>
                         {{$xxi->appends($xx)->links()}}
                     </center>

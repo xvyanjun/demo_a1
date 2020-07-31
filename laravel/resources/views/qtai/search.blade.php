@@ -91,7 +91,7 @@
 								<a class="tiao" jian="goods_time">新品</a>
 							</li>
 							<li>
-								<a class="tiao" jian="goods_price">价格</a>
+                                <a class="tiao" jian="goods_price">价格</a>
 							</li>
 						</ul>
 					</div>
@@ -120,8 +120,8 @@
 									<i class="command">已有{{$v['goods_hits']}}人查看</i>
 								</div>
 								<div class="operate">
-									<a href="success-cart.html"class="sui-btn btn-bordered btn-danger">加入购物车</a>
-									<a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
+									<a href="/goods_list/{{$v['goods_id']}}"class="sui-btn btn-bordered btn-danger">查看商品详情</a>
+									<a href="javascript:;" goods_id="{{$v['goods_id']}}" class="sui-btn btn-bordered guan guanzhu">关注</a>
 								</div>
 							</div>
 						</li>
@@ -132,118 +132,36 @@
 					<div class="sui-pagination pagination-large">
 						<ul>
                             {{ $goods_info->links() }}
-							{{--<li class="prev disabled">--}}
-								{{--<a href="#">«上一页</a>--}}
-							{{--</li>--}}
-							{{--<li class="active">--}}
-								{{--<a href="#">1</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-								{{--<a href="#">2</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-								{{--<a href="#">3</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-								{{--<a href="#">4</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-								{{--<a href="#">5</a>--}}
-							{{--</li>--}}
-							{{--<li class="dotted"><span>...</span></li>--}}
-							{{--<li class="next">--}}
-								{{--<a href="#">下一页»</a>--}}
-							{{--</li>--}}
 						</ul>
-						{{--<div><span>共10页&nbsp;</span><span>--}}
-      {{--到第--}}
-      {{--<input type="text" class="page-num">--}}
-      {{--页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>--}}
 					</div>
 				</div>
 			</div>
-
 			<!--hotsale-->
 			<div class="clearfix hot-sale">
 				<h4 class="title">热卖商品</h4>
 				<div class="hot-list">
 					<ul class="yui3-g">
+                        @foreach($goods_hot as $k=>$v)
 						<li class="yui3-u-1-4">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="/qtai/img/like_01.png" />
+                                    <a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v['goods_img']}}" width="450" height="450" /></a>
 								</div>
 								<div class="attr">
-									<em>Apple苹果iPhone 6s (A1699)</em>
+									<em title="{{$v['goods_name']}}">{{mb_substr($v['goods_name'],0,9)}}</em>
 								</div>
 								<div class="price">
 									<strong>
 											<em>¥</em>
-											<i>4088.00</i>
+											<i>{{$v['goods_price']}}</i>
 										</strong>
 								</div>
 								<div class="commit">
-									<i class="command">已有700人评价</i>
+									<i class="command">已有{{$v['goods_hits']}}人点击</i>
 								</div>
 							</div>
 						</li>
-						<li class="yui3-u-1-4">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/like_03.png" />
-								</div>
-								<div class="attr">
-									<em>金属A面，360°翻转，APP下单省300！</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-4">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/like_04.png" />
-								</div>
-								<div class="attr">
-									<em>256SSD商务大咖，完爆职场，APP下单立减200</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4068.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有20人评价</i>
-								</div>
-							</div>
-						</li>
-						<li class="yui3-u-1-4">
-							<div class="list-wrap">
-								<div class="p-img">
-									<img src="/qtai/img/like_02.png" />
-								</div>
-								<div class="attr">
-									<em>Apple苹果iPhone 6s (A1699)</em>
-								</div>
-								<div class="price">
-									<strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-								</div>
-								<div class="commit">
-									<i class="command">已有700人评价</i>
-								</div>
-							</div>
-						</li>
+						@endforeach
 					</ul>
 				</div>
 			</div>
@@ -253,6 +171,10 @@
     .brand_class{
         border:solid 1px red;
     }
+    .page_class{
+        background-color:red;
+    }
+
 </style>
 	<script>
 /*****************************************点击品牌**********************************************/
@@ -603,6 +525,81 @@ $(document).on("click",".tiao",function(){
                 $('#goods_tiao_list').html(res);
             }
         });
+});
+/************************************************关注**********************************************************************/
+		$(document).on("click",".guanzhu",function(){
+            var goods_id=$(this).attr('goods_id');
+            $.ajax({
+                url: "{{'/collect/guanzhu'}}",
+                type: 'post',
+                data: {
+                    goods_id:goods_id
+                },
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res);
+                    if(res.code=="200"){
+                        alert(关注成功);
+                    }else{
+                        alert(res.msg);
+                    }
+                }
+            })
+        });
+/***********************************************加条件后的分页******************************************************************/
+$(document).on("click",".cpage",function() {
+    var page = $(this).attr('page');
+
+    var brand_id = null;//品牌id
+    if (brand_id == '') {
+        var brand_id = null;
+    }
+
+    var cate_id = $("#cate_id").val();//分类id
+
+
+    var yan_sku = $("#yan_sku").val();//sku颜色
+    if (yan_sku == '') {
+        var yan_sku = null;
+    }
+
+    var chi_sku = $("#chi_sku").val();//尺寸sku
+    if (chi_sku == '') {
+        var chi_sku = null;
+    }
+
+    var price = $("#qu_price").val();//价格
+    if (price == '') {
+        var price = null;
+    }
+
+    var tiao = $("#tiao").val();//倒叙条件
+    if (tiao == '') {
+        var tiao = null;
+    }
+
+//    $(this).addClass('active');
+//    $(this).parent('li').siblings('li').find('a').removeClass('active');
+//    $(this).parent
+
+    $.ajax({
+        url: "{{'/cate_goods_list/tiaojian'}}",
+        type: 'post',
+        data: {
+            cate_id: cate_id,
+            brand_id: brand_id,
+            yan_sku: yan_sku,
+            chi_sku: chi_sku,
+            price: price,
+            tiao: tiao,
+            page: page
+        },
+        dataType: 'html',
+        success: function (res) {
+//					console.log(res);
+            $('#goods_tiao_list').html(res);
+        }
+    })
 });
 	</script>
 @endsection

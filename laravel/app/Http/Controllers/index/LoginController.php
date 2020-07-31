@@ -151,8 +151,11 @@ class LoginController extends Controller
 
         $user_model = Indexuser::where('u_phone', $data['u_phone'])->first()->toArray();
         if ($user_model) {
-
-            if ($user_model ['u_pwd'] != md5($data['u_pwd'])) {
+            if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
+                session(['u_phone' => $user_model->u_phone]);
+                session(['u_id' => $user_model->u_id]);
+                session(['u_name' => $user_model->u_name]);
+                $request->session()->save();
                 return [
                     'code' => 00003,
                     'msg' => '密码错误',
@@ -176,6 +179,16 @@ class LoginController extends Controller
                 'msg' => '没有次用户',
                 'result' => ''
             ];
+        }
+    }
+
+    //退出页面
+    public function tuichu(Request $request){
+        $u_id=request()->session()->put('u_id',null);
+        $id=request()->session()->get('u_id');
+        // print_r($id);exit;
+        if(!$id){
+            return redirect('/');
         }
     }
 

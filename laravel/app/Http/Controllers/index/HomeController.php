@@ -24,6 +24,7 @@ class HomeController extends  Controller
   public function  city(Request $request){
       $all=$request->all();
       $pid=$all['p_id'];
+      
       $city=Area::where(['pid'=>$pid])->get()->toArray();
       echo json_encode($city);
   }

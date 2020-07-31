@@ -30,24 +30,6 @@
 								<div class="clearfix"></div>
 							  </div>
                              @endforeach
-	<!-- 						  <div>
-								<div class="con name selected"><a href="javascript:;">李煜<span title="点击取消选择">&nbsp;</span></a></div>
-								<div class="con address">李煜 北京市海淀区三环内 中关村软件园8号楼 <span>187****4201</span>
-                                
-                                <span class="base">默认地址</span>
-
-								<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
-								</div>
-								<div class="clearfix"></div>
-							  </div> -->
-							  
-<!-- 							  <div>
-								<div class="con name"><a href="javascript:;">王希<span title="点击取消选择">&nbsp;</span></a></div>
-								<div class="con address">王希 北京市海淀区三环内 中关村软件园6号楼  <span>156****5681</span>
-								<span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
-								</div>
-								<div class="clearfix"></div>
-							  </div> -->
 							</li>
 							
 						</ul>
@@ -159,21 +141,6 @@
 					</div>
 					<div class="hr"></div>
 				</div>
-<!-- 				<div class="linkInfo">
-					<div class="step-tit">
-						<h5>发票信息</h5>
-					</div>
-					<div class="step-cont">
-						<span>普通发票（电子）</span>
-						<span>个人</span>
-						<span>明细</span>
-					</div>
-				</div>
-				<div class="cardInfo">
-					<div class="step-tit">
-						<h5>使用优惠/抵用</h5>
-					</div>
-				</div> -->
 			</div>
 		</div>
 		<div class="order-summary">
@@ -182,14 +149,6 @@
 					<span><i class="number">{{$up_s['num_up']}}</i>件商品，总商品金额</span>
 					<em class="allprice">¥{{$up_s['price_up']}}</em>
 				</div>
-<!-- 				<div class="list">
-					<span>返现：</span>
-					<em class="money">0.00</em>
-				</div>
-				<div class="list">
-					<span>运费：</span>
-					<em class="transport">0.00</em>
-				</div> -->
 			</div>
 		</div>
 		@php
@@ -213,34 +172,53 @@
 		</div>
 		<script>
 //---------------------------------------------------------------------			
+//订单地址
          $(document).on('click','#dzhi_2556',function(){
-         	$("[name='jk_233']").prop('class','con name');
-         	$(this).prop('class','con name selected');
-         	var a1=$(this).parents("#dz_test").find("#vl_e1").text().trim();
-         	var a2=$(this).parents("#dz_test").find("#vl_e2").text().trim();
-         	var a3=$(this).parents("#dz_test").find("#vl_e3").text().trim();
-         	$("#vl_t1").text(a2);
-         	$("#vl_t2").text(a1);
-         	$("#vl_t3").text(a3);
-         	console.log(a1,a2,a3);
+						$("[name='jk_233']").prop('class','con name');
+						$(this).prop('class','con name selected');
+						var a1=$(this).parents("#dz_test").find("#vl_e1").text().trim();
+						var a2=$(this).parents("#dz_test").find("#vl_e2").text().trim();
+						var a3=$(this).parents("#dz_test").find("#vl_e3").text().trim();
+						$("#vl_t1").text(a2);
+						$("#vl_t2").text(a1);
+						$("#vl_t3").text(a3);
+						// console.log(a1,a2,a3);
          });
-//---------------------------------------------------------------------		
+//---------------------------------------------------------------------	
+//订单	
          $(document).on('click','#all_up',function(){
-         	var address_id='';
-         	$("[name='jk_233']").each(function(){
-               var sf=$(this).prop('class');
-                   if(sf=='con name selected'){
-                   	address_id+=$(this).attr('address_id');
-                   }
-         	});
-         	var trolley_id='';
-         	$("[name='trolley_up']").each(function(){
-         	   trolley_id=trolley_id+$(this).attr('trolley_id')+',';
-         	});
-         	var cd=trolley_id.length;
-         	    trolley_id=trolley_id.substr(0,cd-1);
-         	console.log('地址id:',address_id,'购物车id:',trolley_id);
-         });         
+						var address_id='';
+						$("[name='jk_233']").each(function(){
+								var sf=$(this).prop('class');
+										if(sf=='con name selected'){
+											address_id+=$(this).attr('address_id');
+										}
+						});
+						var trolley_id='';
+						$("[name='trolley_up']").each(function(){
+							trolley_id=trolley_id+$(this).attr('trolley_id')+',';
+						});
+						var cd=trolley_id.length;
+								trolley_id=trolley_id.substr(0,cd-1);
+						// console.log('地址id:',address_id,'购物车id:',trolley_id);
+						//判断地址不能为空
+						if(address_id=="" || address_id<=0){
+							alert("没有订单地址");
+						}
+						//判断地址不能为空
+						if(trolley_id=="" || trolley_id<=0){
+							alert("请您至少选择一件商品");
+							location.href="/cart";
+						}
+						$.ajax({
+							url:"/orderAdd",
+							data:{"trolley_id":trolley_id,"address_id":address_id},
+							dataType:"json",
+							success:function(res){
+								console.log(res);
+							}
+						})
+         });
 //---------------------------------------------------------------------	
 		</script>
 @endsection

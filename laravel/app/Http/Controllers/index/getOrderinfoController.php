@@ -11,6 +11,9 @@ use App\Models\shop_sku_val;
 use App\Models\History;
 use App\Models\Address;
 use App\Models\Area;
+use App\Models\shop_order;
+use App\Models\shop_order_details;
+use App\Models\shop_order_address;
 
 class getOrderinfoController extends Controller
 {
@@ -105,4 +108,99 @@ public function explode_id($xxi){
   return $sxing;
 }
 //---------------------------------------------------------
+
+  //提交订单
+  public function orderAdd(Request $request){
+    $trolley_id=$request->trolley_id;
+    $orderModel=new shop_cat;
+    //判断是否有商品数据
+    if(empty($trolley_id)){
+      return ['code'=>'000001',"msg"=>"必须有一个商品"];
+    }
+    $address_id=$request->address_id;
+    //判断收获地址不能为空
+    if(empty($address_id)){
+      return ['code'=>'000002',"msg"=>"收获地址不能为空"];
+    }
+    $trolley_id=explode(",",$trolley_id);
+    // dd($trolley_id);
+    //查询收获地址一条
+    $address=Address::where("address_id",$address_id)->first();
+
+    //查询商品一条
+    $shop_cat=[];
+    $price_total=0;
+    foreach($trolley_id as $k=>$v){
+      $troller=shop_cat::where("trolley_id",$v)->first();
+      $shop_cat[$k]=$troller;
+      $price_total=$troller['price_total']+$price_total;
+    }
+    // dd($shop_cat);
+    $u_id=request()->session()->get('u_id');
+    
+    //添加订单
+    //首先我们先开启事物
+    $orderModel=new shop_order;
+    // $orderModel->startTrans();
+    //(1)存储到订单号
+    //自定义一个订单号
+    $order_sn=time().rand(100000,999999);
+    $all=[
+      'order_sn'=>$order_sn,
+      'u_id'=>$u_id,
+      'pay_status'=>1,
+      'bast_time'=>time(),
+      'payname'=>"支付宝",
+      'goods_amount'=>$price_total,
+      'order_amount'=>$price_total
+    ];
+    $res1=$orderModel->insert($all);
+    if(empty($res1)){
+      return ['code'=>'000003','msg'=>'订单添加失败'];
+    }
+    
+    //(2)存储地址表
+    $addressModel=new shop_order_address;
+    //获取order_id
+    $order_id=shop_order::orderby("order_id","desc")->value('order_id');
+    // dd($order_id);
+    $all2=[
+      'order_id'=>$order_id,
+      'address_id'=>$address['address_id'],
+      'user_name'=>$address['address_name'],
+      'address'=>$address['address_addre'],
+      'y_province'=>$address['y_province'],
+      "y_city"=>$address['y_city'],
+      'y_district'=>$address['y_district'],
+      'order_site_time'=>time(),
+    ];
+    $res2=$addressModel->insert($all2);
+    if(empty($res2)){
+      return ['code'=>'000004','msg'=>'地址存储失败'];
+    }
+    
+    //(3)订单的商品存到订单详情表
+    $detailsModel=new shop_order_details;
+    // $all2=[];
+    foreach($shop_cat as $k=>$v){
+      $all3['goods_id']=$v['goods_id'];
+      $all3['order_id']=$order_id;
+      $all3['add_price']=$v['price_one'];
+      $all3['buy_number']=$v['goods_num'];
+      $all3['price_total']=$v['price_total'];
+      $all3['order_goods_time']=time();
+      $all3['sku']=$v['id'];
+      $res3=$detailsModel->insert($all3);
+    }
+    // dd($all2);
+    if(empty($res3)){
+      return ['code'=>'000005','msg'=>'存储详情失败'];
+    }
+
+    
+    
+  }
+
+
+
 }

@@ -71,6 +71,7 @@ Route::any('/cat_top_list','index\CartController@cat_top_list');//头部购物�
 Route::prefix('/')->group(function(){
 //---------------------------------------------------------
 Route::any('/getOrderInfo','index\getOrderinfoController@getOrderInfo');//订单列表
+Route::any('/orderAdd','index\getOrderinfoController@orderAdd');//订单执行表
 //---------------------------------------------------------
 });
 //---------------------------------------------------------

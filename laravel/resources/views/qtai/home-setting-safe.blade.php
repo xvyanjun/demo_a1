@@ -153,7 +153,44 @@ $(function(){
         <div class="py-container">
             <div class="yui3-g home">
                 <!--左侧列表-->
-                @include('layouts_q.zuo');
+                {{--@include('layouts_q.zuo');--}}
+
+                <div class="yui3-u-1-6 list">
+                    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
+                    <div class="person-info">
+                        <div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
+                        <div class="person-account">
+                            <span class="name">Michelle</span>
+                            <span class="safe">账户安全</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list-items">
+                        <dl>
+                            <dt><i>·</i> 订单中心</dt>
+                            <dd ><a href="home-index.html" >我的订单</a></dd>
+                            <dd><a href="home-order-pay.html">待付款</a></dd>
+                            <dd><a href="home-order-send.html">待发货</a></dd>
+                            <dd><a href="home-order-receive.html">待收货</a></dd>
+                            <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 我的中心</dt>
+                            <dd><a href="home-person-collect.html">我的收藏</a></dd>
+                            <dd><a href="home-person-footmark.html">我的足迹</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 物流消息</dt>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 设置</dt>
+                            <dd><a href="add">个人信息</a></dd>
+                            <dd><a href="/add_list" >地址管理</a></dd>
+                            <dd><a href="/lists"  class="list-active" >安全管理</a></dd>
+                        </dl>
+                    </div>
+                </div>
+
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6">
                     <div class="body userSafe">
@@ -251,42 +288,41 @@ $(function(){
 
 <!-- 底部栏位 -->
 <!--页面底部-->
-@endsection
 
 <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
     $(function(){
-       $(document).on('click','#change',function(){
-           var data = {};
-           data.u_name = $('input[name=u_name]').val();
-           data.u_pwd = $('input[name=u_pwd]').val();
-           data.new_pwd = $('input[name=new_pwd]').val();
-           var re_pwd = $('#re_pwd').val();
-           if(data.u_pwd == data.new_pwd){
-               alert("新密码不能和旧密码一致！");
-               return false;
-           }
-           if(data.new_pwd != re_pwd){
-               alert("两次密码必须一致！！");
-               return false;
-           }
-           $.ajax({
-               data:data,
-               type:'post',
-               dataType:'json',
-               url:'/login_do',
-               success:function(res){
+        $(document).on('click','#change',function(){
+            var data = {};
+            data.u_name = $('input[name=u_name]').val();
+            data.u_pwd = $('input[name=u_pwd]').val();
+            data.new_pwd = $('input[name=new_pwd]').val();
+            var re_pwd = $('#re_pwd').val();
+            if(data.u_pwd == data.new_pwd){
+                alert("新密码不能和旧密码一致！");
+                return false;
+            }
+            if(data.new_pwd != re_pwd){
+                alert("两次密码必须一致！！");
+                return false;
+            }
+            $.ajax({
+                data:data,
+                type:'post',
+                dataType:'json',
+                url:'/login_do',
+                success:function(res){
                     if(res.errno == 00001){
                         alert(res.msg);
                     }else{
                         alert(res.msg);
                         location.href = '/login';
                     }
-               }
-           })
-       }) ;
+                }
+            })
+        }) ;
     });
 </script>
 
@@ -338,4 +374,7 @@ $(function(){
         });
     });
 </script>
+
+
+@endsection
 

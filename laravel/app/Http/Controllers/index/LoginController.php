@@ -152,34 +152,35 @@ class LoginController extends Controller
 //        echo "123";die;
 
         $user_model = Indexuser::where('u_phone', $data['u_phone'])->first()->toArray();
+//        dd($user_model);
         if ($user_model) {
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
-                $this->user_history_insert($user_model->u_id);
-                session(['u_phone' => $user_model->u_phone]);
-                session(['u_id' => $user_model->u_id]);
-                session(['u_name' => $user_model->u_name]);
-                $request->session()->save();
-                return [
-                    'code' => 00003,
-                    'msg' => '密码错误',
-                    'result' => ''
-                ];
 
-            }else{
+                $this->user_history_insert($user_model['u_id']);
+
                 session(['u_phone' => $user_model['u_phone']]);
                 session(['u_id' => $user_model['u_id']]);
-
+                session(['u_name' => $user_model['u_name']]);
                 $request->session()->save();
                 return [
                     'code' => 00000,
                     'msg' => '登录成功',
                     'result' => ''
                 ];
+
+            }else{
+
+                return [
+                    'code' => 00003,
+                    'msg' => '密码错误',
+                    'result' => ''
+                ];
+
             }
         }else{
             return [
                 'code' => 00004,
-                'msg' => '没有次用户',
+                'msg' => '没有此用户',
                 'result' => ''
             ];
         }
@@ -200,7 +201,8 @@ class LoginController extends Controller
        if(!empty($u_id)){
         $sf=Cookie::get('user_history');
         if(!empty($sf)){
-           $ar=unserialize($sf);  
+           $ar=unserialize($sf);
+//            dd($ar);
            foreach($ar as $r5=>$t5){
             $History_vl=History::where([['u_id',$u_id],['goods_id',$r5]])->first();
             if($History_vl){
@@ -221,7 +223,15 @@ class LoginController extends Controller
             }
            }
         }
+    //        elsE{
+    //            echo 'cookie';
+    //            dd($sf);
+    //        }
        }
+//           else{
+//               echo 'u_id';
+//               dd($u_id);
+//           }
     }
 
 }

@@ -215,7 +215,10 @@
 							data:{"trolley_id":trolley_id,"address_id":address_id},
 							dataType:"json",
 							success:function(res){
-								console.log(res);
+								// console.log(res);
+								if(res.code==000000){
+									alert(res.msg);
+								}
 							}
 						})
          });

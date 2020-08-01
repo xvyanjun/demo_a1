@@ -157,7 +157,6 @@ class LoginController extends Controller
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
 
                 $this->user_history_insert($user_model['u_id']);
-
                 session(['u_phone' => $user_model['u_phone']]);
                 session(['u_id' => $user_model['u_id']]);
                 session(['u_name' => $user_model['u_name']]);

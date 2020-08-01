@@ -85,10 +85,13 @@ Route::any('/history_vl_del','index\GoodsController@history_vl_del');//删除浏
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------
-
-Route::any('/home_index','a_1\demo_a1_contr@home_index');
+Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');
 //---------------------------------------------------------
-Route::any('/home_order_pay','a_1\demo_a1_contr@home_order_pay');
+
+
+
+//---------------------------------------------------------
+Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------
 Route::any('/home_order_send','a_1\demo_a1_contr@home_order_send');
 //---------------------------------------------------------

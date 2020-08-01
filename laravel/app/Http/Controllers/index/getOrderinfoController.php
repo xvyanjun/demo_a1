@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\index;
-
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\shop_cat;
@@ -141,7 +141,7 @@ public function explode_id($xxi){
     //添加订单
     //首先我们先开启事物
     $orderModel=new shop_order;
-    // $orderModel->startTrans();
+    DB::beginTransaction();
     //(1)存储到订单号
     //自定义一个订单号
     $order_sn=time().rand(100000,999999);
@@ -156,6 +156,7 @@ public function explode_id($xxi){
     ];
     $res1=$orderModel->insert($all);
     if(empty($res1)){
+      DB::rollback();
       return ['code'=>'000003','msg'=>'订单添加失败'];
     }
     
@@ -176,6 +177,7 @@ public function explode_id($xxi){
     ];
     $res2=$addressModel->insert($all2);
     if(empty($res2)){
+      DB::rollback();
       return ['code'=>'000004','msg'=>'地址存储失败'];
     }
     
@@ -194,11 +196,14 @@ public function explode_id($xxi){
     }
     // dd($all2);
     if(empty($res3)){
+      DB::rollback();
       return ['code'=>'000005','msg'=>'存储详情失败'];
     }
 
     
-    
+    //添加成功提交
+    DB::commit();
+    return ['code'=>'000000','msg'=>'提交订单成功'];
   }
 
 

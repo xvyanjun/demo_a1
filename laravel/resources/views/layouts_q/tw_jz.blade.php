@@ -20,6 +20,8 @@
     <script type="text/javascript" src="/qtai/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
+
+    
 {{--</head>--}}
 
 <body>
@@ -445,7 +447,7 @@ $(function(){
     		success:function(rc_n){
     		  var fon_pj='';
               for(var jk_886=0;jk_886<=rc_n['cd']-1;jk_886++){
-                 fon_pj=fon_pj+"<li class='jth-item'><a href='#' class='img-wrap'> <img style='width:100px;height:100px;' src='/"+rc_n['xxi'][jk_886]['goods_img']+"' height='100' width='100' /></a><a class='add-cart-button' href='#'' target='_blank'>加入购物车</a><a href='#' target='_blank' class='price'>￥'"+rc_n['xxi'][jk_886]['goods_price']+"'</a></li>";
+                 fon_pj=fon_pj+"<li class='jth-item'><a href='#' class='img-wrap'> <img style='width:100px;height:100px;' src='/"+rc_n['xxi'][jk_886]['goods_img']+"' height='100' width='100' /></a><a class='add-cart-button' href='#'' target='_blank'>加入购物车</a><a href='#' target='_blank' class='price' title='"+rc_n['xxi'][jk_886]['goods_price']+"'>￥"+rc_n['xxi'][jk_886]['goods_price']+"</a><a href='#'>&nbsp;&nbsp;&nbsp;×</a></li>";
               }
               $("#fu_lishi").empty().html(fon_pj);
               console.log(rc_n);

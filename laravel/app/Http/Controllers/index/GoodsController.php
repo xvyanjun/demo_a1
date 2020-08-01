@@ -80,7 +80,7 @@ class GoodsController extends Controller
     //添加浏览记录到数据库
     public function HistroyDb($id){
         $u_id=request()->session()->get('u_id');
-        $hist=History::where("goods_id",$id)->get();
+        $hist=History::where([["goods_id",$id],['u_id',$u_id]])->first();
         if($hist){
             $h_hits=History::where("goods_id",$id)->value('h_hits');
             $h_hits=$h_hits+1;
@@ -118,20 +118,57 @@ class GoodsController extends Controller
         $ar=unserialize($sf);
         dd($ar);
     }
-//---------------------------------------------------------------------------------------------eva
-    public function cookie_vl($name,$sf){
-      $vl=request()->cookie($name);
-      $vl=$sf($vl);
-      if($vl=='hao'){
-        $jk='eva';
-      }else{
-        $jk='EVA';
+//---------------------------------------------------------------------------------------------db浏览记录删除
+    public function history_vl_del(){
+      $u_id=request()->session()->get('u_id');
+      $xx=request()->all();
+      if(!array_key_exists('goods_id',$xx)){
+        $fh=['a1'=>'1','a2'=>'参数缺失'];
+        return json_encode($fh);exit;
       }
-      return $vl;
+        if($u_id){
+          $del=$this->db_vl_del($goods_id,$u_id);
+        }else{
+          $del=$this->cookie_vl_del($goods_id);
+        }
+        if($del){
+            $fh=['a1'=>'0','a2'=>'删除成功'];
+        }else{
+            $fh=['a1'=>'1','a2'=>'删除失败'];
+        }
+        return json_encode($fh);
+    }      
+//---------------------------------------------------------------------------------------------db浏览记录删除
+    public function db_vl_del($goods_id,$u_id){
+      $sc=History::where([['goods_id',$goods_id],['u_id',$u_id]])->delete();
+      if($sc){
+        return true;
+      }else{
+        return false;
+      }
+    }    
+//---------------------------------------------------------------------------------------------cookir记录删除
+    public function cookie_vl_del($goods_id){
+      $sf=Cookie::get('user_history');
+      $ar=unserialize($sf);
+      $arr=[];
+      foreach($ar as $r=>$t){
+        if($r!=$goods_id){
+            $arr[$r]=$t;
+        }
+      }
+      $tj=serialize($arr);
+      $sc=Cookie::queue('user_history',$tj);
+      if($sc){
+        return true;
+      }else{
+        return false;
+      }
     }
 //---------------------------------------------------------------------------------------------
     //加入购物车数据库
     public function shopping(Request $request){
+        $u_id=request()->session()->get('u_id');
         $data=$request->all();
         //判断接受的sku拆分
         $sku=$data['sku'];
@@ -161,7 +198,7 @@ class GoodsController extends Controller
             exit;
         }
         //先判断表里面是否有添加过的数据
-        $shop_cat=shop_cat::where(["goods_id"=>$data['goods_id'],"id"=>$ii])->first();
+        $shop_cat=shop_cat::where(["goods_id"=>$data['goods_id'],"id"=>$ii,'u_id'=>$u_id])->first();
         $trolley_id=$shop_cat['trolley_id'];
         //  print_r($shop_cat);exit;
         //检测一下库存
@@ -185,7 +222,6 @@ class GoodsController extends Controller
                 return ['code'=>'000001','msg'=>"加入购物车失败"];
             }
         }
-        $u_id=request()->session()->get('u_id');
         $shop_cat=new shop_cat;
         $shop_cat->u_id=$u_id;
         $shop_cat->goods_id=$data['goods_id'];

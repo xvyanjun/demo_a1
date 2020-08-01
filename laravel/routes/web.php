@@ -60,6 +60,9 @@ Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
 });
+//----------------------------------------------------------
+Route::any('/center','index\CenterController@center');//我的订单
+
 //---------------------------------------------------------
 Route::prefix('/')->group(function(){
 //---------------------------------------------------------

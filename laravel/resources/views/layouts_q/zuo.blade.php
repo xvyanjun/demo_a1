@@ -19,19 +19,19 @@
 							<dd><a href="home-order-receive.html" class="list-active" >待收货</a></dd>
 							<dd><a href="home-order-evaluate.html"  class="list-active" >待评价</a></dd>
 						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html" class="list-active" >我的收藏</a></dd>
-							<dd><a href="home-person-footmark.html" class="list-active" >我的足迹</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 物流消息</dt>
-						</dl>
-						<dl>
-							<dt><i>·</i> 设置</dt>
-							<dd><a href="add" class="list-active" >个人信息</a></dd>
-							<dd><a href="/add_list"  class="list-active" >地址管理</a></dd>
-							<dd><a href="/lists"  class="list-active" >安全管理</a></dd>
-						</dl>
+                        <dl>
+                            <dt><i>·</i> 我的中心</dt>
+                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                            <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 物流消息</dt>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 设置</dt>
+                            <dd><a href="add" class="list-active">个人信息</a></dd>
+                            <dd><a href="/add_list">地址管理</a></dd>
+                            <dd><a href="/lists">安全管理</a></dd>
+                        </dl>
                     </div>
                 </div>

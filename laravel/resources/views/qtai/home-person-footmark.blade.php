@@ -27,91 +27,62 @@ $(function(){
         <div class="py-container">
             <div class="yui3-g collect">
                 <!--左侧列表-->
-                @include('layouts_q.zuo');
+                {{--@include('layouts_q.zuo');--}}
+                <div class="yui3-u-1-6 list">
+
+                    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
+
+                    <div class="person-info">
+                        <div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
+                        <div class="person-account">
+                            <span class="name">Michelle</span>
+                            <span class="safe">账户安全</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list-items">
+                        <dl>
+                            <dt><i>·</i> 订单中心</dt>
+                            <dd ><a href="home-index.html">我的订单</a></dd>
+                            <dd><a href="home-order-pay.html">待付款</a></dd>
+                            <dd><a href="home-order-send.html">待发货</a></dd>
+                            <dd><a href="home-order-receive.html">待收货</a></dd>
+                            <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 我的中心</dt>
+                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                            <dd><a href="/shop_user_list/history" class="list-active">我的足迹</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 设置</dt>
+                            <dd><a href="/add">个人信息</a></dd>
+                            <dd><a href="/add_list">地址管理</a></dd>
+                            <dd><a href="/lists">安全管理</a></dd>
+                        </dl>
+                    </div>
+                </div>
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6 goods">
                     <div class="body">
-                        <h4>全部足迹 12</h4>
+                        <h4>全部足迹 {{count($goods_info)}}</h4>
                         <div class="goods-list">
                             <ul class="yui3-g" id="goods-list">
-                                 <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                @foreach($goods_info as $k=>$v)
+                                 <li class="yui3-u-1-4" >
+                                        <div class="list-wrap" title="{{$v['goods_name']}}">
+                                            <div class="p-img"><img src="/{{$v['goods_img']}}" alt=''></div>
+                                            <div class="price"><strong><em>¥</em> <i>{{$v['goods_price']}}</i></strong></div>
+                                            <div class="attr"><em>{{mb_substr($v['goods_name'],0,9)}}</em></div>
+                                            <div class="cu">
+                                                {{--<em><span>促</span>满一件可参加超值换购</em>--}}
+                                            </div>
                                             <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                                <a href="/goods_list/{{$v['goods_id']}}"class="sui-btn btn-bordered btn-danger">查看详情</a>
                                             </div>
                                         </div>
                                     </li >
-                                    <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
-                                            <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
-                                            </div>
-                                        </div>
-                                    </li >
-                                    <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
-                                            <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
-                                            </div>
-                                        </div>
-                                    </li >
-                                    <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
-                                            <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
-                                            </div>
-                                        </div>
-                                    </li >
-                                    <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
-                                            <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
-                                            </div>
-                                        </div>
-                                    </li >
-                                    <li class="yui3-u-1-4">
-                                        <div class="list-wrap">
-                                            <div class="p-img"><img src="/qtai/img/_/t.jpg" alt=''></div>
-                                            <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
-                                            <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
-                                            <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
-                                            <div class="operate">
-                                                <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                                                <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
-                                            </div>
-                                        </div>
-                                    </li >
+                                 @endforeach
                             </ul>
                         </div>
 
@@ -124,82 +95,46 @@ $(function(){
                         </div>
                         <div class="like-list">
                             <ul class="yui3-g">
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike01.png" />
+                                @foreach($history_goods as $k=>$v)
+                                    <li class="yui3-u-1-4">
+                                        <div class="list-wrap" title="{{$v['goods_name']}}">
+                                            <div class="p-img">
+                                                <a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v['goods_img']}}" /></a>
+                                            </div>
+                                            <div class="attr">
+                                                <em>{{mb_substr($v['goods_name'],0,9)}}</em>
+                                            </div>
+                                            <div class="price">
+                                                <strong>
+                                                    <em>¥</em>
+                                                    <i>{{$v['goods_price']}}</i>
+                                                </strong>
+                                            </div>
+                                            <div class="commit">
+                                                <i class="command">已有{{$v['goods_hits']}}人评价</i>
+                                            </div>
                                         </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>3699.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有6人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike02.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike03.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike04.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
+                                {{--<li class="yui3-u-1-4">--}}
+                                    {{--<div class="list-wrap">--}}
+                                        {{--<div class="p-img">--}}
+                                            {{--<img src="/qtai/img/_/itemlike01.png" />--}}
+                                        {{--</div>--}}
+                                        {{--<div class="attr">--}}
+                                            {{--<em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="price">--}}
+                                            {{--<strong>--}}
+											{{--<em>¥</em>--}}
+											{{--<i>3699.00</i>--}}
+										{{--</strong>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="commit">--}}
+                                            {{--<i class="command">已有6人评价</i>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</li>--}}
 
                             </ul>
                         </div>

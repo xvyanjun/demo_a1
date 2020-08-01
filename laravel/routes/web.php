@@ -35,7 +35,7 @@ Route::any('/dhang_jz','index\IndexController@dhang_jz');
 Route::any('/cate_list/{id}','index\CateController@cate_list');
 Route::any('/cate_goods_list/tiaojian','index\GoodsController@goods_tiao_list'); //分类商品列表页点击条件
 Route::any('/collect/guanzhu','index\CollertController@guanadd');//关注
-
+Route::any('/collect/guandel','index\CollertController@guandel');//取消关注
 Route::any('/ce_lishi','index\IndexController@ce_lishi');
 
 Route::any('/slide/list/{id}','index\SlideController@slide_list');//轮播图
@@ -73,6 +73,8 @@ Route::any('/cart_del_yes','index\CartController@cart_del_yes');//删除记录
 Route::any('/cat_top_list','index\CartController@cat_top_list');//头部购物车
 //---------------------------------------------------------
 });
+
+
 //---------------------------------------------------------
 Route::prefix('/')->group(function(){
 //---------------------------------------------------------
@@ -80,6 +82,7 @@ Route::any('/getOrderInfo','index\getOrderinfoController@getOrderInfo');//订单
 Route::any('/orderAdd','index\getOrderinfoController@orderAdd');//订单执行表
 //---------------------------------------------------------
 });
+
 
 Route::any('/history_vl_del','index\GoodsController@history_vl_del');//删除浏览记录
 //---------------------------------------------------------
@@ -123,10 +126,20 @@ Route::any('/go_reg','index\LoginController@go_reg');//发送短信验证码
 Route::any('/reg_do','index\LoginController@reg_do');//执行注册
 Route::any('/tuichu','index\LoginController@tuichu');//退出执行
 
+
+
+
+//->middleware('checkindex')
+
 //个人信息
 Route::any('/add','index\HomeController@add');
 Route::any('/add_do','index\HomeController@add_do');
 Route::any('/city','index\HomeController@city');
+
+//收藏
+Route::any('/shop_user_list/collect','index\HomeController@collect');
+//足迹
+Route::any('/shop_user_list/history','index\HomeController@history');
 
 //收获地址
 Route::any('/add_list','index\AddressController@add_list');
@@ -140,6 +153,8 @@ Route::any('/lists','index\SafeController@lists');
 Route::any('/login_do','index\SafeController@login_do');
 Route::any('/sendcode','index\SafeController@sendcode');
 Route::any('/change_phone','index\SafeController@change_phone');
+
+
 
 
 

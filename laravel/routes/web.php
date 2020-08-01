@@ -85,7 +85,7 @@ Route::any('/history_vl_del','index\GoodsController@history_vl_del');//删除浏
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------
-Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');
+Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');//待付款
 //---------------------------------------------------------
 
 

@@ -53,9 +53,9 @@ $(function(){
                             <dd><a href="home-person-collect.html" class="" >我的收藏</a></dd>
                             <dd><a href="home-person-footmark.html" class="" >我的足迹</a></dd>
                         </dl>
-                        <dl>
+                    <!--     <dl>
                             <dt><i>·</i> 物流消息</dt>
-                        </dl>
+                        </dl> -->
                         <dl>
                             <dt><i>·</i> 设置</dt>
                             <dd><a href="add" class="" >个人信息</a></dd>
@@ -86,53 +86,90 @@ $(function(){
                         <div class="order-detail">
                             <div class="orders">
                                 <div class="choose-order">
-                                    <label data-toggle="checkbox" class="checkbox-pretty checked">
-                                        <input type="checkbox" checked="checked"><span>全选</span>
+                                    <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
+                                        <input type="checkbox" ><span>全选</span>
                                     </label>
                                     <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
-                                    <div class="sui-pagination pagination-large top-pages">
-                                        <ul>
-                                            <li class="prev disabled"><a href="#">上一页</a></li>
-
-                                            <li class="next"><a href="#">下一页</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
-
+                                
+                                <!-- eva_list -->
+                                @foreach($shop_order as $g1=>$g2)
+                                 @if($g2['cd']==1)
                                 <div class="choose-title">
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
-                                           <input type="checkbox" checked="checked"><span>2017-02-11 11:59　订单编号：7867473872181848  店铺：哇哈哈 <a>和我联系</a></span>
+                                           <input type="checkbox" checked="checked"><span>{{date('Y-m-d H:i',$g2['bast_time'])}}　订单编号：{{$g2['order_sn']}}  </span>
                                      </label>
-                                    <a class="sui-btn btn-info share-btn">分享</a>
+                                    <!-- <a class="sui-btn btn-info share-btn">分享</a> -->
                                 </div>
                                 <table class="sui-table table-bordered order-datatable">
-
                                     <tbody>
+                                        @foreach($g2['order_details'] as $vs1=>$vs2)
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="/qtai/img/goods.png" />
-                                                    <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
-                                                    <span class="guige">规格：温泉喷雾150ml</span>
+                                                <div class="typographic"><img style="width:80px;height:80px;" src="{{$vs2['goods_id']['goods_img']}}" />
+                                                    <a href="javascript:;" class="block-text">{{$vs2['goods_id']['goods_name']}}
+                                                    </a>
+                                                    <br>
+                                                    <span class="guige">
+                                                        属性:
+                                                        @foreach($vs2['sku']['sku'] as $fg1=>$fg2)
+                                                         @if($fg1==0)
+                                                          /{{$fg2['val_name']}}/
+                                                         @else
+                                                          {{$fg2['val_name']}}/
+                                                         @endif
+                                                        @endforeach
+                                                    </span>
                                                 </div>
                                             </td>
                                             <td width="5%" class="center">
                                                 <ul class="unstyled">
-                                                    <li class="o-price">¥599.00</li>
-                                                    <li>¥299.00</li>
+                                                    <li>¥{{$vs2['sku']['price']}}</li>
                                                 </ul>
                                             </td>
-                                            <td width="5%" class="center">1</td>
-                                            <td width="8%" class="center"></td>
-                                            <td width="10%" class="center">
+                                            <td width="5%" class="center">{{$vs2['buy_number']}}</td>
+                                            @php 
+                                             $status_eva='';
+                                             if($g2['pay_status']=='0'){
+                                             $status_eva='已取消';
+                                             }else if($g2['pay_status']=='1'){
+                                             $status_eva='待付款';
+                                             }else if($g2['pay_status']=='2'){
+                                             $status_eva='待发货';
+                                             }else if($g2['pay_status']=='3'){
+                                             $status_eva='待收货';
+                                             }else if($g2['pay_status']=='4'){
+                                             $status_eva='已完成订单';
+                                             }
+
+                                             $goods_one='';
+                                             if($vs2['datails_status']=='0'){
+                                             $goods_one='已取消.';
+                                             }else if($vs2['datails_status']=='1'){
+                                             $goods_one='待付款.';
+                                             }else if($vs2['datails_status']=='2'){
+                                             $goods_one='待发货.';
+                                             }else if($vs2['datails_status']=='3'){
+                                             $goods_one='待收货.';
+                                             }else if($vs2['datails_status']=='4'){
+                                             $goods_one='已收货.';
+                                             }
+                                            @endphp
+                                            <td width="8%" class="center">
                                                 <ul class="unstyled">
-                                                    <li>¥299.00</li>
-                                                    <li>（含运费：￥0.00）</li>
+                                                    <li>{{$goods_one}}</li>
                                                 </ul>
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li>等待买家付款</li>
-                                                    <li><a href="orderDetail.html" class="btn">订单详情 </a></li>
+                                                    <li>¥{{$g2['order_amount']}}</li>
+                                                    <!-- <li>（含运费：￥0.00）</li> -->
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>{{$status_eva}}</li>
+                                                    <!-- <li><a href="orderDetail.html" class="btn">订单详情 </a></li> -->
                                                 </ul>
 
 
@@ -144,15 +181,154 @@ $(function(){
                                                 </ul>
                                             </td>
                                         </tr>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                 @else
+                                <div class="choose-title">
+                                    <label data-toggle="checkbox" class="checkbox-pretty ">
+                                           <input type="checkbox" checked="checked"><span>
+                                           {{date('Y-m-d H:i',$g2['bast_time'])}}　订单编号：{{$g2['order_sn']}}</span>
+                                     </label>
+                                      <!-- <a class="sui-btn btn-info share-btn">分享</a> -->
+                                </div>
+                                   
+                                <table class="sui-table table-bordered order-datatable">
+                                    <tbody>
+                                        @foreach($g2['order_details'] as $v1=>$v2)
+                                         @if($v1==0)
+                                        <tr>
+                                            <td width="35%">
+                                                <div class="typographic"><img style="width:80px;height:80px;" src="{{$v2['goods_id']['goods_img']}}" />
+                                                    <a href="javascript:;" class="block-text">{{$v2['goods_id']['goods_name']}}
+                                                    </a>
+                                                    <br>
+                                                    <span class="guige">
+                                                    属性: 
+                                                    @foreach($v2['sku']['sku'] as $fg_1=>$fg_2)
+                                                         @if($fg_1==0)
+                                                          /{{$fg_2['val_name']}}/
+                                                         @else
+                                                          {{$fg_2['val_name']}}/
+                                                         @endif
+                                                    @endforeach
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td width="5%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>¥{{$v2['sku']['price']}}</li>
+                                                </ul>
+                                            </td>
+                                            <td width="5%" class="center">{{$v2['buy_number']}}</td>
+                                            @php 
+                                             $status_eva_s='';
+                                             if($g2['pay_status']=='0'){
+                                             $status_eva_s='已取消';
+                                             }else if($g2['pay_status']=='1'){
+                                             $status_eva_s='待付款';
+                                             }else if($g2['pay_status']=='2'){
+                                             $status_eva_s='待发货';
+                                             }else if($g2['pay_status']=='3'){
+                                             $status_eva_s='待收货';
+                                             }else if($g2['pay_status']=='4'){
+                                             $status_eva_s='已完成订单';
+                                             }
+
+                                             $goods_one_s='';
+                                             if($v2['datails_status']=='0'){
+                                             $goods_one_s='已取消.';
+                                             }else if($v2['datails_status']=='1'){
+                                             $goods_one_s='待付款.';
+                                             }else if($v2['datails_status']=='2'){
+                                             $goods_one_s='待发货.';
+                                             }else if($v2['datails_status']=='3'){
+                                             $goods_one_s='待收货.';
+                                             }else if($v2['datails_status']=='4'){
+                                             $goods_one_s='已收货.';
+                                             }
+                                            @endphp
+                                            <td width="8%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>{{$goods_one_s}}</li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center" rowspan="{{$g2['cd']}}">
+                                                <ul class="unstyled">
+                                                    <li>¥{{$g2['order_amount']}}</li>
+                                                    <!-- <li>（含运费：￥0.00）</li> -->
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center" rowspan="{{$g2['cd']}}">
+                                                <ul class="unstyled">
+                                                    <li>{{$status_eva_s}}</li>
+                                                    <!-- <li><a href="orderDetail.html" class="btn">订单详情 </a></li> -->
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center" rowspan="{{$g2['cd']}}">
+                                                <ul class="unstyled">
+                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="#">取消订单</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                         @else
+                                        <tr>
+                                            <td width="35%">
+                                                <div class="typographic"><img style="width:80px;height:80px;" src="{{$v2['goods_id']['goods_img']}}" />
+                                                    <a href="javascript:;" class="block-text">{{$v2['goods_id']['goods_name']}}
+                                                    </a>
+                                                    <br>
+                                                    <span class="guige">
+                                                    属性:    
+                                                    @foreach($v2['sku']['sku'] as $fg_s1=>$fg_s2)
+                                                         @if($fg_s1==0)
+                                                          /{{$fg_s2['val_name']}}/
+                                                         @else
+                                                          {{$fg_s2['val_name']}}/
+                                                         @endif
+                                                    @endforeach
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td width="5%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>¥{{$v2['sku']['price']}}</li>
+                                                </ul>
+                                            </td>
+                                            <td width="5%" class="center">{{$v2['buy_number']}}</td>
+                                            @php 
+                                             $goods_one_s_s='';
+                                             if($v2['datails_status']=='0'){
+                                             $goods_one_s_s='已取消.';
+                                             }else if($v2['datails_status']=='1'){
+                                             $goods_one_s_s='待付款.';
+                                             }else if($v2['datails_status']=='2'){
+                                             $goods_one_s_s='待发货.';
+                                             }else if($v2['datails_status']=='3'){
+                                             $goods_one_s_s='待收货.';
+                                             }else if($v2['datails_status']=='4'){
+                                             $goods_one_s_s='已收货.';
+                                             }
+                                            @endphp
+                                            <td width="8%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>{{$goods_one_s_s}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                         @endif
+                                        @endforeach
+                                    </tbody>
+                                </table> 
+                                 @endif
+                                @endforeach
 
                             </div>
 
                             <div class="choose-order">
-                                <label data-toggle="checkbox" class="checkbox-pretty checked">
-                                        <input type="checkbox" checked="checked"><span>全选</span>
+                                <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
+                                        <input type="checkbox" ><span>全选</span>
                                     </label>
                                 <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
                                 <div class="sui-pagination pagination-large top-pages">
@@ -161,18 +337,34 @@ $(function(){
                                         <li class="active"><a href="#">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li><a href="#">3</a></li>
+                                        <li class="next"><a href="#">下一页»</a></li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="sui-pagination pagination-large top-pages">
+                                    <ul>
+                                        <li class="prev disabled"><a href="#">«上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
                                         <li class="dotted"><span>...</span></li>
                                         <li class="next"><a href="#">下一页»</a></li>
                                     </ul>
-                                    <div><span>共10页&nbsp;</span><span>
+                                    <div>
+                                     <span>共10页&nbsp;</span>
+                                      <span>
                                             到
-                                            <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button>
-                                            页</span></div>
-                                </div>
+                                       <input type="text" class="page-num">
+                                       <button class="page-confirm" onclick="alert(1)">确定</button>
+                                            页
+                                      </span>
+                                    </div>
+                                </div> -->
                             </div>
 
                             <div class="clearfix"></div>
                         </div>
+
+
 
                         <div class="like-title">
                             <div class="mt">

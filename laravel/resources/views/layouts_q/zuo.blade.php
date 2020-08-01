@@ -1,5 +1,5 @@
 <div class="yui3-u-1-6 list">
-
+<link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
                     <div class="person-info">
                         <div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
                         <div class="person-account">

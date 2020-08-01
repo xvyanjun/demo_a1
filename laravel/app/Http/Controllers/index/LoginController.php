@@ -154,25 +154,27 @@ class LoginController extends Controller
         $user_model = Indexuser::where('u_phone', $data['u_phone'])->first()->toArray();
         if ($user_model) {
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
-                $this->user_history_insert($user_model->u_id);
-                session(['u_phone' => $user_model->u_phone]);
-                session(['u_id' => $user_model->u_id]);
-                session(['u_name' => $user_model->u_name]);
+
+                session(['u_phone' => $user_model['u_phone']]);
+                session(['u_id' => $user_model['u_id']]);
+                session(['u_name' => $user_model['u_name']]);
+                
+                $sf=$this->user_history_insert($user_model['u_id']);
+                if($sf){echo'eva';}
+
                 $request->session()->save();
+
                 return [
-                    'code' => 00003,
-                    'msg' => '密码错误',
+                    'code' => 00000,
+                    'msg' => '登录成功',
                     'result' => ''
                 ];
 
             }else{
-                session(['u_phone' => $user_model['u_phone']]);
-                session(['u_id' => $user_model['u_id']]);
 
-                $request->session()->save();
                 return [
-                    'code' => 00000,
-                    'msg' => '登录成功',
+                    'code' => 00003,
+                    'msg' => '密码错误',
                     'result' => ''
                 ];
             }
@@ -216,8 +218,8 @@ class LoginController extends Controller
               'h_time'=>$t5['h_time'],
               'h_hits'=>$t5['h_hits']
               ]);
-              $fh=Cookie::forget('user_history');
-              return $fh;
+              $ck=Cookie::queue(Cookie::forget('user_history'));
+              return $ck;
             }
            }
         }

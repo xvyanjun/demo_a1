@@ -81,7 +81,7 @@ Route::any('/orderAdd','index\getOrderinfoController@orderAdd');//订单执行�
 //---------------------------------------------------------
 });
 
-Route::any('/eva','index\GoodsController@eva');
+Route::any('/history_vl_del','index\GoodsController@history_vl_del');//删除浏览记录
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------

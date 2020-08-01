@@ -2,7 +2,7 @@
 @section('title','购物车')
 @section('content')
 		<div class="allgoods">
-			<h4>全部商品<span>11</span></h4>
+			<h4>全部商品<span></span></h4>
 			<div class="cart-main">
 				<div class="yui3-g cart-th">
 					<div class="yui3-u-1-4"><input type="checkbox" id="check_all" name='ck_jb0500' value="" /> 全部</div>

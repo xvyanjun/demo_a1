@@ -48,7 +48,6 @@ public function cart(){
     }else{
       $history_goods=[];
     }
-    
 
   return view('qtai.cart',['cat_list'=>$cat_list,'del_list'=>$del_list,'history_goods'=>$history_goods]);
 }

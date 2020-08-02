@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\index;
 
 use App\Http\Controllers\Controller;
+use App\Models\Collert;
+use App\Models\Goods;
+use App\Models\History;
 use App\Models\Indexuser;
 use Illuminate\Http\Request;
 use App\Models\shop_uneed;
@@ -72,7 +75,49 @@ class HomeController extends  Controller
         exit('图片上传失败');
     }
 
+    /**
+     * 收藏
+     */
+    public function collect(){
+        $collert=new Collert();
+        $u_id=request()->session()->get('u_id');
+        $goods_id=$collert::where(['u_id'=>$u_id,'is_del'=>1])->get('goods_id')->toArray();
+//        dd($goods_id);
+        $goods=new Goods();
+        $goods_info=$goods::where(['goods_del'=>1])->whereIn('goods_id',$goods_id)->get()->toArray();
+//        dd($goods_info);
 
+        //猜你喜欢
+        $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+        if($history){
+            $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
+            $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(4)->get()->toArray();
+        }else{
+            $history_goods=[];
+        }
+
+        return view('qtai.home-person-collect',['goods_info'=>$goods_info,'history_goods'=>$history_goods]);
+    }
+    /**
+     * 足迹
+     */
+    public function history(){
+        $u_id=request()->session()->get('u_id');
+        //猜你喜欢
+        $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+        if($history){
+            $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
+            $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(4)->get()->toArray();
+        }else{
+            $history_goods=[];
+        }
+
+        $history_id=History::where("u_id",$u_id)->get('goods_id')->toArray();
+//        dd($history_id);
+        $goods=new Goods();
+        $goods_info=$goods::where(['goods_del'=>1])->whereIn('goods_id',$history_id)->get()->toArray();
+//        dd($goods_info);
+        return view('qtai.home-person-footmark',['history_goods'=>$history_goods,'goods_info'=>$goods_info]);
+    }
 }
 
-?>

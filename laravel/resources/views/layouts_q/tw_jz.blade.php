@@ -45,7 +45,7 @@
 					</ul>
 				@endif
 					<ul class="fr">
-						<li class="f-item"><a href="/home_index">我的订单</a></li>
+						<li class="f-item"><a href="/center">我的订单</a></li>
 						<li class="f-item space"></li>
 						<li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
 						<li class="f-item space"></li>

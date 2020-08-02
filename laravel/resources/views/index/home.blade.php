@@ -38,7 +38,6 @@
 		<div class="yui3-g home">
 			<!--左侧列表-->
 			<div class="yui3-u-1-6 list">
-
 				<div class="person-info">
 					<div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
 					<div class="person-account">
@@ -58,15 +57,12 @@
 					</dl>
 					<dl>
 						<dt><i>·</i> 我的中心</dt>
-						<dd><a href="home-person-collect.html" >我的收藏</a></dd>
-						<dd><a href="home-person-footmark.html" >我的足迹</a></dd>
-					</dl>
-					<dl>
-						<dt><i>·</i> 物流消息</dt>
+                        <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                        <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
 					</dl>
 					<dl>
 						<dt><i>·</i> 设置</dt>
-                        <dd><a href="add" class="list-active">个人信息</a></dd>
+                        <dd><a href="/add" class="list-active">个人信息</a></dd>
                         <dd><a href="/add_list">地址管理</a></dd>
                         <dd><a href="/lists">安全管理</a></dd>
 					</dl>

@@ -63,7 +63,7 @@ class GoodsController extends Controller
             <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
             <script>
                 alert("该商品暂无库存，请另选。");
-                window.location.href="/"
+                window.location.href="javascript:history.go(-1);"
             </script>';
             exit;
         }

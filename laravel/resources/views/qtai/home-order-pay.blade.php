@@ -50,15 +50,12 @@ $(function(){
                         </dl>
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
-                            <dd><a href="home-person-collect.html" class="" >我的收藏</a></dd>
-                            <dd><a href="home-person-footmark.html" class="" >我的足迹</a></dd>
+                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                            <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
                         </dl>
-                    <!--     <dl>
-                            <dt><i>·</i> 物流消息</dt>
-                        </dl> -->
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="add" class="" >个人信息</a></dd>
+                            <dd><a href="/add" class="" >个人信息</a></dd>
                             <dd><a href="/add_list"  class="" >地址管理</a></dd>
                             <dd><a href="/lists"  class="" >安全管理</a></dd>
                         </dl>

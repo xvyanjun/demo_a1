@@ -48,46 +48,20 @@ $(function(){
 							<dd><a href="home-order-receive.html"  >待收货</a></dd>
 							<dd><a href="home-order-evaluate.html"   >待评价</a></dd>
 						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html"  >我的收藏</a></dd>
-							<dd><a href="home-person-footmark.html"  >我的足迹</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 物流消息</dt>
-						</dl>
-						<dl>
-							<dt><i>·</i> 设置</dt>
-							<dd><a href="add"  >个人信息</a></dd>
-							<dd><a href="/add_list"   >地址管理</a></dd>
-							<dd><a href="/lists"  >安全管理</a></dd>
-						</dl>
-                    </div>
-                </div>
-
-                            <dt><i>·</i> 订单中心</dt>
-                            <dd ><a href="home-index.html"  class="list-active" >我的订单</a></dd>
-                            <dd><a href="home-order-pay.html" class="" >待付款</a></dd>
-                            <dd><a href="home-order-send.html"  class="" >待发货</a></dd>
-                            <dd><a href="home-order-receive.html" class="" >待收货</a></dd>
-                            <dd><a href="home-order-evaluate.html"  class="" >待评价</a></dd>
-                        </dl>
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
-                            <dd><a href="home-person-collect.html" class="" >我的收藏</a></dd>
-                            <dd><a href="home-person-footmark.html" class="" >我的足迹</a></dd>
-                        </dl>
-                        <dl>
-                            <dt><i>·</i> 物流消息</dt>
+                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                            <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="add" class="" >个人信息</a></dd>
+                            <dd><a href="/add" class="list-active" >个人信息</a></dd>
                             <dd><a href="/add_list"  class="" >地址管理</a></dd>
                             <dd><a href="/lists"  class="" >安全管理</a></dd>
                         </dl>
                     </div>
                 </div>
+
 
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6 order-pay">

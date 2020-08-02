@@ -98,8 +98,8 @@ Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');//待付
 
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
-//---------------------------------------------------------
-Route::any('/home_order_send','a_1\demo_a1_contr@home_order_send');
+//---------------------------------------------------------代发货
+Route::any('/home_order_send','index\DaifaController@home_order_send');
 //---------------------------------------------------------
 Route::any('/home_order_receive','a_1\demo_a1_contr@home_order_receive');
 //---------------------------------------------------------

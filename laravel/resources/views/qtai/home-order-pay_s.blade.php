@@ -1,99 +1,12 @@
-@extends('layouts_q.tw_jz')
-@section('title','个人中心首页')
-@section('content')
-<script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#service").hover(function(){
-		$(".service").show();
-	},function(){
-		$(".service").hide();
-	});
-	$("#shopcar").hover(function(){
-		$("#shopcarlist").show();
-	},function(){
-		$("#shopcarlist").hide();
-	});
 
-})
-</script>
-<script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/qtai/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
-</body>
-    <!--header-->
-    <div id="account">
-        <div class="py-container">
-            <div class="yui3-g home">
-                <!--左侧列表-->
-                <div class="yui3-u-1-6 list">
-
-<link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
-
-                    <div class="person-info">
-                        <div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
-                        <div class="person-account">
-                            <span class="name">Michelle</span>
-                            <span class="safe">账户安全</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="list-items">
-                        <dl>
-							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="{{url('/center')}}"  class="list-active" >我的订单</a></dd>
-							<dd><a href="home-order-pay.html"  >待付款</a></dd>
-							<dd><a href="home-order-send.html"   >待发货</a></dd>
-							<dd><a href="home-order-receive.html"  >待收货</a></dd>
-							<dd><a href="home-order-evaluate.html"   >待评价</a></dd>
-						</dl>
-                        <dl>
-                            <dt><i>·</i> 我的中心</dt>
-                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
-                            <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
-                        </dl>
-                        <dl>
-                            <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add">个人信息</a></dd>
-                            <dd><a href="/add_list"  class="" >地址管理</a></dd>
-                            <dd><a href="/lists"  class="" >安全管理</a></dd>
-                        </dl>
-                    </div>
-                </div>
-                <!--右侧主内容-->
-                <div class="yui3-u-5-6 order-pay">
-                    <div class="body">
-                        <div class="table-title">
-                            <table class="sui-table  order-table">
-                                <tr>
-                                    <thead>
-                                        <th width="35%">宝贝</th>
-                                        <th width="5%">单价</th>
-                                        <th width="5%">数量</th>
-                                        <th width="8%">商品操作</th>
-                                        <th width="10%">实付款</th>
-                                        <th width="10%">交易状态</th>
-                                        <th width="10%">交易操作</th>
-                                    </thead>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="order-detail">
                             <div class="orders">
                                 <div class="choose-order">
-                                    <div class="sui-pagination pagination-large top-pages">
-                                        <ul>
-                                            <li class="prev disabled"><a href="#">上一页</a></li>
-
-                                            <li class="next"><a href="#">下一页</a></li>
-                                        </ul>
-                                    </div>
+                                    <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
+                                        <input type="checkbox" ><span>全选</span>
+                                    </label>
+                                    <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
                                 </div>
-
-								<!--order1-->
-                                <div class="order-detail">
-                            <div class="orders">                        
+                                
                                 <!-- eva_list -->
                                 @foreach($shop_order as $g1=>$g2)
                                  @if($g2['cd']==1)
@@ -328,57 +241,14 @@ $(function(){
 
                             </div>
 
-                            <div class="clearfix"></div>
-                        </div>
-
-
-                            </div>
                             <div class="choose-order">
+                                <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
+                                        <input type="checkbox" ><span>全选</span>
+                                    </label>
+                                <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
                                 <div class="sui-pagination pagination-large top-pages">
-                                    <ul>
-                                        {{$shop_order->links()}}
-                                    </ul>
+                                    {{$shop_order->appends($xx)->links()}}
                                 </div>
                             </div>
 
                             <div class="clearfix"></div>
-                        </div>
-
-                        <div class="like-title">
-                            <div class="mt">
-                                <span class="fl"><strong>热卖单品</strong></span>
-                            </div>
-                        </div>
-                        <div class="like-list">
-                            <ul class="yui3-g">
-                                @foreach($goods as $K=>$v)
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/{{$v->goods_img}}" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>{{$v->goods_name}}</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>{{$v->goods_price}}</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 底部栏位 -->
-    <!--页面底部-->
-        @endsection 

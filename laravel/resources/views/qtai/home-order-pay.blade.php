@@ -80,7 +80,8 @@ $(function(){
                             </table>
                         </div>
 
-                        <div class="order-detail">
+                        <div class="order-detail" id='replace_eva'>
+
                             <div class="orders">
                                 <div class="choose-order">
                                     <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
@@ -329,33 +330,8 @@ $(function(){
                                     </label>
                                 <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
                                 <div class="sui-pagination pagination-large top-pages">
-                                    <ul>
-                                        <li class="prev disabled"><a href="#">«上一页</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li class="next"><a href="#">下一页»</a></li>
-                                    </ul>
+                                    {{$shop_order->appends($xx)->links()}}
                                 </div>
-                                <!-- <div class="sui-pagination pagination-large top-pages">
-                                    <ul>
-                                        <li class="prev disabled"><a href="#">«上一页</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li class="dotted"><span>...</span></li>
-                                        <li class="next"><a href="#">下一页»</a></li>
-                                    </ul>
-                                    <div>
-                                     <span>共10页&nbsp;</span>
-                                      <span>
-                                            到
-                                       <input type="text" class="page-num">
-                                       <button class="page-confirm" onclick="alert(1)">确定</button>
-                                            页
-                                      </span>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <div class="clearfix"></div>
@@ -456,4 +432,20 @@ $(function(){
     </div>
     <!-- 底部栏位 -->
     <!--页面底部-->
+    <script>
+        $(document).on('click','.pagination a',function(){
+            var url=$(this).prop('href');
+            if(url!=''){
+              $.ajax({
+                url:url,
+                type:'post',
+                dataType:'html',
+                success:function(vl){
+                 $("#replace_eva").html(vl);
+                }
+              });
+            }
+            return false;
+        });
+    </script>
 @endsection 

@@ -10,11 +10,14 @@ use App\Models\shop_cat;
 use App\Models\shop_property;
 use App\Models\Goods;
 use App\Models\shop_sku_val;
+use App\Models\History;
 class CenterController extends Controller
 {
     //我的订单
     public function center(Request $request){
-        $shop_order=shop_order::get();
+        $u_id=request()->session()->get('u_id');	
+        
+        $shop_order=shop_order::where(['order_del'=>1,'u_id'=>$u_id])->paginate(2);
         foreach($shop_order as $c=>$v){
         $shop_order_details=shop_order_details::where([['order_id',$v['order_id']],['datails_del','1']])->get();
         foreach($shop_order_details as $f1=>$f2){
@@ -33,8 +36,12 @@ class CenterController extends Controller
         $v['cd']=$cd;
         }
         
-        dd($shop_order);
-        return view("qtai.home-index",compact('shop_order'));
+        // dd($shop_order);
+        //热卖单品
+        $goods=Goods::orderby("goods_hits","desc")->limit(4)->get();
+
+        
+        return view("qtai.home-index",['shop_order'=>$shop_order,'goods'=>$goods]);
     }
     //切分sku
     public function explode_id($xxi){

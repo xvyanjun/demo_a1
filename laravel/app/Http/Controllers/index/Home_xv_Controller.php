@@ -15,7 +15,10 @@ class Home_xv_Controller extends Controller
 {
 //-------------------------------------------------------------------------
 public function home_order_pay(){
-	$shop_order=shop_order::where('pay_status','1')->limit(4)->get();
+	$xx=request()->all();
+	$u_id=request()->session()->get('u_id');	
+    if(empty($u_id)){return redirect('/login');}
+	$shop_order=shop_order::where([['u_id',$u_id],['pay_status','1']])->paginate(4);
 	foreach($shop_order as $c=>$v){
 		$shop_order_details=shop_order_details::where([['order_id',$v['order_id']],['datails_del','1']])->get();
 		foreach($shop_order_details as $f1=>$f2){
@@ -33,8 +36,10 @@ public function home_order_pay(){
 		$v['order_details']=$shop_order_details;
 		$v['cd']=$cd;
 	}
-	// dd($shop_order);
-	return view('qtai.home-order-pay',['shop_order'=>$shop_order]);
+	if(request()->ajax()){
+	  return view('qtai.home-order-pay_s',['shop_order'=>$shop_order,'xx'=>$xx]);
+	}
+	return view('qtai.home-order-pay',['shop_order'=>$shop_order,'xx'=>$xx]);
 }
 //-------------------------------------------------------------------------
 

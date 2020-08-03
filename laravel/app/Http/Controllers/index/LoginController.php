@@ -191,7 +191,7 @@ class LoginController extends Controller
         $id=request()->session()->get('u_id');
         // print_r($id);exit;
         if(!$id){
-            return redirect('/');
+            return redirect('/login');
         }
     }
 

@@ -44,7 +44,7 @@ Route::any('/nav/list','index\SlideController@nav_list');//导航
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------商品加入购物车
-Route::any('/shopping','index\GoodsController@shopping');
+Route::any('/shopping','index\GoodsController@shopping')->middleware('checkindex');
 Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
 // Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
@@ -61,7 +61,7 @@ Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
 });
 //----------------------------------------------------------
-Route::any('/center','index\CenterController@center');//我的订单
+Route::any('/center','index\CenterController@center')->middleware('checkindex');//我的订单
 
 //---------------------------------------------------------
 Route::prefix('/')->group(function(){
@@ -100,8 +100,8 @@ Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');//待付
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------代发货
 Route::any('/home_order_send','index\DaifaController@home_order_send');
-//---------------------------------------------------------
-Route::any('/home_order_receive','a_1\demo_a1_contr@home_order_receive');
+//---代收货
+Route::any('/home_order_receive','index\OrderController@home_order_receive');
 //---------------------------------------------------------
 Route::any('/home_order_evaluate','a_1\demo_a1_contr@home_order_evaluate');
 //---------------------------------------------------------

@@ -27,9 +27,9 @@ $(function(){
         <div class="py-container">
             <div class="yui3-g home">
                 <!--左侧列表-->
-                <div class="yui3-u-1-6 list">
+               <div class="yui3-u-1-6 list">
 
-                    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
+<link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
 
                     <div class="person-info">
                         <div class="person-photo"><img src="/qtai/img/_/photo.png" alt=""></div>
@@ -42,11 +42,11 @@ $(function(){
                     <div class="list-items">
                         <dl>
                             <dt><i>·</i> 订单中心</dt>
-                            <dd ><a href="home-index.html" >我的订单</a></dd>
-                            <dd><a href="home-order-pay.html" >待付款</a></dd>
+                            <dd ><a href="/center"  class="" >我的订单</a></dd>
+                            <dd><a href="/home_order_pay" class="" >待付款</a></dd>
                             <dd><a href="/home_order_send"  class="list-active" >待发货</a></dd>
-                            <dd><a href="home-order-receive.html">待收货</a></dd>
-                            <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                            <dd><a href="home-order-receive.html" class="" >待收货</a></dd>
+                            <!-- <dd><a href="home-order-evaluate.html"  class="list-active" >待评价</a></dd> -->
                         </dl>
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
@@ -54,11 +54,8 @@ $(function(){
                             <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
                         </dl>
                         <dl>
-                            <dt><i>·</i> 物流消息</dt>
-                        </dl>
-                        <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add">个人信息</a></dd>
+                            <dd><a href="/add" class="">个人信息</a></dd>
                             <dd><a href="/add_list">地址管理</a></dd>
                             <dd><a href="/lists">安全管理</a></dd>
                         </dl>

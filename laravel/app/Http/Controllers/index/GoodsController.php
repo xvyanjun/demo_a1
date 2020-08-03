@@ -169,6 +169,7 @@ class GoodsController extends Controller
     //加入购物车数据库
     public function shopping(Request $request){
         $u_id=request()->session()->get('u_id');
+        if(empty($u_id)){return ['code'=>'000005','msg'=>"请登录"];}
         $data=$request->all();
         //判断接受的sku拆分
         $sku=$data['sku'];

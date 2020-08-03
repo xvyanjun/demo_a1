@@ -25,7 +25,7 @@ public  function  add_list(Request $request){
     }
     //添加执行
     public function  add_do(Request $request){
-    $data=$request->all();
+    $data=$request->all(); 
 //        dd($data);
     if(empty($data['address_name'])){
         return ['code'=>"000009","msg"=>"姓名不能为空"];

@@ -212,7 +212,7 @@
             data.y_city=y_city;
             data.y_district=y_district;
             $.ajax({
-                url: "{{'/add_do'}}",
+                url: "{{'/add_go'}}",
                 type: 'post',
                 data: {address_name:address_name,address_addre:address_addre,address_tel:address_tel,y_district:y_district,y_city:y_city,y_province:y_province},
                 dataType: 'json',

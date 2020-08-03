@@ -436,10 +436,11 @@
 				success:function(res){
 					if(res.code==000000){
 						alert(res.msg);
-					}
-					if(res.code==000002){
+					}else if(res.code==000005){
 						alert(res.msg);
+						location.href='/login';
 					}
+
 				}
 			})
 		})

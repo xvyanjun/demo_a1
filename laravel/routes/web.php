@@ -150,7 +150,7 @@ Route::any('/shop_user_list/history','index\HomeController@history');
 //收获地址
 Route::any('/add_list','index\AddressController@add_list');
 Route::any('/city','index\AddressController@city');
-Route::any('/add_do','index\AddressController@add_do');
+Route::any('/add_go','index\AddressController@add_do');
 Route::any('/del','index\AddressController@del');
 Route::any('/upd/{address_id}','index\AddressController@upd');
 Route::any('/updAdd','index\AddressController@updAdd');

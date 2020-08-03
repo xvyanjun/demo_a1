@@ -43,7 +43,16 @@ class HomeController extends  Controller
     {
 
         $_token=$request->all();
-        $uid = Session::get('u_id');
+        $a1=empty($_token['y_img']);
+        $a2=empty($_token['y_name']);
+        $a3=empty($_token['year']);
+        $a4=empty($_token['month']);
+        $a5=empty($_token['day']);
+        $a6=empty($_token['y_city']);
+        if($a1==true||$a2==true||$a3==true||$a4==true||$a5==true||$a6==true){
+           echo '参数缺失';exit;
+        }
+        $uid = request()->session()->get('u_id');   
         $_token['u_id'] = $uid;
         //添加图片 单文件上传
         $year = $_token['year'];
@@ -59,7 +68,7 @@ class HomeController extends  Controller
         }
         $res= shop_uneed::insert($_token);
         if($res){
-            echo '添加成功';
+            echo '添加成功s';
 //            return redirect("admin/login/login");
         }
     }

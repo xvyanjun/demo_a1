@@ -19,7 +19,7 @@ class Demo_eva_controller extends Controller
         // $id=Ddan::where('dd_id',$xx['dd_id'])->first();
         // $ddan=$id['ddh'];
         // $je=$id['dd_zj'];
-        $ddan='2264544530484922';
+        $ddan='2280044000484922';
         $je='1000';
         if (!empty($ddan)&& trim($ddan)!=""){
             //商户订单号，商户网站订单系统中唯一订单号，必填
@@ -67,7 +67,7 @@ class Demo_eva_controller extends Controller
       $arr=$_GET;
       $alipaySevice = new \AlipayTradeService($config); 
       $result = $alipaySevice->check($arr);
-      
+      dd($arr,$result);
       /* 实际验证过程建议商户添加以下校验。
       1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
       2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），

@@ -18,7 +18,7 @@
             <ul class="yui3-g" id="goods-list">
                 @foreach($goods_info as $k=>$v)
 
-                <li class="yui3-u-1-4" style="width: 300px;height: 406px; @if($k%4==0)margin-left: 240px; @endif" >
+                <li class="yui3-u-1-4" style="width: 300px;height: 406px; @if($k%4==0)margin-left: 15%; @endif" >
                     <div class="list-wrap">
                         <div class="p-img"><img src="/{{$v['goods_img']}}" width="220" height="282" alt=''></div>
                         <div class="price"><strong><em>¥</em> <i>{{$v['goods_price']}}</i></strong></div>

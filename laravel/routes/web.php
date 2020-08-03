@@ -23,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
-
+Route::any('/eva_zfu','index\Demo_eva_controller@zfu');
+Route::any('/eva_tbu','index\Demo_eva_controller@tbu');
+Route::any('/eva_ybu','index\Demo_eva_controller@ybu');
+Route::any('/eva_list','index\Demo_eva_controller@eva_list');
 //---------------------------------------------------------
 //前台
 Route::any('/','index\IndexController@index');

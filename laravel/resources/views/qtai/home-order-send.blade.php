@@ -42,10 +42,10 @@ $(function(){
                     <div class="list-items">
                         <dl>
                             <dt><i>·</i> 订单中心</dt>
-                            <dd ><a href="/center"  class="" >我的订单</a></dd>
+                            <dd ><a href="/center" >我的订单</a></dd>
                             <dd><a href="/home_order_pay" class="" >待付款</a></dd>
                             <dd><a href="/home_order_send"  class="list-active" >待发货</a></dd>
-                            <dd><a href="home-order-receive.html" class="" >待收货</a></dd>
+                            <dd><a href="/home_order_receive" class="" >待收货</a></dd>
                             <!-- <dd><a href="home-order-evaluate.html"  class="list-active" >待评价</a></dd> -->
                         </dl>
                         <dl>

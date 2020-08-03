@@ -23,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
-
+Route::any('/eva_zfu','index\Demo_eva_controller@zfu');
+Route::any('/eva_tbu','index\Demo_eva_controller@tbu');
+Route::any('/eva_ybu','index\Demo_eva_controller@ybu');
+Route::any('/eva_list','index\Demo_eva_controller@eva_list');
 //---------------------------------------------------------
 //前台
 Route::any('/','index\IndexController@index');
@@ -44,7 +47,7 @@ Route::any('/nav/list','index\SlideController@nav_list');//导航
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------商品加入购物车
-Route::any('/shopping','index\GoodsController@shopping')->middleware('checkindex');
+Route::any('/shopping','index\GoodsController@shopping');
 Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
 // Route::any('/dhang_lceng','index\IndexController@dhang_lceng');

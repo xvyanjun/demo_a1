@@ -45,7 +45,7 @@ $(function(){
                             <dd ><a href="/center"  class="list-active" >我的订单</a></dd>
                             <dd><a href="/home_order_pay" class="" >待付款</a></dd>
                             <dd><a href="/home_order_send"  class="" >待发货</a></dd>
-                            <dd><a href="home-order-receive.html" class="" >待收货</a></dd>
+                            <dd><a href="/home_order_receive" class="" >待收货</a></dd>
                             <!-- <dd><a href="home-order-evaluate.html"  class="list-active" >待评价</a></dd> -->
                         </dl>
                         <dl>

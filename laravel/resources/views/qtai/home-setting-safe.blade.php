@@ -153,8 +153,6 @@ $(function(){
         <div class="py-container">
             <div class="yui3-g home">
                 <!--左侧列表-->
-                {{--@include('layouts_q.zuo');--}}
-
                 <div class="yui3-u-1-6 list">
                     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-seckillOrder.css" />
                     <div class="person-info">
@@ -168,11 +166,10 @@ $(function(){
                     <div class="list-items">
                         <dl>
                             <dt><i>·</i> 订单中心</dt>
-                            <dd ><a href="home-index.html" >我的订单</a></dd>
-                            <dd><a href="home-order-pay.html">待付款</a></dd>
-                            <dd><a href="home-order-send.html">待发货</a></dd>
-                            <dd><a href="home-order-receive.html">待收货</a></dd>
-                            <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                            <dd ><a href="/center"  >我的订单</a></dd>
+                            <dd><a href="/home_order_pay" class="" >待付款</a></dd>
+                            <dd><a href="/home_order_send"  class="" >待发货</a></dd>
+                            <dd><a href="/home_order_receive" class="" >待收货</a></dd>
                         </dl>
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
@@ -181,9 +178,9 @@ $(function(){
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add">个人信息</a></dd>
-                            <dd><a href="/add_list" >地址管理</a></dd>
-                            <dd><a href="/lists"  class="list-active" >安全管理</a></dd>
+                            <dd><a href="/add" class="">个人信息</a></dd>
+                            <dd><a href="/add_list">地址管理</a></dd>
+                            <dd><a href="/lists" class="list-active">安全管理</a></dd>
                         </dl>
                     </div>
                 </div>

@@ -434,11 +434,14 @@
 				data:data,
 				dataType:"json",
 				success:function(res){
+//					console.log(res);
 					if(res.code==000000){
 						alert(res.msg);
 					}else if(res.code==000005){
 						alert(res.msg);
 						location.href='/login';
+					}else{
+						alert(res.msg);
 					}
 
 				}

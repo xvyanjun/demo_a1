@@ -81,16 +81,6 @@ $(function(){
                         </div>
                         <div class="order-detail">
                             <div class="orders">
-                                <div class="choose-order">
-                                    <div class="sui-pagination pagination-large top-pages">
-                                        <ul>
-                                            <li class="prev disabled"><a href="#">上一页</a></li>
-
-                                            <li class="next"><a href="#">下一页</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
 								<!--order1-->
                                 <div class="order-detail">
                             <div class="orders">                        
@@ -178,8 +168,12 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    @if($g2['pay_status']=='1')
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
+                                                    @else
+                                                    <li><a href="javascript:;" class="sui-btn btn-info">已付款</a></li>
+                                                    @endif
                                                 </ul>
                                             </td>
                                         </tr>
@@ -269,8 +263,12 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center" rowspan="{{$g2['cd']}}">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    @if($g2['pay_status']=='1')
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
+                                                    @else
+                                                    <li><a href="javascript:;" class="sui-btn btn-info">已付款</a></li>
+                                                    @endif
                                                 </ul>
                                             </td>
                                         </tr>
@@ -381,4 +379,41 @@ $(function(){
     </div>
     <!-- 底部栏位 -->
     <!--页面底部-->
+    <script>
+        //-------------------------------------------------------------------------------------  
+        $(document).on('click','#zfu_y',function(){
+          var order_id=$(this).attr('order_id');
+          var zz=/^\d{1,}$/;
+          if(zz.test(order_id)&&order_id>=1){
+            location.href='/eva_zfu?order_id='+order_id;
+          }else{
+            console.log('id 获取失败');
+          }
+          console.log(order_id);
+        });
+//-------------------------------------------------------------------------------------  
+        $(document).on('click','#qxiao_n',function(){
+          var ts=$(this);  
+          var order_id=$(this).attr('order_id');
+          var zz=/^\d{1,}$/;
+          if(zz.test(order_id)&&order_id>=1){
+            $.ajax({
+              url:'/home_order_pay_del',
+              type:'post',
+              dataType:'json',
+              data:{'order_id':order_id},
+              success:function(jk){
+                if(jk.a1=='0'){
+                 location.reload();
+                }
+                console.log(jk.a2);
+              }  
+            });
+          }else{
+            console.log('id 获取失败');
+          }
+          console.log(order_id);
+        });
+//-------------------------------------------------------------------------------------
+    </script>
         @endsection 

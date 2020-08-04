@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>@yield('购物车')</title>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>支付页-成功</title>
+		<link rel="icon" href="/assets//qtai/img/favicon.ico">
+		
+	
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-cart.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-getOrderInfo.css" />
-    <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-paysuccess.css" />
 </head>
 
-<body>
-	<!--head-->
-	<div class="top">
-		<div class="py-container">
-			<div class="shortcut">
-				@if(!session('u_id'))
+	<body>
+		<!--head-->
+		<div class="top">
+			<div class="py-container">
+				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">请<a href="/login" >登录</a>　<span><a href="/reg" >免费注册</a></span></li>
+						<li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
 					</ul>
-				@else
-					<ul class="fl">
-						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">欢迎<a href="javascript:;" >{{session('u_name')}}</a>登录　<span><a href="/tuichu" >退出</a></span></li>
+					<ul class="fr">
+						<li class="f-item">我的订单</li>
+						<li class="f-item space"></li>
+						<li class="f-item">我的品优购</li>
+						<li class="f-item space"></li>
+						<li class="f-item">品优购会员</li>
+						<li class="f-item space"></li>
+						<li class="f-item">企业采购</li>
+						<li class="f-item space"></li>
+						<li class="f-item">关注品优购</li>
+						<li class="f-item space"></li>
+						<li class="f-item">客户服务</li>
+						<li class="f-item space"></li>
+						<li class="f-item">网站导航</li>
 					</ul>
-				@endif
-				<ul class="fr">
-					<li class="f-item"><a href="/center">我的订单</a></li>
-					<li class="f-item space"></li>
-					<li class="f-item space"></li>
-					<li class="f-item">品优购会员</li>
-					<li class="f-item space"></li>
-					<li class="f-item">企业采购</li>
-					<li class="f-item space"></li>
-					<li class="f-item">关注品优购</li>
-					<li class="f-item space"></li>
-					<li class="f-item">客户服务</li>
-					<li class="f-item space"></li>
-					<li class="f-item">网站导航</li>
-				</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-    
-
-<div class="cart py-container">
-		<!--logoArea-->
-		<div class="logoArea">
-			<div class="fl logo"><span class="title"></span></div>
-			<div class="fr search">
-				<form class="sui-form form-inline">
-					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-					</div>
-				</form>
+		<div class="cart py-container">
+			<!--logoArea-->
+			<div class="logoArea">
+				<div class="fl logo"><span class="title">支付页</span></div>
+			</div>
+			<!--主内容-->
+			<div class="paysuccess">
+				<div class="success">
+					<h3><img src="/qtai/img/_/right.png" width="48" height="48">　恭喜您，支付成功啦！</h3>
+					<div class="paydetail">
+					<p>支付方式：支付宝</p>
+					<p>支付金额：￥1006.00元</p>
+					<p class="button"><a href="myOrder.html" class="sui-btn btn-xlarge btn-danger">查看订单</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html" class="sui-btn btn-xlarge ">继续购物</a></p>
+				    </div>
+				</div>
+				
 			</div>
 		</div>
-      @yield('content')
-</div>
-
-<!-- eva_zhong -->
-	<!-- 底部栏位 -->
-	<!--页面底部-->
+		<!-- 底部栏位 -->
+		<!--页面底部-->
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -198,11 +191,13 @@
 	</div>
 </div>
 <!--页面底部END-->
-
+		
+		
+	
 <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
+<script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
 </body>
 
 </html>

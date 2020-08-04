@@ -16,8 +16,8 @@ class CenterController extends Controller
     //我的订单
     public function center(Request $request){
         $u_id=request()->session()->get('u_id');	
-        
-        $shop_order=shop_order::where(['order_del'=>1,'u_id'=>$u_id])->paginate(2);
+        if(empty($u_id)){return redirect('/login');}
+        $shop_order=shop_order::where([['order_del','1'],['u_id',$u_id],['pay_status','>','0']])->paginate(4);
         foreach($shop_order as $c=>$v){
         $shop_order_details=shop_order_details::where([['order_id',$v['order_id']],['datails_del','1']])->get();
         foreach($shop_order_details as $f1=>$f2){

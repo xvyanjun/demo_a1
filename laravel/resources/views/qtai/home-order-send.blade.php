@@ -170,8 +170,7 @@ $(function(){
                                                     </td>
                                                     <td width="10%" class="center">
                                                         <ul class="unstyled">
-                                                            <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                            <li><a href="#">取消订单</a></li>
+                                                            <li><a href="javascript:;" class="sui-btn btn-info">已付款</a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -261,8 +260,7 @@ $(function(){
                                                         </td>
                                                         <td width="10%" class="center" rowspan="{{$g2['cd']}}">
                                                             <ul class="unstyled">
-                                                                <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                                <li><a href="#">取消订单</a></li>
+                                                                <li><a href="javascript:;" class="sui-btn btn-info">已付款</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
@@ -334,84 +332,28 @@ $(function(){
                             </div>
                         </div>
                         <div class="like-list">
-                            <ul class="yui3-g">
+                             <ul class="yui3-g">
+                                @foreach($goods as $K=>$v)
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike01.png" />
+                                            <img src="/{{$v->goods_img}}" />
                                         </div>
                                         <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                            <em>{{$v->goods_name}}</em>
                                         </div>
                                         <div class="price">
                                             <strong>
-											<em>¥</em>
-											<i>3699.00</i>
-										</strong>
+                                            <em>¥</em>
+                                            <i>{{$v->goods_price}}</i>
+                                        </strong>
                                         </div>
                                         <div class="commit">
-                                            <i class="command">已有6人评价</i>
+                                            <i class="command"></i>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike02.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike03.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike04.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-
+                                @endforeach
                             </ul>
                         </div>
                     </div>

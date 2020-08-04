@@ -83,15 +83,17 @@ $(function(){
                         <div class="order-detail" id='replace_eva'>
 
                             <div class="orders">
-                                <div class="choose-order">
-                                    <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
-                                        <input type="checkbox" ><span>全选</span>
+                                <!-- <div class="choose-order">
+                                    <label data-toggle="checkbox" class="checkbox-pretty"> -->
+                                        <!--class="checkbox-pretty checked"-->
+                                        <!-- <input type="checkbox" ><span>全选</span>
                                     </label>
                                     <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
-                                </div>
+                                </div> -->
                                 
                                 <!-- eva_list -->
                                 @foreach($shop_order as $g1=>$g2)
+                                <div id='eva_jk'>
                                  @if($g2['cd']==1)
                                 <div class="choose-title">
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
@@ -174,8 +176,8 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -265,8 +267,8 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center" rowspan="{{$g2['cd']}}">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -320,15 +322,17 @@ $(function(){
                                     </tbody>
                                 </table> 
                                  @endif
+                                 </div>
                                 @endforeach
 
                             </div>
 
                             <div class="choose-order">
-                                <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
-                                        <input type="checkbox" ><span>全选</span>
-                                    </label>
-                                <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
+                                <!-- <label data-toggle="checkbox" class="checkbox-pretty"> -->
+                                    <!--class="checkbox-pretty checked"-->
+                                        <!-- <input type="checkbox" ><span>全选</span> -->
+                                    <!-- </label> -->
+                                <!-- <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a> -->
                                 <div class="sui-pagination pagination-large top-pages">
                                     {{$shop_order->appends($xx)->links()}}
                                 </div>
@@ -346,83 +350,27 @@ $(function(){
                         </div>
                         <div class="like-list">
                             <ul class="yui3-g">
+                                @foreach($goods as $K=>$v)
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike01.png" />
+                                            <img src="/{{$v->goods_img}}" />
                                         </div>
                                         <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                            <em>{{$v->goods_name}}</em>
                                         </div>
                                         <div class="price">
                                             <strong>
-											<em>¥</em>
-											<i>3699.00</i>
-										</strong>
+                                            <em>¥</em>
+                                            <i>{{$v->goods_price}}</i>
+                                        </strong>
                                         </div>
                                         <div class="commit">
-                                            <i class="command">已有6人评价</i>
+                                            <i class="command"></i>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike02.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike03.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/qtai/img/_/itemlike04.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -433,6 +381,7 @@ $(function(){
     <!-- 底部栏位 -->
     <!--页面底部-->
     <script>
+//-------------------------------------------------------------------------------------        
         $(document).on('click','.pagination a',function(){
             var url=$(this).prop('href');
             if(url!=''){
@@ -447,5 +396,40 @@ $(function(){
             }
             return false;
         });
+//-------------------------------------------------------------------------------------  
+        $(document).on('click','#zfu_y',function(){
+          var order_id=$(this).attr('order_id');
+          var zz=/^\d{1,}$/;
+          if(zz.test(order_id)&&order_id>=1){
+            location.href='/eva_zfu?order_id='+order_id;
+          }else{
+            console.log('id 获取失败');
+          }
+          console.log(order_id);
+        });
+//-------------------------------------------------------------------------------------  
+        $(document).on('click','#qxiao_n',function(){
+          var ts=$(this);  
+          var order_id=$(this).attr('order_id');
+          var zz=/^\d{1,}$/;
+          if(zz.test(order_id)&&order_id>=1){
+            $.ajax({
+              url:'/home_order_pay_del',
+              type:'post',
+              dataType:'json',
+              data:{'order_id':order_id},
+              success:function(jk){
+                if(jk.a1=='0'){
+                 location.reload();
+                }
+                console.log(jk.a2);
+              }  
+            });
+          }else{
+            console.log('id 获取失败');
+          }
+          console.log(order_id);
+        });
+//-------------------------------------------------------------------------------------           
     </script>
 @endsection 

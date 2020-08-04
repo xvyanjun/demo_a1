@@ -36,13 +36,34 @@ public function home_order_pay(){
 		$v['order_details']=$shop_order_details;
 		$v['cd']=$cd;
 	}
+   
+  $goods=Goods::orderby("goods_hits","desc")->limit(4)->get(); 
+
 	if(request()->ajax()){
-	  return view('qtai.home-order-pay_s',['shop_order'=>$shop_order,'xx'=>$xx]);
+	  return view('qtai.home-order-pay_s',['shop_order'=>$shop_order,'xx'=>$xx,'goods'=>$goods]);
 	}
-	return view('qtai.home-order-pay',['shop_order'=>$shop_order,'xx'=>$xx]);
+	return view('qtai.home-order-pay',['shop_order'=>$shop_order,'xx'=>$xx,'goods'=>$goods]);
 }
 //-------------------------------------------------------------------------
-
+public function home_order_pay_del(){
+    $xx=request()->all();
+    $u_id=request()->session()->get('u_id');  
+    if(empty($u_id)){return redirect('/login');}
+    $a1=array_key_exists('order_id',$xx);
+    if(!$a1||empty($xx['order_id'])){
+      $fh=['a1'=>'1','a2'=>'参数缺失'];
+      return json_encode($fh);exit;
+    }
+    $del=shop_order::where([['order_id',$xx['order_id']],['order_del','1']])->update([
+    'pay_status'=>'0'
+    ]);
+    if($del){
+      $fh=['a1'=>'0','a2'=>'取消成功'];
+    }else{
+      $fh=['a1'=>'1','a2'=>'取消失败'];
+    }
+    return json_encode($fh);exit;
+}
 //-------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------

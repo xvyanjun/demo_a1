@@ -23,10 +23,6 @@ use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // Route::any('/','a_1\demo_a1_contr@eva');
 //---------------------------------------------------------
-Route::any('/eva_zfu','index\Demo_eva_controller@zfu');
-Route::any('/eva_tbu','index\Demo_eva_controller@tbu');
-Route::any('/eva_ybu','index\Demo_eva_controller@ybu');
-Route::any('/eva_list','index\Demo_eva_controller@eva_list');
 //---------------------------------------------------------
 //前台
 Route::any('/','index\IndexController@index');
@@ -63,9 +59,15 @@ Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
 });
-//----------------------------------------------------------
-Route::any('/center','index\CenterController@center')->middleware('checkindex');//我的订单
-
+//----------------------------------------------------------我的订单
+Route::any('/center','index\CenterController@center')->middleware('checkindex');
+//----------------------------------------------------------待付款
+Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');
+Route::any('/home_order_pay_del','index\Home_xv_Controller@home_order_pay_del');//取消订单
+//---------------------------------------------------------代发货
+Route::any('/home_order_send','index\DaifaController@home_order_send');
+//---------------------------------------------------------代收货
+Route::any('/home_order_receive','index\OrderController@home_order_receive');
 //---------------------------------------------------------
 Route::prefix('/')->group(function(){
 //---------------------------------------------------------
@@ -86,6 +88,10 @@ Route::prefix('/')->group(function(){
 //---------------------------------------------------------
 Route::any('/getOrderInfo','index\getOrderinfoController@getOrderInfo');//订单列表
 Route::any('/orderAdd','index\getOrderinfoController@orderAdd');//订单执行表
+Route::any('/paysuccess','index\getOrderinfoController@paysuccess');//订单提交成功展示页面
+Route::any('/eva_zfu','index\getOrderinfoController@zfu');
+Route::any('/eva_tbu','index\getOrderinfoController@tbu');
+Route::any('/eva_ybu','index\getOrderinfoController@ybu');
 //---------------------------------------------------------
 });
 
@@ -94,7 +100,7 @@ Route::any('/history_vl_del','index\GoodsController@history_vl_del');//删除浏
 //---------------------------------------------------------
 Route::any('/friend','index\IndexController@friend');
 //---------------------------------------------------------
-Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');//待付款
+
 //---------------------------------------------------------
 
 
@@ -102,9 +108,7 @@ Route::any('/home_order_pay','index\Home_xv_Controller@home_order_pay');//待付
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
 //---------------------------------------------------------代发货
-Route::any('/home_order_send','index\DaifaController@home_order_send');
-//---代收货
-Route::any('/home_order_receive','index\OrderController@home_order_receive');
+
 //---------------------------------------------------------
 Route::any('/home_order_evaluate','a_1\demo_a1_contr@home_order_evaluate');
 //---------------------------------------------------------

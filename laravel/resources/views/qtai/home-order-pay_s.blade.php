@@ -1,14 +1,16 @@
 
                             <div class="orders">
-                                <div class="choose-order">
-                                    <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
-                                        <input type="checkbox" ><span>全选</span>
+                               <!--  <div class="choose-order">
+                                    <label data-toggle="checkbox" class="checkbox-pretty"> -->
+                                        <!--class="checkbox-pretty checked"-->
+                                        <!-- <input type="checkbox" ><span>全选</span>
                                     </label>
                                     <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
-                                </div>
+                                </div> -->
                                 
                                 <!-- eva_list -->
                                 @foreach($shop_order as $g1=>$g2)
+                                <div id='eva_jk'>
                                  @if($g2['cd']==1)
                                 <div class="choose-title">
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
@@ -91,8 +93,8 @@
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -182,8 +184,8 @@
                                             </td>
                                             <td width="10%" class="center" rowspan="{{$g2['cd']}}">
                                                 <ul class="unstyled">
-                                                    <li><a href="#" class="sui-btn btn-info">立即付款</a></li>
-                                                    <li><a href="#">取消订单</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='zfu_y' class="sui-btn btn-info">立即付款</a></li>
+                                                    <li><a href="javascript:;" order_id="{{$g2['order_id']}}" id='qxiao_n'>取消订单</a></li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -237,15 +239,17 @@
                                     </tbody>
                                 </table> 
                                  @endif
+                                 </div>
                                 @endforeach
 
                             </div>
 
                             <div class="choose-order">
-                                <label data-toggle="checkbox" class="checkbox-pretty"><!--class="checkbox-pretty checked"-->
-                                        <input type="checkbox" ><span>全选</span>
-                                    </label>
-                                <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a>
+                                <!-- <label data-toggle="checkbox" class="checkbox-pretty"> -->
+                                    <!--class="checkbox-pretty checked"-->
+                                        <!-- <input type="checkbox" ><span>全选</span> -->
+                                    <!-- </label> -->
+                                <!-- <a href="" class="sui-btn btn-info btn-bordered hepay-btn">合并付款</a> -->
                                 <div class="sui-pagination pagination-large top-pages">
                                     {{$shop_order->appends($xx)->links()}}
                                 </div>

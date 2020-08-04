@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>@yield('购物车')</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>@yield('订单提交成功-前往支付')</title>
+        <link rel="icon" href="/favicon.ico">
+		
+	
+        <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
+        <link rel="stylesheet" type="text/css" href="/qtai/css/pages-weixinpay.css" />
+    
+        <link rel="stylesheet" type="text/css" href="/qtai/css/pages-paysuccess.css" />
 
-    <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-cart.css" />
-    <link rel="stylesheet" type="text/css" href="/qtai/css/pages-getOrderInfo.css" />
-    <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/qtai/css/pages-payfail.css" />
+    
+        <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 </head>
 
-<body>
-	<!--head-->
-	<div class="top">
+	<body>
+		<!--head-->
+		<div class="top">
 		<div class="py-container">
 			<div class="shortcut">
 				@if(!session('u_id'))
@@ -46,27 +52,11 @@
 			</div>
 		</div>
 	</div>
-    
 
-<div class="cart py-container">
-		<!--logoArea-->
-		<div class="logoArea">
-			<div class="fl logo"><span class="title"></span></div>
-			<div class="fr search">
-				<form class="sui-form form-inline">
-					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-					</div>
-				</form>
-			</div>
-		</div>
-      @yield('content')
-</div>
+@yield('content')
 
-<!-- eva_zhong -->
-	<!-- 底部栏位 -->
-	<!--页面底部-->
+		<!-- 底部栏位 -->
+		<!--页面底部-->
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -198,11 +188,19 @@
 	</div>
 </div>
 <!--页面底部END-->
-
+		
+	
 <script type="text/javascript" src="/qtai/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/qtai/js/plugins/sui/sui.min.js"></script>
 <script type="text/javascript" src="/qtai/js/widget/nav.js"></script>
+<script type="text/javascript">
+			$(function(){
+				$("ul.payType li").click(function(){
+					$(this).css("border","2px solid #E4393C").siblings().css("border-color","#ddd");
+				})
+			})
+</script>
 </body>
 
 </html>

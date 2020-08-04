@@ -39,9 +39,8 @@ class DaifaController extends Controller
             $v['order_details']=$shop_order_details;
             $v['cd']=$cd;
         }
-//         dd($shop_order);
-//        dd($f2);
-        return view('qtai.home-order-send',['shop_order'=>$shop_order]);
+        $goods=Goods::orderby("goods_hits","desc")->limit(4)->get(); 
+        return view('qtai.home-order-send',['shop_order'=>$shop_order,'goods'=>$goods]);
     }
 
 //-----------------------------------------------------------------------------

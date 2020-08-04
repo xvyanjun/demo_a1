@@ -80,16 +80,16 @@
 					</div>
 					<div class="yui3-u Center searchArea">
 						<div class="search">
-							<form action="" class="sui-form form-inline">
+							<form action="/soulist" method="post" class="sui-form form-inline">
 								<!--searchAutoComplete-->
 								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+									<input type="text" id="autocomplete" name="sou" value="" placeholder="" class="input-error input-xxlarge" />
+									<button class="sui-btn btn-xlarge btn-danger" id="toubudasousuo" type="submit">搜索</button>
 								</div>
 							</form>
 						</div>
-					</div>
-					<div class="yui3-u Right shopArea">
+                    </div>
+                    <div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
 								<span class="car"></span>
@@ -153,13 +153,16 @@
 //----------------------------------------------------------------						
 					});
 				</script>
+
 			</div>
 		</div>
 	</div>
 </div>
-<!-- eva -->
-@yield('content')
-<!-- eva -->
+    {{--<div id="yemiandasousuo">--}}
+        <!-- eva -->
+        @yield('content')
+                <!-- eva -->
+    {{--</div>--}}
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -465,8 +468,27 @@ $(function(){
 	  	}
 	  });
     });
+
+///****头部搜索****/
+//$(document).on("click","#toubudasousuo",function(){
+//    var sou=$(this).prev('input').val();
+//    $.ajax({
+//        url:'/soulist',
+//        type:'post',
+//        dataType:'html',
+//        data:{sou:sou},
+//        success:function(res){
+//            if(res.code=='300'){
+//                alert(res.msg);
+//            }else{
+//                $("#yemiandasousuo").html(res);
+//            }
+//        }
+//    });
+//});
 //--------------------------------------------------------------------	
 </script>
+
 </body>
 
 

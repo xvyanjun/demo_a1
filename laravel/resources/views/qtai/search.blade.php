@@ -99,7 +99,7 @@
 				<div class="goods-list" >
 					<ul class="yui3-g">
 						@foreach($goods_info as $k=>$v)
-						<li class="yui3-u-1-5">
+						<li class="yui3-u-1-5" title="{{$v['goods_name']}}">
 							<div class="list-wrap">
 								<div class="p-img">
 									<a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v['goods_img']}}" width="200" height="210"/></a>
@@ -539,7 +539,7 @@ $(document).on("click",".tiao",function(){
                 success: function (res) {
 //                    console.log(res);
 					if(res.code=="200"){
-						alert(关注成功);
+						alert('关注成功');
 					}else if(res.code=="555"){
 						alert(res.msg);
 						window.location.href="/login";

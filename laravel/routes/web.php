@@ -63,6 +63,11 @@ Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
 });
+
+/****************************************************/
+Route::any('/soulist','index\SuiController@sou');//头部大搜索
+/******************************************************/
+
 //----------------------------------------------------------
 Route::any('/center','index\CenterController@center')->middleware('checkindex');//我的订单
 

@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>@yield('首页')</title>
-	 <link rel="icon" href="/favicon.ico">
+	<link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/qtai/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />
@@ -46,7 +46,7 @@
 				@endif
 					<ul class="fr">
 						<li class="f-item"><a href="/center">我的订单</a></li>
-						<li class="f-item space"></li>
+
 						<li class="f-item space"></li>
 						<li class="f-item">品优购会员</li>
 						<li class="f-item space"></li>
@@ -56,15 +56,9 @@
 						<li class="f-item space"></li>
 						<li class="f-item" id="service">
 							<span>客户服务</span>
-							<ul class="service">
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="#">商家后台</a></li>
-							</ul>
 						</li>
 						<li class="f-item space"></li>
-						<li class="f-item">网站导航</li>
+						<li class="f-item"><a href="/fankui">网站反馈</a></li>
 					</ul>
 				</div>
 			</div>
@@ -79,16 +73,16 @@
 					</div>
 					<div class="yui3-u Center searchArea">
 						<div class="search">
-							<form action="" class="sui-form form-inline">
+							<form action="/soulist" method="post" class="sui-form form-inline">
 								<!--searchAutoComplete-->
 								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+									<input type="text" id="autocomplete" name="sou" value="" placeholder="" class="input-error input-xxlarge" />
+									<button class="sui-btn btn-xlarge btn-danger" id="toubudasousuo" type="submit">搜索</button>
 								</div>
 							</form>
 						</div>
-					</div>
-					<div class="yui3-u Right shopArea">
+                    </div>
+                    <div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
 								<span class="car"></span>
@@ -152,13 +146,16 @@
 //----------------------------------------------------------------						
 					});
 				</script>
+
 			</div>
 		</div>
 	</div>
 </div>
-<!-- eva -->
-@yield('content')
-<!-- eva -->
+    {{--<div id="yemiandasousuo">--}}
+        <!-- eva -->
+        @yield('content')
+                <!-- eva -->
+    {{--</div>--}}
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -298,40 +295,6 @@
 		<div class="toolbar">
 			<div class="toolbar-panels J-panel">
 
-				<!-- 购物车 -->
-		<!-- 		<div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-cart toolbar-animate-out">
-					<h3 class="tbar-panel-header J-panel-header">
-						<a href="" class="title"><i></i><em class="title">购物车</em></a>
-						<span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('cart');" ></span>
-					</h3>
-					<div class="tbar-panel-main">
-						<div class="tbar-panel-content J-panel-content">
-							<div id="J-cart-tips" class="tbar-tipbox hide">
-								<div class="tip-inner">
-									<span class="tip-text">还没有登录，登录后商品将被保存</span>
-									<a href="#none" class="tip-btn J-login">登录</a>
-								</div>
-							</div>
-							<div id="J-cart-render"> -->
-								<!-- 列表 -->
-		<!-- 						<div id="cart-list" class="tbar-cart-list">
-
-
-
-								</div>
-							</div>
-						</div>
-					</div> -->
-					<!-- 小计 -->
-			<!-- 		<div id="cart-footer" class="tbar-panel-footer J-panel-footer">
-						<div class="tbar-checkout">
-							<div class="jtc-number"> <strong class="J-count" id="cart-number">0</strong>件商品 </div>
-							<div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong> </div>
-							<a class="jtc-btn J-btn" href="#none" target="_blank">去购物车结算</a>
-						</div>
-					</div>
-				</div> -->
-
 				<!-- 我的关注 -->
 				<div style="visibility: hidden;" data-name="follow" class="J-content toolbar-panel tbar-panel-follow">
 					<h3 class="tbar-panel-header J-panel-header">
@@ -464,8 +427,27 @@ $(function(){
 	  	}
 	  });
     });
+
+///****头部搜索****/
+//$(document).on("click","#toubudasousuo",function(){
+//    var sou=$(this).prev('input').val();
+//    $.ajax({
+//        url:'/soulist',
+//        type:'post',
+//        dataType:'html',
+//        data:{sou:sou},
+//        success:function(res){
+//            if(res.code=='300'){
+//                alert(res.msg);
+//            }else{
+//                $("#yemiandasousuo").html(res);
+//            }
+//        }
+//    });
+//});
 //--------------------------------------------------------------------	
 </script>
+
 </body>
 
 

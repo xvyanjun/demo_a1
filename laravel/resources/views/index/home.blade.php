@@ -70,6 +70,7 @@
                         </dl>
                     </div>
                 </div>
+
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6">
                     <div class="body userInfo">

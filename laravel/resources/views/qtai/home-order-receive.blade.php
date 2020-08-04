@@ -41,11 +41,11 @@ $(function(){
                     <div class="list-items">
                         <dl>
                             <dt><i>·</i> 订单中心</dt>
-                            <dd ><a href="{{url('/center')}}"  >我的订单</a></dd>
-                            <dd><a href="/home_order_pay"  >待付款</a></dd>
-                            <dd><a href="/home_order_send"   >待发货</a></dd>
-                            <dd><a href="/home_order_receive"  class="list-active" >待收货</a></dd>
-                            <dd><a href="home-order-evaluate.html"   >待评价</a></dd>
+                            <dd ><a href="/center"  >我的订单</a></dd>
+                            <dd><a href="/home_order_pay" class="" >待付款</a></dd>
+                            <dd><a href="/home_order_send"  class="" >待发货</a></dd>
+                            <dd><a href="/home_order_receive" class="list-active">待收货</a></dd>
+                            <!-- <dd><a href="home-order-evaluate.html"  class="list-active" >待评价</a></dd> -->
                         </dl>
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
@@ -54,9 +54,9 @@ $(function(){
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add">个人信息</a></dd>
-                            <dd><a href="/add_list"  class="" >地址管理</a></dd>
-                            <dd><a href="/lists"  class="" >安全管理</a></dd>
+                            <dd><a href="/add" class="">个人信息</a></dd>
+                            <dd><a href="/add_list">地址管理</a></dd>
+                            <dd><a href="/lists">安全管理</a></dd>
                         </dl>
                     </div>
                 </div>

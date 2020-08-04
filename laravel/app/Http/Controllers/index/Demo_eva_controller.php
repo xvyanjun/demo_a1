@@ -19,8 +19,10 @@ class Demo_eva_controller extends Controller
         // $id=Ddan::where('dd_id',$xx['dd_id'])->first();
         // $ddan=$id['ddh'];
         // $je=$id['dd_zj'];
+
         $a=date('His');
         $ddan='2280044000'.$a;
+
         $je='1000';
         if (!empty($ddan)&& trim($ddan)!=""){
             //商户订单号，商户网站订单系统中唯一订单号，必填

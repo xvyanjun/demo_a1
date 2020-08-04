@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Log;
 
 class getOrderinfoController extends Controller
 {
-//---------------------------------------------------------
-public function getOrderInfo(){
+  //---------------------------------------------------------
+  public function getOrderInfo(){
   $xx=request()->all();
   $a1=array_key_exists('trolley_id_s',$xx);
   if($a1==false){
@@ -53,9 +53,9 @@ public function getOrderInfo(){
   }
   $up_s=['num_up'=>$num_up,'price_up'=>$price_up];
   return view('qtai.getOrderInfo',['cat_list'=>$cat_list,'address_list'=>$address_list,'up_s'=>$up_s]);
-}
-//---------------------------------------------------------
-public function explode_id($xxi){
+  }
+  //---------------------------------------------------------
+  public function explode_id($xxi){
   $sxing=[];   
   $c=0;
   $v=$xxi;
@@ -101,8 +101,8 @@ public function explode_id($xxi){
    
   $sxing=array_unique($sxing);
   return $sxing;
-}
-//---------------------------------------------------------
+  }
+  //---------------------------------------------------------
 
   //提交订单
   public function orderAdd(Request $request){
@@ -200,7 +200,7 @@ public function explode_id($xxi){
     DB::commit();
     return ['code'=>'000000','msg'=>'提交订单成功','order_id'=>$order_id];
   }
-//--------------------------------------------------------
+  //--------------------------------------------------------
     public function paysuccess(){
       $xx=request()->all();
       $a1=array_key_exists('order_id',$xx);
@@ -214,7 +214,7 @@ public function explode_id($xxi){
         return back();exit;
       }
     }  
-//--------------------------------------------------------
+  //--------------------------------------------------------
     public function zfu(){
         require_once app_path('libs/alipay/wappay/service/AlipayTradeService.php');
         require_once app_path('libs/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php');
@@ -260,7 +260,7 @@ public function explode_id($xxi){
             return ;
         }      
     }
-//--------------------------------------------------------
+  //--------------------------------------------------------
     public function tbu(){
       /* *
        * 功能：支付宝页面跳转同步通知页面
@@ -295,6 +295,7 @@ public function explode_id($xxi){
       
         $out_trade_no = htmlspecialchars($_GET['out_trade_no']);
 
+
         //总金额
         $total_prices_s=$arr['total_amount'];
         $ex=explode('.',$total_prices_s);
@@ -320,8 +321,8 @@ public function explode_id($xxi){
           echo "验证失败..";
       }
     }
-//--------------------------------------------------------  
-    public function ybu(){
+  //--------------------------------------------------------  
+      public function ybu(){
        /* *
         * 功能：支付宝服务器异步通知页面
         * 版本：2.0
@@ -334,8 +335,8 @@ public function explode_id($xxi){
         * 该页面不能在本机电脑测试，请到服务器上做测试。请确保外部可以访问该页面。
         * 如果没有收到该页面返回的 success 信息，支付宝会在24小时内按一定的时间策略重发通知
         */
-      $config=config('alipayconfig');
-      require_once app_path('libs/alipay/wappay/service/AlipayTradeService.php');
+        $config=config('alipayconfig');
+        require_once app_path('libs/alipay/wappay/service/AlipayTradeService.php');
        
        
        $arr=$_POST;
@@ -407,6 +408,6 @@ public function explode_id($xxi){
            $xg_1=shop_order::where([['order_sn',$arr['out_trade_no']],['order_del','1']])->update(['pay_status'=>'2']);
            $xg_2=shop_order_details::where([['order_id',$order_all['order_id']],['datails_del','1']])->update(['datails_status'=>'2']);
        }      
-    }
-//--------------------------------------------------------  
+      }
+  //--------------------------------------------------------  
 }

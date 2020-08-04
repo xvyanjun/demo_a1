@@ -43,7 +43,7 @@ Route::any('/nav/list','index\SlideController@nav_list');//导航
 //---------------------------------------------------------商品详情页
 Route::any('/goods_list/{id}','index\GoodsController@goods_list');
 //---------------------------------------------------------商品加入购物车
-Route::any('/shopping','index\GoodsController@shopping')->middleware('checkindex');
+Route::any('/shopping','index\GoodsController@shopping');
 Route::any('/sehao','index\GoodsController@sehao');
 //---------------------------------------------------------楼层左侧
 // Route::any('/dhang_lceng','index\IndexController@dhang_lceng');
@@ -59,6 +59,7 @@ Route::any('yqv_replace_sj','index\IndexController@yqv_replace_sj');
 Route::any('ppai_js','index\IndexController@ppai_js');
 //----------------------------------------------------------
 });
+
 //----------------------------------------------------------我的订单
 Route::any('/center','index\CenterController@center')->middleware('checkindex');
 //----------------------------------------------------------待付款
@@ -68,6 +69,12 @@ Route::any('/home_order_pay_del','index\Home_xv_Controller@home_order_pay_del');
 Route::any('/home_order_send','index\DaifaController@home_order_send');
 //---------------------------------------------------------代收货
 Route::any('/home_order_receive','index\OrderController@home_order_receive');
+
+
+/****************************************************/
+Route::any('/soulist','index\SuiController@sou');//头部大搜索
+/******************************************************/
+
 //---------------------------------------------------------
 Route::prefix('/')->group(function(){
 //---------------------------------------------------------
@@ -167,8 +174,10 @@ Route::any('/login_do','index\SafeController@login_do');
 Route::any('/sendcode','index\SafeController@sendcode');
 Route::any('/change_phone','index\SafeController@change_phone');
 
-
-
+//网站反馈
+Route::any('/fankui','index\FanController@fankui');//反馈展示
+Route::any('/fanAdd','index\FanController@fanAdd');//反馈执行
+Route::any('/huiAdd','index\FanController@huiAdd');//回复
 
 
 

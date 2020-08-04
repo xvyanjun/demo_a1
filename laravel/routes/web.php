@@ -163,8 +163,10 @@ Route::any('/login_do','index\SafeController@login_do');
 Route::any('/sendcode','index\SafeController@sendcode');
 Route::any('/change_phone','index\SafeController@change_phone');
 
-
-
+//网站反馈
+Route::any('/fankui','index\FanController@fankui');//反馈展示
+Route::any('/fanAdd','index\FanController@fanAdd');//反馈执行
+Route::any('/huiAdd','index\FanController@huiAdd');//回复
 
 
 

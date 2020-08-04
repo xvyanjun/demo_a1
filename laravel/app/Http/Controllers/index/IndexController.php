@@ -14,7 +14,7 @@ use App\Models\Cate;
 use App\Models\Friend;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Brand;
-
+use Illuminate\Support\Facades\Redis;
 
 class IndexController extends Controller
 {
@@ -22,12 +22,14 @@ class IndexController extends Controller
 public function index(){
 //..............................eva
     $xx=request()->all();
-//..............................eva
+      //..............................eva
+
     $model=new Cate();
     $cate=$model::where(['cate_del'=>1,'p_id'=>0])->get()->toArray();
     $cate_info=self::cate_list($cate);
     $slide_s=shop_slide::where([['slide_del','1'],['slide_show','1']])->orderby('slide_weight','asc')->get();
     $service_s=shop_service::where([['service_show','1'],['service_del','1']])->paginate(5);
+
 //..............................eva
     //今日推荐
     $goods=Goods::where(["goods_del"=>1])->orderby("goods_id","desc")->limit(4)->get();
@@ -71,7 +73,7 @@ public function index(){
     $at_present=cate::where([['cate_id','<',$begin_num],['p_id','0'],['cate_show','1'],['cate_del','1']])->count();
     return view('qtai.floor_replace_s',['cate_s'=>$cate_s,'cate_eva_sum'=>$cate_eva_sum,'at_present'=>$at_present]);
   }
-    return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand,'cate_eva_sum'=>$cate_eva_sum]);
+  return view('qtai.index',['slide_s'=>$slide_s,'service_s'=>$service_s,'cate_info'=>$cate_info,"goods"=>$goods,"history_goods"=>$history_goods,'cate_s'=>$cate_s,"brand"=>$brand,'cate_eva_sum'=>$cate_eva_sum]);
 }
 //.-------------------------------------------------------------------------导航
 public function dhang_jz(){

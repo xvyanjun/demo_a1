@@ -11,7 +11,7 @@ class AddressController extends  Controller
 public  function  add_list(Request $request){
 //    $data=$request->all();
 //    var_dump($data);
-    $res=Address::where(["address_del"=>1])->paginate(2);
+    $res=Address::where(["address_del"=>1])->get();
 //    var_dump($res);exit;
     $province=Area::where(['pid'=>0])->get();
     return view('qtai/home-setting-address',['province'=>$province],compact("res"));

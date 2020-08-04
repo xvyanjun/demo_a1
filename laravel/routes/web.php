@@ -107,7 +107,7 @@ Route::any('/friend','index\IndexController@friend');
 
 //---------------------------------------------------------
 Route::any('/home_index','a_1\demo_a1_contr@home_index');
-//---------------------------------------------------------代发货
+//---------------------------------------------------------
 
 //---------------------------------------------------------
 Route::any('/home_order_evaluate','a_1\demo_a1_contr@home_order_evaluate');
@@ -122,13 +122,13 @@ Route::any('/home_setting_address','a_1\demo_a1_contr@home_setting_address');
 //---------------------------------------------------------
 Route::any('/home_setting_safe','a_1\demo_a1_contr@home_setting_safe');
 //---------------------------------------------------------
-// Route::any('/cart','a_1\demo_a1_contr@cart');
+
 //---------------------------------------------------------
 
 //---------------------------------------------------------
 Route::any('/search','a_1\demo_a1_contr@search');
 //---------------------------------------------------------
-// Route::any('/item','a_1\demo_a1_contr@item');
+
 //---------------------------------------------------------
 //前台登录
 Route::any('/login','index\LoginController@login'); //登录展示

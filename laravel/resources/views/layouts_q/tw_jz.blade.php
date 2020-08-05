@@ -63,9 +63,10 @@
 		<!--头部-->
 		<div class="header">
 			<div class="py-container">
+				{{--<img src="/logo/透明.png">--}}
 				<div class="yui3-g Logo">
 					<div class="yui3-u Left logoArea">
-						<a class="logo-bd" title="品优购" href="/"></a><!--target="_blank"-->
+						<a class="logo-bd" title="云涧店铺"></a>
 					</div>
 					<div class="yui3-u Center searchArea">
 						<div class="search">

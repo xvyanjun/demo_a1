@@ -149,6 +149,7 @@ class LoginController extends Controller
                 session(['u_id' => $user_model['u_id']]);
                 session(['u_name' => $user_model['u_name']]);
                 $request->session()->save();
+
                 return ['code'=>'00000','msg'=>'登录成功'];
 
             }else{

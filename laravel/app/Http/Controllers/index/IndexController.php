@@ -37,10 +37,10 @@ public function index(){
     //猜你喜欢
 
     $u_id=request()->session()->get('u_id');
-    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id');
     if($history){
-      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
-      $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
+      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id');
+      $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get();
     }else{
       $history_goods=[];
     }
@@ -105,19 +105,27 @@ public function lou_ceng_sj(){
 public function yqv_replace_sj(){
   $goods_zuo=Goods::where([['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->limit(3)->get();
   $goods_you=[];
+
   $brand_s=Brand::where('brand_del','1')->orderby('brand_id','desc')->limit(14)->get();
   foreach($brand_s as $f=>$g){
     $gos=Goods::where([['brand_id',$g['brand_id']],['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->first();
+
     $cd=count($goods_you);
+
     if(!empty($gos)){
+
       if($cd<3){
+
         $goods_you[]=$gos;
       }else{
+
         foreach($goods_you as $y=>$u){
+          
           if($u['goods_hits']<$gos['goods_hits']){
             $goods_you[$y]=$gos;
           }
         }
+
       }
     }
   }

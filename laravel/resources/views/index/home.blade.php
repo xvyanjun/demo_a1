@@ -64,7 +64,7 @@
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add" class="list-active">个人信息</a></dd>
+                            <!-- <dd><a href="/add" class="list-active">个人信息</a></dd> -->
                             <dd><a href="/add_list">地址管理</a></dd>
                             <dd><a href="/lists">安全管理</a></dd>
                         </dl>

@@ -14,10 +14,10 @@ class SafeController extends Controller
 {
     //安全中心
     public function lists(Request $request){
-          $data=$request->all();
-        $u_id=$request->u_id;
+        $data=$request->all();
+        $u_id=request()->session()->get('u_id');    
         $res=Indexuser::where("u_id",$u_id)->first();
-        return view('qtai/home-setting-safe',compact("res"),['res'=>$res]);
+        return view('qtai/home-setting-safe',compact("res"));
     }
     // 执行·
     public function login_do(Request $request)

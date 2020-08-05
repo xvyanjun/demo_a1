@@ -55,7 +55,7 @@ $(function(){
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add" class="">个人信息</a></dd>
+                            <!-- <dd><a href="/add" class="">个人信息</a></dd> -->
                             <dd><a href="/add_list">地址管理</a></dd>
                             <dd><a href="/lists">安全管理</a></dd>
                         </dl>
@@ -88,8 +88,9 @@ $(function(){
                                 @foreach($shop_order as $g1=>$g2)
                                  @if($g2['cd']==1)
                                 <div class="choose-title">
-                                    <label data-toggle="checkbox" class="checkbox-pretty ">
-                                           <input type="checkbox" checked="checked"><span>{{date('Y-m-d H:i',$g2['bast_time'])}}　订单编号：{{$g2['order_sn']}}  </span>
+                                    <label>
+                                           <!-- <input type="checkbox" checked="checked"> -->
+                                           <span>{{date('Y-m-d H:i',$g2['bast_time'])}}　订单编号：{{$g2['order_sn']}}  </span>
                                      </label>
                                     <!-- <a class="sui-btn btn-info share-btn">分享</a> -->
                                 </div>
@@ -182,8 +183,9 @@ $(function(){
                                 </table>
                                  @else
                                 <div class="choose-title">
-                                    <label data-toggle="checkbox" class="checkbox-pretty ">
-                                           <input type="checkbox" checked="checked"><span>
+                                    <label>
+                                           <!-- <input type="checkbox" checked="checked"> -->
+                                           <span>
                                            {{date('Y-m-d H:i',$g2['bast_time'])}}　订单编号：{{$g2['order_sn']}}</span>
                                      </label>
                                       <!-- <a class="sui-btn btn-info share-btn">分享</a> -->
@@ -404,7 +406,7 @@ $(function(){
               data:{'order_id':order_id},
               success:function(jk){
                 if(jk.a1=='0'){
-                 location.reload();
+                 location.href="/center";
                 }
                 console.log(jk.a2);
               }  

@@ -293,7 +293,11 @@
             data:data,
             dataType:"json",
             success:function(res){
-                alert(res)
+                if(res.code==200){
+					window.location.href=""
+				}else if(res.code==500){
+					window.location.href=res.url
+				}
             }
         })
     })

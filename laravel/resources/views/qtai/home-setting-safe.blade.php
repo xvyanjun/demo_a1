@@ -179,7 +179,7 @@ $(function(){
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="/add" class="">个人信息</a></dd>
+                            <!-- <dd><a href="/add" class="">个人信息</a></dd> -->
                             <dd><a href="/add_list">地址管理</a></dd>
                             <dd><a href="/lists"  class="list-active">安全管理</a></dd>
 
@@ -191,15 +191,17 @@ $(function(){
                     <div class="body userSafe">
                         <ul class="sui-nav nav-tabs nav-large nav-primary ">
                             <li class="active"><a href="#one" data-toggle="tab">密码设置</a></li>
-                            <li><a href="#two" data-toggle="tab">绑定手机</a></li>
+                            <!-- <li><a href="#two" data-toggle="tab">绑定手机</a></li> -->
                         </ul>
                         <div class="tab-content ">
                             <div id="one" class="tab-pane active">
                                 <form class="sui-form form-horizontal sui-validate" id="jsForm">
                                     <div class="control-group">
                                         <label for="inputusername" class="control-label">用户名：</label>
-                                        <div class="controls">
-                                            <input id="pwdid" type="text" name="u_name"/>
+                                        <div class="controls" id='u_name' u_name="{{$res['u_name']}}">
+                                            {{$res['u_name']}}
+                                            <!-- <input id="pwdid" type="text" name="u_name"/> -->
+                                            
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -229,8 +231,8 @@ $(function(){
                                     </div>
                                 </form>
                             </div>
-                            <div id="two" class="tab-pane">
-                                <!--步骤条-->
+                           <!--  <div id="two" class="tab-pane">
+                               
                                 <div class="sui-steps steps-auto">
                                     <div class="wrap">
                                         <div class="finished">
@@ -249,7 +251,7 @@ $(function(){
                                     </div>
                                 </div>
 
-                                <!--表单-->
+     
 
                                 <form class="sui-form form-horizontal sui-validate" data-toggle='validate' id="bind-form">
 
@@ -271,7 +273,7 @@ $(function(){
                                         <a class="sui-btn btn-primary" id="next" href="javascript:void(0)">下一步</a>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -291,7 +293,7 @@ $(function(){
     $(function(){
         $(document).on('click','#change',function(){
             var data = {};
-            data.u_name = $('input[name=u_name]').val();
+            data.u_name = $("#u_name").attr('u_name');
             data.u_pwd = $('input[name=u_pwd]').val();
             data.new_pwd = $('input[name=new_pwd]').val();
             var re_pwd = $('#re_pwd').val();

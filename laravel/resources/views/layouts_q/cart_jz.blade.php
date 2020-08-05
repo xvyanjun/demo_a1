@@ -32,16 +32,13 @@
 				<ul class="fr">
 					<li class="f-item"><a href="/center">我的订单</a></li>
 					<li class="f-item space"></li>
-					<li class="f-item space"></li>
 					<li class="f-item">品优购会员</li>
 					<li class="f-item space"></li>
 					<li class="f-item">企业采购</li>
 					<li class="f-item space"></li>
 					<li class="f-item">关注品优购</li>
 					<li class="f-item space"></li>
-					<li class="f-item">客户服务</li>
-					<li class="f-item space"></li>
-					<li class="f-item">网站导航</li>
+					<li class="f-item"><a href="/fankui">网站反馈</a></li>
 				</ul>
 			</div>
 		</div>

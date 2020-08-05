@@ -8,10 +8,10 @@ return array (
 		
 		//异步通知地址
 
-		'notify_url'=>"http://shop.com:80/eva_ybu",
+		'notify_url'=>"http://demo0719dm.cm:80/eva_ybu",
 		
 		//同步跳转
-		'return_url'=>"http://shop.com:80/eva_tbu",
+		'return_url'=>"http://demo0719dm.cm:80/eva_tbu",
 
 
 		//编码格式

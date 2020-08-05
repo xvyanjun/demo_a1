@@ -137,7 +137,7 @@
 												<span>${{mb_substr($yj_2['goods_price'],0,4)}}</span>
 											</div>
 											<div class="incar">
-												<a href="#" class="sui-btn btn-bordered btn-xlarge btn-default"><i class="car"></i><span class="cartxt">查看详情</span></a>
+												<a href="/goods_list/{{$yj_2['goods_id']}}" class="sui-btn btn-bordered btn-xlarge btn-default"><i class="car"></i><span class="cartxt">查看详情</span></a>
 											</div>
 										</li>
 										@endif

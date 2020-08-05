@@ -54,10 +54,6 @@
 						<li class="f-item space"></li>
 						<li class="f-item">关注品优购</li>
 						<li class="f-item space"></li>
-						<li class="f-item" id="service">
-							<span>客户服务</span>
-						</li>
-						<li class="f-item space"></li>
 						<li class="f-item"><a href="/fankui">网站反馈</a></li>
 					</ul>
 				</div>
@@ -295,22 +291,6 @@
 		<div class="toolbar">
 			<div class="toolbar-panels J-panel">
 
-				<!-- 我的关注 -->
-				<div style="visibility: hidden;" data-name="follow" class="J-content toolbar-panel tbar-panel-follow">
-					<h3 class="tbar-panel-header J-panel-header">
-						<a href="#" target="_blank" class="title"> <i></i> <em class="title">我的关注</em> </a>
-						<span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('follow');"></span>
-					</h3>
-					<div class="tbar-panel-main">
-						<div class="tbar-panel-content J-panel-content">
-							<div class="tbar-tipbox2">
-								<div class="tip-inner"> <i class="i-loading"></i> </div>
-							</div>
-						</div>
-					</div>
-					<div class="tbar-panel-footer J-panel-footer"></div>
-				</div>
-
 				<!-- 我的足迹 -->
 				<div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-history toolbar-animate-in">
 					<h3 class="tbar-panel-header J-panel-header">
@@ -323,7 +303,6 @@
 								<ul id='fu_lishi'>
 									<span>暂无。。。。。</span>
 								</ul>
-								<a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
 							</div>
 						</div>
 					</div>
@@ -336,26 +315,21 @@
 
 			<!-- 侧栏按钮 -->
 			<div class="toolbar-tabs J-tab">
-				<!-- <div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count " id="tab-sub-cart-count" name='cat_num_0525'>0</span>
-				</div> -->
-				<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count hide">0</span>
-				</div>
-				<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history" >
+
+			</div>
+
+			<div class="toolbar-footer">
+                
+                <div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
+
+                <div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history" >
 					<i class="tab-ico"></i>
 					<em class="tab-text"></em>
 					<span class="tab-sub J-count hide" >0</span>
 				</div>
-			</div>
 
-			<div class="toolbar-footer">
-				<div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
 				<div class="toolbar-tab tbar-tab-feedback" > <a href="/fankui"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
+
 			</div>
 
 			<div class="toolbar-mini"></div>
@@ -409,13 +383,14 @@ $(function(){
     		success:function(rc_n){
     		  var fon_pj='';
               for(var jk_886=0;jk_886<=rc_n['cd']-1;jk_886++){
-                 fon_pj=fon_pj+"<li class='jth-item'><a href='#' class='img-wrap'> <img style='width:100px;height:100px;' src='/"+rc_n['xxi'][jk_886]['goods_img']+"' height='100' width='100' /></a><a class='add-cart-button' href='#'' target='_blank'>加入购物车</a><a href='#' target='_blank' class='price' title='"+rc_n['xxi'][jk_886]['goods_price']+"'>￥"+rc_n['xxi'][jk_886]['goods_price']+"</a><a href='#'>&nbsp;&nbsp;&nbsp;×</a></li>";
+                 fon_pj=fon_pj+"<li class='jth-item'><a href='/goods_list/"+rc_n['xxi'][jk_886]['goods_id']+"' class='img-wrap'><img style='width:100px;height:100px;' src='/"+rc_n['xxi'][jk_886]['goods_img']+"' height='100' width='100' /></a><a class='add-cart-button' href='#'' target='_blank'>加入购物车</a><a href='#' target='_blank' class='price' title='"+rc_n['xxi'][jk_886]['goods_price']+"'>￥"+rc_n['xxi'][jk_886]['goods_price']+"</a></li>";
               }
               $("#fu_lishi").empty().html(fon_pj);
               console.log(rc_n);
     		}
     	});
     });
+    //<a href='#'>&nbsp;&nbsp;&nbsp;×</a>
     $(function(){
 	  $.ajax({
 	  	url:'/cat_top_list',
@@ -427,24 +402,6 @@ $(function(){
 	  	}
 	  });
     });
-
-///****头部搜索****/
-//$(document).on("click","#toubudasousuo",function(){
-//    var sou=$(this).prev('input').val();
-//    $.ajax({
-//        url:'/soulist',
-//        type:'post',
-//        dataType:'html',
-//        data:{sou:sou},
-//        success:function(res){
-//            if(res.code=='300'){
-//                alert(res.msg);
-//            }else{
-//                $("#yemiandasousuo").html(res);
-//            }
-//        }
-//    });
-//});
 //--------------------------------------------------------------------	
 </script>
 

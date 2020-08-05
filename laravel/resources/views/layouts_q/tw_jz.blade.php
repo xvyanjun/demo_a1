@@ -355,7 +355,7 @@
 
 			<div class="toolbar-footer">
 				<div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
-				<div class="toolbar-tab tbar-tab-feedback" > <a href="#" target="_blank"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
+				<div class="toolbar-tab tbar-tab-feedback" > <a href="/fankui"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
 			</div>
 
 			<div class="toolbar-mini"></div>

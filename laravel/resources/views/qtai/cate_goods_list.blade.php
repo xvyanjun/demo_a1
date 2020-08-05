@@ -2,6 +2,8 @@
     <input type="hidden" id="brand_id" value="{{$brand_id}}">
     <input type="hidden" id="yan_sku" value="{{$yan_sku}}">
     <input type="hidden" id="chi_sku" value="{{$chi_sku}}">
+    <input type="hidden" id="lei_sku" value="{{$lei_sku}}">
+    <input type="hidden" id="tao_sku" value="{{$tao_sku}}">
     <input type="hidden" id="qu_price" value="{{$qu_price}}">
     <input type="hidden" id="tiao" value="{{$tiao}}">
     <input type="hidden" id="cate_id" value="{{$cate_id}}">

@@ -37,14 +37,14 @@ public function index(){
     //猜你喜欢
 
     $u_id=request()->session()->get('u_id');
-    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id');
+    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->first('goods_id');
     if($history){
-      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id');
+      $cate_id=Goods::where(["goods_id"=>$history])->first('cate_id');
       $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get();
     }else{
       $history_goods=[];
     }
-    
+    // dd('eva');
 //..............................eva
   if(array_key_exists('begin_num',$xx)){
     $begin_num=$xx['begin_num']+1;
@@ -111,7 +111,7 @@ public function yqv_replace_sj(){
     $gos=Goods::where([['brand_id',$g['brand_id']],['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->first();
 
     $cd=count($goods_you);
-
+    
     if(!empty($gos)){
 
       if($cd<3){

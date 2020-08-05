@@ -10,7 +10,7 @@ use App\models\PhoneCode;
 use Illuminate\Support\Facades\DB;
 use App\Models\History;
 use Illuminate\Support\Facades\Cookie;
-
+use Symfony\Component\HttpFoundation\Cookie as cookies;
 class LoginController extends Controller
 {
     //注册展示页面
@@ -156,7 +156,8 @@ class LoginController extends Controller
         if ($user_model) {
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
 
-                $this->user_history_insert($user_model['u_id']);
+                $res=$this->user_history_insert($user_model['u_id']);
+//                dd($res);
                 session(['u_phone' => $user_model['u_phone']]);
                 session(['u_id' => $user_model['u_id']]);
                 session(['u_name' => $user_model['u_name']]);
@@ -189,8 +190,9 @@ class LoginController extends Controller
     public function tuichu(Request $request){
         $u_id=request()->session()->put('u_id',null);
         $id=request()->session()->get('u_id');
-        // print_r($id);exit;
-        if(!$id){
+//         print_r($id);exit;
+//        dd($id);
+        if($id==null){
             return redirect('/login');
         }
     }
@@ -216,8 +218,13 @@ class LoginController extends Controller
               'h_time'=>$t5['h_time'],
               'h_hits'=>$t5['h_hits']
               ]);
-              $ck=Cookie::queue(Cookie::forget('user_history'));
-              return $ck;
+              $ck=Cookie::queue('user_history',null);
+
+//                  Cookie::queue(Cookie::forget('user_history'));
+//                    setCookie(user_history, "", -1);
+//                cookies('user_history',null);
+//                dd($ck);
+                return $ck;
             }
            }
         }

@@ -328,7 +328,8 @@
 					<span class="tab-sub J-count hide" >0</span>
 				</div>
 
-				<div class="toolbar-tab tbar-tab-feedback" > <a href="#" target="_blank"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
+				<div class="toolbar-tab tbar-tab-feedback" > <a href="/fankui"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
+
 			</div>
 
 			<div class="toolbar-mini"></div>

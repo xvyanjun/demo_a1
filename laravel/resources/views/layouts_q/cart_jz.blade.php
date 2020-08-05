@@ -50,10 +50,10 @@
 		<div class="logoArea">
 			<div class="fl logo"><span class="title"></span></div>
 			<div class="fr search">
-				<form class="sui-form form-inline">
+				<form class="sui-form form-inline" action="/soulist" method="post">
 					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+						<input type="text" id="autocomplete" name="sou" value="" placeholder="" class="input-error input-xxlarge" />
+						<button class="sui-btn btn-xlarge btn-danger" id="toubudasousuo" type="submit">搜索</button>
 					</div>
 				</form>
 			</div>

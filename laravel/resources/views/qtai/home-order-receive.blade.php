@@ -80,15 +80,15 @@ $(function(){
                         </div>
                         <div class="order-detail">
                             <div class="orders">
-                                <div class="choose-order">
-                                    <div class="sui-pagination pagination-large top-pages">
-                                        <ul>
-                                            <li class="prev disabled"><a href="#">上一页</a></li>
+                                {{--<div class="choose-order">--}}
+                                    {{--<div class="sui-pagination pagination-large top-pages">--}}
+                                        {{--<ul>--}}
+                                            {{--<li class="prev disabled"><a href="#">上一页</a></li>--}}
 
-                                            <li class="next"><a href="#">下一页</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                            {{--<li class="next"><a href="#">下一页</a></li>--}}
+                                        {{--</ul>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <!--order1-->
                                 @foreach($shop_order as $g1=>$g2)
                                     @if($g2['cd']==1)

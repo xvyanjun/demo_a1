@@ -20,7 +20,7 @@
 			<div class="info">
 				<form class="sui-form form-horizontal">				
 					<div class="control-group">
-						<label class="control-label">用户名：</label>
+						<label class="control-label">手机号：</label>
 						<div class="controls">
 							<input type="text" placeholder="手机号" id="u_phone" name="u_phone" class="input-xfat input-xlarge">
 						</div>

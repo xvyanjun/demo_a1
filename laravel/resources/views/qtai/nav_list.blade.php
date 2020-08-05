@@ -4,7 +4,7 @@
     {{--<link rel="stylesheet" type="text/css" href="/qtai/css/widget-jquery.autocomplete.css" />--}}
     <link rel="stylesheet" type="text/css" href="/qtai/css/pages-shop.css" />
     <script type="text/javascript" src="/qtai/js/pages/seckill-index.js"></script>
-    <script type="text/javascript" src="/qtai/js/pages/shop.js"></script>
+    <!-- <script type="text/javascript" src="/qtai/js/pages/shop.js"></script> -->
 
     <div class="banner" style="text-align:center;">
         <img src="/qtai/img/_/shop-intro.png" alt="">
@@ -38,20 +38,8 @@
 
 
     <!--回到顶部-->
-    <div class="cd-top">
-        <div class="top">
-            <img src="/qtai/img/_/gotop.png" />
-            <b>TOP</b>
-        </div>
-        <div class="code" id="code">
-            <span><img src="/qtai/img/_/code.png"/></span>
-        </div>
-        <div class="erweima">
-            <img src="/qtai/img/_/erweima.jpg" alt="">
-            <s></s>
-        </div>
-    </div>
-    </div>
+
+
 
 
     <!-- 底部栏位 -->

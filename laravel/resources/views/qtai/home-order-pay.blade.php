@@ -354,10 +354,10 @@ $(function(){
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="/{{$v->goods_img}}" />
+                                            <a href="/goods_list/{{$v['goods_id']}}"><img src="/{{$v->goods_img}}" /></a>
                                         </div>
                                         <div class="attr">
-                                            <em>{{$v->goods_name}}</em>
+                                            <em title="{{$v->goods_name}}">{{mb_substr($v->goods_name,0,9)}}</em>
                                         </div>
                                         <div class="price">
                                             <strong>

@@ -40,16 +40,13 @@
 					
 					<div class="summary">
 						<div class="summary-wrap">
-							<div class="fl title">
-								<i>价　　格</i>
+							<div class="fl price">
+								<i>价格</i>
 							</div>
 							<div class="fl price">
+								&nbsp;
 								<i>¥</i>
 								<em id="aa">{{$goods_info['goods_price']}}</em>
-								<!-- <span>降价通知</span> -->
-							</div>
-							<div class="fr remark">
-								<i>累计评价</i><em>{{$goods_info['goods_hits']}}</em>
 							</div>
 						</div>
 					
@@ -62,14 +59,18 @@
 							<input type="hidden" id="attr_id_{{$k}}" attr_id="{{$v['attr_id']}}" value="{{$v->attr_name}}">	
 							<dl id="dl">
 								<dt>
-									<div class="fl title">
+									<div class="fl "><!--title-->
 									<i>{{$v['attr_name']}}</i>
 								</div>
 								</dt>
 								<input type="hidden" class="col-md-10 data"  id="val_id_{{$k}}"  value="{{$v->val_name}}">
 								@foreach($v['val_s'] as $kk=>$vv)
-								<dd><a href="javascript:;" name="yanshi"  id="ys" goods_id="{{$goods_info['goods_id']}}"  class="{{$kk==0?'selected':''}}" val_id="{{$vv['val_id']}}">{{$vv['val_name']}}<span title="点击取消选择">&nbsp;</span>
-									</a></dd>
+								<dd>
+									<a href="javascript:;" name="yanshi"  id="ys" goods_id="{{$goods_info['goods_id']}}"  class="{{$kk==0?'selected':''}}" val_id="{{$vv['val_id']}}">
+										{{$vv['val_name']}}
+										<span title="点击取消选择">&nbsp;</span>
+									</a>
+								</dd>
 								@endforeach
 								<!-- <dd><a href="javascript:;">64G</a></dd>
 								<dd><a href="javascript:;" class="locked">128G</a></dd> -->
@@ -79,18 +80,21 @@
 						</div>
 
 						<div class="summary-wrap">
-							<div class="fl title">
+							<div class="fl"><!--title-->
 								<div class="control-group">
 									<div class="controls">
 										<input id="goods_stock"  goods_stock="{{$goods_info['goods_stock']}}" autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
+
 										<a href="javascript:void(0)" style="padding-right:6px; " class="increment plus">+</a>
 										<a href="javascript:void(0)" style="padding-right:6px; " class="increment mins">-</a>
 									</div>
 								</div>
 							</div>
+
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
+										&nbsp;
 										<a href="javascript:void(0)"  id="gwc" goods_price="{{$goods_info['goods_price']}}" goods_id="{{$goods_info['goods_id']}}" class="sui-btn  btn-danger addshopcar">加入购物车</a>
 									</li>
 								</ul>
@@ -124,16 +128,16 @@
 											<img src="/{{$v->goods_img}}" style="width:150px;" />
 										</div>
 										<div class="attr">
-											<em>{{$v->goods_name}}</em>
+											<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$v->goods_name}}</em>
 										</div>
 										<div class="price">
 											<strong>
-											<em>¥</em>
+											<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¥</em>
 											<i>{{$v->goods_price}}</i>
 										</strong>
 										</div>
 										<div class="operate">
-											<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
+											<a href="/goods_list/{{$v->goods_id}}" class="sui-btn btn-bordered">查看详情</a>
 										</div>
 									</div>
 								</li>
@@ -148,60 +152,6 @@
 					</div>
 				</div>
 				<div class="fr detail">
-					<div class="clearfix fitting">
-						<h4 class="kt">选择搭配</h4>
-						<div class="good-suits">
-							<div class="fl master">
-								<div class="list-wrap">
-									<div class="p-img">
-										<img src="/qtai/img/_/l-m01.png" />
-									</div>
-									<em>￥5299</em>
-									<i>+</i>
-								</div>
-							</div>
-							<div class="fl suits">
-								<ul class="suit-list">
-									<li class="">
-										<div id="">
-											<img src="/qtai/img/_/dp01.png" />
-										</div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>39</span>
-                                        </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/qtai/img/_/dp02.png" /> </div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>50</span>
-                                        </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/qtai/img/_/dp03.png" /></div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>59</span>
-                                        </label>
-									</li>
-									<li class="">
-										<div id=""><img src="/qtai/img/_/dp04.png" /></div>
-										<i>Feless费勒斯VR</i>
-										<label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>99</span>
-                                        </label>
-									</li>
-								</ul>
-							</div>
-							<div class="fr result">
-								<div class="num">已选购0件商品</div>
-								<div class="price-tit"><strong>套餐价</strong></div>
-								<div class="price">￥5299</div>
-								<button class="sui-btn  btn-danger addshopcar">加入购物车</button>
-							</div>
-						</div>
-					</div>
 					<div class="tab-main intro">
 						<ul class="sui-nav nav-tabs tab-wraped">
 							<li class="active">
@@ -209,26 +159,7 @@
 									<span>商品介绍</span>
 								</a>
 							</li>
-							<li>
-								<a href="#two" data-toggle="tab">
-									<span>规格与包装</span>
-								</a>
-							</li>
-							<li>
-								<a href="#three" data-toggle="tab">
-									<span>售后保障</span>
-								</a>
-							</li>
-							<li>
-								<a href="#four" data-toggle="tab">
-									<span>商品评价</span>
-								</a>
-							</li>
-							<li>
-								<a href="#five" data-toggle="tab">
-									<span>手机社区</span>
-								</a>
-							</li>
+							
 						</ul>
 						<div class="clearfix"></div>
 						<div class="tab-content tab-wraped">
@@ -244,18 +175,7 @@
                                     @endforeach
 								</div>
 							</div>
-							<div id="two" class="tab-pane">
-								<p>规格与包装</p>
-							</div>
-							<div id="three" class="tab-pane">
-								<p>售后保障</p>
-							</div>
-							<div id="four" class="tab-pane">
-								<p>商品评价</p>
-							</div>
-							<div id="five" class="tab-pane">
-								<p>手机社区</p>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -328,7 +248,7 @@
 				success:function(res){
 					if(res.code==000002){
 						// alert(res.msg);
-						$("#aa").text('该型号无货请更换~~');
+						$("#aa").text('该型号无货请更换');
 					}else{
                     var res=res;
 					$("#aa").text(res['price']);
@@ -480,6 +400,7 @@
                     var res=res;
 					$("#aa").text(res['price']);
 					$("#gwc").attr('goods_price',res['price']);
+					$("#goods_stock").attr('goods_stock',res['goods_stroe']);
 					}
 					// console.log(re);
 				}

@@ -28,7 +28,7 @@ public function index(){
     $cate=$model::where(['cate_del'=>1,'p_id'=>0])->get()->toArray();
     $cate_info=self::cate_list($cate);
     $slide_s=shop_slide::where([['slide_del','1'],['slide_show','1']])->orderby('slide_weight','asc')->get();
-    $service_s=shop_service::where([['service_show','1'],['service_del','1']])->paginate(5);
+    $service_s=shop_service::where([['service_show','1'],['service_del','1']])->orderby('service_sort','desc')->paginate(5);
 
 //..............................eva
     //今日推荐
@@ -165,7 +165,7 @@ public function friend(Request $request){
 public function ce_lishi(){
   $u_id=request()->session()->get('u_id');
   if(!empty($u_id)){
-     $id_s=History::where('u_id',$u_id)->limit('8')->limit(8)->get('goods_id');
+     $id_s=History::where('u_id',$u_id)->orderby('h_time','desc')->limit(8)->get('goods_id');
      $xxi=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->get();
   }else{
      $sf=Cookie::get('user_history');
@@ -177,7 +177,7 @@ public function ce_lishi(){
       foreach($ar as $f=>$g){
        $id_s[]=$f;
       }
-      $goods=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->limit(8)->get();
+      $goods=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->orderby('goods_id','desc')->limit(8)->get();
       $xxi=$goods;
      }
   }

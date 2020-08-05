@@ -5,7 +5,7 @@
 
 
 <script type="text/javascript" src="/qtai/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="/qtai/js/pages/istpicker.data.js"></script>
+<!-- <script type="text/javascript" src="/qtai/js/pages/istpicker.data.js"></script> -->
 <script type="text/javascript" src="/qtai/js/plugins/citypicker/distpicker.js"></script>
 <script type="text/javascript" src="/qtai/js/pages/main.js"></script>
 
@@ -24,30 +24,28 @@
                             <span class="name">Michelle</span>
                             <span class="safe">账户安全</span>
                         </div>
-                        
-                        
-                    <div class="clearfix"></div>
-                </div>
-                <div class="list-items">
-                    <dl>
-                        <dt><i>·</i> 订单中心</dt>
-                        <dd ><a href="/center" >我的订单</a></dd>
-                        <dd><a href="/home_order_pay" class="" >待付款</a></dd>
-                        <dd><a href="/home_order_send"  class="" >待发货</a></dd>
-                        <dd><a href="/home_order_receive" class="" >待收货</a></dd>
-                    </dl>
-                    <dl>
-                        <dt><i>·</i> 我的中心</dt>
-                        <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
-                        <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
-                    </dl>
-                    <dl>
-                        <dt><i>·</i> 设置</dt>
-                        <dd><a href="/add" >个人信息</a></dd>
-                        <dd><a href="/add_list" class="list-active">地址管理</a></dd>
-                        <dd><a href="/lists">安全管理</a></dd>
-                    </dl>
-
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list-items">
+                        <dl>
+                            <dt><i>·</i> 订单中心</dt>
+                            <dd ><a href="/center"  class="" >我的订单</a></dd>
+                            <dd><a href="/home_order_pay" class="" >待付款</a></dd>
+                            <dd><a href="/home_order_send"  class="" >待发货</a></dd>
+                            <dd><a href="home-order-receive.html" class="" >待收货</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 我的中心</dt>
+                            <dd><a href="/shop_user_list/collect" >我的收藏</a></dd>
+                            <dd><a href="/shop_user_list/history" >我的足迹</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 设置</dt>
+                            <dd><a href="/add" >个人信息</a></dd>
+                            <dd><a href="/add_list" class="list-active">地址管理</a></dd>
+                            <dd><a href="/lists">安全管理</a></dd>
+                        </dl>
+                    </div>
                 </div>
             <!--右侧主内容-->
             <div class="yui3-u-5-6">

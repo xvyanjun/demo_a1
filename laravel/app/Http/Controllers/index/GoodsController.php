@@ -55,18 +55,19 @@ class GoodsController extends Controller
         $goods_id=request()->id;
         $sku=goods_sku_id($goods_id);
         $goods_sku=goods_sku($goods_id);
+        
         $goods_sku_id=Propertyp::where("goods_id",$goods_id)->get()->toArray();
         // print_r($goods_sku_id);exit;
-        if(empty($goods_sku_id)){
-            echo '
-            <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-            <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
-            <script>
-                alert("该商品暂无库存，请另选。");
-                window.location.href="javascript:history.go(-1);"
-            </script>';
-            exit;
-        }
+        // if(empty($goods_sku_id)){
+        //     echo '
+        //     <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        //     <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+        //     <script>
+        //         alert("该商品暂无库存，请另选。");
+        //         window.location.href="javascript:history.go(-1);"
+        //     </script>';
+        //     exit;
+        // }
         // var_dump($goods);exit;
         //详情页的相关分类
         $goods_cate=Goods::where("goods_id",$goods_id)->get('cate_id');
@@ -244,6 +245,11 @@ class GoodsController extends Controller
         $data=$request->all();
         //判断接受的sku拆分
         $sku=$data['sku'];
+        // if(empty($sku)){
+        //     $g=[];
+        // }else{
+        //     $g=self::goods_sku_aa($sku);
+        // }
         $g=self::goods_sku_aa($sku);
         // print_r($g);exit;
         $goods=Propertyp::where("goods_id",$data['goods_id'])->get()->toArray();

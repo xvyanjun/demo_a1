@@ -13,6 +13,8 @@ class ListController extends Controller
         $goods=Goods::where("brand_id",$brand_id)->get();
         // print_r($goods);exit;
         // dd($brand);
-        return view('qtai.list',compact('goods'));
+        // 
+        $goodss=Goods::orderby("goods_hits","desc")->limit(4)->get(); 
+        return view('qtai.list',compact('goods','goodss'));
     }
 }

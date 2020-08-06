@@ -41,7 +41,10 @@ class OrderController extends Controller
         }
 //         dd($shop_order);
 //        dd($f2);
-        return view('qtai.home-order-receive',['shop_order'=>$shop_order]);
+        //热卖单品
+        $goods=Goods::orderby("goods_hits","desc")->limit(4)->get();
+
+        return view('qtai.home-order-receive',['shop_order'=>$shop_order,'goods'=>$goods]);
     }
 
 //-----------------------------------------------------------------------------

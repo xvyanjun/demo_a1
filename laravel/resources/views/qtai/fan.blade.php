@@ -57,9 +57,8 @@
 	<div class="cart py-container">
 		<!--logoArea-->
 		<div class="logoArea">
-			<div class="fl logo"><span class="title">购物车</span></div>
-			<div class="fr search">
-				
+			<div class="fl logo"><span class="title"></span></div>
+			<div class="fr search">		
 			</div>
         </div>
         <div>
@@ -294,7 +293,11 @@
             data:data,
             dataType:"json",
             success:function(res){
-                alert(res)
+                if(res.code==200){
+					window.location.href=""
+				}else if(res.code==500){
+					window.location.href=res.url
+				}
             }
         })
     })

@@ -48,6 +48,11 @@ class CateController extends Controller
 
         //尺寸属性
         $sku_info['chi']=$sku_val::where(['attr_id'=>2])->get()->toArray();
+        //尺寸类型
+        $sku_info['lei']=$sku_val::where(['attr_id'=>6])->get()->toArray();
+        //尺寸套装
+        $sku_info['tao']=$sku_val::where(['attr_id'=>7])->get()->toArray();
+
         //最大价格
         $goods_max=$goods::where(['cate_id'=>$id,'goods_del'=>1])->get()->max('goods_price');
         $price=$this->getSectionPrice($goods_max);

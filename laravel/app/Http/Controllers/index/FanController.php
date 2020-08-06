@@ -46,8 +46,22 @@ class FanController extends Controller
         $f_id=$request->f_id;
         $input_name=$request->input_name;
         if(empty($input_name)){
-            return redirect('/fankui');
-            exit;
+//            return redirect('/fankui');
+//            exit;
+            $arr=[
+                'code'=>500,
+                'url'=>'/fankui'
+            ];
+            return json_encode($arr,JSON_UNESCAPED_UNICODE);
+        }
+        $u_id=request()->session()->get('u_id');
+        if(empty($u_id)){
+//            return redirect('/login');
+            $arr=[
+                'code'=>500,
+                'url'=>'/login'
+            ];
+            return json_encode($arr,JSON_UNESCAPED_UNICODE);
         }
         $shop_fan=new shop_fan;
         $u_name=Indexuser::where('u_id',$u_id)->value('u_name');
@@ -58,7 +72,13 @@ class FanController extends Controller
         $shop_fan->f_time=time();
         $res=$shop_fan->save();
         if($res){
-            return redirect('/fankui');
+//            return redirect('/fankui');
+            $arr=[
+                'code'=>200,
+                'url'=>''
+            ];
+            return json_encode($arr,JSON_UNESCAPED_UNICODE);
+
         }
     }
 }

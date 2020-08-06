@@ -18,15 +18,9 @@ class SuiController extends Controller
         $sou=$request->post('sou');
         if(empty($sou)){
             echo '<script>
-                alert("请输入要搜索的内容");
-                window.loaded.href="/";
+                window.location.href="/";
                 </script>';
             exit;
-//            $arr=[
-//                'code'=>'300',
-//                'msg'=>'请输入要搜索的内容',
-//            ];
-//            return json_encode($arr,JSON_UNESCAPED_UNICODE);
         }
         $cate=new Cate();
         $goods=new Goods();
@@ -50,12 +44,17 @@ class SuiController extends Controller
         $goods_info=$goods::where('goods_del',1)->whereIn('cate_id',$cate_list)->get()->toArray();//根据分类查询的商品
 //        dd($goods_info);
         $goods_where=[
-            ['goods_name','like',$sou],
+            ['goods_name','like',"%$sou%"],
             ['goods_del','=',1]
         ];
         $goods_list=$goods::where($goods_where)->get()->toArray();
         if(!empty($goods_list)){
             $goods_info=array_unique(array_merge($goods_info,$goods_list),SORT_REGULAR);
+        }else{
+            echo '<script>
+                window.location.href="/";
+                </script>';
+            exit;
         }
 //        dd($goods_info);
         return view('qtai.index_sou',['goods_info'=>$goods_info,'sou'=>$sou]);

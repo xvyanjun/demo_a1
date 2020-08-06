@@ -28,7 +28,7 @@ public function index(){
     $cate=$model::where(['cate_del'=>1,'p_id'=>0])->get()->toArray();
     $cate_info=self::cate_list($cate);
     $slide_s=shop_slide::where([['slide_del','1'],['slide_show','1']])->orderby('slide_weight','asc')->get();
-    $service_s=shop_service::where([['service_show','1'],['service_del','1']])->paginate(5);
+    $service_s=shop_service::where([['service_show','1'],['service_del','1']])->orderby('service_sort','desc')->paginate(5);
 
 //..............................eva
     //今日推荐
@@ -37,14 +37,14 @@ public function index(){
     //猜你喜欢
 
     $u_id=request()->session()->get('u_id');
-    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->limit(1)->get('goods_id')->toArray();
+    $history=History::where("u_id",$u_id)->orderby("h_hits","desc")->first('goods_id');
     if($history){
-      $cate_id=Goods::where(["goods_id"=>$history[0]['goods_id']])->first('cate_id')->toArray();
-      $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get()->toArray();
+      $cate_id=Goods::where(["goods_id"=>$history])->first('cate_id');
+      $history_goods=Goods::where(["cate_id"=>$cate_id])->orderby("goods_hits","desc")->limit(6)->get();
     }else{
       $history_goods=[];
     }
-    
+    // dd('eva');
 //..............................eva
   if(array_key_exists('begin_num',$xx)){
     $begin_num=$xx['begin_num']+1;
@@ -105,19 +105,27 @@ public function lou_ceng_sj(){
 public function yqv_replace_sj(){
   $goods_zuo=Goods::where([['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->limit(3)->get();
   $goods_you=[];
+
   $brand_s=Brand::where('brand_del','1')->orderby('brand_id','desc')->limit(14)->get();
   foreach($brand_s as $f=>$g){
     $gos=Goods::where([['brand_id',$g['brand_id']],['goods_show','1'],['goods_del','1']])->orderby('goods_hits','desc')->first();
+
     $cd=count($goods_you);
+    
     if(!empty($gos)){
+
       if($cd<3){
+
         $goods_you[]=$gos;
       }else{
+
         foreach($goods_you as $y=>$u){
+          
           if($u['goods_hits']<$gos['goods_hits']){
             $goods_you[$y]=$gos;
           }
         }
+
       }
     }
   }
@@ -165,7 +173,7 @@ public function friend(Request $request){
 public function ce_lishi(){
   $u_id=request()->session()->get('u_id');
   if(!empty($u_id)){
-     $id_s=History::where('u_id',$u_id)->limit('8')->limit(8)->get('goods_id');
+     $id_s=History::where('u_id',$u_id)->orderby('h_time','desc')->limit(8)->get('goods_id');
      $xxi=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->get();
   }else{
      $sf=Cookie::get('user_history');
@@ -177,7 +185,7 @@ public function ce_lishi(){
       foreach($ar as $f=>$g){
        $id_s[]=$f;
       }
-      $goods=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->limit(8)->get();
+      $goods=Goods::wherein('goods_id',$id_s)->where('goods_del','1')->orderby('goods_id','desc')->limit(8)->get();
       $xxi=$goods;
      }
   }

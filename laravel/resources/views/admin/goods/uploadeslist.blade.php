@@ -46,7 +46,8 @@
                 <td>
                     @foreach($goods as $kry=>$value)
                         @if($v['goods_id']==$value['goods_id'])
-                            {{$value['goods_name']}}
+                            {{--{{$value['goods_name']}}--}}
+                            {{mb_substr($value['goods_name'],0,15)}}...
                         @endif
                     @endforeach
                 </td>

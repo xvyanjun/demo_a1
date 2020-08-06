@@ -10,7 +10,7 @@ use App\models\PhoneCode;
 use Illuminate\Support\Facades\DB;
 use App\Models\History;
 use Illuminate\Support\Facades\Cookie;
-
+use Symfony\Component\HttpFoundation\Cookie as cookies;
 class LoginController extends Controller
 {
     //注册展示页面
@@ -73,19 +73,12 @@ class LoginController extends Controller
     {
         $phone = $request->post('u_phone');
         if (empty($phone)) {
-            return [
-                'code' => 00001,
-                'msg' => '手机号不能为空',
-                'result' => ''
-            ];
+            return ['code'=>'00007','msg'=>'手机号不能为空'];
         }
         $code = $request->post('code');
         if (empty($code)) {
-            return [
-                'code' => 00001,
-                'msg' => '验证码不能为空',
-                'result' => ''
-            ];
+            return ['code'=>'00001','msg'=>'验证码不能为空'];
+            die;
         }
 
             $codetrue = DB::table('shop_code')->where('u_phone', $phone)->first();
@@ -96,12 +89,13 @@ class LoginController extends Controller
                 exit;
             }
             $pwd = $request->post('u_pwd');
-            if (empty($pwd)) {
-                return [
-                    'code' => 00001,
-                    'msg' => '密码不能为空',
-                    'result' => ''
-                ];
+            $arr='/^\w{6,16}$/';
+            if(empty($pwd)){
+                return ['code'=>'00001','msg'=>'密码不能为空'];
+                die;
+            }else if(!preg_match($arr,$pwd)){
+                return ['code'=>'00002','msg'=>'密码必须六位,以及六位以上'];
+                die;
             }
            $u_name = $request -> post('u_name');
 
@@ -113,13 +107,7 @@ class LoginController extends Controller
             $user_model->u_time = time();
             //echo 123;die;
             if ($user_model->save()) {
-                return [
-                    'code' => 00000,
-                    'msg' => '注册成功',
-                    'result' => ''
-                ];
-
-
+                return ['code'=>'00000','msg'=>'注册成功'];
             }
         }
 
@@ -130,20 +118,19 @@ class LoginController extends Controller
 
         $u_phone = $request->post('u_phone');
         if (empty($u_phone)) {
-            return [
-                'code' => 00001,
-                'msg' => '手机号不能为空',
-                'result' => ''
-            ];
+            return ['code'=>'00006','msg'=>'手机号不能为空'];
+           
         }
 
         $u_pwd = $request->post('u_pwd');
-        if (empty($u_pwd)) {
-            return [
-                'code' => 00001,
-                'msg' => '密码不能为空',
-                'result' => ''
-            ];
+        //   //验证密码非空  必须是六位
+        $arr='/^\w{6,16}$/';
+        if(empty($u_pwd)){
+            return ['code'=>'00001','msg'=>'密码不能为空'];
+            die;
+        }else if(!preg_match($arr,$u_pwd)){
+            return ['code'=>'00002','msg'=>'密码必须六位,以及六位以上'];
+            die;
         }
         $where = [
             'u_phone' => $u_phone,
@@ -156,31 +143,20 @@ class LoginController extends Controller
         if ($user_model) {
             if ($user_model ['u_pwd'] == md5($data['u_pwd'])) {
 
-                $this->user_history_insert($user_model['u_id']);
+                $res=$this->user_history_insert($user_model['u_id']);
+//                dd($res);
                 session(['u_phone' => $user_model['u_phone']]);
                 session(['u_id' => $user_model['u_id']]);
                 session(['u_name' => $user_model['u_name']]);
                 $request->session()->save();
-                return [
-                    'code' => 00000,
-                    'msg' => '登录成功',
-                    'result' => ''
-                ];
+
+                return ['code'=>'00000','msg'=>'登录成功'];
 
             }else{
-
-                return [
-                    'code' => 00003,
-                    'msg' => '密码错误',
-                    'result' => ''
-                ];
+                return ['code'=>'00003','msg'=>'密码错误'];
             }
         }else{
-            return [
-                'code' => 00004,
-                'msg' => '没有此用户',
-                'result' => ''
-            ];
+            return ['code'=>'00004','msg'=>'没有此用户'];
         }
 
     }
@@ -189,8 +165,9 @@ class LoginController extends Controller
     public function tuichu(Request $request){
         $u_id=request()->session()->put('u_id',null);
         $id=request()->session()->get('u_id');
-        // print_r($id);exit;
-        if(!$id){
+//         print_r($id);exit;
+//        dd($id);
+        if($id==null){
             return redirect('/login');
         }
     }
@@ -216,20 +193,17 @@ class LoginController extends Controller
               'h_time'=>$t5['h_time'],
               'h_hits'=>$t5['h_hits']
               ]);
-              $ck=Cookie::queue(Cookie::forget('user_history'));
-              return $ck;
+              $ck=Cookie::queue('user_history',null);
+
+//                  Cookie::queue(Cookie::forget('user_history'));
+//                    setCookie(user_history, "", -1);
+//                cookies('user_history',null);
+//                dd($ck);
+                return $ck;
             }
            }
         }
-    //        elsE{
-    //            echo 'cookie';
-    //            dd($sf);
-    //        }
        }
-//           else{
-//               echo 'u_id';
-//               dd($u_id);
-//           }
     }
 
 }

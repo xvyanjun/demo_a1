@@ -397,6 +397,16 @@ class GoodsController extends Controller
             $where[]=['shop_property.sku','like',"%$chi_sku%"];
         }
 
+        $lei_sku=$request->post('lei_sku')??'';//类型sku
+        if(!empty($lei_sku)){
+            $where[]=['shop_property.sku','like',"%$lei_sku%"];
+        }
+
+        $tao_sku=$request->post('tao_sku')??'';//套装sku
+        if(!empty($tao_sku)){
+            $where[]=['shop_property.sku','like',"%$lei_sku%"];
+        }
+
         $qu_price_in=$request->post('price')??'';//价格
 //        dd($qu_price);
         if(!empty($qu_price_in)){
@@ -438,7 +448,7 @@ class GoodsController extends Controller
                 $count=ceil($count/$limit);
                 $goods_info=$goods::where($where)->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
             }else{
-                if(!empty($yan_sku) || !empty($chi_sku)){
+                if(!empty($yan_sku) || !empty($chi_sku) || !empty($lei_sku) || !empty($tao_sku)){
                     $count=count($goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->get()->toArray());//总条数
                     $count=ceil($count/$limit);
                     $goods_info=$goods::leftjoin('shop_property','shop_goods.goods_id','=','shop_property.goods_id')->where($where)->offset($page)->limit($limit)->get()->toArray();//加条件后的商品
@@ -455,6 +465,8 @@ class GoodsController extends Controller
                                                 'brand_id'=>$brand_id,
                                                 'yan_sku'=>$yan_sku,
                                                 'chi_sku'=>$chi_sku,
+                                                'lei_sku'=>$lei_sku,
+                                                'tao_sku'=>$tao_sku,
                                                 'qu_price'=>$qu_price_in,
                                                 'tiao'=>$tiao,
                                                 'cate_id'=>$cate_id,

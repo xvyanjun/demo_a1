@@ -55,15 +55,17 @@
 					<div class="clearfix choose">
 						<div id="specification" class="summary-wrap clearfix">
 						<div id="dd" num={{sizeof($goods_sku)}}></div>
+						    @php $key_y=0; @endphp
 							@foreach($goods_sku as $k=>$v)
-							<input type="hidden" id="attr_id_{{$k}}" attr_id="{{$v['attr_id']}}" value="{{$v->attr_name}}">	
+							@php $key_y=$key_y+1; @endphp
+							<input type="hidden" id="attr_id_{{$key_y}}" attr_id="{{$v['attr_id']}}" value="{{$v->attr_name}}">	
 							<dl id="dl">
 								<dt>
 									<div class="fl "><!--title-->
 									<i>{{$v['attr_name']}}</i>
 								</div>
 								</dt>
-								<input type="hidden" class="col-md-10 data"  id="val_id_{{$k}}"  value="{{$v->val_name}}">
+								<input type="hidden" class="col-md-10 data"  id="val_id_{{$key_y}}"  value="{{$v->val_name}}">
 								@foreach($v['val_s'] as $kk=>$vv)
 								<dd>
 									<a href="javascript:;" name="yanshi"  id="ys" goods_id="{{$goods_info['goods_id']}}"  class="{{$kk==0?'selected':''}}" val_id="{{$vv['val_id']}}">
@@ -203,9 +205,6 @@
 											<i>{{$v['goods_price']}}</i>
 										</strong>
 								</div>
-								<div class="commit">
-									<i class="command">已有6人评价</i>
-								</div>
 							</div>
 						</li>
 						@endforeach
@@ -241,7 +240,10 @@
 			}
 			var cd=sku.length;
 			sku=sku.substr(0,cd-1);
-			$.ajax({
+			if(sku==''){
+              alert('该商品暂无型号,请浏览其他商品');
+			}else{
+              $.ajax({
 				url:'/sehao',
 				data:{"sku":sku,"goods_id":goods_id},
 				dataType:"json",
@@ -258,7 +260,9 @@
 					
 					// console.log(re);
 				}
-			})
+			   })
+			}
+
 //-----------------------------------------------------------------------------
 	});
 	$(function(){
@@ -349,7 +353,10 @@
 			data.price_total=price_total;
 			data.price_one=price_one;
 			data.sku=sku;
-			$.ajax({
+			if(sku==''){
+                alert('该商品暂无型号,请浏览其他商品');
+			}else{
+			    $.ajax({
 				url:'/shopping',
 				data:data,
 				dataType:"json",
@@ -366,6 +373,7 @@
 
 				}
 			})
+			}
 		})
 		//点击选框的样式
 		$(document).on("click","#ys",function(){
